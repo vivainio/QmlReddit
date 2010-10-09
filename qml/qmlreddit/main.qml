@@ -1,79 +1,62 @@
 import Qt 4.7
 
 Rectangle {
-    id: container
-    width: 864
+    width: 640
     height: 480
-
-
-    Rectangle {
-        id: rCat
-        x: 200
-        y: 0
-        height: 17
-        anchors.right: parent.right
-        anchors.rightMargin: 30
-        Text {
-            x: 6
-            y: 0
-            color: "#1f6e7a"
-            text: "Cat"
-            //anchors.right: parent.right
-            //x: parent.width - 20
-
+    id: mainview;
+    LinkView { id: linkview; x : 0; anchors.fill: parent }
+    CommentView {
+        id: commentview
+        width: parent.width
+        height: parent.height
+        Behavior on x {
+            NumberAnimation {
+                    duration: 500
         }
-    }
-
-    ListView {
-
-        id: lvLinks
-        anchors.fill: parent
-
-        model: mdlLinks
-        delegate: deLinks
-        focus: true
-        highlight: Rectangle {
-            color: "#5989ad"
-            width: 500
-            height: deLinks.height
 
         }
 
+        //anchors.fill: parent
+        /*
+        function doCom() {
+            console.debug("com sel")
+            mainview.state = "LinkState"
+            commentview.color = "green";
+        }
+        */
+
+        onCommentSelected: mainview.state = "LinkState"
     }
+    state: "CommentsState"
+    states: [
+        State {
 
-    Component {
-        id: deLinks
-        Rectangle {
-            height: 50
-            Text {
-                wrapMode: "WordWrap"
-                id: dscIt
-                text: desc
+            name: "LinkState"
 
-                //anchors.left: parent.left
+            StateChangeScript {
+
+                script: console.log("tolinks");
+
+
             }
 
-            Text {
-                text: score
-                scale: 0.7
-                //anchors.right: parent.right
-                //anchors.verticalCenter: dscIt.verticalCenter
-                //anchors.top: dscIt.anchors.bottom
-                //anchors.rightMargin: 30
-                x: 2
-                y: dscIt.height + 2
-
+            PropertyChanges {
+                target: linkview
+                x : 0
             }
+
+        },
+
+        State {
+            name: "CommentsState"
+            PropertyChanges {
+                target: commentview
+                x: 0
+            }
+
         }
 
-    }
 
-    /*
-    ListModel {
-        id: mdlLinks
-        ListElement { url:  "google.com"; desc : "search engine"; score : 3 }
-        ListElement { url: "slashdot.org"; desc: "gossip site"; score : 12 }
-    }
-    */
+    ]
 
 }
