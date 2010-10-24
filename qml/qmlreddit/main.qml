@@ -40,7 +40,7 @@ Rectangle {
 
         onCommentSelected: mainview.state = "LinkState"
     }
-    state: "CommentsState"
+    state: "LinkState"
     states: [
         State {
 
