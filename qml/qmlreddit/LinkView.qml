@@ -5,7 +5,7 @@ Rectangle {
     width: 864
     height: 480
     x: 1000
-    // hidden by defaul
+    // hidden by default
 
     signal selected
 

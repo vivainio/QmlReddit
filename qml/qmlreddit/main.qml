@@ -4,7 +4,27 @@ Rectangle {
     width: 640
     height: 480
     id: mainview;
-    LinkView { id: linkview; x : 0; anchors.fill: parent }
+
+    /*
+    Flipable {
+        id: fl
+        anchors.fill: parent
+        back: LinkView { id: linkview; anchors.fill: parent }
+        front: CommentView {
+            id: commentview; width: parent.width; height: parent.height
+            onCommentSelected: {
+                console.log("sel")
+            }
+
+        }
+
+
+    }
+    */
+
+
+
+    LinkView { id: linkview }
     CommentView {
         id: commentview
         width: parent.width
@@ -17,13 +37,6 @@ Rectangle {
         }
 
         //anchors.fill: parent
-        /*
-        function doCom() {
-            console.debug("com sel")
-            mainview.state = "LinkState"
-            commentview.color = "green";
-        }
-        */
 
         onCommentSelected: mainview.state = "LinkState"
     }
@@ -42,7 +55,9 @@ Rectangle {
 
             PropertyChanges {
                 target: linkview
-                x : 0
+                x: 0
+
+
             }
 
         },
