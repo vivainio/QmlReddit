@@ -18,7 +18,8 @@ struct RedditEntry {
         UrlRole = Qt::UserRole + 1,
         DescRole,
         ScoreRole,
-        CommentsRole
+        CommentsRole,
+        PermalaLinkRole
     };
 
     QString url;

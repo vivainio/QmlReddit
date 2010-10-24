@@ -21,6 +21,7 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::UrlRole] =  "url";
     roleNames[RedditEntry::DescRole] = "desc";
     roleNames[RedditEntry::ScoreRole] = "score";
+    roleNames[RedditEntry::PermalaLinkRole] = "permalink";
     m_linksmodel = new SaneItemModel(roleNames);
     //m_linksmodel->setRoleNames(roleNames);
 
@@ -32,8 +33,6 @@ void RedditModel::setup(QDeclarativeContext *ctx)
     ctx->setContextProperty("mdlReddit", this);
     ctx->setContextProperty("mdlLinks", m_linksmodel);
     start("");
-
-
 
 }
 
@@ -49,6 +48,7 @@ void RedditModel::doPopulateLinks()
         QStandardItem* it = new QStandardItem();
         it->setData(e.desc, RedditEntry::DescRole);
         it->setData(e.score, RedditEntry::ScoreRole);
+        it->setData(e.permalink, RedditEntry::PermalaLinkRole);
 
         m_linksmodel->appendRow(it);
 
