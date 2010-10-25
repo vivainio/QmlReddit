@@ -24,7 +24,14 @@ Rectangle {
 
 
 
-    LinkView { id: linkview }
+    LinkView
+        {
+            id: linkview
+            onLinkSelected: {
+                console.log("sig ", selIndex)
+
+            }
+        }
     CommentView {
         id: commentview
         width: parent.width

@@ -5,9 +5,10 @@ Rectangle {
     width: 864
     height: 480
     x: 1000
-    // hidden by default
 
-    signal selected
+    signal linkSelected(int selIndex);
+
+    // hidden by default
 
     /*
     Behavior on x {
@@ -50,11 +51,26 @@ Rectangle {
             height: container.height
         }
 
+        /*
+        MouseArea {
+            anchors.fill: lvLinks
+            onClicked: {
+
+                var idx = lvLinks.indexAt(mouse.x, mouse.y);
+                container.linkSelected(idx)
+                console.log("click ", lvLinks.index, " at ", mouse.y, " , ", mouse.x)
+
+            }
+        }
+        */
+
+
     }
 
     Component {
         id: deLinks
         Rectangle {
+            id: rrect
             height: dscIt.height + txtIt.height + 10
             Text {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
@@ -77,7 +93,21 @@ Rectangle {
                 y: dscIt.height + 2
 
             }
+            MouseArea {
+                id: ma
+                width: 600
+                height: dscIt.height + txtIt.height + 10
+
+                //anchors.fill: parent
+                onClicked: {
+                    console.log("index ", index)
+                    linkSelected(index)
+                }
+
         }
+
+        }
+
 
     }
 
