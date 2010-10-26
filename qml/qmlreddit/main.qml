@@ -41,7 +41,7 @@ Rectangle {
             console.log("f ", eng)
             RE.dump(eng)
             //eng.linkSelected(lnk)
-            RE.doLinkSelected(eng, lnk);
+            //RE.doLinkSelected(eng, lnk);
             console.log(lnk)
             var url = lnk["permalink"]
             console.log("url ", url)
@@ -73,7 +73,14 @@ Rectangle {
         //anchors.fill: parent
 
         onCommentSelected: mainview.state = "LinkState"
+        onReqPreview: mainview.state = "PreviewState"
+        onReqLinks: mainview.state = "LinkState"
     }
+
+    WebPreview {
+        id: webpreview
+    }
+
     state: "LinkState"
     states: [
         State {
@@ -109,10 +116,23 @@ Rectangle {
 
             }
 
+        },
+        State {
+            name: "PreviewState"
+            PropertyChanges {
+                target: webpreview
+                x : 0
+            }
+            StateChangeScript {
+                script: console.log("to preview")
+            }
         }
-
-
     ]
+
+
+
+
+
     transitions: [
       Transition {
           from: "*"; to: "*"

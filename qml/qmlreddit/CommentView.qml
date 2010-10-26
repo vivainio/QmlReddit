@@ -4,6 +4,7 @@ Rectangle {
     x: 1000
     signal commentSelected
     signal reqPreview(string url)
+    signal reqLinks
     /*
     Rectangle {
         color: "#9c5d5d"
@@ -53,6 +54,23 @@ Rectangle {
     MouseArea {
         anchors.fill:  imgNext
         onClicked: reqPreview("url")
+    }
+
+    Rectangle {
+        id: imgPrev
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        width: 60
+        height: 20
+        color: "#ca6262"
+        Text {
+            text: "Links"
+        }
+    }
+    MouseArea {
+        anchors.fill: imgPrev
+        onClicked: reqLinks()
+
     }
 
     // we overlay back / preview button over listview...
