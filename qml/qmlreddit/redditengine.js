@@ -26,6 +26,7 @@ RedditEngine.prototype = {
 function create() {
     console.log("creating")
     var eng = new RedditEngine();
+    // this works
     eng.linkSelected("dummy 2")
     dump(eng)
     return eng
@@ -39,6 +40,5 @@ function dump(obj) {
 }
 
 function doLinkSelected(eng, link) {
-    console.log("proto is ", eng.prototype)
     eng.linkSelected(link);
 }
