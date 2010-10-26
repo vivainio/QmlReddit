@@ -65,11 +65,12 @@ public:
       QNetworkAccessManager* m_net;
 
 
+      QStringList m_comments;
+
 private:
     QScriptValue parseJson(QString msg);
 
     QVector<RedditEntry> m_ents;
-    QStringList m_comments;
 
 
     QScriptEngine* m_eng;

@@ -24,14 +24,25 @@ Rectangle {
 
 
 
-    LinkView
-        {
-            id: linkview
-            onLinkSelected: {
-                console.log("sig ", selIndex)
+    LinkView  {
+        id: linkview
+        onLinkSelected: {
+            console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
+            mainview.state = "CommentsState"
 
-            }
+            mdlReddit.fetchComments("aoeaoe");
+
+
+
         }
+        Behavior on x {
+            NumberAnimation {
+                    duration: 500
+            }
+
+        }
+
+    }
     CommentView {
         id: commentview
         width: parent.width
@@ -39,7 +50,7 @@ Rectangle {
         Behavior on x {
             NumberAnimation {
                     duration: 500
-        }
+            }
 
         }
 
@@ -76,9 +87,28 @@ Rectangle {
                 x: 0
             }
 
+            PropertyChanges {
+                target: linkview
+                x : 1000
+
+            }
+
         }
 
 
     ]
+    transitions: [
+      Transition {
+          from: "*"; to: "*"
+          PropertyAnimation {
+              target: commentview
+              properties: "x"; duration: 1000
+          }
+          PropertyAnimation {
+              target: linkview
+              properties: "x"; duration: 1000
+          }
+      } ]
+
 
 }

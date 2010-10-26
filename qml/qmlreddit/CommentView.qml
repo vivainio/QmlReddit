@@ -9,6 +9,32 @@ Rectangle {
 
     }
 
+    Component {
+
+        id: dlgComments
+
+        Rectangle {
+            width: parent.width
+            height: txtCom.height
+
+            Text {
+                id: txtCom
+                text: commentText
+            }
+
+
+
+        }
+
+
+    }
+
+    ListView {
+        anchors.fill: parent
+        model: mdlComments
+
+    }
+
     Text {
         anchors.fill: parent
         text: "hello comments"

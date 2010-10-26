@@ -27,8 +27,10 @@ public:
     explicit RedditModel(QObject *parent = 0);
     void setup(QDeclarativeContext* ctx);
 
-public Q_INVOKABLE:
+public Q_SLOTS:
     void start(const QString& cat);
+    void fetchComments(const QString& permalink);
+
 
 signals:
 
@@ -38,9 +40,12 @@ private slots:
     void doPopulateLinks();
 
 
+    void doPopulateComments();
 private:
     RedditSession* m_ses;
-    QStandardItemModel* m_linksmodel;
+    SaneItemModel* m_linksmodel;
+    SaneItemModel* m_commentsmodel;
+
 };
 
 #endif // REDDITMODEL_H
