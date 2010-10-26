@@ -40,7 +40,8 @@ Rectangle {
             var lnk = mdlReddit.getLink(selIndex)
             console.log("f ", eng)
             RE.dump(eng)
-            eng.linkSelected(lnk)
+            //eng.linkSelected(lnk)
+            RE.doLinkSelected(eng, lnk);
             console.log(lnk)
             var url = lnk["permalink"]
             console.log("url ", url)
