@@ -1,13 +1,8 @@
-function init() {
-    console.log("hello")
-
-}
-
 
 function RedditEngine() {
     this._init();
     // this works, but calling from qml doesn't
-    this.linkSelected('dummy')
+    this.linkSelected('dummy 1')
 }
 
 RedditEngine.prototype = {
