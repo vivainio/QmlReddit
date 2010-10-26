@@ -8,6 +8,7 @@ Rectangle {
     id: mainview;
 
     property variant eng
+
     Component.onCompleted: eng = RE.create()
 
     /*
@@ -32,10 +33,14 @@ Rectangle {
     LinkView  {
         id: linkview
         onLinkSelected: {
+
             console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
             mainview.state = "CommentsState"
 
             var lnk = mdlReddit.getLink(selIndex)
+            console.log("f ", eng)
+            RE.dump(eng)
+            eng.linkSelected(lnk)
             console.log(lnk)
             var url = lnk["permalink"]
             console.log("url ", url)
