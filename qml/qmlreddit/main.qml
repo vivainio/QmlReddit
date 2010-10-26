@@ -1,9 +1,14 @@
 import Qt 4.7
 
+import "redditengine.js" as RE
+
 Rectangle {
     width: 640
     height: 480
     id: mainview;
+
+    property variant eng
+    Component.onCompleted: eng = RE.create()
 
     /*
     Flipable {
