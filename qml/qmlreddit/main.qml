@@ -32,8 +32,10 @@ Rectangle {
 
             var lnk = mdlReddit.getLink(selIndex)
             console.log(lnk)
+            var url = lnk["permalink"]
+            console.log("url ", url)
 
-            mdlReddit.fetchComments("aoeaoe");
+            mdlReddit.fetchComments(url);
 
 
 

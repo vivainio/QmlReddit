@@ -14,10 +14,16 @@ class QStandardItemModel;
 // QStandardItemModel declares setRoleNames as protected,
 // work around that insanity w/ this class
 
-class SaneItemModel : public QStandardItemModel
+class RoleItemModel : public QStandardItemModel
 {
 public:
-    SaneItemModel(const QHash<int, QByteArray> &roleNames);
+    RoleItemModel(const QHash<int, QByteArray> &roleNames);
+
+    void setByRoleName(const QString& role, QVariant data);
+
+    static QVariantMap dumpRow(const QAbstractItemModel *mdl, int row);
+
+
 
 };
 
@@ -46,8 +52,8 @@ private slots:
     void doPopulateComments();
 private:
     RedditSession* m_ses;
-    SaneItemModel* m_linksmodel;
-    SaneItemModel* m_commentsmodel;
+    RoleItemModel* m_linksmodel;
+    RoleItemModel* m_commentsmodel;
 
 };
 

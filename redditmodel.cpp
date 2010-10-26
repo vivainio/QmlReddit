@@ -6,10 +6,27 @@
 #include <QStandardItemModel>
 #include <QDebug>
 
-SaneItemModel::SaneItemModel(const QHash<int, QByteArray> &roleNames)
+RoleItemModel::RoleItemModel(const QHash<int, QByteArray> &roleNames)
 {
     setRoleNames(roleNames);
 }
+
+QVariantMap RoleItemModel::dumpRow(const QAbstractItemModel* mdl, int row)
+{
+    QHash<int,QByteArray> names = mdl->roleNames();
+    QHashIterator<int, QByteArray> i(names);
+    QVariantMap res;
+     while (i.hasNext()) {
+        i.next();
+        QModelIndex idx = mdl->index(row, 0);
+        QVariant data = idx.data(i.key());
+        res[i.value()] = data;
+         //cout << i.key() << ": " << i.value() << endl;
+     }
+     return res;
+}
+
+
 
 RedditModel::RedditModel(QObject *parent) :
     QObject(parent)
@@ -23,12 +40,12 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::DescRole] = "desc";
     roleNames[RedditEntry::ScoreRole] = "score";
     roleNames[RedditEntry::PermalaLinkRole] = "permalink";
-    m_linksmodel = new SaneItemModel(roleNames);
+    m_linksmodel = new RoleItemModel(roleNames);
 
     roleNames.clear();
     roleNames[Qt::UserRole] = "commentText";
 
-    m_commentsmodel = new SaneItemModel(roleNames);
+    m_commentsmodel = new RoleItemModel(roleNames);
     //m_linksmodel->setRoleNames(roleNames);
 
 
@@ -83,35 +100,22 @@ void RedditModel::fetchComments(const QString &permalink)
 
 }
 
-namespace
-{
-    QVariantMap dumpRow(const QAbstractItemModel* mdl, int row)
-    {
-        QHash<int,QByteArray> names = mdl->roleNames();
-        QHashIterator<int, QByteArray> i(names);
-        QVariantMap res;
-         while (i.hasNext()) {
-            i.next();
-            QModelIndex idx = mdl->index(row, 0);
-            QVariant data = idx.data(i.key());
-            res[i.value()] = data;
-             //cout << i.key() << ": " << i.value() << endl;
-         }
-         return res;
-    }
-
-}
 QVariantMap RedditModel::getComment(int index)
 {
-    QVariantMap res = dumpRow(m_commentsmodel, index);
+    QVariantMap res = RoleItemModel::dumpRow(m_commentsmodel, index);
     qDebug() << "getc" << res;
     return res;
 }
 
 QVariantMap RedditModel::getLink(int index)
 {
-    QVariantMap res = dumpRow(m_linksmodel, index);
+    QVariantMap res = RoleItemModel::dumpRow(m_linksmodel, index);
     qDebug() << "getlink" << res;
     return res;
+}
+
+void RoleItemModel::setByRoleName(const QString &role, QVariant data)
+{
+
 }
 

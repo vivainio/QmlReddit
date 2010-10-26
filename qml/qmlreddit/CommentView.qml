@@ -3,11 +3,13 @@ import Qt 4.7
 Rectangle {
     x: 1000
     signal commentSelected
+    /*
     Rectangle {
         color: "#9c5d5d"
         anchors.fill: parent
 
     }
+    */
 
     Component {
 
@@ -15,7 +17,7 @@ Rectangle {
 
         Rectangle {
             width: parent.width
-            height: txtCom.height
+            height: txtCom.height + 30
 
             Text {
                 id: txtCom
@@ -32,9 +34,11 @@ Rectangle {
     ListView {
         anchors.fill: parent
         model: mdlComments
+        delegate: dlgComments
 
     }
 
+    /*
     Text {
         anchors.fill: parent
         text: "hello comments"
@@ -49,4 +53,5 @@ Rectangle {
         }
 
     }
+    */
 }
