@@ -8,6 +8,7 @@ class QDeclarativeContext;
 class RedditSession;
 class QStandardItemModel;
 #include <QStandardItemModel>
+#include <QVariantMap>
 
 
 // QStandardItemModel declares setRoleNames as protected,
@@ -31,11 +32,13 @@ public Q_SLOTS:
     void start(const QString& cat);
     void fetchComments(const QString& permalink);
 
+    QVariantMap getComment(int index);
 
 signals:
 
 public slots:
 
+    QVariantMap getLink(int index);
 private slots:
     void doPopulateLinks();
 

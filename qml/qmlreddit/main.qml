@@ -30,6 +30,9 @@ Rectangle {
             console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
             mainview.state = "CommentsState"
 
+            var lnk = mdlReddit.getLink(selIndex)
+            console.log(lnk)
+
             mdlReddit.fetchComments("aoeaoe");
 
 

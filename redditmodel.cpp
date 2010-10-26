@@ -82,3 +82,36 @@ void RedditModel::fetchComments(const QString &permalink)
     m_ses->fetchComments(permalink);
 
 }
+
+namespace
+{
+    QVariantMap dumpRow(const QAbstractItemModel* mdl, int row)
+    {
+        QHash<int,QByteArray> names = mdl->roleNames();
+        QHashIterator<int, QByteArray> i(names);
+        QVariantMap res;
+         while (i.hasNext()) {
+            i.next();
+            QModelIndex idx = mdl->index(row, 0);
+            QVariant data = idx.data(i.key());
+            res[i.value()] = data;
+             //cout << i.key() << ": " << i.value() << endl;
+         }
+         return res;
+    }
+
+}
+QVariantMap RedditModel::getComment(int index)
+{
+    QVariantMap res = dumpRow(m_commentsmodel, index);
+    qDebug() << "getc" << res;
+    return res;
+}
+
+QVariantMap RedditModel::getLink(int index)
+{
+    QVariantMap res = dumpRow(m_linksmodel, index);
+    qDebug() << "getlink" << res;
+    return res;
+}
+
