@@ -4,7 +4,7 @@ import "redditengine.js" as RE
 
 Rectangle {
     width: 800
-    height: 480
+    height: 460
     id: mainview;
 
     property variant eng
