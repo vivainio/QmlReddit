@@ -102,11 +102,9 @@ Rectangle {
                 onClicked: {
                     console.log("index ", index)
                     linkSelected(index)
-
-
                 }
 
-        }
+            }
 
         }
 

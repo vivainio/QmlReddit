@@ -28,8 +28,6 @@ Rectangle {
     }
     */
 
-
-
     LinkView  {
         id: linkview
         onLinkSelected: {
@@ -40,17 +38,15 @@ Rectangle {
             var lnk = mdlReddit.getLink(selIndex)
             console.log("f ", eng)
             RE.dump(eng)
-            //eng.linkSelected(lnk)
+            RE.eng().linkSelected(lnk)
             //RE.doLinkSelected(eng, lnk);
             console.log(lnk)
             var url = lnk["permalink"]
             console.log("url ", url)
 
             mdlReddit.fetchComments(url);
-
-
-
         }
+
         Behavior on x {
             NumberAnimation {
                     duration: 500
@@ -73,7 +69,12 @@ Rectangle {
         //anchors.fill: parent
 
         onCommentSelected: mainview.state = "LinkState"
-        onReqPreview: mainview.state = "PreviewState"
+        onReqPreview: {
+            var lnk = RE.eng().currentLink()
+            mainview.state = "PreviewState"
+            console.log("prev ", lnk)
+            RE.dump(lnk)
+        }
         onReqLinks: mainview.state = "LinkState"
     }
 
@@ -88,7 +89,6 @@ Rectangle {
             name: "LinkState"
 
             StateChangeScript {
-
                 script: console.log("tolinks");
 
 
@@ -128,9 +128,6 @@ Rectangle {
             }
         }
     ]
-
-
-
 
 
     transitions: [

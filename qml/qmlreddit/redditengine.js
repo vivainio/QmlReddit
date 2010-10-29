@@ -1,3 +1,4 @@
+.pragma library
 
 function RedditEngine() {
     this._init();
@@ -14,7 +15,13 @@ RedditEngine.prototype = {
 
     _init : function() {
         this.currentlink = {};
+    },
+
+    currentLink : function() {
+        return this.currentlink;
     }
+
+
 
 };
 
@@ -26,6 +33,17 @@ function create() {
     dump(eng)
     return eng
 }
+
+var _instance;
+
+function eng() {
+    if (!_instance) {
+        _instance = new RedditEngine()
+    }
+    return _instance;
+
+}
+
 
 function dump(obj) {
 
