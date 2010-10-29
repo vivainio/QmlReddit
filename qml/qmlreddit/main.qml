@@ -3,7 +3,7 @@ import Qt 4.7
 import "redditengine.js" as RE
 
 Rectangle {
-    width: 640
+    width: 800
     height: 480
     id: mainview;
 
@@ -47,24 +47,12 @@ Rectangle {
             mdlReddit.fetchComments(url);
         }
 
-        Behavior on x {
-            NumberAnimation {
-                    duration: 500
-            }
-
-        }
 
     }
     CommentView {
         id: commentview
         width: parent.width
         height: parent.height
-        Behavior on x {
-            NumberAnimation {
-                    duration: 500
-            }
-
-        }
 
         //anchors.fill: parent
 
@@ -135,11 +123,11 @@ Rectangle {
           from: "*"; to: "*"
           PropertyAnimation {
               target: commentview
-              properties: "x"; duration: 1000
+              properties: "x"; duration: 200
           }
           PropertyAnimation {
               target: linkview
-              properties: "x"; duration: 1000
+              properties: "x"; duration: 200
           }
       } ]
 

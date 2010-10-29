@@ -2,8 +2,9 @@ import Qt 4.7
 
 Rectangle {
     id: container
-    width: 864
-    height: 480
+    anchors.fill: parent
+    //width: 800
+    //height: 480
     x: 1000
 
     signal linkSelected(int selIndex);
@@ -19,6 +20,7 @@ Rectangle {
     }
     */
 
+    /*
     Rectangle {
         id: rCat
         x: 200
@@ -36,6 +38,7 @@ Rectangle {
 
         }
     }
+    */
 
     ListView {
 
@@ -76,7 +79,7 @@ Rectangle {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
-                width: 600
+                width: 760
 
                 //anchors.left: parent.left
             }
@@ -95,7 +98,7 @@ Rectangle {
             }
             MouseArea {
                 id: ma
-                width: 600
+                width: 800
                 height: dscIt.height + txtIt.height + 10
 
                 //anchors.fill: parent
