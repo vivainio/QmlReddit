@@ -23,7 +23,8 @@ QT += xml network script
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     redditsession.cpp \
-    redditmodel.cpp
+    redditmodel.cpp \
+    roleitemmodel.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -39,4 +40,5 @@ OTHER_FILES += \
 
 HEADERS += \
     redditsession.h \
-    redditmodel.h
+    redditmodel.h \
+    roleitemmodel.h

@@ -7,6 +7,12 @@ class QDeclarativeContext;
 
 class RedditSession;
 class QStandardItemModel;
+
+class RoleItemModel;
+
+
+
+
 #include <QStandardItemModel>
 #include <QVariantMap>
 
@@ -14,18 +20,6 @@ class QStandardItemModel;
 // QStandardItemModel declares setRoleNames as protected,
 // work around that insanity w/ this class
 
-class RoleItemModel : public QStandardItemModel
-{
-public:
-    RoleItemModel(const QHash<int, QByteArray> &roleNames);
-
-    void setByRoleName(const QString& role, QVariant data);
-
-    static QVariantMap dumpRow(const QAbstractItemModel *mdl, int row);
-
-
-
-};
 
 class RedditModel : public QObject
 {

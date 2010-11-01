@@ -6,26 +6,7 @@
 #include <QStandardItemModel>
 #include <QDebug>
 
-RoleItemModel::RoleItemModel(const QHash<int, QByteArray> &roleNames)
-{
-    setRoleNames(roleNames);
-}
-
-QVariantMap RoleItemModel::dumpRow(const QAbstractItemModel* mdl, int row)
-{
-    QHash<int,QByteArray> names = mdl->roleNames();
-    QHashIterator<int, QByteArray> i(names);
-    QVariantMap res;
-     while (i.hasNext()) {
-        i.next();
-        QModelIndex idx = mdl->index(row, 0);
-        QVariant data = idx.data(i.key());
-        res[i.value()] = data;
-         //cout << i.key() << ": " << i.value() << endl;
-     }
-     return res;
-}
-
+#include "roleitemmodel.h"
 
 
 RedditModel::RedditModel(QObject *parent) :
@@ -102,20 +83,15 @@ void RedditModel::fetchComments(const QString &permalink)
 
 QVariantMap RedditModel::getComment(int index)
 {
-    QVariantMap res = RoleItemModel::dumpRow(m_commentsmodel, index);
+    QVariantMap res = RoleItemModel::getModelData(m_commentsmodel, index);
     qDebug() << "getc" << res;
     return res;
 }
 
 QVariantMap RedditModel::getLink(int index)
 {
-    QVariantMap res = RoleItemModel::dumpRow(m_linksmodel, index);
+    QVariantMap res = RoleItemModel::getModelData(m_linksmodel, index);
     qDebug() << "getlink" << res;
     return res;
-}
-
-void RoleItemModel::setByRoleName(const QString &role, QVariant data)
-{
-
 }
 
