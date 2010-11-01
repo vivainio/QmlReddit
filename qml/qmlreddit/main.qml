@@ -4,7 +4,8 @@ import "redditengine.js" as RE
 
 Rectangle {
     width: 800
-    height: 460
+    height: 450
+    anchors.fill: parent
     id: mainview;
 
     property variant eng
