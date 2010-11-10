@@ -1,8 +1,8 @@
 import Qt 4.7
 
 Rectangle {
-    width: 50
-    height: 50
+    width: 80
+    height: 80
     color: "black"
 
     id: root
@@ -24,8 +24,11 @@ Rectangle {
         Component {
             id: dlgbutton
             Rectangle {
-                width: te.width + 10
-                height: 20
+                border.width: 5
+                border.color: "blue"
+                color: "lightblue"
+                width: 150
+                height: 100
                 Text {
                     id: te
                     text: label
@@ -41,16 +44,15 @@ Rectangle {
             orientation: "Horizontal"
 
             delegate: dlgbutton
-            width: 150
+            width: 400
 
 
         }
 
         Rectangle {
-
-            anchors.left: listview.right
-            width: 30
-            height: 20
+            anchors.right: parent.right
+            width: 100
+            height: 100
 
             anchors.verticalCenter: parent.verticalCenter
 
@@ -94,7 +96,7 @@ Rectangle {
             name: "expanded"
             PropertyChanges {
                 target: root
-                width: 200
+                width: 400
 
             }
 

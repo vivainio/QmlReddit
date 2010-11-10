@@ -31,7 +31,6 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 OTHER_FILES += \
-    debian/changelog \
     debian/compat \
     debian/control \
     debian/copyright \
