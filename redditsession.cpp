@@ -76,8 +76,9 @@ void RedditSession::linksFetched()
         QString title = v.property("title").toString();        
         QString tnail = v.property("thumbnail").toString();
 
+
         int score = v.property("score").toInt32();
-        //qDebug() << v.toString() << title << " U " << url << " TN " << tnail;
+        qDebug() << v.toString() << title << " U " << url << " TN " << tnail;
         RedditEntry e;
         e.desc = title;
         e.url = url;

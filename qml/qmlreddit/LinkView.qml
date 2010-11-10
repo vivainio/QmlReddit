@@ -84,13 +84,32 @@ Rectangle {
 
             Text {
                 id: txtIt
-                text: score
+                text: score + " " + thumbnail
                 scale: 0.7
 
                 x: 2
                 y: dscIt.height + 2
 
             }
+
+            Image {
+                x: 2
+                y: 2
+                id: tnail
+                height: 60
+                width: 60
+                source: thumbnail
+                //source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
+            }
+
+            /*
+            Rectangle {
+                border.width: 3
+                anchors.fill: tnail
+            }
+            */
+
+
             MouseArea {
                 id: ma
                 width: 800

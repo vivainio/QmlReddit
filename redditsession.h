@@ -19,7 +19,8 @@ struct RedditEntry {
         DescRole,
         ScoreRole,
         CommentsRole,
-        PermalaLinkRole
+        PermalaLinkRole,
+        ThumbnailRole
     };
 
     QString url;

@@ -122,6 +122,15 @@ Rectangle {
         }
     }
 
+    Image {
+        x: 2
+        y: 2
+        id: tnail
+        height: 60
+        width: 60
+        source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
+    }
+
     state: "LinkState"
     states: [
         State {
