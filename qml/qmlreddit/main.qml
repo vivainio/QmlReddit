@@ -34,6 +34,15 @@ Rectangle {
         anchors.right: linkview.right
         anchors.bottom: linkview.bottom
         z: 10
+        model: ListModel {
+            ListElement {
+                label: "Hello"
+
+            }
+            ListElement {
+                label: "World"
+            }
+        }
     }
 
     LinkView  {
@@ -128,6 +137,7 @@ Rectangle {
                 x : 0
             }
             StateChangeScript {
+
                 script: console.log("to preview")
             }
         }
