@@ -29,6 +29,13 @@ Rectangle {
     }
     */
 
+    FlatToolBar {
+        id: toolbar
+        anchors.right: linkview.right
+        anchors.bottom: linkview.bottom
+        z: 10
+    }
+
     LinkView  {
         id: linkview
         onLinkSelected: {
@@ -105,6 +112,14 @@ Rectangle {
 
             }
 
+            AnchorChanges {
+                target: toolbar
+                anchors.top: commentview.top
+                anchors.bottom: undefined
+                anchors.right: commentview.right
+
+            }
+
         },
         State {
             name: "PreviewState"
@@ -129,6 +144,10 @@ Rectangle {
           PropertyAnimation {
               target: linkview
               properties: "x"; duration: 200
+          }
+          AnchorAnimation {
+              targets: [toolbar]
+                duration: 200
           }
       } ]
 
