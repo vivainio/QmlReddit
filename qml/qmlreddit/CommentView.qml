@@ -43,9 +43,10 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         width: 60
-        height: 20
+        height: 50
         color: "#ca6262"
         Text {
+            anchors.centerIn: parent
             text: "Preview"
         }
 
@@ -61,9 +62,10 @@ Rectangle {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         width: 60
-        height: 20
+        height: 50
         color: "#ca6262"
         Text {
+            anchors.centerIn: parent
             text: "Links"
         }
     }
