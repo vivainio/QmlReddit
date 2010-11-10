@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     RedditModel* m = new RedditModel;
     m->setup(ctxt);
 
-    viewer.setOrientation(QmlApplicationViewer::Auto);
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/main.qml"));
     viewer.show();
 
