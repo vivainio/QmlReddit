@@ -29,14 +29,23 @@ RedditModel::RedditModel(QObject *parent) :
     m_commentsmodel = new RoleItemModel(roleNames);
     //m_linksmodel->setRoleNames(roleNames);
 
+    roleNames.clear();
+
+    roleNames[Qt::UserRole] = "catName";
+
+    m_cats = new RoleItemModel(roleNames);
+
+    refreshCategories();
 
 }
+
 
 void RedditModel::setup(QDeclarativeContext *ctx)
 {    
     ctx->setContextProperty("mdlReddit", this);
     ctx->setContextProperty("mdlLinks", m_linksmodel);
     ctx->setContextProperty("mdlComments", m_commentsmodel);
+    ctx->setContextProperty("mdlCategories", m_cats);
     start("");
 
 }
@@ -94,5 +103,16 @@ QVariantMap RedditModel::getLink(int index)
     QVariantMap res = RoleItemModel::getModelData(m_linksmodel, index);
     qDebug() << "getlink" << res;
     return res;
+}
+
+void RedditModel::refreshCategories()
+{
+    QStringList cats = m_ses->getCategories();
+    m_cats->clear();
+    foreach (QString c, cats) {
+        QStandardItem* it = new QStandardItem();
+        it->setData(c, Qt::UserRole);
+        m_cats->appendRow(it);
+    }
 }
 

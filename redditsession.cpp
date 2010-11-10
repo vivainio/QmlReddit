@@ -172,7 +172,7 @@ void RedditSession::commentsFetched()
 
 QStringList RedditSession::getCategories()
 {
-    return QStringList() << "programming" << "pics";
+    //return QStringList() << "programming" << "pics";
 
     QString cf = PlatUtil::configFile();
     qDebug() << "Config " << cf;

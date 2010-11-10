@@ -29,6 +29,20 @@ Rectangle {
     }
     */
 
+    ActionGrid {
+        id: categoryselector
+        x : 1000
+        y: 0
+        model: mdlCategories
+        width: parent.width
+        height: parent.height
+        onItemSelected: {
+            console.log("cat sel ",itemName)
+            mainview.state = "LinkState"
+            mdlReddit.start(itemName)
+        }
+    }
+
     FlatToolBar {
         id: toolbar
         anchors.right: linkview.right
@@ -44,10 +58,18 @@ Rectangle {
                 label: "Back"
                 name: "back"
             }
+            ListElement {
+                label: "Cat"
+                name: "cat"
+            }
         }
         onItemSelected: {
-            console.log("Select item ", itemName)
+            if (itemName == "cat") {
+                mainview.state = "SelectCategory"
 
+            }
+
+            console.log("Select item ", itemName)
         }
     }
 
@@ -153,9 +175,16 @@ Rectangle {
 
                 script: console.log("to preview")
             }
+        },
+        State {
+            name: "SelectCategory"
+            PropertyChanges {
+                target: categoryselector
+                x : 0
+            }
         }
-    ]
 
+    ]
 
     transitions: [
       Transition {

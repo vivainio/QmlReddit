@@ -34,11 +34,13 @@ public Q_SLOTS:
 
     QVariantMap getComment(int index);
 
+
 signals:
 
 public slots:
 
     QVariantMap getLink(int index);
+    void refreshCategories();
 private slots:
     void doPopulateLinks();
 

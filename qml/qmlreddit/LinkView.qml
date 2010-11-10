@@ -50,7 +50,7 @@ Rectangle {
         focus: true
         highlight: Rectangle {
             color: "#5989ad"
-           width: container.width
+            width: container.width
             height: container.height
         }
 

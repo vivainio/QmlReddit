@@ -29,7 +29,7 @@ Rectangle {
             RButton {
                 id: te
                 buttonLabel: label
-                width: 150
+                width: 100
                 height: 100
                 onClicked: {
                     itemSelected(name)
@@ -54,8 +54,6 @@ Rectangle {
         }
 
         ListView {
-
-
             anchors.left: parent.left
             id: listview
             orientation: "Horizontal"
