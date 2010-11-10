@@ -84,7 +84,7 @@ Rectangle {
 
             Text {
                 id: txtIt
-                text: score + " " + thumbnail
+                text: score + " " + thumbnail + " s " + tnail.status
                 scale: 0.7
 
                 x: 2
@@ -102,7 +102,7 @@ Rectangle {
                 //source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
             }
 
-            /*
+            /*r
             Rectangle {
                 border.width: 3
                 anchors.fill: tnail
