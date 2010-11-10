@@ -42,18 +42,17 @@ Rectangle {
         id: imgNext
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        label: "Preview"
+        buttonLabel: "Preview"
         onClicked: reqPreview("url")
 
 
     }
 
-
     RButton {
         id: imgPrev
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        label: "Links"
+        buttonLabel: "Links"
         onClicked: reqLinks()
     }
 

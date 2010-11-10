@@ -2,7 +2,9 @@ import Qt 4.7
 
 
 Rectangle {
-    property alias label : tf.text
+    id: root
+
+    property alias buttonLabel : tf.text
     signal clicked;
 
     width: 80
@@ -15,11 +17,22 @@ Rectangle {
         anchors.centerIn: parent
     }
     MouseArea {
+        id: ma
         anchors.fill: parent
         onClicked: parent.clicked()
 
     }
 
+    states: [
+        State {
+            name: "pressed"
+            when: ma.pressed
+            PropertyChanges {
+                target: root
+                color: "green"
 
+            }
+        }
+    ]
 
 }

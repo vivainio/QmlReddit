@@ -24,7 +24,8 @@ QT += xml network script
 SOURCES += main.cpp \
     redditsession.cpp \
     redditmodel.cpp \
-    roleitemmodel.cpp
+    roleitemmodel.cpp \
+    platutil.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -40,4 +41,5 @@ OTHER_FILES += \
 HEADERS += \
     redditsession.h \
     redditmodel.h \
-    roleitemmodel.h
+    roleitemmodel.h \
+    platutil.h

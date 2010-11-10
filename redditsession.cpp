@@ -13,6 +13,7 @@
 #include <QXmlSimpleReader>
 //#include "platutil.h"
 #include <QFileInfo>
+#include "platutil.h"
 
 //#define RSTEST
 
@@ -172,8 +173,8 @@ void RedditSession::commentsFetched()
 QStringList RedditSession::getCategories()
 {
     return QStringList() << "programming" << "pics";
-    /*
-    //QString cf = PlatUtil::configFile();
+
+    QString cf = PlatUtil::configFile();
     qDebug() << "Config " << cf;
     QFileInfo fi(cf);
     if (!fi.exists()) {
@@ -210,7 +211,6 @@ QStringList RedditSession::getCategories()
     }
 
     return cats;
-    */
 
 }
 

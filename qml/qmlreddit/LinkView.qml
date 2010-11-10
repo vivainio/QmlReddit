@@ -2,9 +2,9 @@ import Qt 4.7
 
 Rectangle {
     id: container
-    anchors.fill: parent
-    //width: 800
-    //height: 480
+    //anchors.fill: parent
+    width: parent.width
+    height: parent.height
     x: 1000
 
     signal linkSelected(int selIndex);
@@ -50,7 +50,7 @@ Rectangle {
         focus: true
         highlight: Rectangle {
             color: "#5989ad"
-            width: container.width
+           width: container.width
             height: container.height
         }
 

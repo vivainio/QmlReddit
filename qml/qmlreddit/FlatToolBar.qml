@@ -5,7 +5,10 @@ Rectangle {
     height: 80
     color: "black"
 
+    opacity: 0.3
     id: root
+
+    signal itemSelected(string itemName)
 
     property alias model: listview.model
 
@@ -23,6 +26,18 @@ Rectangle {
         opacity: 0.0
         Component {
             id: dlgbutton
+            RButton {
+                id: te
+                buttonLabel: label
+                width: 150
+                height: 100
+                onClicked: {
+                    itemSelected(name)
+                }
+
+            }
+
+            /*
             Rectangle {
                 border.width: 5
                 border.color: "blue"
@@ -35,9 +50,11 @@ Rectangle {
 
                 }
             }
+            */
         }
 
         ListView {
+
 
             anchors.left: parent.left
             id: listview
@@ -97,7 +114,7 @@ Rectangle {
             PropertyChanges {
                 target: root
                 width: 400
-
+                opacity: 1.0
             }
 
             PropertyChanges {

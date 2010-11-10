@@ -3,10 +3,12 @@ import QtWebKit 1.0
 
 
 Rectangle {
-    width: 800
-    height: 450
+    width: parent.width
+    height: parent.height
+
     x: 1000
     property alias url: wv.url
+    signal reqBack
 
     WebView {
         id: wv
@@ -14,9 +16,13 @@ Rectangle {
     }
 
     RButton {
-        label: "Back"
-        anchors.right: parent.right
+        buttonLabel: "Back"
+        anchors.left: parent.left
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        onClicked: {
+            reqBack()
+        }
     }
 
 

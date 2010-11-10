@@ -36,12 +36,18 @@ Rectangle {
         z: 10
         model: ListModel {
             ListElement {
-                label: "Hello"
+                label: "Quit"
+                name: "quit"
 
             }
             ListElement {
-                label: "World"
+                label: "Back"
+                name: "back"
             }
+        }
+        onItemSelected: {
+            console.log("Select item ", itemName)
+
         }
     }
 
@@ -88,6 +94,10 @@ Rectangle {
 
     WebPreview {
         id: webpreview
+        onReqBack: {
+            mainview.state = "CommentsState"
+
+        }
     }
 
     state: "LinkState"

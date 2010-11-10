@@ -47,8 +47,8 @@ private slots:
 private:
     RedditSession* m_ses;
     RoleItemModel* m_linksmodel;
-    RoleItemModel* m_commentsmodel;
-
+    RoleItemModel* m_commentsmodel;    
+    RoleItemModel* m_cats;
 };
 
 #endif // REDDITMODEL_H
