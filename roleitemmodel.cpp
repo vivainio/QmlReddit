@@ -44,6 +44,24 @@ QDeclarativeContext *ctx = ...
 
 ctx->setContextProperty("mdlLinks", m_linksmodel);
 
+Use in QML as a delegate (pruned out irrelevant parts):
+-------------------------------------------------------
+
+Component {
+    id: mydelegate
+    Rectangle {
+        Text {
+            text: desc
+        }
+
+        Text {
+            text: score
+        }
+    }
+}
+
+
+
 */
 
 

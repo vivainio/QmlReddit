@@ -21,9 +21,8 @@ RedditEngine.prototype = {
         return this.currentlink;
     }
 
-
-
 };
+
 
 function create() {
     console.log("creating")

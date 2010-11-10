@@ -8,9 +8,9 @@ Rectangle {
     anchors.fill: parent
     id: mainview;
 
-    property variant eng
+    //property variant eng
 
-    Component.onCompleted: eng = RE.create()
+    //Component.onCompleted: eng = RE.create()
 
     /*
     Flipable {
@@ -37,8 +37,8 @@ Rectangle {
             mainview.state = "CommentsState"
 
             var lnk = mdlReddit.getLink(selIndex)
-            console.log("f ", eng)
-            RE.dump(eng)
+            //console.log("f ", eng)
+            //RE.dump(eng)
             RE.eng().linkSelected(lnk)
             //RE.doLinkSelected(eng, lnk);
             console.log(lnk)

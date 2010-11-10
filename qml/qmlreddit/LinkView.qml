@@ -80,18 +80,13 @@ Rectangle {
                 id: dscIt
                 text: desc
                 width: 760
-
-                //anchors.left: parent.left
             }
 
             Text {
                 id: txtIt
                 text: score
                 scale: 0.7
-                //anchors.right: parent.right
-                //anchors.verticalCenter: dscIt.verticalCenter
-                //anchors.top: dscIt.anchors.bottom
-                //anchors.rightMargin: 30
+
                 x: 2
                 y: dscIt.height + 2
 
