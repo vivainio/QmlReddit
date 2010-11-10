@@ -38,41 +38,23 @@ Rectangle {
         delegate: dlgComments
     }
 
-    Rectangle {
+    RButton {
         id: imgNext
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        width: 60
-        height: 50
-        color: "#ca6262"
-        Text {
-            anchors.centerIn: parent
-            text: "Preview"
-        }
-
-
-    }
-    MouseArea {
-        anchors.fill:  imgNext
+        label: "Preview"
         onClicked: reqPreview("url")
+
+
     }
 
-    Rectangle {
+
+    RButton {
         id: imgPrev
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        width: 60
-        height: 50
-        color: "#ca6262"
-        Text {
-            anchors.centerIn: parent
-            text: "Links"
-        }
-    }
-    MouseArea {
-        anchors.fill: imgPrev
+        label: "Links"
         onClicked: reqLinks()
-
     }
 
     // we overlay back / preview button over listview...

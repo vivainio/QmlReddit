@@ -62,6 +62,8 @@ Rectangle {
             console.log("url ", url)
 
             mdlReddit.fetchComments(url);
+            webpreview.url = lnk.url
+
         }
 
 
@@ -78,6 +80,7 @@ Rectangle {
             var lnk = RE.eng().currentLink()
             mainview.state = "PreviewState"
             console.log("prev ", lnk)
+            webpreview.url = lnk.url
             RE.dump(lnk)
         }
         onReqLinks: mainview.state = "LinkState"
