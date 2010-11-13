@@ -74,17 +74,39 @@ Rectangle {
         id: deLinks
         Rectangle {
             id: rrect
-            height: dscIt.height + txtIt.height + 10
+            height: childrenRect.height  + 10
+            Rectangle {
+                x:0
+                y:0
+                id: thumbarea
+                width: thumbnail.length > 0 ? 60 : 0
+                height: 60
+                color: "red"
+
+                Image {
+                    anchors.fill: parent
+                    id: tnail
+                    height: 60
+                    width: 60
+                    source: thumbnail
+                    //source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
+                }
+
+
+            }
+
             Text {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
                 width: 760
+                anchors.left: thumbarea.right
+                anchors.leftMargin: 4
             }
 
             Text {
                 id: txtIt
-                text: score + " " + thumbnail + " s " + tnail.status
+                text: score
                 scale: 0.7
 
                 x: 2
@@ -92,15 +114,6 @@ Rectangle {
 
             }
 
-            Image {
-                x: 2
-                y: 2
-                id: tnail
-                height: 60
-                width: 60
-                source: thumbnail
-                //source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
-            }
 
             /*r
             Rectangle {

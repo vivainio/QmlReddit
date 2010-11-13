@@ -66,7 +66,7 @@ void RedditModel::doPopulateLinks()
         it->setData(e.score, RedditEntry::ScoreRole);
         it->setData(e.permalink, RedditEntry::PermalaLinkRole);
         it->setData(e.url, RedditEntry::UrlRole);
-        it->setData(QUrl(e.thumbnail), RedditEntry::ThumbnailRole);
+        it->setData(e.thumbnail, RedditEntry::ThumbnailRole);
 
         m_linksmodel->appendRow(it);
 
