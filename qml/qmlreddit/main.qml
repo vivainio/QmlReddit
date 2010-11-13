@@ -37,7 +37,6 @@ Rectangle {
         width: parent.width
         height: parent.height
         onItemSelected: {
-            console.log("cat sel ",itemName)
             mainview.state = "LinkState"
             mdlReddit.start(itemName)
         }
@@ -67,6 +66,9 @@ Rectangle {
             if (itemName == "cat") {
                 mainview.state = "SelectCategory"
 
+            }
+            if (itemName == "quit") {
+                Qt.quit()
             }
 
             console.log("Select item ", itemName)

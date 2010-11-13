@@ -33,6 +33,7 @@ Rectangle {
                 height: 100
                 onClicked: {
                     itemSelected(name)
+                    root.state = "small"
                 }
 
             }
