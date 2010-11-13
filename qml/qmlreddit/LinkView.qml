@@ -108,8 +108,8 @@ Rectangle {
                 id: txtIt
                 text: score
                 scale: 0.7
-
-                x: 2
+                anchors.left: thumbarea.right
+                anchors.leftMargin: 2
                 y: dscIt.height + 2
 
             }

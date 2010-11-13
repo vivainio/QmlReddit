@@ -13,6 +13,9 @@ Rectangle {
     WebView {
         id: wv
         anchors.fill: parent
+        settings.javascriptEnabled: false
+        settings.javaEnabled: false
+        settings.pluginsEnabled: false
     }
 
     RButton {
