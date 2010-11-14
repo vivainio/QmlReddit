@@ -22,6 +22,7 @@ Rectangle {
             height: txtCom.height + 30
 
             Text {
+                x: 3
                 id: txtCom
                 text: commentText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"

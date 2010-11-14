@@ -82,9 +82,8 @@ Rectangle {
                 y:0
                 id: thumbarea
                 width: thumbnail.length > 0 ? 60 : 0
-                height: 60
-                color: "red"
-
+                height: 60                
+                border.width: 1
                 Image {
                     anchors.fill: parent
                     id: tnail
