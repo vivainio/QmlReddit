@@ -10,19 +10,17 @@ Rectangle {
     property alias url: wv.url
     signal reqBack
 
-    WebView {
-        id: wv
-        anchors.fill: parent
-        settings.javascriptEnabled: false
-        settings.javaEnabled: false
-        settings.pluginsEnabled: false
-    }
 
+    FlickableWebView {
+        id: wv
+        //pressGrabTime:
+        anchors.fill: parent
+    }
     RButton {
         buttonLabel: "Back"
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 0
         onClicked: {
             reqBack()
         }

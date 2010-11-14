@@ -25,7 +25,7 @@ Rectangle {
                 id: txtCom
                 text: commentText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
-                width: parent.width
+                width: parent.width - 5
             }
 
         }

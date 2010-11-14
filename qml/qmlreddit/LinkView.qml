@@ -103,7 +103,7 @@ Rectangle {
                 text: desc
                 width: lvLinks.width - thumbarea.width
 
-                anchors.right: lvLinks.right
+                anchors.right: rrect.right
                 anchors.left: thumbarea.right
                 anchors.leftMargin: 4
             }
@@ -141,7 +141,7 @@ Rectangle {
 
             MouseArea {
                 id: ma
-                width: 800
+                width: rrect.width
                 height: dscIt.height + txtIt.height + 10
 
                 //anchors.fill: parent
