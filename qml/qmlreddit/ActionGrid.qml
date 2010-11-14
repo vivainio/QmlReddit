@@ -1,9 +1,12 @@
 import Qt 4.7
 
 Rectangle {
-    width: 640
-    height: 480
 
+    //width: 640
+    //height: 480
+
+    width: parent.width
+    height: parent.height
     property alias model : gv.model
 
     ListModel {
@@ -18,7 +21,11 @@ Rectangle {
         id : gv
         model:  _testmodel
         cellWidth: 200
-        anchors.fill: parent
+        y: 100
+        //anchors.fill: parent
+        width: parent.width
+        height: parent.height
+        //anchors.verticalCenter: parent.verticalCenter
         delegate: Component {
             RButton {
                 buttonLabel: catName

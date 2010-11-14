@@ -31,8 +31,10 @@ Rectangle {
 
     ActionGrid {
         id: categoryselector
-        x : 1000
-        y: 0
+        x : parent.width + 200
+        anchors.verticalCenter: parent.verticalCenter
+
+
         model: mdlCategories
         width: parent.width
         height: parent.height
