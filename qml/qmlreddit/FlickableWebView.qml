@@ -39,8 +39,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 1.0
+//import QtQuick 1.0
 import QtWebKit 1.0
+import Qt 4.7
 
 Flickable {
     property alias title: webView.title
@@ -56,10 +57,10 @@ Flickable {
     width: parent.width
     contentWidth: Math.max(parent.width,webView.width)
     contentHeight: Math.max(parent.height,webView.height)
-    anchors.top: headerSpace.bottom
-    anchors.bottom: parent.top
-    anchors.left: parent.left
-    anchors.right: parent.right
+    //anchors.top: headerSpace.bottom
+    //anchors.bottom: parent.top
+    //anchors.left: parent.left
+    //anchors.right: parent.right
     pressDelay: 200
 
     onWidthChanged : {
@@ -91,7 +92,7 @@ Flickable {
             return url
         }
 
-        url: fixUrl(webBrowser.urlString)
+        //url: fixUrl(webBrowser.urlString)
         smooth: false // We don't want smooth scaling, since we only scale during (fast) transitions
         focus: true
 

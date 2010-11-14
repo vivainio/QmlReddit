@@ -47,13 +47,15 @@ Rectangle {
 
         model: mdlLinks
         delegate: deLinks
-        focus: true
+        //focus: true
 
+        /*
         highlight: Rectangle {
             color: "#5989ad"
             width: container.width
             height: container.height
         }
+        */
 
         /*
         MouseArea {
@@ -100,9 +102,10 @@ Rectangle {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
-                width: lvLinks.width - thumbarea.width
+                //width: lvLinks.width - thumbarea.width - 100
 
                 anchors.right: rrect.right
+                anchors.rightMargin: 50
                 anchors.left: thumbarea.right
                 anchors.leftMargin: 4
             }
@@ -111,17 +114,18 @@ Rectangle {
                 id: txtIt
                 text: score
                 scale: 0.7
-                anchors.left: thumbarea.right
-                anchors.leftMargin: 2
-                y: dscIt.height + 2
+                y: 0
+
+                anchors.right: rrect.right
+                anchors.rightMargin: 10
 
             }
 
             Text {
                 id: tCommentCount
                 scale: 0.7
-                anchors.right: dscIt.right
-                anchors.rightMargin: 50
+                anchors.left: thumbarea.right
+                anchors.leftMargin: 2
                 y: dscIt.height + 2
                 text: comments
 

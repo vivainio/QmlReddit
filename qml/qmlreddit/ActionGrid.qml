@@ -17,6 +17,7 @@ Rectangle {
 
     signal itemSelected(string itemName)
 
+
     GridView {
         id : gv
         model:  _testmodel

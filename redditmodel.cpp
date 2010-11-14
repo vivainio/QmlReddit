@@ -5,8 +5,11 @@
 
 #include <QStandardItemModel>
 #include <QDebug>
+#include <QDesktopServices>
 
 #include "roleitemmodel.h"
+#include "platutil.h"
+#include <QProcess>
 
 
 RedditModel::RedditModel(QObject *parent) :
@@ -119,5 +122,22 @@ void RedditModel::refreshCategories()
         it->setData(c, Qt::UserRole);
         m_cats->appendRow(it);
     }
+}
+
+void RedditModel::editConfig()
+{
+    QString cf = PlatUtil::configFile();
+#ifdef Q_WS_MAEMO_5
+
+    QString cmd = QString("/usr/bin/osso-xterm -e \"vi %1\"").arg(cf);
+#else
+    QString cmd = QString("/usr/bin/gedit \"vi %1\"").arg(cf);
+#endif
+
+    QProcess* p = new QProcess(this);
+    p->start(cmd);
+    p->waitForFinished();
+    delete p;
+
 }
 

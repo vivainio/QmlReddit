@@ -33,7 +33,7 @@ public Q_SLOTS:
     void fetchComments(const QString& permalink);
 
     QVariantMap getComment(int index);
-
+    void editConfig();
 
 signals:
 
