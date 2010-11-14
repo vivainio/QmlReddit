@@ -39,8 +39,17 @@ Rectangle {
         width: parent.width
         height: parent.height
         onItemSelected: {
+            if (itemName == '+') {
+                mdlReddit.editConfig()
+
+            }
+
+
             mainview.state = "LinkState"
-            mdlReddit.start(itemName)
+
+            if (itemName != '+' && itemName != 'Cancel') {
+                mdlReddit.start(itemName)
+            }
         }
     }
 
