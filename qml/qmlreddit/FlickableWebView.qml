@@ -72,6 +72,10 @@ Flickable {
         id: webView
         transformOrigin: Item.TopLeft
 
+        settings.javascriptEnabled: false
+        settings.pluginsEnabled: false
+        settings.javaEnabled: false
+
         function fixUrl(url)
         {
             if (url == "") return url
