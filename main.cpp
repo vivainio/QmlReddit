@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;
+    viewer.showFullScreen();
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();

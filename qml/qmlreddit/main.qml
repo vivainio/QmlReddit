@@ -53,10 +53,12 @@ Rectangle {
                 name: "quit"
 
             }
+            /*
             ListElement {
                 label: "Back"
                 name: "back"
             }
+           */
             ListElement {
                 label: "Cat"
                 name: "cat"
