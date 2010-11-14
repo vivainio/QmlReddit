@@ -79,6 +79,8 @@ Rectangle {
 
     LinkView  {
         id: linkview
+        width: parent.width
+        height: parent.height
         onLinkSelected: {
 
             console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)

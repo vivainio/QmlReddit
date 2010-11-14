@@ -6,7 +6,7 @@ Rectangle {
     width: parent.width
     height: parent.height
 
-    x: 1000
+    x: width + 200
     property alias url: wv.url
     signal reqBack
 

@@ -5,7 +5,7 @@ Rectangle {
     //anchors.fill: parent
     width: parent.width
     height: parent.height
-    x: 1000
+    x: width + 200
 
     signal linkSelected(int selIndex);
 
@@ -48,6 +48,7 @@ Rectangle {
         model: mdlLinks
         delegate: deLinks
         focus: true
+
         highlight: Rectangle {
             color: "#5989ad"
             width: container.width
@@ -75,6 +76,7 @@ Rectangle {
         Rectangle {
             id: rrect
             height: childrenRect.height  + 10
+            width: lvLinks.width
             Rectangle {
                 x:0
                 y:0
@@ -99,7 +101,9 @@ Rectangle {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
-                width: 760
+                width: lvLinks.width - thumbarea.width
+
+                anchors.right: lvLinks.right
                 anchors.left: thumbarea.right
                 anchors.leftMargin: 4
             }
@@ -111,6 +115,18 @@ Rectangle {
                 anchors.left: thumbarea.right
                 anchors.leftMargin: 2
                 y: dscIt.height + 2
+
+            }
+
+            Text {
+                id: tCommentCount
+                scale: 0.7
+                anchors.right: dscIt.right
+                anchors.rightMargin: 50
+                y: dscIt.height + 2
+                text: comments
+
+
 
             }
 

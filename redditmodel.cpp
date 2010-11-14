@@ -22,6 +22,7 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::ScoreRole] = "score";
     roleNames[RedditEntry::PermalaLinkRole] = "permalink";
     roleNames[RedditEntry::ThumbnailRole] = "thumbnail";
+    roleNames[RedditEntry::CommentsRole] = "comments";
 
     m_linksmodel = new RoleItemModel(roleNames);
 
@@ -67,6 +68,7 @@ void RedditModel::doPopulateLinks()
         it->setData(e.permalink, RedditEntry::PermalaLinkRole);
         it->setData(e.url, RedditEntry::UrlRole);
         it->setData(e.thumbnail, RedditEntry::ThumbnailRole);
+        it->setData(e.comments, RedditEntry::CommentsRole);
 
         m_linksmodel->appendRow(it);
 

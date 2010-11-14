@@ -1,7 +1,7 @@
 import Qt 4.7
 
 Rectangle {
-    x: 1000
+    x: width + 200
     signal commentSelected
     signal reqPreview(string url)
     signal reqLinks
