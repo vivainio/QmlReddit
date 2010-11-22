@@ -6,13 +6,6 @@ Rectangle {
     signal commentSelected
     signal reqPreview(string url)
     signal reqLinks
-    /*
-    Rectangle {
-        color: "#9c5d5d"
-        anchors.fill: parent    r
-
-    }
-    */
 
     Component {
 

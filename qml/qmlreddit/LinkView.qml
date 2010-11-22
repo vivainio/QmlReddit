@@ -115,7 +115,7 @@ Rectangle {
                 text: score
                 //scale: 0.7
                 y: 0
-                color: score > 200 ? "red" : "black"
+                color: score > 100 ? "red" : "black"
 
                 anchors.right: rrect.right
                 anchors.rightMargin: 10

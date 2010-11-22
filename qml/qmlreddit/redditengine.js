@@ -19,9 +19,27 @@ RedditEngine.prototype = {
 
     currentLink : function() {
         return this.currentlink;
+    },
+
+    catSelected: function(cat) {
+        this.currentCat = cat
+    },
+
+    shouldShowComments : function(lnk) {
+        if (this.currentCat == "comics" || this.currentCat == "pics") {
+            return false;
+        }
+
+        if (lnk.comments < 10 ) {
+            return false;
+        }
+
+        return true;
+
     }
 
-};
+}
+
 
 
 function create() {

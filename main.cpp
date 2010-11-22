@@ -19,6 +19,7 @@ void setNokesProxy()
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
     app.setStyle("motif");
 
 #ifdef THANK_YOU_NOKIA
@@ -26,7 +27,9 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;
-    //viewer.showFullScreen();
+#ifdef Q_WS_MAEMO_5
+    viewer.showFullScreen();
+#endif
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();

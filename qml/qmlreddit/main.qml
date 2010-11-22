@@ -48,6 +48,7 @@ Rectangle {
             mainview.state = "LinkState"
 
             if (itemName != '+' && itemName != 'Cancel') {
+                RE.eng().catSelected(itemName)
                 mdlReddit.start(itemName)
             }
         }
@@ -94,7 +95,7 @@ Rectangle {
 
             }
 
-            console.log("Select item ", itemName)
+            //console.log("Select item ", itemName)
         }
     }
 
@@ -104,13 +105,24 @@ Rectangle {
         height: parent.height
         onLinkSelected: {
 
+            var eng = RE.eng()
             console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
-            mainview.state = "CommentsState"
+
+
+
 
             var lnk = mdlReddit.getLink(selIndex)
+            if (eng.shouldShowComments(lnk)) {
+                mainview.state = "CommentsState"
+
+            } else {
+               mainview.state = "PreviewState"
+            }
+
+
             //console.log("f ", eng)
             //RE.dump(eng)
-            RE.eng().linkSelected(lnk)
+            eng.linkSelected(lnk)
             //RE.doLinkSelected(eng, lnk);
             console.log(lnk)
             var url = lnk["permalink"]

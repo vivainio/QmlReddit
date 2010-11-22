@@ -127,7 +127,7 @@ Flickable {
             // got to topleft
             flickable.contentX = 0
             flickable.contentY = 0
-            if (url != null) { header.editUrl = url.toString(); }
+            //if (url != null) { header.editUrl = url.toString(); }
         }
         onDoubleClick: {
                         if (!heuristicZoom(clickX,clickY,2.5)) {

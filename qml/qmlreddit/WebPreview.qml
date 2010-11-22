@@ -19,8 +19,9 @@ Rectangle {
     RButton {
         buttonLabel: "Back"
         anchors.left: parent.left
-        anchors.bottom: parent.bottom
+        anchors.bottom: parent.bottom        
         anchors.bottomMargin: 0
+        opacity: 0.8
         onClicked: {
             reqBack()
         }
