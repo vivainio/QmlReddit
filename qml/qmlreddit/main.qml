@@ -74,6 +74,11 @@ Rectangle {
                 label: "Cat"
                 name: "cat"
             }
+            ListElement {
+
+                label: "Browser"
+                name: "browser"
+            }
         }
         onItemSelected: {
             if (itemName == "cat") {
@@ -82,6 +87,11 @@ Rectangle {
             }
             if (itemName == "quit") {
                 Qt.quit()
+            }
+            if (itemName == "browser") {
+                var lnk = RE.eng().currentLink()
+                mdlReddit.browser(lnk.url)
+
             }
 
             console.log("Select item ", itemName)
@@ -108,7 +118,6 @@ Rectangle {
 
             mdlReddit.fetchComments(url);
             webpreview.url = lnk.url
-
         }
 
 

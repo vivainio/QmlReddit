@@ -11,6 +11,7 @@
 #include "platutil.h"
 #include <QProcess>
 
+#include <QDesktopServices>
 
 RedditModel::RedditModel(QObject *parent) :
     QObject(parent)
@@ -138,6 +139,17 @@ void RedditModel::editConfig()
     p->start(cmd);
     p->waitForFinished();
     delete p;
+
+}
+
+void RedditModel::browser(const QString &url)
+{
+    qDebug() << "browser " << url;
+    if (url.isEmpty()) {
+        QDesktopServices::openUrl(QUrl("http://reddit.com"));
+    } else {
+        QDesktopServices::openUrl(url);
+    }
 
 }
 

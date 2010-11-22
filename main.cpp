@@ -1,5 +1,5 @@
 #include <QtGui/QApplication>
-#include "qmlapplicationviewer.h"
+#include "qmlapplicationviewer/qmlapplicationviewer.h"
 #include "redditmodel.h"
 #include <QNetworkProxy>
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;
-    viewer.showFullScreen();
+    //viewer.showFullScreen();
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();

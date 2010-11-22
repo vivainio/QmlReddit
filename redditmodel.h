@@ -34,6 +34,7 @@ public Q_SLOTS:
 
     QVariantMap getComment(int index);
     void editConfig();
+    void browser(const QString& url);
 
 signals:
 
