@@ -45,7 +45,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         buttonLabel: "Preview"
         onClicked: reqPreview("url")
-
+        opacity: 0.8
 
     }
 
@@ -55,6 +55,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         buttonLabel: "Links"
         onClicked: reqLinks()
+        opacity: 0.8
     }
 
     // we overlay back / preview button over listview...

@@ -89,8 +89,8 @@ Rectangle {
                 Qt.quit()
             }
             if (itemName == "browser") {
-                var lnk = RE.eng().currentLink()
-                mdlReddit.browser(lnk.url)
+                var lnk = RE.eng().currentLink()                
+                mdlReddit.browser("http://www.reddit.com" + lnk.permalink)
 
             }
 
