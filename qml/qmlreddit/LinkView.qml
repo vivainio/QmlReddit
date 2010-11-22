@@ -113,8 +113,9 @@ Rectangle {
             Text {
                 id: txtIt
                 text: score
-                scale: 0.7
+                //scale: 0.7
                 y: 0
+                color: score > 200 ? "red" : "black"
 
                 anchors.right: rrect.right
                 anchors.rightMargin: 10
@@ -123,11 +124,12 @@ Rectangle {
 
             Text {
                 id: tCommentCount
-                scale: 0.7
+                //scale: 0.7
                 anchors.left: thumbarea.right
-                anchors.leftMargin: 2
+                anchors.leftMargin: 10
                 y: dscIt.height + 2
                 text: comments
+                color: "blue"
 
 
 
