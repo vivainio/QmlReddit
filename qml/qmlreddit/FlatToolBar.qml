@@ -24,6 +24,7 @@ Rectangle {
         id: expandedcontent
         anchors.fill: parent
         opacity: 0.0
+
         Component {
             id: dlgbutton
             RButton {
@@ -56,11 +57,14 @@ Rectangle {
 
         ListView {
             anchors.left: parent.left
+            anchors.bottom: parent.bottom
             id: listview
             orientation: "Horizontal"
 
             delegate: dlgbutton
-            width: 400
+            width: 500
+            height: 100
+            spacing: 20
 
 
         }
@@ -69,8 +73,10 @@ Rectangle {
             anchors.right: parent.right
             width: 100
             height: 100
+            anchors.bottom: parent.bottom
 
-            anchors.verticalCenter: parent.verticalCenter
+           //anchors.verticalCenter: parent.verticalCenter
+            //anchors.bottom: parent.bottom
 
             color: "red"
             Text {
@@ -112,7 +118,7 @@ Rectangle {
             name: "expanded"
             PropertyChanges {
                 target: root
-                width: 400
+                width: 500
                 opacity: 1.0
             }
 
