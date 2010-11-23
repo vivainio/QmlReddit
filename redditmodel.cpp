@@ -78,7 +78,7 @@ void RedditModel::doPopulateLinks()
 
     }
 
-    qDebug() << "populating";
+    //qDebug() << "populating";
 
 }
 
@@ -103,14 +103,14 @@ void RedditModel::fetchComments(const QString &permalink)
 QVariantMap RedditModel::getComment(int index)
 {
     QVariantMap res = RoleItemModel::getModelData(m_commentsmodel, index);
-    qDebug() << "getc" << res;
+    //qDebug() << "getc" << res;
     return res;
 }
 
 QVariantMap RedditModel::getLink(int index)
 {
     QVariantMap res = RoleItemModel::getModelData(m_linksmodel, index);
-    qDebug() << "getlink" << res;
+    //qDebug() << "getlink" << res;
     return res;
 }
 
@@ -144,7 +144,7 @@ void RedditModel::editConfig()
 
 void RedditModel::browser(const QString &url)
 {
-    qDebug() << "browser " << url;
+    //qDebug() << "browser " << url;
     if (url.isEmpty()) {
         QDesktopServices::openUrl(QUrl("http://reddit.com"));
     } else {
