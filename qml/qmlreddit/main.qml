@@ -106,7 +106,7 @@ Rectangle {
         onLinkSelected: {
 
             var eng = RE.eng()
-            console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
+            //console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
 
 
 
@@ -124,9 +124,9 @@ Rectangle {
             //RE.dump(eng)
             eng.linkSelected(lnk)
             //RE.doLinkSelected(eng, lnk);
-            console.log(lnk)
+            //console.log(lnk)
             var url = lnk["permalink"]
-            console.log("url ", url)
+            //console.log("url ", url)
 
             mdlReddit.fetchComments(url);
             webpreview.url = lnk.url
@@ -145,7 +145,7 @@ Rectangle {
         onReqPreview: {
             var lnk = RE.eng().currentLink()
             mainview.state = "PreviewState"
-            console.log("prev ", lnk)
+            //console.log("prev ", lnk)
             webpreview.url = lnk.url
             RE.dump(lnk)
         }
@@ -166,11 +166,11 @@ Rectangle {
 
             name: "LinkState"
 
-            StateChangeScript {
-                script: console.log("tolinks");
+            //StateChangeScript {
+            //    script: console.log("tolinks");
 
 
-            }
+            //}
 
             PropertyChanges {
                 target: linkview
@@ -209,10 +209,9 @@ Rectangle {
                 target: webpreview
                 x : 0
             }
-            StateChangeScript {
-
-                script: console.log("to preview")
-            }
+            //StateChangeScript {
+                //script: console.log("to preview")
+            //}
         },
         State {
             name: "SelectCategory"

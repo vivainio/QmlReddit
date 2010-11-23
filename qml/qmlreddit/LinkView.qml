@@ -151,7 +151,7 @@ Rectangle {
 
                 //anchors.fill: parent
                 onClicked: {
-                    console.log("index ", index)
+                    //console.log("index ", index)
                     linkSelected(index)
                 }
 
