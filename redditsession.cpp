@@ -49,7 +49,7 @@ QScriptValue RedditSession::parseJson(QString msg)
     QScriptValue sc = m_eng->evaluate(msg);
     if (m_eng->hasUncaughtException()) {
       QStringList bt = m_eng->uncaughtExceptionBacktrace();
-      qDebug() << bt.join("\n");
+      //qDebug() << bt.join("\n");
     }
     return sc;
 }
@@ -78,7 +78,7 @@ void RedditSession::linksFetched()
 
 
         int score = v.property("score").toInt32();
-        qDebug() << v.toString() << title << " U " << url << " TN " << tnail;
+        //qDebug() << v.toString() << title << " U " << url << " TN " << tnail;
         RedditEntry e;
         e.desc = title;
         e.url = url;
@@ -176,7 +176,7 @@ QStringList RedditSession::getCategories()
     //return QStringList() << "programming" << "pics";
 
     QString cf = PlatUtil::configFile();
-    qDebug() << "Config " << cf;
+    //qDebug() << "Config " << cf;
     QFileInfo fi(cf);
     if (!fi.exists()) {
         QFile f(cf);
