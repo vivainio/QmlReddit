@@ -66,6 +66,11 @@ void RedditModel::doPopulateLinks()
 {
     m_linksmodel->clear();
     foreach (const RedditEntry& e, m_ses->getEntries()) {
+
+        if (e.desc.isEmpty()) {
+            continue;
+            // todo debug properly
+        }
         QStandardItem* it = new QStandardItem();
         it->setData(e.desc, RedditEntry::DescRole);
         it->setData(e.score, RedditEntry::ScoreRole);
