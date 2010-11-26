@@ -28,12 +28,10 @@ void PlatUtil::toggleBusy(QWidget *wdg, bool busy)
 QString PlatUtil::configFile()
 {
     QString path;
-#ifdef Q_WS_MAEMO_5
     path =  QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
-#else
-    path = "/tmp";
+//    path = "/tmp";
 
-#endif
+//#endif
     return path + "/.qreddit";
 
 }

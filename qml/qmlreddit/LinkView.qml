@@ -47,6 +47,10 @@ Rectangle {
 
         model: mdlLinks
         delegate: deLinks
+        footer: Rectangle {
+            height: 60
+        }
+
         //focus: true
 
         /*

@@ -31,6 +31,9 @@ Rectangle {
         anchors.fill: parent
         model: mdlComments
         delegate: dlgComments
+        footer: Rectangle {
+            height: imgNext.height
+        }
     }
 
     RButton {
