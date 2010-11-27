@@ -16,7 +16,8 @@ PkgConfigBR:
 Configure: none
 Builder: none
 Files:
-    - "%{_bindir}/textures"
+    - "%{_bindir}/qmlreddit"
     - "%{_datadir}/applications/*.desktop"
     - "%{_datadir}/icons/*.png"
+    - "%{_datadir}
 
