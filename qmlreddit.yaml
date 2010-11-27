@@ -1,0 +1,22 @@
+Name: qmlreddit 
+Summary: Reddit Browser 
+Version: 0.0.1
+Release: 1
+Group: Development/Tools
+License: MIT 
+URL: http://qt.nokia.com
+Sources:
+    - "%{name}-%{version}.tar.bz2"
+Description: Reddit Browser 
+
+PkgConfigBR:
+    - QtCore >= 4.7.0
+    - QtOpenGL
+    - QtGui
+Configure: none
+Builder: none
+Files:
+    - "%{_bindir}/textures"
+    - "%{_datadir}/applications/*.desktop"
+    - "%{_datadir}/icons/*.png"
+
