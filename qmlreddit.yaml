@@ -19,5 +19,5 @@ Files:
     - "%{_bindir}/qmlreddit"
     - "%{_datadir}/applications/*.desktop"
     - "%{_datadir}/icons/*.png"
-    - "%{_datadir}
+    - "%{_datadir}"
 
