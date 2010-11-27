@@ -6,7 +6,7 @@ Group: Development/Tools
 License: MIT 
 URL: http://qt.nokia.com
 Sources:
-    - "%{name}-%{version}.tar.bz2"
+    - "%{name}-%{version}.tar.gz"
 Description: Reddit Browser 
 
 PkgConfigBR:
