@@ -10,6 +10,7 @@ import sloppycode.shortcuts as sc
 #@+node:ville.20101127205006.2027: ** << meat >>
 sc.ns.VER = "0.0.1"
 
-sc.shrun("git archive -o qmlreddit-${VER}.tar --prefix qmlreddit-$VER HEAD" )
+with sc.chdir('..'):
+    sc.shrun("git archive -o qmlreddit-${VER}.tar --prefix qmlreddit-$VER/ HEAD" )
 #@-<< meat >>
 #@-leo
