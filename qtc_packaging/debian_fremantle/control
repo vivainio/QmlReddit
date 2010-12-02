@@ -7,6 +7,6 @@ Standards-Version: 3.7.3
 
 Package: qmlreddit
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt4-bearer-hotfix
 Description: Lightweight Reddit browser 
  Browse reddit in technicolor 
