@@ -136,8 +136,6 @@ Rectangle {
                 text: comments
                 color: "blue"
 
-
-
             }
 
 
