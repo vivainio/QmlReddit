@@ -11,6 +11,7 @@ import sloppycode.shortcuts as sc
 sc.ns.VER = "0.0.1"
 
 sh = sc.shrun
+sc.verbose = 1
 with sc.chdir('..'):
     sh("git archive -o qmlreddit-${VER}.tar --prefix qmlreddit-$VER/ HEAD" )
     sh("gzip qmlreddit-${VER}.tar")
