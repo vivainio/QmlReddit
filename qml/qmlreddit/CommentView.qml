@@ -11,12 +11,23 @@ Rectangle {
 
         id: dlgComments
 
-        Rectangle {
-            width: parent.width
-            height: txtCom.height + 30
+
+        BorderImage {
+            //width: parent.width
+            height: txtCom.height + 20
+
+            id: backgroundImage
+            source: "pics/listitem.png"
+            //width: ListView.view.width
+            width: ListView.view.width
+            border.bottom: 5
+            border.top: 5
+            border.left: 5
+            border.right: 30
 
             Text {
                 x: 3
+                y: 10
                 id: txtCom
                 text: commentText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
@@ -31,6 +42,7 @@ Rectangle {
         anchors.fill: parent
         model: mdlComments
         delegate: dlgComments
+        spacing: 5
         footer: Rectangle {
             height: imgNext.height
         }

@@ -46,7 +46,8 @@ Rectangle {
         anchors.fill: parent
 
         model: mdlLinks
-        delegate: deLinks
+        //delegate: deLinks
+        delegate: LinkViewDelegate {}
         footer: Rectangle {
             height: 60
         }
