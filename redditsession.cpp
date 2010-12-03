@@ -128,7 +128,8 @@ class CommentsParser : public QXmlDefaultHandler
     bool endElement(const QString& namespaceURI, const QString& localName, const QString& qName)
     {
         //qDebug() << "end" << localName;
-        QString trans = m_current.replace("&quot;", "\"");
+        QString trans = m_current.replace("&quot;", "\"").replace("&amp;", "&").
+                replace("&gt;",">").replace("&lt;", "<");
         if (localName == "description") {
             m_comments.append(m_current);
         }
