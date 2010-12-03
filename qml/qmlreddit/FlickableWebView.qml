@@ -77,6 +77,7 @@ Flickable {
         settings.pluginsEnabled: false
         settings.javaEnabled: false
 
+
         function fixUrl(url)
         {
             if (url == "") return url

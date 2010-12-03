@@ -8,7 +8,7 @@ function RedditEngine() {
 
 RedditEngine.prototype = {
     linkSelected : function(link) {
-        console.log("linkSelected ", link)
+        //console.log("linkSelected ", link)
         this.currentlink = link;
 
     },
@@ -43,7 +43,7 @@ RedditEngine.prototype = {
 
 
 function create() {
-    console.log("creating")
+    //console.log("creating")
     var eng = new RedditEngine();
     // this works
     eng.linkSelected("dummy 2")
@@ -65,7 +65,7 @@ function eng() {
 function dump(obj) {
 
     for (var i in obj ) {
-        console.log("Property", i, ":", obj[i])
+        //console.log("Property", i, ":", obj[i])
     }
 }
 

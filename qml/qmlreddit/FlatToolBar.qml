@@ -89,7 +89,7 @@ Rectangle {
                 id: maContract
                 anchors.fill: parent
                 onClicked: {
-                    console.log("cl")
+                    //console.log("cl")
                     root.state = "small"
                 }
 
