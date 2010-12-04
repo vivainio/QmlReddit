@@ -33,8 +33,9 @@ Rectangle {
         //anchors.fill: parent
         width: parent.width
         //height: parent.height
-        anchors.bottom: lv.top
-        anchors.top: parent.top
+        anchors { bottom: lv.top; top: parent.top }
+
+        boundsBehavior: Flickable.StopAtBounds
 
         //anchors.verticalCenter: parent.verticalCenter
         delegate: Component {

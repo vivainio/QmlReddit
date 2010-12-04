@@ -29,7 +29,7 @@ build-stamp: configure-stamp
 	# Add here commands to compile the package.
 
 
-        #qmake PREFIX=/usr
+	qmake PREFIX=/usr
 	$(MAKE)
 	#docbook-to-man debian/qmlreddit.sgml > qmlreddit.1
 

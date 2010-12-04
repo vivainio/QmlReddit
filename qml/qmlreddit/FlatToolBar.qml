@@ -55,11 +55,15 @@ Rectangle {
             */
         }
 
+
+
         ListView {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             id: listview
             orientation: "Horizontal"
+
+            boundsBehavior: Flickable.StopAtBounds
 
             delegate: dlgbutton
             width: 500
