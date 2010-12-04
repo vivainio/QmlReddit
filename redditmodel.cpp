@@ -16,6 +16,7 @@
 RedditModel::RedditModel(QObject *parent) :
     QObject(parent)
 {
+    m_enableRestricted = false;
     m_ses = new RedditSession;
     connect(m_ses, SIGNAL(linksAvailable()), this, SLOT(doPopulateLinks()));
 
@@ -41,6 +42,7 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[Qt::UserRole] = "catName";
 
     m_cats = new RoleItemModel(roleNames);
+
 
     refreshCategories();
 
@@ -122,6 +124,11 @@ QVariantMap RedditModel::getLink(int index)
 void RedditModel::refreshCategories()
 {
     QStringList cats = m_ses->getCategories();
+    if (m_enableRestricted) {
+        // adult content (to ensure commercial success for the app ;-)
+        cats << "nsfw" << "gonewild" << "adult";
+    }
+
     m_cats->clear();
     foreach (QString c, cats) {
         QStandardItem* it = new QStandardItem();
@@ -156,5 +163,10 @@ void RedditModel::browser(const QString &url)
         QDesktopServices::openUrl(url);
     }
 
+}
+
+void RedditModel::enableRestricted(bool val)
+{
+    m_enableRestricted = val;
 }
 

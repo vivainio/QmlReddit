@@ -49,6 +49,21 @@ Rectangle {
                 }
             }
         }
+
+        footer: Component {
+            RButton {
+                buttonLabel: "Enable NSFW channels";
+                color: "yellow"
+                width: 300
+                height: 80
+                onClicked: {
+                    mdlReddit.enableRestricted(true);
+                    mdlReddit.refreshCategories()
+
+                }
+
+            }
+        }
     }
     ListView {
         id: lv
@@ -62,6 +77,7 @@ Rectangle {
         anchors.left: parent.left
         height: 90
 
+        boundsBehavior: Flickable.StopAtBounds
         delegate: Component {
             RButton {
                 buttonLabel: catName
@@ -70,8 +86,6 @@ Rectangle {
                 onClicked: {
                     itemSelected(catName)
                 }
-
-
             }
         }
 

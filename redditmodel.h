@@ -42,6 +42,7 @@ public slots:
 
     QVariantMap getLink(int index);
     void refreshCategories();
+    void enableRestricted(bool val);
 private slots:
     void doPopulateLinks();
 
@@ -52,6 +53,8 @@ private:
     RoleItemModel* m_linksmodel;
     RoleItemModel* m_commentsmodel;    
     RoleItemModel* m_cats;
+
+    bool m_enableRestricted;
 };
 
 #endif // REDDITMODEL_H

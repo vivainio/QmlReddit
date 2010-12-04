@@ -183,7 +183,11 @@ QStringList RedditSession::getCategories()
     if (!fi.exists()) {
         QFile f(cf);
         f.open(QFile::WriteOnly);
-        QStringList defaults(QStringList() << "programming" << "pics" << "technology" << "funny" << "worldnews" << "comics" << "python" << "wtf");
+        QStringList defaults(QStringList() << "programming" << "pics" << "technology" << "funny"
+                             << "news" << "comics" << "python" << "wtf" << "gaming" <<
+                             "IAmA" << "maemo" << "meego" << "science" << "bestof" << "gadgets" <<
+                             "music" << "hardware" << "worldnews" << "linux" << "offbeat" << "sports"
+                             );
         QString joined = defaults.join("\n") + "\n";
         f.write(joined.toUtf8());
         f.close();
