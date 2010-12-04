@@ -126,7 +126,7 @@ void RedditModel::refreshCategories()
     QStringList cats = m_ses->getCategories();
     if (m_enableRestricted) {
         // adult content (to ensure commercial success for the app ;-)
-        cats << "nsfw" << "gonewild" << "adult";
+        cats << "nsfw" << "gonewild" << "adult" << "sex";
     }
 
     m_cats->clear();
