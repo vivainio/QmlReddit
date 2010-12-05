@@ -94,6 +94,7 @@ Rectangle {
                 textFormat: Text.RichText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 width: parent.width - x
+                color: score > 0 ? "black" : "gray"
             }
 
 
@@ -159,22 +160,4 @@ Rectangle {
 
     // we overlay back / preview button over listview...
 
-
-
-    /*
-    Text {
-        anchors.fill: parent
-        text: "hello comments"
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                commentSelected()
-                console.log("doeoehdhd")
-                //commentSelected()
-            }
-        }
-
-    }
-    */
 }
