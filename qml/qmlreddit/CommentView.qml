@@ -22,7 +22,7 @@ Rectangle {
         if (!d || !d.body)
             return
 
-        RE.dump(d)
+        //RE.dump(d)
         co = {
                 body : d.body_html,
                 author: d.author,
@@ -42,7 +42,7 @@ Rectangle {
             }
         }
 
-        console.log('replies ', chi)
+        //console.log('replies ', chi)
 
     }
 

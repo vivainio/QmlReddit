@@ -46,7 +46,7 @@ void RedditSession::start(const QString& cat)
     QNetworkReply* reply = m_net->get(req);
     connect(reply, SIGNAL(finished()), this, SLOT(linksFetched()));
 
-    login("qmtest", "qmtest");
+    //login("qmtest", "qmtest");
 
 }
 
@@ -71,7 +71,7 @@ void RedditSession::linksFetched()
     //qDebug() << "fetched";
 
     QByteArray ba = reply->readAll();
-    qDebug() << "data " << ba;
+    //qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
     QScriptValue items = sv.property("data").property("children");
     //qDebug() << "chi " << items.toString();
@@ -119,6 +119,7 @@ void RedditSession::fetchComments(const QString &commentaddr)
 
 }
 
+#if 0
 class CommentsParser : public QXmlDefaultHandler
 {
 
@@ -165,6 +166,7 @@ public:
     QStringList m_comments;
 
 };
+#endif
 void RedditSession::commentsFetched()
 {
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
