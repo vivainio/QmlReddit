@@ -52,30 +52,6 @@ Rectangle {
             height: 60
         }
 
-        //focus: true
-
-        /*
-        highlight: Rectangle {
-            color: "#5989ad"
-            width: container.width
-            height: container.height
-        }
-        */
-
-        /*
-        MouseArea {
-            anchors.fill: lvLinks
-            onClicked: {
-
-                var idx = lvLinks.indexAt(mouse.x, mouse.y);
-                container.linkSelected(idx)
-                console.log("click ", lvLinks.index, " at ", mouse.y, " , ", mouse.x)
-
-            }
-        }
-        */
-
-
     }
 
     Component {
@@ -97,7 +73,6 @@ Rectangle {
                     height: 60
                     width: 60
                     source: thumbnail
-                    //source: "http://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png"
                 }
 
 

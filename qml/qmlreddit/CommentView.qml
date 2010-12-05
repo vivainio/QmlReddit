@@ -98,18 +98,30 @@ Rectangle {
 
 
             Text {
+                id: tScore
                 anchors {
                     bottom: parent.bottom
                     bottomMargin: 1
                     right: parent.right
                     rightMargin: 5
 
-
-
                 }
 
                 text: score
                 color: score > 20 ? "red" : "black"
+                font.bold: score > 50 ? true : false
+            }
+
+            Text {
+                anchors {
+                    right: tScore.left
+                    top: tScore.top
+                    rightMargin: 30
+                }
+
+                text: author
+                color: "gray"
+
             }
 
         }
