@@ -16,28 +16,33 @@ Rectangle {
 
     function emitComments(jsobj, depth, result) {
         var co = {}
-        RE.dump(jsobj)
+        //RE.dump(jsobj)
         var d = jsobj['data']
 
+        if (!d || !d.body)
+            return
+
+        RE.dump(d)
         co = {
                 body : d.body_html,
                 author: d.author,
-                depth: depth
+                depth: depth,
+                score: d.ups - d.downs
         }
 
 
+        result.push(co)
 
         if (d.replies) {
             var chi = d.replies.data.children
             for (var i in chi) {
-                console.log('recursing at ', depth)
+                //console.log('recursing at ', depth)
                 emitComments(chi[i], depth + 1, result)
 
             }
         }
 
         console.log('replies ', chi)
-        result.push(co)
 
     }
 
@@ -70,7 +75,7 @@ Rectangle {
 
         BorderImage {
             //width: parent.width
-            height: txtCom.height + 20
+            height: txtCom.height + 30
 
             id: backgroundImage
             source: "pics/listitem.png"
@@ -82,13 +87,29 @@ Rectangle {
             border.right: 30
 
             Text {
-                x: depth * 20
+                x: depth * 5
                 y: 10
                 id: txtCom
-                text: body + " " + depth
+                text: body
                 textFormat: Text.RichText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
-                width: parent.width - 5
+                width: parent.width - x
+            }
+
+
+            Text {
+                anchors {
+                    bottom: parent.bottom
+                    bottomMargin: 1
+                    right: parent.right
+                    rightMargin: 5
+
+
+
+                }
+
+                text: score
+                color: score > 20 ? "red" : "black"
             }
 
         }
