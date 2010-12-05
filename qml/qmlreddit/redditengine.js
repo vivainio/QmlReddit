@@ -65,7 +65,7 @@ function eng() {
 function dump(obj) {
 
     for (var i in obj ) {
-        //console.log("Property", i, ":", obj[i])
+        console.log("Property", i, ":", obj[i])
     }
 }
 

@@ -1,11 +1,60 @@
 import Qt 4.7
 
+import "redditengine.js" as RE
+
 Rectangle {
     x: width + 200
 
     signal commentSelected
     signal reqPreview(string url)
     signal reqLinks
+
+    ListModel {
+        id: mdlComments
+
+    }
+
+    function emitComments(jsobj, depth, result) {
+        var co = {}
+        RE.dump(jsobj)
+        var d = jsobj['data']
+        co['body'] = d.body_html
+        console.log(co['body'])
+        co['author'] = d.author
+
+        var chi = d.replies
+        if (chi && chi.length > 0) {
+            for (var i in chi) {
+                emitComments(chi[i], depth + 1, result)
+
+            }
+        }
+
+        console.log('replies ', chi)
+        result.push(co)
+
+    }
+
+    function populate(json) {
+        var obj = eval(json)
+        console.log("obj ",obj)
+        var items = obj[1]['data']['children']
+        var aggr = []
+        for (var it in items) {
+            emitComments(items[it], 0, aggr)
+
+        }
+
+        //var comments = obj[1]['data']['']
+        mdlComments.clear()
+        for (var i in aggr) {
+            var val = aggr[i]
+            mdlComments.append(val)
+
+        }
+
+
+    }
 
     Component {
 
@@ -29,7 +78,7 @@ Rectangle {
                 x: 3
                 y: 10
                 id: txtCom
-                text: commentText
+                text: body
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 width: parent.width - 5
             }

@@ -10,7 +10,21 @@ Rectangle {
 
     //property variant eng
 
-    //Component.onCompleted: eng = RE.create()
+    Connections {
+        target: mdlReddit
+        onCommentsJsonAvailable: {
+            console.log('got json ', json)
+            commentview.populate(json)
+
+        }
+    }
+
+    function startup() {
+
+
+    }
+
+    Component.onCompleted: startup();
 
     /*
     Flipable {

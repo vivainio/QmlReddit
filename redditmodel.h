@@ -32,11 +32,13 @@ public Q_SLOTS:
     void start(const QString& cat);
     void fetchComments(const QString& permalink);
 
-    QVariantMap getComment(int index);
+    //QVariantMap getComment(int index);
     void editConfig();
     void browser(const QString& url);
 
 signals:
+
+    void commentsJsonAvailable(const QString& json);
 
 public slots:
 
@@ -51,7 +53,7 @@ private slots:
 private:
     RedditSession* m_ses;
     RoleItemModel* m_linksmodel;
-    RoleItemModel* m_commentsmodel;    
+    //RoleItemModel* m_commentsmodel;
     RoleItemModel* m_cats;
 
     bool m_enableRestricted;

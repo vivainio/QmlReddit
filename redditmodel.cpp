@@ -21,6 +21,9 @@ RedditModel::RedditModel(QObject *parent) :
     connect(m_ses, SIGNAL(linksAvailable()), this, SLOT(doPopulateLinks()));
 
     connect(m_ses, SIGNAL(commentsAvailable()), this, SLOT(doPopulateComments()));
+
+    connect(m_ses, SIGNAL(commentsJsonAvailable(QString)), this,
+            SIGNAL(commentsJsonAvailable(QString)));
     QHash<int, QByteArray> roleNames;
     roleNames[RedditEntry::UrlRole] =  "url";
     roleNames[RedditEntry::DescRole] = "desc";
@@ -34,7 +37,7 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames.clear();
     roleNames[Qt::UserRole] = "commentText";
 
-    m_commentsmodel = new RoleItemModel(roleNames);
+    //m_commentsmodel = new RoleItemModel(roleNames);
     //m_linksmodel->setRoleNames(roleNames);
 
     roleNames.clear();
@@ -53,7 +56,7 @@ void RedditModel::setup(QDeclarativeContext *ctx)
 {    
     ctx->setContextProperty("mdlReddit", this);
     ctx->setContextProperty("mdlLinks", m_linksmodel);
-    ctx->setContextProperty("mdlComments", m_commentsmodel);
+    //ctx->setContextProperty("mdlComments", m_commentsmodel);
     ctx->setContextProperty("mdlCategories", m_cats);
     start("");
 
@@ -91,13 +94,14 @@ void RedditModel::doPopulateLinks()
 
 void RedditModel::doPopulateComments()
 {
+#if 0
     m_commentsmodel->clear();
     foreach (const QString& s, m_ses->m_comments) {
         QStandardItem* it = new QStandardItem;
         it->setData(s, Qt::UserRole);
         m_commentsmodel->appendRow(it);
     }
-
+#endif
 
 }
 
@@ -107,12 +111,14 @@ void RedditModel::fetchComments(const QString &permalink)
 
 }
 
+#if 0
 QVariantMap RedditModel::getComment(int index)
 {
     QVariantMap res = RoleItemModel::getModelData(m_commentsmodel, index);
     //qDebug() << "getc" << res;
     return res;
 }
+#endif
 
 QVariantMap RedditModel::getLink(int index)
 {

@@ -55,7 +55,8 @@ public Q_INVOKABLE:
 
 signals:
     void linksAvailable();
-    void commentsAvailable();
+    void commentsAvailable();   
+    void commentsJsonAvailable(const QString& comments);
 
 public slots:
 

@@ -49,7 +49,7 @@ QScriptValue RedditSession::parseJson(QString msg)
     QScriptValue sc = m_eng->evaluate(msg);
     if (m_eng->hasUncaughtException()) {
       QStringList bt = m_eng->uncaughtExceptionBacktrace();
-      //qDebug() << bt.join("\n");
+      qDebug() << bt.join("\n");
     }
     return sc;
 }
@@ -101,7 +101,7 @@ void RedditSession::fetchComments(const QString &commentaddr)
 {
     QString url = "http://www.reddit.com";
     url.append(commentaddr);
-    url.append(".xml");
+    url.append(".json");
     //qDebug() << "fetch " << url;
     QNetworkRequest req(url);
     QNetworkReply* reply = m_net->get(req);
@@ -127,7 +127,7 @@ class CommentsParser : public QXmlDefaultHandler
     }
     bool endElement(const QString& namespaceURI, const QString& localName, const QString& qName)
     {
-        //qDebug() << "end" << localName;
+        qDebug() << "end l" << localName << "n " << qName;
         RedditSession::expandHtmlEntities(m_current);
         //QString trans = m_current.replace("&quot;", "\"").replace("&amp;", "&").
         //        replace("&gt;",">").replace("&lt;", "<");
@@ -155,8 +155,39 @@ public:
     QStringList m_comments;
 
 };
+void RedditSession::commentsFetched()
+{
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+    if (!reply)
+        return;
+
+    QByteArray ba = reply->readAll();
+    ba.prepend("(");
+    ba.append(")");
+
+    emit commentsJsonAvailable(ba);
+#if 0
+    //qDebug() << "data " << ba;
+    QScriptValue sv = parseJson(ba);
+
+    QScriptValue items = sv.property("data").property("children");
+    qDebug() << "items" << items.toString();
+    /*
+
+    QXmlSimpleReader r;
+    CommentsParser p;
+    r.setContentHandler(&p);
+    QXmlInputSource inp(reply);
+    r.parse(&inp);
+    m_comments = p.m_comments;
+    */
+    emit commentsAvailable();
+#endif
+    reply->deleteLater();
+}
 
 
+/*
 void RedditSession::commentsFetched()
 {
     QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
@@ -173,6 +204,7 @@ void RedditSession::commentsFetched()
     reply->deleteLater();
 
 }
+*/
 
 QStringList RedditSession::getCategories()
 {
