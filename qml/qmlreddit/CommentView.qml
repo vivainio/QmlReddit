@@ -25,9 +25,12 @@ Rectangle {
                 depth: depth
         }
 
-        var chi = d.replies
-        if (chi && chi.length > 0) {
+
+
+        if (d.replies) {
+            var chi = d.replies.data.children
             for (var i in chi) {
+                console.log('recursing at ', depth)
                 emitComments(chi[i], depth + 1, result)
 
             }
