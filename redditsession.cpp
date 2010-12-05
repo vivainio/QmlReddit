@@ -13,6 +13,11 @@
 #include <QXmlSimpleReader>
 //#include "platutil.h"
 #include <QFileInfo>
+#include <QNetworkCookieJar>
+#include <QNetworkCookie>
+
+#include "rcookiejar.h"
+
 #include "platutil.h"
 
 //#define RSTEST
@@ -21,6 +26,7 @@ RedditSession::RedditSession(QObject *parent) :
     QObject(parent)
 {
     m_net = new QNetworkAccessManager(this);
+    m_net->setCookieJar(new RCookieJar(this));
     m_eng = new QScriptEngine;
 
 }
@@ -39,6 +45,8 @@ void RedditSession::start(const QString& cat)
 
     QNetworkReply* reply = m_net->get(req);
     connect(reply, SIGNAL(finished()), this, SLOT(linksFetched()));
+
+    login("qmtest", "qmtest");
 
 }
 
@@ -63,7 +71,7 @@ void RedditSession::linksFetched()
     //qDebug() << "fetched";
 
     QByteArray ba = reply->readAll();
-    //qDebug() << "data " << ba;
+    qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
     QScriptValue items = sv.property("data").property("children");
     //qDebug() << "chi " << items.toString();
@@ -75,6 +83,7 @@ void RedditSession::linksFetched()
         QString url = v.property("url").toString();
         QString title = v.property("title").toString();        
         QString tnail = v.property("thumbnail").toString();
+        QString name = v.property("name").toString();
         expandHtmlEntities(title);
 
         int score = v.property("score").toInt32();
@@ -86,6 +95,7 @@ void RedditSession::linksFetched()
         e.thumbnail = tnail;
         e.score = score;
         e.comments = v.property("num_comments").toString();
+        e.name = name;
         m_ents.append(e);
     }
     emit linksAvailable();
@@ -261,5 +271,80 @@ void RedditSession::expandHtmlEntities(QString &text)
     text.replace("&quot;", "\"").replace("&amp;", "&").
             replace("&gt;",">").replace("&lt;", "<");
 
+}
+
+void RedditSession::login(const QString &user, const QString &passwd)
+{
+    QString url = "http://www.reddit.com/api/login";
+
+    QNetworkRequest req(url);
+
+    //req.setHeader(QNetworkRequest::CookieSaveControlAttribute, QVariant());
+
+
+    QUrl params;
+    params.addQueryItem("user", user);
+    params.addQueryItem("passwd", passwd);
+
+    QByteArray postcont = params.toEncoded();
+    postcont.remove(0,1);
+    qDebug() << "posting " << postcont;
+    QNetworkReply* reply = m_net->post(req, postcont);
+
+    connect(reply, SIGNAL(finished()), this, SLOT(loginFinished()));
+
+
+}
+
+void RedditSession::loginFinished()
+{
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+    if (!reply)
+        return;
+
+
+    qDebug() << "loginfinish " << reply->readAll();
+
+
+    QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
+    QNetworkReply* reply2 = m_net->get(getMine);
+
+    connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
+
+
+/*
+Vote:
+www.reddit.com/api/vote
+cookie required
+POSTDATA: id=t1_abc1010&dir=1&r=android&uh=f0f0f0f0f0f0f0f0f0f0f0
+id is “thing id” of thing you’re voting for.
+dir = 1, 0, or -1. “direction” of vote.
+r = subreddit name
+uh = user modhash
+
+*/
+
+}
+
+void RedditSession::getMyRedditsFinished()
+{
+    QNetworkReply* reply = qobject_cast<QNetworkReply*>(sender());
+    if (!reply)
+        return;
+
+    QByteArray ba = reply->readAll();
+    qDebug() << "data " << ba;
+    QScriptValue sv = parseJson(ba);
+    QString modhash = sv.property("data").property("modhash").toString();
+    QScriptValue items = sv.property("data").property("children");
+    QScriptValueIterator it(items);
+    m_myreddits.clear();
+    while (it.hasNext()) {
+        it.next();
+        QScriptValue v = it.value().property("data");
+        QString dname = v.property("display_name").toString();
+        m_myreddits.append(dname);
+        qDebug() << "my " << dname;
+    }
 }
 

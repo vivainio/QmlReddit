@@ -20,7 +20,8 @@ struct RedditEntry {
         ScoreRole,
         CommentsRole,
         PermalaLinkRole,
-        ThumbnailRole
+        ThumbnailRole,
+        NameRole
     };
 
     QString url;
@@ -29,6 +30,7 @@ struct RedditEntry {
     QString thumbnail;
     int score;
     QString comments;
+    QString name;
 };
 
 typedef QVector<RedditEntry> REList;
@@ -52,6 +54,9 @@ public Q_INVOKABLE:
     QStringList getCategories();
     static void expandHtmlEntities(QString& text);
 
+    void login(const QString& user, const QString& passwd);
+
+
 
 signals:
     void linksAvailable();
@@ -63,20 +68,19 @@ public slots:
 private slots:
       void linksFetched();
       void commentsFetched();
+      void loginFinished();
+      void getMyRedditsFinished();
 
 public:
       QNetworkAccessManager* m_net;
-
 
       QStringList m_comments;
 
 private:
     QScriptValue parseJson(QString msg);
-
     QVector<RedditEntry> m_ents;
-
-
     QScriptEngine* m_eng;
+    QStringList m_myreddits;
 
 };
 

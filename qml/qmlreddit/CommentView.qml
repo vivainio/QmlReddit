@@ -9,7 +9,7 @@ Rectangle {
     signal reqPreview(string url)
     signal reqLinks
 
-    ListModel {
+    ListModel {        
         id: mdlComments
 
     }
@@ -134,6 +134,26 @@ Rectangle {
         model: mdlComments
         delegate: dlgComments
         spacing: 5
+
+        // vote buttons, enable later
+        /*
+        header: Rectangle {
+            height: 80
+            Row {
+                spacing: 50
+                anchors.fill: parent
+                RButton {
+                    buttonLabel: "+"
+                    color: "blue"
+                }
+                RButton {
+                    buttonLabel: "-"
+                }
+            }
+
+        }
+        */
+
         footer: Rectangle {
             height: imgNext.height
         }

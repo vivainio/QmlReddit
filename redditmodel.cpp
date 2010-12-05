@@ -31,6 +31,8 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::PermalaLinkRole] = "permalink";
     roleNames[RedditEntry::ThumbnailRole] = "thumbnail";
     roleNames[RedditEntry::CommentsRole] = "comments";
+    roleNames[RedditEntry::NameRole] = "name";
+
 
     m_linksmodel = new RoleItemModel(roleNames);
 
@@ -175,4 +177,5 @@ void RedditModel::enableRestricted(bool val)
 {
     m_enableRestricted = val;
 }
+
 
