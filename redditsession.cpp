@@ -75,7 +75,7 @@ void RedditSession::linksFetched()
         QString url = v.property("url").toString();
         QString title = v.property("title").toString();        
         QString tnail = v.property("thumbnail").toString();
-
+        expandHtmlEntities(title);
 
         int score = v.property("score").toInt32();
         //qDebug() << v.toString() << title << " U " << url << " TN " << tnail;
@@ -128,8 +128,9 @@ class CommentsParser : public QXmlDefaultHandler
     bool endElement(const QString& namespaceURI, const QString& localName, const QString& qName)
     {
         //qDebug() << "end" << localName;
-        QString trans = m_current.replace("&quot;", "\"").replace("&amp;", "&").
-                replace("&gt;",">").replace("&lt;", "<");
+        RedditSession::expandHtmlEntities(m_current);
+        //QString trans = m_current.replace("&quot;", "\"").replace("&amp;", "&").
+        //        replace("&gt;",">").replace("&lt;", "<");
         if (localName == "description") {
             m_comments.append(m_current);
         }
@@ -218,6 +219,13 @@ QStringList RedditSession::getCategories()
     }
 
     return cats;
+
+}
+
+void RedditSession::expandHtmlEntities(QString &text)
+{
+    text.replace("&quot;", "\"").replace("&amp;", "&").
+            replace("&gt;",">").replace("&lt;", "<");
 
 }
 

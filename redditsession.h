@@ -50,6 +50,7 @@ public Q_INVOKABLE:
     const QStringList& comments() { return m_comments; }
 
     QStringList getCategories();
+    static void expandHtmlEntities(QString& text);
 
 
 signals:
