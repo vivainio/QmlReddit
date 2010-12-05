@@ -164,8 +164,10 @@ void RedditSession::commentsFetched()
     QByteArray ba = reply->readAll();
     ba.prepend("(");
     ba.append(")");
+    QString s = ba;
+    expandHtmlEntities(s);
 
-    emit commentsJsonAvailable(ba);
+    emit commentsJsonAvailable(s);
 #if 0
     //qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);

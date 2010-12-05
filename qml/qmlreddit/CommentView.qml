@@ -18,9 +18,12 @@ Rectangle {
         var co = {}
         RE.dump(jsobj)
         var d = jsobj['data']
-        co['body'] = d.body_html
-        console.log(co['body'])
-        co['author'] = d.author
+
+        co = {
+                body : d.body_html,
+                author: d.author,
+                depth: depth
+        }
 
         var chi = d.replies
         if (chi && chi.length > 0) {
@@ -50,6 +53,7 @@ Rectangle {
         for (var i in aggr) {
             var val = aggr[i]
             mdlComments.append(val)
+            //console.log("body ", unescape(val.body))
 
         }
 
@@ -75,10 +79,11 @@ Rectangle {
             border.right: 30
 
             Text {
-                x: 3
+                x: depth * 20
                 y: 10
                 id: txtCom
-                text: body
+                text: body + " " + depth
+                textFormat: Text.RichText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 width: parent.width - 5
             }
