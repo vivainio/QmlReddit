@@ -8,18 +8,19 @@ Rectangle {
     color: "green"
     anchors {
         top: parent.top
-        left: parent.left
     }
 
     property alias title : btitle.text
 
     Text {
         id: btitle
+        anchors.centerIn: parent
+        color: "yellow"
     }
 
     Timer {
         id: tmDismiss
-        interval: 5000; running: false; repeat: false
+        interval: 2000; running: false; repeat: false
         onTriggered: rrect.state = "";
     }
 
@@ -37,6 +38,17 @@ Rectangle {
                 x: 0
 
             }
+        }
+    ]
+    transitions: [
+        Transition {
+            PropertyAnimation {
+                target: rrect
+                properties: "x"
+                duration: 200
+
+            }
+
         }
     ]
 

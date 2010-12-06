@@ -33,6 +33,7 @@ Rectangle {
     }
 
     function startup() {
+        infoBanner.show("Loading")
 
 
     }
@@ -193,6 +194,13 @@ Rectangle {
             mainview.state = "LinkState"
         }
 
+
+    }
+
+
+
+    InfoBanner {
+        id: infoBanner
 
     }
 

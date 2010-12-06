@@ -167,12 +167,14 @@ Rectangle {
                     color: "blue"
                     onClicked: {
                         mdlRedditSession.vote(priv.linkData.name, 1)
+                        infoBanner.show("Upvote!")
                     }
                 }
                 RButton {
                     buttonLabel: "-"
                     onClicked: {
                         mdlRedditSession.vote(priv.linkData.name, -1)
+                        infoBanner.show("Downvote!")
                     }
 
                 }
