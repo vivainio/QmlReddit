@@ -15,10 +15,13 @@
 #include <QFileInfo>
 #include <QNetworkCookieJar>
 #include <QNetworkCookie>
+#include <QCoreApplication>
 
 #include "rcookiejar.h"
 
 #include "platutil.h"
+#include <QSettings>
+#include "networkcookiejar/networkcookiejar.h"
 
 //#define RSTEST
 
@@ -26,10 +29,22 @@ RedditSession::RedditSession(QObject *parent) :
     QObject(parent)
 {
     m_net = new QNetworkAccessManager(this);
-    m_net->setCookieJar(new RCookieJar(this));
-    m_eng = new QScriptEngine;
 
+
+    m_eng = new QScriptEngine;
+    QCoreApplication::setOrganizationName("VilleSoft");
+    QCoreApplication::setOrganizationDomain("unknown.domain");
+    QCoreApplication::setApplicationName("QmlReddit");
+
+    RCookieJar* cj = new RCookieJar(this);
+    QSettings s;
+    QVariant v = s.value("Auth/Cookies");
+    if (v.isValid())
+        cj->restore(v.toByteArray());
+
+    m_net->setCookieJar(cj);
 }
+
 
 void RedditSession::start(const QString& cat)
 {
@@ -319,12 +334,19 @@ void RedditSession::loginFinished()
     emit loginResponse(s);
     qDebug() << "loginfinish " << s;
 
+    if (RCookieJar* cj = qobject_cast<RCookieJar*>(m_net->cookieJar())) {
+        QSettings setts;
+        setts.setValue("Auth/Cookies", cj->store());
+    }
 
 
     QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
     QNetworkReply* reply2 = m_net->get(getMine);
 
     connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));    
+
+    QSettings setts;
+    setts.setValue("cookies/all", cookies());
 
 /*
 Vote:
@@ -374,4 +396,5 @@ QVariantMap RedditSession::cookies()
     return jar->cookies();
 
 }
+
 

@@ -4,6 +4,8 @@
 #include <QNetworkCookieJar>
 #include <QVariantMap>
 
+#include <QByteArray>
+
 class RCookieJar : public QNetworkCookieJar
 {
     Q_OBJECT
@@ -12,6 +14,8 @@ public:
 
     virtual bool setCookiesFromUrl ( const QList<QNetworkCookie> & cookieList, const QUrl & url );
 
+    QByteArray store();
+    void restore(const QByteArray& stored);
 signals:
 
 public slots:

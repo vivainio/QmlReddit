@@ -48,7 +48,7 @@ Rectangle {
 
     function populate(json) {
         var obj = eval(json)
-        console.log("obj ",obj)
+        //console.log("obj ",obj)
         var items = obj[1]['data']['children']
         var aggr = []
         for (var it in items) {

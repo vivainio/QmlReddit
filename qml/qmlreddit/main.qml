@@ -13,7 +13,7 @@ Rectangle {
     Connections {
         target: mdlReddit
         onCommentsJsonAvailable: {
-            console.log('got json ', json)
+            //console.log('got json ', json)
             commentview.populate(json)
 
         }

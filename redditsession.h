@@ -12,6 +12,7 @@ class QNetworkReply;
 
 class QScriptEngine;
 class QScriptValue;
+class QSettings;
 
 struct RedditEntry {
 
