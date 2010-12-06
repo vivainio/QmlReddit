@@ -348,17 +348,6 @@ void RedditSession::loginFinished()
     QSettings setts;
     setts.setValue("cookies/all", cookies());
 
-/*
-Vote:
-www.reddit.com/api/vote
-cookie required
-POSTDATA: id=t1_abc1010&dir=1&r=android&uh=f0f0f0f0f0f0f0f0f0f0f0
-id is “thing id” of thing you’re voting for.
-dir = 1, 0, or -1. “direction” of vote.
-r = subreddit name
-uh = user modhash
-
-*/
 
 }
 
@@ -395,6 +384,42 @@ QVariantMap RedditSession::cookies()
 
     return jar->cookies();
 
+}
+
+void RedditSession::setModhash(const QString &modhash)
+{
+    m_modhash = modhash;
+
+}
+
+void RedditSession::vote(const QString &thing, int votedir)
+{
+    /*
+    Vote:
+    www.reddit.com/api/vote
+    cookie required
+    POSTDATA: id=t1_abc1010&dir=1&r=android&uh=f0f0f0f0f0f0f0f0f0f0f0
+    id is “thing id” of thing you’re voting for.
+    dir = 1, 0, or -1. “direction” of vote.
+    r = subreddit name
+    uh = user modhash
+
+    */
+
+    QString url = "http://www.reddit.com/api/vote";
+
+    QNetworkRequest req(url);
+
+    QUrl params;
+    params.addQueryItem("id", thing);
+    params.addQueryItem("dir", QString::number(votedir));
+    params.addQueryItem("uh", m_modhash);
+
+    QByteArray postcont = params.toEncoded();
+    postcont.remove(0,1);
+    qDebug() << "posting " << postcont;
+    QNetworkReply* reply = m_net->post(req, postcont);
+    Q_UNUSED(reply);
 }
 
 

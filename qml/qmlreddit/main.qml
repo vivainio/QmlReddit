@@ -155,6 +155,7 @@ Rectangle {
             //console.log("url ", url)
 
             mdlReddit.fetchComments(url);
+            commentview.setLink(lnk)
             webpreview.url = lnk.url
         }
 

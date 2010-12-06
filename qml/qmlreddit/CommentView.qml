@@ -9,9 +9,19 @@ Rectangle {
     signal reqPreview(string url)
     signal reqLinks
 
+    QtObject {
+        id: priv
+        property variant linkData
+
+    }
+
     ListModel {        
         id: mdlComments
 
+    }
+
+    function setLink(lnk) {
+        priv.linkData = lnk
     }
 
     function emitComments(jsobj, depth, result) {
@@ -47,8 +57,16 @@ Rectangle {
     }
 
     function populate(json) {
+        //console.log("comment_json ", json)
         var obj = eval(json)
         //console.log("obj ",obj)
+        var uh = obj[0]['data']['modhash']
+        if (uh && uh.length > 0) {
+            mdlRedditSession.setModhash(uh)
+
+        }
+
+        console.log('user modhash ', uh)
         var items = obj[1]['data']['children']
         var aggr = []
         for (var it in items) {
@@ -136,7 +154,7 @@ Rectangle {
         spacing: 5
 
         // vote buttons, enable later
-        /*
+
         header: Rectangle {
             height: 80
             Row {
@@ -145,14 +163,20 @@ Rectangle {
                 RButton {
                     buttonLabel: "+"
                     color: "blue"
+                    onClicked: {
+                        mdlRedditSession.vote(priv.linkData.name, 1)
+                    }
                 }
                 RButton {
                     buttonLabel: "-"
+                    onClicked: {
+                        mdlRedditSession.vote(priv.linkData.name, -1)
+                    }
+
                 }
             }
 
-        }
-        */
+        }        
 
         footer: Rectangle {
             height: imgNext.height

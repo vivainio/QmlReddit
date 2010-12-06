@@ -58,7 +58,10 @@ public slots:
 
     void login(const QString& user, const QString& passwd);
 
+    void setModhash(const QString& modhash);
     QVariantMap cookies();
+    void vote(const QString& thing, int votedir);
+
 
 signals:
     void linksAvailable();
@@ -67,12 +70,12 @@ signals:
     void loginResponse(const QString& response);
     void categoriesUpdated();
 
-
 private slots:
       void linksFetched();
       void commentsFetched();
       void loginFinished();
       void getMyRedditsFinished();
+
 
 public:
       QNetworkAccessManager* m_net;
