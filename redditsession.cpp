@@ -339,9 +339,6 @@ void RedditSession::loginFinished()
         setts.setValue("Auth/Cookies", cj->store());
     }
 
-    getMyReddits();
-
-
 }
 
 void RedditSession::getMyRedditsFinished()
