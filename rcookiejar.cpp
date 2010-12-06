@@ -54,7 +54,7 @@ bool RCookieJar::setCookiesFromUrl(const QList<QNetworkCookie> &cookieList, cons
 {
     qDebug() << "Setting cookie for " << url << " : " <<cookieList;
 
-    QNetworkCookieJar::setCookiesFromUrl(cookieList, url);
+    return QNetworkCookieJar::setCookiesFromUrl(cookieList, url);
 
 }
 
