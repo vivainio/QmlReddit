@@ -25,6 +25,12 @@ Rectangle {
 
         }
     }
+    Connections {
+        target: mdlRedditSession
+        onLoggedOut: {
+            mdlReddit.refreshCategories()
+        }
+    }
 
     function startup() {
 

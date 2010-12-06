@@ -73,6 +73,7 @@ signals:
     void commentsJsonAvailable(const QString& comments);
     void loginResponse(const QString& response);
     void categoriesUpdated();
+    void loggedOut();
 
 private slots:
       void linksFetched();

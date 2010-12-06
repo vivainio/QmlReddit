@@ -423,6 +423,8 @@ void RedditSession::logout()
 {
     cookieJar()->clear();
     saveCookies();
+    m_myreddits.clear();
+    emit loggedOut();
 
 }
 
