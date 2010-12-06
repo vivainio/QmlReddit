@@ -15,7 +15,7 @@ Rectangle {
             TextInput {
 
                 id: inpUserName
-
+                text: "qmtest"
                 width: 200
                 Rectangle {
                     border.width: 1
@@ -47,6 +47,7 @@ Rectangle {
 
             TextInput {
                 id: inpPassword
+                text: "qmtest"
                 width: 200
                 echoMode: TextInput.Password
                 Rectangle {
@@ -81,6 +82,8 @@ Rectangle {
         buttonLabel: "Login"
 
         onClicked: {
+            mdlRedditSession.login( inpUserName.text, inpPassword.text)
+
         }
 
     }

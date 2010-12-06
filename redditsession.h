@@ -43,7 +43,7 @@ Q_OBJECT
 public:
     explicit RedditSession(QObject *parent = 0);
 
-public Q_INVOKABLE:
+public slots:
 
     void start(const QString& url);
     void fetchComments(const QString& commentaddr);
