@@ -6,6 +6,15 @@ Rectangle {
 
     property bool loggedIn: false
 
+    Component.onCompleted: {
+        var cook = mdlRedditSession.cookies()
+        if (cook.reddit_session) {
+            loggedIn = true
+        } else {
+            loggedIn = false
+        }
+    }
+
     Connections {
         target: mdlRedditSession
         onLoginResponse: {
@@ -16,6 +25,7 @@ Rectangle {
                 loggedIn = true
             } else {
                 aLoginBounce.start()
+                loggedIn = false
 
             }
 
@@ -37,6 +47,8 @@ Rectangle {
                 id: inpUserName
                 text: "qmtest"
                 width: 200
+                height: 50
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                 Rectangle {
                     border.width: 1
                     z: parent.z - 1
@@ -69,7 +81,10 @@ Rectangle {
                 id: inpPassword
                 text: "qmtest"
                 width: 200
-                echoMode: TextInput.Password
+                height: 50
+
+                echoMode: TextInput.PasswordEchoOnEdit
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                 Rectangle {
                     border.width: 1
                     z: parent.z - 1
@@ -102,7 +117,13 @@ Rectangle {
         color: loggedIn ? "blue" : "red"
 
         onClicked: {
-            mdlRedditSession.login( inpUserName.text, inpPassword.text)
+            mdlRedditSession.logout()
+
+            if (!loggedIn) {
+                mdlRedditSession.login( inpUserName.text, inpPassword.text)
+            }
+            loggedIn = false
+
 
         }
 

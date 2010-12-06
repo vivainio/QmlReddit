@@ -33,23 +33,6 @@ Rectangle {
 
     Component.onCompleted: startup();
 
-    /*
-    Flipable {
-        id: fl
-        anchors.fill: parent
-        back: LinkView { id: linkview; anchors.fill: parent }
-        front: CommentView {
-            id: commentview; width: parent.width; height: parent.height
-            onCommentSelected: {
-                console.log("sel")
-            }
-
-        }
-
-
-    }
-    */
-
     ActionGrid {
         id: categoryselector
         x : parent.width + 200

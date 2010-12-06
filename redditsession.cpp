@@ -333,10 +333,7 @@ void RedditSession::loginFinished()
     emit loginResponse(s);
     qDebug() << "loginfinish " << s;
 
-    if (RCookieJar* cj = qobject_cast<RCookieJar*>(m_net->cookieJar())) {
-        QSettings setts;
-        setts.setValue("Auth/Cookies", cj->store());
-    }
+    saveCookies();
 
 }
 
@@ -419,6 +416,27 @@ void RedditSession::getMyReddits()
 
     connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
 
+
+}
+
+void RedditSession::logout()
+{
+    cookieJar()->clear();
+    saveCookies();
+
+}
+
+RCookieJar * RedditSession::cookieJar()
+{
+    RCookieJar* cj = qobject_cast<RCookieJar*>(m_net->cookieJar());
+    return cj;
+}
+
+void RedditSession::saveCookies()
+{
+
+    QSettings setts;
+    setts.setValue("Auth/Cookies", cookieJar()->store());
 
 }
 

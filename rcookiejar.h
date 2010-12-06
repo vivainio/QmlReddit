@@ -16,6 +16,7 @@ public:
 
     QByteArray store();
     void restore(const QByteArray& stored);
+    void clear();
 signals:
 
 public slots:

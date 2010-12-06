@@ -13,6 +13,7 @@ class QNetworkReply;
 class QScriptEngine;
 class QScriptValue;
 class QSettings;
+class RCookieJar;
 
 struct RedditEntry {
 
@@ -58,11 +59,13 @@ public slots:
 
     void login(const QString& user, const QString& passwd);
 
+    void logout();
+
     void setModhash(const QString& modhash);
     QVariantMap cookies();
     void vote(const QString& thing, int votedir);
     void getMyReddits();
-
+    void saveCookies();
 
 signals:
     void linksAvailable();
@@ -85,6 +88,7 @@ public:
 
 private:
     QScriptValue parseJson(QString msg);
+    RCookieJar* cookieJar();
     QVector<RedditEntry> m_ents;
     QScriptEngine* m_eng;
     QStringList m_myreddits;

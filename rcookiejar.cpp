@@ -88,3 +88,8 @@ void RCookieJar::restore(const QByteArray &stored)
 
 }
 
+void RCookieJar::clear()
+{
+    setAllCookies(QList<QNetworkCookie>());
+}
+
