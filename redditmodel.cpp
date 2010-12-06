@@ -90,6 +90,7 @@ void RedditModel::doPopulateLinks()
         it->setData(e.url, RedditEntry::UrlRole);
         it->setData(e.thumbnail, RedditEntry::ThumbnailRole);
         it->setData(e.comments, RedditEntry::CommentsRole);
+        it->setData(e.name, RedditEntry::NameRole);
 
         m_linksmodel->appendRow(it);
 

@@ -98,7 +98,7 @@ void RedditSession::linksFetched()
         QString url = v.property("url").toString();
         QString title = v.property("title").toString();        
         QString tnail = v.property("thumbnail").toString();
-        QString name = v.property("name").toString();
+        QString name = v.property("name").toString();        
         expandHtmlEntities(title);
 
         int score = v.property("score").toInt32();
