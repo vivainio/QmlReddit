@@ -66,9 +66,9 @@ Rectangle {
             boundsBehavior: Flickable.StopAtBounds
 
             delegate: dlgbutton
-            width: 500
+            width: 600
             height: 100
-            spacing: 20
+            spacing: 10
 
 
         }
@@ -122,7 +122,7 @@ Rectangle {
             name: "expanded"
             PropertyChanges {
                 target: root
-                width: 500
+                width: 600
                 opacity: 1.0
             }
 

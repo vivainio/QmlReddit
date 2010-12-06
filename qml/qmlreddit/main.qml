@@ -94,6 +94,10 @@ Rectangle {
                 label: "Browser"
                 name: "browser"
             }
+            ListElement {
+                label: "Prefs"
+                name: "prefs"
+            }
         }
         onItemSelected: {
             if (itemName == "cat") {
@@ -112,6 +116,9 @@ Rectangle {
                 }
 
 
+            }
+            if (itemName == "prefs") {
+                mainview.state = "SettingsState"
             }
 
             //console.log("Select item ", itemName)
@@ -178,6 +185,14 @@ Rectangle {
 
         }
     }
+    SettingsView {
+        id: settingsview
+        onDismiss: {
+            mainview.state = "LinkState"
+        }
+
+
+    }
 
     state: "LinkState"
     states: [
@@ -185,19 +200,11 @@ Rectangle {
 
             name: "LinkState"
 
-            //StateChangeScript {
-            //    script: console.log("tolinks");
-
-
-            //}
-
             PropertyChanges {
                 target: linkview
                 x: 0
 
-
             }
-
         },
 
         State {
@@ -238,6 +245,14 @@ Rectangle {
                 target: categoryselector
                 x : 0
             }
+        },
+        State {
+            name: "SettingsState"
+            PropertyChanges {
+                target: settingsview
+                x : 0
+            }
+
         }
 
     ]
