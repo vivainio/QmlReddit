@@ -140,12 +140,4 @@ Rectangle {
 
     }
 
-    /*
-    ListModel {
-        id: mdlLinks
-        ListElement { url:  "google.com"; desc : "search engine"; score : 3 }
-        ListElement { url: "slashdot.org"; desc: "gossip site"; score : 12 }
-    }
-    */
-
 }

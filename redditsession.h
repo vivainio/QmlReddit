@@ -64,6 +64,7 @@ signals:
     void commentsAvailable();   
     void commentsJsonAvailable(const QString& comments);
     void loginResponse(const QString& response);
+    void categoriesUpdated();
 
 
 private slots:
@@ -82,6 +83,7 @@ private:
     QVector<RedditEntry> m_ents;
     QScriptEngine* m_eng;
     QStringList m_myreddits;
+    QString m_modhash;
 
 };
 

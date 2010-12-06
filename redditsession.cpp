@@ -224,9 +224,15 @@ QStringList RedditSession::getCategories()
 {
     //return QStringList() << "programming" << "pics";
 
+    QStringList cats;
+
+    cats << m_myreddits;
+
     QString cf = PlatUtil::configFile();
     //qDebug() << "Config " << cf;
     QFileInfo fi(cf);
+
+
     if (!fi.exists()) {
         QFile f(cf);
         f.open(QFile::WriteOnly);
@@ -244,7 +250,6 @@ QStringList RedditSession::getCategories()
     bool r = f.open(QFile::ReadOnly);
     Q_ASSERT(r);
 
-    QStringList cats;
     QTextStream ts(&f);
     for (;;) {
         if (ts.atEnd())
@@ -263,6 +268,8 @@ QStringList RedditSession::getCategories()
         cats = getCategories();
 
     }
+
+    cats.removeDuplicates();
 
     return cats;
 
@@ -313,12 +320,11 @@ void RedditSession::loginFinished()
     qDebug() << "loginfinish " << s;
 
 
-    /*
+
     QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
     QNetworkReply* reply2 = m_net->get(getMine);
 
-    connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
-    */
+    connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));    
 
 /*
 Vote:
@@ -341,9 +347,10 @@ void RedditSession::getMyRedditsFinished()
         return;
 
     QByteArray ba = reply->readAll();
-    qDebug() << "data " << ba;
+    //qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
-    QString modhash = sv.property("data").property("modhash").toString();
+    m_modhash = sv.property("data").property("modhash").toString();
+    qDebug() << "modhash " << m_modhash;
     QScriptValue items = sv.property("data").property("children");
     QScriptValueIterator it(items);
     m_myreddits.clear();
@@ -354,6 +361,8 @@ void RedditSession::getMyRedditsFinished()
         m_myreddits.append(dname);
         qDebug() << "my " << dname;
     }
+    emit categoriesUpdated();
+
 }
 
 QVariantMap RedditSession::cookies()

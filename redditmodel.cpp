@@ -24,6 +24,9 @@ RedditModel::RedditModel(QObject *parent) :
 
     connect(m_ses, SIGNAL(commentsJsonAvailable(QString)), this,
             SIGNAL(commentsJsonAvailable(QString)));
+
+    connect(m_ses, SIGNAL(categoriesUpdated()), this, SLOT(refreshCategories()));
+
     QHash<int, QByteArray> roleNames;
     roleNames[RedditEntry::UrlRole] =  "url";
     roleNames[RedditEntry::DescRole] = "desc";
@@ -138,6 +141,8 @@ void RedditModel::refreshCategories()
         // adult content (to ensure commercial success for the app ;-)
         cats << "nsfw" << "gonewild" << "adult" << "sex";
     }
+
+    cats.removeDuplicates();
 
     m_cats->clear();
     foreach (QString c, cats) {
