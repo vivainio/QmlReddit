@@ -39,9 +39,8 @@ Rectangle {
             clip: true
             backsteppingExits: false
 
-            Text {
+            LoginView {
                 anchors.fill: parent
-                text: "hello"
 
             }
 
@@ -53,9 +52,6 @@ Rectangle {
 
                 text: "Nothing here yet"
             }
-
-
-
 
         }
     }
