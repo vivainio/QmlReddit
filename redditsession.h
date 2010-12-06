@@ -61,6 +61,7 @@ public slots:
     void setModhash(const QString& modhash);
     QVariantMap cookies();
     void vote(const QString& thing, int votedir);
+    void getMyReddits();
 
 
 signals:

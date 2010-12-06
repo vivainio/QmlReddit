@@ -11,7 +11,9 @@ Rectangle {
 
     QtObject {
         id: priv
+        property int lastVote: 0
         property variant linkData
+
 
     }
 

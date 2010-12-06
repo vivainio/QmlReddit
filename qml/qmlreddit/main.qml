@@ -10,6 +10,13 @@ Rectangle {
 
     //property variant eng
 
+    QtObject {
+        id: priv
+        property bool myRedditsFetched : false
+
+
+    }
+
     Connections {
         target: mdlReddit
         onCommentsJsonAvailable: {
@@ -101,6 +108,11 @@ Rectangle {
         }
         onItemSelected: {
             if (itemName == "cat") {
+                if (!priv.myRedditsFetched) {
+                    mdlRedditSession.getMyReddits()
+                    priv.myRedditsFetched = true
+                }
+
                 mainview.state = "SelectCategory"
 
             }

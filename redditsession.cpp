@@ -339,14 +339,7 @@ void RedditSession::loginFinished()
         setts.setValue("Auth/Cookies", cj->store());
     }
 
-
-    QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
-    QNetworkReply* reply2 = m_net->get(getMine);
-
-    connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));    
-
-    QSettings setts;
-    setts.setValue("cookies/all", cookies());
+    getMyReddits();
 
 
 }
@@ -420,6 +413,17 @@ void RedditSession::vote(const QString &thing, int votedir)
     qDebug() << "posting " << postcont;
     QNetworkReply* reply = m_net->post(req, postcont);
     Q_UNUSED(reply);
+}
+
+void RedditSession::getMyReddits()
+{
+
+    QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
+    QNetworkReply* reply2 = m_net->get(getMine);
+
+    connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
+
+
 }
 
 
