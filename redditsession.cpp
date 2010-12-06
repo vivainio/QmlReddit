@@ -21,7 +21,6 @@
 
 #include "platutil.h"
 #include <QSettings>
-#include "networkcookiejar/networkcookiejar.h"
 
 //#define RSTEST
 
