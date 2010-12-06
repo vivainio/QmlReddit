@@ -2,6 +2,7 @@
 #define RCOOKIEJAR_H
 
 #include <QNetworkCookieJar>
+#include <QVariantMap>
 
 class RCookieJar : public QNetworkCookieJar
 {
@@ -11,10 +12,11 @@ public:
 
     virtual bool setCookiesFromUrl ( const QList<QNetworkCookie> & cookieList, const QUrl & url );
 
-
 signals:
 
 public slots:
+    QVariantMap cookies();
+
 
 };
 

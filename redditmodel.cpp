@@ -61,6 +61,7 @@ void RedditModel::setup(QDeclarativeContext *ctx)
     //ctx->setContextProperty("mdlComments", m_commentsmodel);
     ctx->setContextProperty("mdlCategories", m_cats);
     ctx->setContextProperty("mdlRedditSession", m_ses);
+
     start("");
 
 }

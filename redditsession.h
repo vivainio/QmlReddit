@@ -5,6 +5,7 @@
 
 #include <QVector>
 #include <QStringList>
+#include <QVariantMap>
 
 class QNetworkAccessManager;
 class QNetworkReply;
@@ -56,14 +57,14 @@ public slots:
 
     void login(const QString& user, const QString& passwd);
 
-
+    QVariantMap cookies();
 
 signals:
     void linksAvailable();
     void commentsAvailable();   
     void commentsJsonAvailable(const QString& comments);
+    void loginResponse(const QString& response);
 
-public slots:
 
 private slots:
       void linksFetched();

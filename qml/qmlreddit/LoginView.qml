@@ -1,6 +1,26 @@
 import Qt 4.7
 
+import "redditengine.js" as RE
+
 Rectangle {
+
+    property bool loggedIn: false
+
+    Connections {
+        target: mdlRedditSession
+        onLoginResponse: {
+            //console.log("Resp is ", response)
+            var cook = mdlRedditSession.cookies()
+            RE.dump(cook)
+            if (cook.reddit_session) {
+                loggedIn = true
+            } else {
+                aLoginBounce.start()
+
+            }
+
+        }
+    }
 
     Column {
         anchors.centerIn: parent
@@ -62,15 +82,14 @@ Rectangle {
                     }
 
                 }
-
             }
-
 
         }
 
     }
 
     RButton {
+        id: btnLogin
         anchors {
             right: parent.right
             bottom: parent.bottom
@@ -79,13 +98,37 @@ Rectangle {
             bottomMargin: 30
         }
 
-        buttonLabel: "Login"
+        buttonLabel: loggedIn? "Logout" : "Login"
+        color: loggedIn ? "blue" : "red"
 
         onClicked: {
             mdlRedditSession.login( inpUserName.text, inpPassword.text)
 
         }
 
+    }
+    SequentialAnimation {
+        id: aLoginBounce
+
+        running: false
+
+        PropertyAnimation {
+            target: btnLogin
+            property: "anchors.bottomMargin"
+            to: 100
+
+            duration: 400
+            easing.type: Easing.InQuad
+        }
+        PropertyAnimation {
+            target: btnLogin
+            property: "anchors.bottomMargin"
+            to: 30
+
+            duration: 400
+            easing.type: Easing.InQuad
+
+        }
     }
 
 

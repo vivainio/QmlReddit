@@ -304,15 +304,21 @@ void RedditSession::loginFinished()
     if (!reply)
         return;
 
+    // the session id gets saved to cookies
+    // modhash to be digged up later
 
-    qDebug() << "loginfinish " << reply->readAll();
+    QByteArray resp = reply->readAll();
+    QString s = resp;
+    emit loginResponse(s);
+    qDebug() << "loginfinish " << s;
 
 
+    /*
     QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
     QNetworkReply* reply2 = m_net->get(getMine);
 
     connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
-
+    */
 
 /*
 Vote:
@@ -348,5 +354,15 @@ void RedditSession::getMyRedditsFinished()
         m_myreddits.append(dname);
         qDebug() << "my " << dname;
     }
+}
+
+QVariantMap RedditSession::cookies()
+{
+    RCookieJar* jar = qobject_cast<RCookieJar*> (m_net->cookieJar());
+    if (!jar)
+        return QVariantMap();
+
+    return jar->cookies();
+
 }
 
