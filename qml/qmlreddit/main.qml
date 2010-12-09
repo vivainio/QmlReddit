@@ -141,7 +141,7 @@ Rectangle {
 
             var lnk = mdlReddit.getLink(selIndex)
             if (eng.shouldShowComments(lnk)) {
-                mainview.state = "CommentsState"
+                mainview.state = "CommentsState"                
 
             } else {
                mainview.state = "PreviewState"
@@ -158,7 +158,7 @@ Rectangle {
 
             mdlReddit.fetchComments(url);
             commentview.setLink(lnk)
-            webpreview.url = lnk.url
+            webpreview.url = lnk.url            
         }
 
 
@@ -194,9 +194,7 @@ Rectangle {
             mainview.state = "LinkState"
         }
 
-
     }
-
 
 
     InfoBanner {

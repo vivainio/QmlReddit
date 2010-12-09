@@ -6,6 +6,8 @@ import "redditengine.js" as RE
 Rectangle {
     x: width + 200
 
+    id: root
+
     signal commentSelected
     signal reqPreview(string url)
     signal reqLinks
@@ -22,8 +24,11 @@ Rectangle {
 
     }
 
+
     function setLink(lnk) {
         priv.linkData = lnk
+        progressInd.show()
+
     }
 
     function emitComments(jsobj, depth, result) {
@@ -53,6 +58,7 @@ Rectangle {
 
             }
         }
+        progressInd.hide()
 
         //console.log('replies ', chi)
 
@@ -228,6 +234,64 @@ Rectangle {
         opacity: 0.8
     }
 
-    // we overlay back / preview button over listview...
+    Rectangle {
+        id: progressInd
+        x:  -200
+
+        anchors.verticalCenter: parent.verticalCenter
+
+        function show() {
+            progressInd.state = "shown"
+
+        }
+
+        function hide() {
+            progressInd.state = ""
+        }
+
+        Text {
+            id: tInd
+            text: "Comments loading"
+            anchors.centerIn: parent
+
+        }
+
+        width: tInd.width + 20
+        height: tInd.height + 20
+        color: "red"
+        states: [
+            State {
+                name: "shown"
+                PropertyChanges {
+                    target: progressInd
+                    x: root.width / 2 - width/2
+
+                }
+
+            }
+        ]
+
+        transitions: [
+            Transition {
+                to: "shown"
+                NumberAnimation {
+
+                    properties: "x"
+                    duration: 2000
+                    easing.type: Easing.OutBounce
+                }
+            },
+            Transition {
+                from: "shown"
+                NumberAnimation {
+
+                    properties: "x"
+                    duration: 200
+                }
+            }
+
+        ]
+
+    }
 
 }

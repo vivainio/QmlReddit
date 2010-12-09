@@ -42,6 +42,7 @@ Rectangle {
     ]
     transitions: [
         Transition {
+            to: "visible"
             PropertyAnimation {
                 target: rrect
                 properties: "x"
@@ -49,7 +50,18 @@ Rectangle {
 
             }
 
+        },
+        Transition {
+            from: "visible"
+            PropertyAnimation {
+                target: rrect
+                properties: "x"
+                duration: 100
+
+            }
+
         }
+
     ]
 
 
