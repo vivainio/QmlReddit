@@ -11,7 +11,7 @@ Rectangle {
 
     QtObject {
         id: priv
-        property int lastVote: 0
+        property int lastVote: 1000
         property variant linkData
 
 
@@ -155,26 +155,38 @@ Rectangle {
         delegate: dlgComments
         spacing: 5
 
-        // vote buttons, enable later
 
         header: Rectangle {
             height: 80
             Row {
-                spacing: 50
+                spacing: 30
                 anchors.fill: parent
                 RButton {
                     buttonLabel: "+"
-                    color: "blue"
+                    color: priv.lastVote != 1 ? "blue" : "yellow"
                     onClicked: {
                         mdlRedditSession.vote(priv.linkData.name, 1)
-                        infoBanner.show("Upvote!")
+                        //infoBanner.show("Upvote!")
+                        priv.lastVote = 1
                     }
                 }
                 RButton {
+                    buttonLabel: "0"
+                    color: priv.lastVote != 0 ? "white" : "yellow"
+                    onClicked: {
+                        mdlRedditSession.vote(priv.linkData.name, 0)
+                        //infoBanner.show("Neutral!")
+                        priv.lastVote = 0
+                    }
+                }
+
+                RButton {
                     buttonLabel: "-"
+                    color: priv.lastVote != -1 ? "red" : "yellow"
                     onClicked: {
                         mdlRedditSession.vote(priv.linkData.name, -1)
-                        infoBanner.show("Downvote!")
+                        //infoBanner.show("Downvote!")
+                        priv.lastVote = -1
                     }
 
                 }
