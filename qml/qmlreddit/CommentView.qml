@@ -253,6 +253,7 @@ Rectangle {
             id: tInd
             text: "Comments loading"
             anchors.centerIn: parent
+            color: "yellow"
 
         }
 
@@ -267,18 +268,28 @@ Rectangle {
                     x: root.width / 2 - width/2
 
                 }
-
             }
         ]
 
         transitions: [
             Transition {
                 to: "shown"
-                NumberAnimation {
+                ParallelAnimation {
+                    NumberAnimation {
 
-                    properties: "x"
-                    duration: 2000
-                    easing.type: Easing.OutBounce
+                        properties: "x"
+                        duration: 2000
+                        easing.type: Easing.OutBounce
+                    }
+
+                    RotationAnimation {
+                        target: progressInd
+                        property: "rotation"
+                        from: 0
+                        to: 360
+                        duration: 2000
+                        easing.type: Easing.OutBounce
+                    }
                 }
             },
             Transition {
