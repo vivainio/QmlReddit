@@ -30,6 +30,7 @@ Rectangle {
         onLoggedOut: {
             mdlReddit.refreshCategories()
         }
+
     }
 
     function startup() {
@@ -60,6 +61,7 @@ Rectangle {
 
             if (itemName != '+' && itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
+                linkview.start()
                 mdlReddit.start(itemName)
             }
         }
@@ -137,8 +139,6 @@ Rectangle {
             //console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
 
 
-
-
             var lnk = mdlReddit.getLink(selIndex)
             if (eng.shouldShowComments(lnk)) {
                 mainview.state = "CommentsState"                
@@ -170,7 +170,7 @@ Rectangle {
 
         //anchors.fill: parent
 
-        onCommentSelected: mainview.state = "LinkState"
+        //onCommentSelected: mainview.state = "LinkState"
         onReqPreview: {
             var lnk = RE.eng().currentLink()
             mainview.state = "PreviewState"

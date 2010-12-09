@@ -233,76 +233,10 @@ Rectangle {
         onClicked: reqLinks()
         opacity: 0.8
     }
-
-    Rectangle {
+    ProgressInd {
         id: progressInd
-        x:  -200
-
-        anchors.verticalCenter: parent.verticalCenter
-
-        function show() {
-            progressInd.state = "shown"
-
-        }
-
-        function hide() {
-            progressInd.state = ""
-        }
-
-        Text {
-            id: tInd
-            text: "Comments loading"
-            anchors.centerIn: parent
-            color: "yellow"
-
-        }
-
-        width: tInd.width + 20
-        height: tInd.height + 20
-        color: "red"
-        states: [
-            State {
-                name: "shown"
-                PropertyChanges {
-                    target: progressInd
-                    x: root.width / 2 - width/2
-
-                }
-            }
-        ]
-
-        transitions: [
-            Transition {
-                to: "shown"
-                ParallelAnimation {
-                    NumberAnimation {
-
-                        properties: "x"
-                        duration: 2000
-                        easing.type: Easing.OutBounce
-                    }
-
-                    RotationAnimation {
-                        target: progressInd
-                        property: "rotation"
-                        from: 0
-                        to: 360
-                        duration: 2000
-                        easing.type: Easing.OutBounce
-                    }
-                }
-            },
-            Transition {
-                from: "shown"
-                NumberAnimation {
-
-                    properties: "x"
-                    duration: 200
-                }
-            }
-
-        ]
 
     }
+
 
 }

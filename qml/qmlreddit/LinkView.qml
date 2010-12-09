@@ -11,34 +11,19 @@ Rectangle {
 
     // hidden by default
 
-    /*
-    Behavior on x {
-        NumberAnimation {
-            duration: 200
-            easing.type: "InOutBounce"
-        }
-    }
-    */
+    function start() {
+        progressInd.show()
 
-    /*
-    Rectangle {
-        id: rCat
-        x: 200
-        y: 0
-        height: 17
-        anchors.right: parent.right
-        anchors.rightMargin: 30
-        Text {
-            x: 6
-            y: 0
-            color: "#1f6e7a"
-            text: "Cat"
-            //anchors.right: parent.right
-            //x: parent.width - 20
-
-        }
     }
-    */
+
+    Connections {
+        target: mdlRedditSession
+        onLinksAvailable: {
+            progressInd.hide()
+        }
+
+    }
+
 
     ListView {
 
@@ -138,6 +123,9 @@ Rectangle {
         }
 
 
+    }
+    ProgressInd {
+        id: progressInd
     }
 
 }
