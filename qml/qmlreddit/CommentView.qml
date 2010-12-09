@@ -2,6 +2,7 @@ import Qt 4.7
 
 import "redditengine.js" as RE
 
+
 Rectangle {
     x: width + 200
 
@@ -13,8 +14,7 @@ Rectangle {
         id: priv
         property int lastVote: 1000
         property variant linkData
-
-
+        property int colorspeed : 400
     }
 
     ListModel {        
@@ -169,6 +169,9 @@ Rectangle {
                         //infoBanner.show("Upvote!")
                         priv.lastVote = 1
                     }
+                    Behavior on color {
+                        ColorAnimation { duration: priv.colorspeed }
+                    }
                 }
                 RButton {
                     buttonLabel: "0"
@@ -178,6 +181,10 @@ Rectangle {
                         //infoBanner.show("Neutral!")
                         priv.lastVote = 0
                     }
+                    Behavior on color {
+                        ColorAnimation { duration: priv.colorspeed }
+                    }
+
                 }
 
                 RButton {
@@ -187,6 +194,9 @@ Rectangle {
                         mdlRedditSession.vote(priv.linkData.name, -1)
                         //infoBanner.show("Downvote!")
                         priv.lastVote = -1
+                    }
+                    Behavior on color {
+                        ColorAnimation { duration: priv.colorspeed }
                     }
 
                 }
