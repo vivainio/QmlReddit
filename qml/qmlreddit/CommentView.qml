@@ -28,6 +28,7 @@ Rectangle {
     function setLink(lnk) {
         priv.linkData = lnk
         progressInd.show()
+        priv.lastVote = 1000
 
     }
 
