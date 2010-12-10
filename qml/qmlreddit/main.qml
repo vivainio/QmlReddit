@@ -13,8 +13,6 @@ Rectangle {
     QtObject {
         id: priv
         property bool myRedditsFetched : false
-
-
     }
 
     Connections {
@@ -34,8 +32,8 @@ Rectangle {
     }
 
     function startup() {
-        infoBanner.show("Loading")
-
+        //infoBanner.show("Loading")
+        linkview.start()
 
     }
 
@@ -55,7 +53,6 @@ Rectangle {
                 mdlReddit.editConfig()
 
             }
-
 
             mainview.state = "LinkState"
 
