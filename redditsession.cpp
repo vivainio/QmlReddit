@@ -45,19 +45,21 @@ RedditSession::RedditSession(QObject *parent) :
 }
 
 
-void RedditSession::start(const QString& cat)
+void RedditSession::start(const QString& cat, const QString& queryargs)
 {
 
     QString url;
     if (cat.length() == 0) {
-        url = "http://www.reddit.com/.json";
+        url = QString("http://www.reddit.com/.json?%1").arg(queryargs);
     } else {
-        url = QString("http://www.reddit.com/r/%1/.json").arg(cat);
+        url = QString("http://www.reddit.com/r/%1/.json?%2").arg(cat).arg(queryargs);
     }
 
     QNetworkRequest req(url);
 
+    qDebug() << "req " << url;
     QNetworkReply* reply = m_net->get(req);
+
     connect(reply, SIGNAL(finished()), this, SLOT(linksFetched()));
 
     //login("qmtest", "qmtest");
@@ -110,7 +112,8 @@ void RedditSession::linksFetched()
         e.score = score;
         e.comments = v.property("num_comments").toString();
         e.name = name;
-        m_ents.append(e);
+        if (title.length())
+            m_ents.append(e);
     }
     emit linksAvailable();
     reply->deleteLater();

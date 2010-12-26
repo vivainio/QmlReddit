@@ -34,6 +34,7 @@ Rectangle {
     function startup() {
         //infoBanner.show("Loading")
         linkview.start()
+        RE.eng().setModels(mdlReddit, mdlRedditSession)
 
     }
 
@@ -59,7 +60,8 @@ Rectangle {
             if (itemName != '+' && itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
                 linkview.start()
-                mdlReddit.start(itemName)
+                RE.eng().fetchLinks()
+                //mdlReddit.start(itemName, 0)
             }
         }
     }

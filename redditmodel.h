@@ -29,12 +29,14 @@ public:
     void setup(QDeclarativeContext* ctx);
 
 public Q_SLOTS:
-    void start(const QString& cat);
+    void start(const QString& cat, const QString& queryargs);
     void fetchComments(const QString& permalink);
 
     //QVariantMap getComment(int index);
     void editConfig();
     void browser(const QString& url);
+
+    QString lastName();
 
 signals:
 

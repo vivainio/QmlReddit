@@ -54,6 +54,8 @@ RedditModel::RedditModel(QObject *parent) :
 
     refreshCategories();
 
+
+
 }
 
 
@@ -65,13 +67,13 @@ void RedditModel::setup(QDeclarativeContext *ctx)
     ctx->setContextProperty("mdlCategories", m_cats);
     ctx->setContextProperty("mdlRedditSession", m_ses);
 
-    start("");
+    start("", 0);
 
 }
 
-void RedditModel::start(const QString &cat)
+void RedditModel::start(const QString &cat, const QString& queryargs)
 {
-    m_ses->start(cat);
+    m_ses->start(cat, queryargs);
 }
 
 void RedditModel::doPopulateLinks()
@@ -184,6 +186,11 @@ void RedditModel::browser(const QString &url)
 void RedditModel::enableRestricted(bool val)
 {
     m_enableRestricted = val;
+}
+
+QString RedditModel::lastName()
+{
+    return m_ses->getEntries().last().name;
 }
 
 

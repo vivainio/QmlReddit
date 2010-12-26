@@ -48,7 +48,7 @@ public:
 
 public slots:
 
-    void start(const QString& url);
+    void start(const QString& url, const QString& queryargs);
     void fetchComments(const QString& commentaddr);
 
     const QVector<RedditEntry>& getEntries();

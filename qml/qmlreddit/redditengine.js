@@ -7,6 +7,12 @@ function RedditEngine() {
 }
 
 RedditEngine.prototype = {
+    setModels : function (mdlReddit, mdlSession) {
+            this.mdlReddit = mdlReddit
+            this.mdlRedditSession = mdlSession
+
+    },
+
     linkSelected : function(link) {
         //console.log("linkSelected ", link)
         this.currentlink = link;
@@ -14,6 +20,7 @@ RedditEngine.prototype = {
     },
 
     _init : function() {
+        this.lcount = 0
         this.currentlink = {};
     },
 
@@ -23,6 +30,7 @@ RedditEngine.prototype = {
 
     catSelected: function(cat) {
         this.currentCat = cat
+        this.lcount = 0
     },
 
     shouldShowComments : function(lnk) {
@@ -35,6 +43,16 @@ RedditEngine.prototype = {
         }
 
         return true;
+
+    },
+
+    fetchLinks : function() {
+        this.mdlReddit.start(this.currentCat, "")
+    },
+
+    fetchMore : function() {
+        this.lcount += 25
+        this.mdlReddit.start(this.currentCat, "after=" + this.mdlReddit.lastName())
 
     }
 

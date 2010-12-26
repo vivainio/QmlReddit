@@ -1,4 +1,5 @@
 import Qt 4.7
+import "redditengine.js" as RE
 
 Rectangle {
     id: container
@@ -33,8 +34,19 @@ Rectangle {
         model: mdlLinks
         //delegate: deLinks
         delegate: LinkViewDelegate {}
-        footer: Rectangle {
+        footer: Item {
             height: 60
+            width: container.width
+
+            RButton {
+                anchors.horizontalCenter: parent.horizontalCenter
+                buttonLabel: "More"
+                onClicked: {
+                    RE.eng().fetchMore()
+                }
+            }
+
+
         }
 
     }
