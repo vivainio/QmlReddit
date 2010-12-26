@@ -223,7 +223,6 @@ Rectangle {
         buttonImage: "pics/go-next.svg"
         //buttonLabel: "Preview"
         onClicked: reqPreview("url")
-        opacity: 0.8
 
     }
 
@@ -233,8 +232,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         buttonImage: "pics/go-previous.svg"
         //buttonLabel: "Links"
-        onClicked: reqLinks()
-        opacity: 0.8
+        onClicked: reqLinks()        
     }
     ProgressInd {
         id: progressInd
