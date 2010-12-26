@@ -52,7 +52,7 @@ Component {
 
                 anchors {
                     right: parent.right
-                    rightMargin: 50
+                    rightMargin: 60
                     left: thumbarea.right
                     leftMargin: 4
                     top: thumbarea.top
@@ -67,7 +67,7 @@ Component {
                 color: score > 100 ? "red" : "black"
 
                 anchors.right: parent.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 5
 
             }
 
