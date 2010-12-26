@@ -48,10 +48,12 @@ Rectangle {
                 text: "qmtest"
                 width: 200
                 height: 50
+                //color: focus ? "blue" : "white"
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                 Rectangle {
                     border.width: 1
                     z: parent.z - 1
+                    color: inpUserName.focus ? "lightblue" : "white"
                     anchors {
                         fill: parent
                         topMargin: -1
@@ -82,12 +84,14 @@ Rectangle {
                 text: "qmtest"
                 width: 200
                 height: 50
+                //color: focus ? "blue" : "white"
 
                 echoMode: TextInput.PasswordEchoOnEdit
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                 Rectangle {
                     border.width: 1
                     z: parent.z - 1
+                    color: inpPassword.focus ? "lightblue" : "white"
                     anchors {
                         fill: parent
                         topMargin: -1
