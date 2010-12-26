@@ -41,7 +41,9 @@ Rectangle {
             RButton {
                 anchors.horizontalCenter: parent.horizontalCenter
                 buttonLabel: "More"
+                color: "blue"
                 onClicked: {
+
                     RE.eng().fetchMore()
                 }
             }
