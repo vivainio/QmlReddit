@@ -16,8 +16,9 @@ Rectangle {
         //pressGrabTime:
         anchors.fill: parent
     }
-    RButton {
-        buttonLabel: "Back"
+    ImgButton {
+        buttonImage: "pics/go-previous.svg"
+        //buttonLabel: "Back"
         anchors.left: parent.left
         anchors.bottom: parent.bottom        
         anchors.bottomMargin: 0

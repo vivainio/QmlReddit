@@ -212,6 +212,13 @@ Rectangle {
                 x: 0
 
             }
+
+            StateChangeScript {
+                script: {
+                    webpreview.url = "about:blank"
+                }
+
+            }
         },
 
         State {

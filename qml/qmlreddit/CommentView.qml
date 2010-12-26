@@ -216,21 +216,23 @@ Rectangle {
         }
     }
 
-    RButton {
+    ImgButton {
         id: imgNext
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        buttonLabel: "Preview"
+        buttonImage: "pics/go-next.svg"
+        //buttonLabel: "Preview"
         onClicked: reqPreview("url")
         opacity: 0.8
 
     }
 
-    RButton {
+    ImgButton {
         id: imgPrev
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        buttonLabel: "Links"
+        buttonImage: "pics/go-previous.svg"
+        //buttonLabel: "Links"
         onClicked: reqLinks()
         opacity: 0.8
     }

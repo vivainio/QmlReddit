@@ -38,9 +38,10 @@ Rectangle {
             height: 60
             width: container.width
 
-            RButton {
+            ImgButton {
                 anchors.horizontalCenter: parent.horizontalCenter
-                buttonLabel: "More"
+                //buttonLabel: "More"
+                buttonImage: "pics/list-add.svg"
                 color: "blue"
                 onClicked: {
 
