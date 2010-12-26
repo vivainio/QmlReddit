@@ -47,14 +47,6 @@ Rectangle {
                     easing.type: Easing.OutBounce
                 }
 
-                RotationAnimation {
-                    target: progressInd
-                    property: "rotation"
-                    from: 0
-                    to: 360
-                    duration: 2000
-                    easing.type: Easing.OutBounce
-                }
             }
         },
         Transition {

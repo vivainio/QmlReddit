@@ -32,6 +32,11 @@ Item {
     MouseArea {
         id: ma
         anchors.fill: parent
+        anchors.topMargin: -15
+        anchors.leftMargin: -15
+        anchors.rightMargin: -15
+        anchors.bottomMargin: -15
+
         onClicked: parent.clicked()
 
     }
