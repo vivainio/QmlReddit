@@ -27,9 +27,6 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;
-#ifdef Q_WS_MAEMO_5
-    viewer.showFullScreen();
-#endif
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();
@@ -40,6 +37,11 @@ int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/main.qml"));
     viewer.show();
+#ifdef Q_WS_MAEMO_5
+    viewer.showFullScreen();
+#endif
+
+
 
     return app.exec();
 }

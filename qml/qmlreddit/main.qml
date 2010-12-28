@@ -70,6 +70,7 @@ Rectangle {
         id: toolbar
         anchors.right: linkview.right
         anchors.bottom: linkview.bottom
+        orientation: mainview.height > mainview.width ? ListView.Vertical : ListView.Horizontal
         z: 10
         model: ListModel {
             ListElement {

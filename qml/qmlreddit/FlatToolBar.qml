@@ -1,5 +1,6 @@
 import Qt 4.7
 
+// this class is bogus, total rewrite is needed
 Rectangle {
     width: 80
     height: 80
@@ -7,6 +8,9 @@ Rectangle {
 
     opacity: 0.3
     id: root
+
+    property alias orientation: listview.orientation
+
 
     signal itemSelected(string itemName)
 
@@ -61,13 +65,13 @@ Rectangle {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             id: listview
-            orientation: "Horizontal"
+            //orientation: "
 
             boundsBehavior: Flickable.StopAtBounds
 
             delegate: dlgbutton
-            width: 600
-            height: 100
+            width: orientation == ListView.Vertical ? 100 : 600
+            height: orientation == ListView.Vertical ? 600 : 100
             spacing: 10
 
 
@@ -122,7 +126,7 @@ Rectangle {
             name: "expanded"
             PropertyChanges {
                 target: root
-                width: 600
+                width: listview.orientation == ListView.Horizontal ? 600 : 100
                 opacity: 1.0
             }
 
