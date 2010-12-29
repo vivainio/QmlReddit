@@ -6,6 +6,12 @@ Item {
     //height: parent.height
     //color: "blue"
 
+    Rectangle {
+        anchors.fill: parent
+        opacity: 0.8
+    }
+
+
     ListModel {
         id: toolsModel
         ListElement {
@@ -51,6 +57,8 @@ Item {
         delegate: dlgbutton
         anchors.centerIn: parent
         anchors.fill: parent
+        cellWidth: 150
+
 
     }
 
