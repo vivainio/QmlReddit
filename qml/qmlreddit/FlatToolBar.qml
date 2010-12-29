@@ -64,6 +64,7 @@ Rectangle {
         ListView {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
+            anchors.bottomMargin: (orientation == ListView.Vertical ? 600 : 0) * (mainview.state == "CommentsState" ? -1 : 1)
             id: listview
             //orientation: "
 
@@ -146,6 +147,8 @@ Rectangle {
                 target: maExpand
                 enabled: false
             }
+
+
         }
     ]
 }

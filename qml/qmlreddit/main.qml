@@ -45,7 +45,6 @@ Rectangle {
         x : parent.width + 200
         anchors.verticalCenter: parent.verticalCenter
 
-
         model: mdlCategories
         width: parent.width
         height: parent.height
@@ -66,6 +65,47 @@ Rectangle {
         }
     }
 
+
+    ToolGrid {
+        id: toolgrid
+        width: parent.width
+        height: parent.height
+        x : width + 100
+        y : 0
+        z: 20
+        states: [
+            State {
+                name: "exposed"
+                PropertyChanges {
+                    target: toolgrid
+                    x :0
+
+                }
+            }
+        ]
+
+    }
+
+    ImgButton {
+        id: toolbar
+        anchors.right: linkview.right
+        anchors.bottom: linkview.bottom
+
+        z : toolgrid.z + 1
+        buttonImage: toolgrid.state == "" ? "pics/document-properties.svg" : "pics/process-stop.svg"
+        onClicked: {
+            if (toolgrid.state == "") {
+                toolgrid.state =  "exposed"
+            }
+            else {
+
+                toolgrid.state = ""
+            }
+        }
+
+    }
+
+    /*
     FlatToolBar {
         id: toolbar
         anchors.right: linkview.right
@@ -78,12 +118,7 @@ Rectangle {
                 name: "quit"
 
             }
-            /*
-            ListElement {
-                label: "Back"
-                name: "back"
-            }
-           */
+
             ListElement {
                 label: "Cat"
                 name: "cat"
@@ -128,6 +163,8 @@ Rectangle {
             //console.log("Select item ", itemName)
         }
     }
+    */
+
 
     LinkView  {
         id: linkview
