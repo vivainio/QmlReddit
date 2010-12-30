@@ -16,7 +16,7 @@ symbian:TARGET.UID3 = 0xE7B91329
 
 # Define QMLJSDEBUGGER to enable basic debugging (setting breakpoints etc)
 # Define QMLOBSERVER for advanced features (requires experimental QmlInspector plugin!)
-DEFINES += QMLJSDEBUGGER
+# DEFINES += QMLJSDEBUGGER
 # DEFINES += QMLOBSERVER
 
 QT += xml network script
