@@ -66,6 +66,10 @@ Rectangle {
 
     }
 
+    function clear() {
+        mdlComments.clear()
+    }
+
     function populate(json) {
         //console.log("comment_json ", json)
         var obj = eval(json)

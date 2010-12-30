@@ -257,6 +257,7 @@ Rectangle {
             StateChangeScript {
                 script: {
                     webpreview.url = "about:blank"
+                    commentview.clear()
                 }
 
             }
