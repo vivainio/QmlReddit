@@ -4,30 +4,19 @@ import "redditengine.js" as RE
 
 Rectangle {
 
-    property bool loggedIn: false
+    //property bool loggedIn: false
 
     Component.onCompleted: {
-        var cook = mdlRedditSession.cookies()
-        if (cook.reddit_session) {
-            loggedIn = true
-        } else {
-            loggedIn = false
-        }
+
+        appState.checkLogin()
+
     }
 
     Connections {
         target: mdlRedditSession
         onLoginResponse: {
             //console.log("Resp is ", response)
-            var cook = mdlRedditSession.cookies()
-            RE.dump(cook)
-            if (cook.reddit_session) {
-                loggedIn = true
-            } else {
-                aLoginBounce.start()
-                loggedIn = false
-
-            }
+            appState.checkLogin()
 
         }
     }
@@ -117,16 +106,16 @@ Rectangle {
             bottomMargin: 30
         }
 
-        buttonLabel: loggedIn? "Logout" : "Login"
-        color: loggedIn ? "blue" : "red"
+        buttonLabel: appState.loggedIn? "Logout" : "Login"
+        color: appState.loggedIn ? "blue" : "red"
 
         onClicked: {
             mdlRedditSession.logout()
 
-            if (!loggedIn) {
+            if (!appState.loggedIn) {
                 mdlRedditSession.login( inpUserName.text, inpPassword.text)
             }
-            loggedIn = false
+            appState.loggedIn = false
 
 
         }

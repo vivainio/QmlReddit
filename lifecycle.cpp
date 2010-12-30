@@ -16,6 +16,6 @@ void LifeCycle::toggleState()
     if (!m_mainWindow->isFullScreen()) {
         m_mainWindow->showFullScreen();
     } else {
-        m_mainWindow->showNormal();
+        m_mainWindow->showMaximized();
     }
 }

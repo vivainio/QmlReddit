@@ -15,6 +15,10 @@ Rectangle {
         property bool myRedditsFetched : false
     }
 
+    AppState {
+        id: appState
+    }
+
     Connections {
         target: mdlReddit
         onCommentsJsonAvailable: {
@@ -51,7 +55,6 @@ Rectangle {
         onItemSelected: {
             if (itemName == '+') {
                 mdlReddit.editConfig()
-
             }
 
             mainview.state = "LinkState"

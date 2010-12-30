@@ -29,6 +29,7 @@ Rectangle {
         priv.linkData = lnk
         progressInd.show()
         priv.lastVote = 1000
+        appState.checkLogin()
 
     }
 
@@ -156,6 +157,66 @@ Rectangle {
 
     }
 
+    Component {
+        id: voteRow
+        Rectangle {
+                height: 80
+                Row {
+                    spacing: 30
+                    anchors.fill: parent
+                    RButton {
+                        buttonLabel: "+"
+                        color: priv.lastVote != 1 ? "blue" : "yellow"
+                        onClicked: {
+                            mdlRedditSession.vote(priv.linkData.name, 1)
+                            //infoBanner.show("Upvote!")
+                            priv.lastVote = 1
+                        }
+                        Behavior on color {
+                            ColorAnimation { duration: priv.colorspeed }
+                        }
+                    }
+                    RButton {
+                        buttonLabel: "0"
+                        color: priv.lastVote != 0 ? "white" : "yellow"
+                        onClicked: {
+                            mdlRedditSession.vote(priv.linkData.name, 0)
+                            //infoBanner.show("Neutral!")
+                            priv.lastVote = 0
+                        }
+                        Behavior on color {
+                            ColorAnimation { duration: priv.colorspeed }
+                        }
+
+                    }
+
+                    RButton {
+                        buttonLabel: "-"
+                        color: priv.lastVote != -1 ? "red" : "yellow"
+                        onClicked: {
+                            mdlRedditSession.vote(priv.linkData.name, -1)
+                            //infoBanner.show("Downvote!")
+                            priv.lastVote = -1
+                        }
+                        Behavior on color {
+                            ColorAnimation { duration: priv.colorspeed }
+                        }
+
+                    }
+                }
+
+        }
+
+    }
+
+    Component {
+        id: nullVoteRow
+        Item {
+            width: 1
+            height: 1
+        }
+    }
+
     ListView {
         anchors.fill: parent
         model: mdlComments
@@ -163,53 +224,7 @@ Rectangle {
         spacing: 5
 
 
-        header: Rectangle {
-            height: 80
-            Row {
-                spacing: 30
-                anchors.fill: parent
-                RButton {
-                    buttonLabel: "+"
-                    color: priv.lastVote != 1 ? "blue" : "yellow"
-                    onClicked: {
-                        mdlRedditSession.vote(priv.linkData.name, 1)
-                        //infoBanner.show("Upvote!")
-                        priv.lastVote = 1
-                    }
-                    Behavior on color {
-                        ColorAnimation { duration: priv.colorspeed }
-                    }
-                }
-                RButton {
-                    buttonLabel: "0"
-                    color: priv.lastVote != 0 ? "white" : "yellow"
-                    onClicked: {
-                        mdlRedditSession.vote(priv.linkData.name, 0)
-                        //infoBanner.show("Neutral!")
-                        priv.lastVote = 0
-                    }
-                    Behavior on color {
-                        ColorAnimation { duration: priv.colorspeed }
-                    }
-
-                }
-
-                RButton {
-                    buttonLabel: "-"
-                    color: priv.lastVote != -1 ? "red" : "yellow"
-                    onClicked: {
-                        mdlRedditSession.vote(priv.linkData.name, -1)
-                        //infoBanner.show("Downvote!")
-                        priv.lastVote = -1
-                    }
-                    Behavior on color {
-                        ColorAnimation { duration: priv.colorspeed }
-                    }
-
-                }
-            }
-
-        }        
+        header: appState.loggedIn ? voteRow : nullVoteRow
 
         footer: Rectangle {
             height: imgNext.height

@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     viewer.showFullScreen();
 #endif
 
-#ifdef Q_WS_SYMBIAN
+#ifdef Q_OS_SYMBIAN
     viewer.showFullScreen();
 #endif
 
