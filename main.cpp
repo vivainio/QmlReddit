@@ -45,5 +45,10 @@ int main(int argc, char *argv[])
 #ifdef Q_WS_MAEMO_5
     viewer.showFullScreen();
 #endif
+
+#ifdef Q_WS_SYMBIAN
+    viewer.showFullScreen();
+#endif
+
     return app.exec();
 }
