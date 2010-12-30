@@ -6,6 +6,7 @@ Item {
     property alias buttonImage : img.source
     signal clicked;
     property alias color : bgRect.color
+    property alias bgOpacity: bgRect.opacity
     width: 64
     height: 64
     Rectangle {
@@ -21,10 +22,12 @@ Item {
 
     Image {
         id: img
-        sourceSize: {
-            width: 64
-            height: 64
-        }
+        //width: 64
+        //height: 64
+        //sourceSize: {
+        //    width: 64
+        //    height: 64
+        //}
         anchors.centerIn: parent
 
     }

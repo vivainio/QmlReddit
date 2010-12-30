@@ -1,5 +1,8 @@
 import Qt 4.7
 
+import "redditengine.js" as RE
+
+
 Item {
 
     //width: parent.width
@@ -9,28 +12,29 @@ Item {
     Rectangle {
         anchors.fill: parent
         opacity: 0.8
+
     }
 
 
     ListModel {
         id: toolsModel
         ListElement {
-            label: "Quit"
+            label: "pics/system-shutdown.svg"
             name: "quit"
 
         }
 
         ListElement {
-            label: "Cat"
+            label: "pics/accessories-dictionary.svg"
             name: "cat"
         }
         ListElement {
 
-            label: "Browser"
+            label: "pics/applications-internet.svg"
             name: "browser"
         }
         ListElement {
-            label: "Prefs"
+            label: "pics/preferences-other.svg"
             name: "prefs"
         }
     }
@@ -38,11 +42,14 @@ Item {
 
     Component {
         id: dlgbutton
-        RButton {
+        ImgButton {
             id: te
-            buttonLabel: label
+            buttonImage: label
+            //buttonLabel: label
             width: 100
             height: 100
+            color: "yellow"
+            bgOpacity: 0.9
             onClicked: {
                 itemSelected(name)
 
@@ -58,6 +65,7 @@ Item {
         anchors.centerIn: parent
         anchors.fill: parent
         cellWidth: 150
+        cellHeight: 120
 
 
     }
