@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     redditmodel.cpp \
     roleitemmodel.cpp \
     platutil.cpp \
-    rcookiejar.cpp
+    rcookiejar.cpp \
+    lifecycle.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -44,6 +45,5 @@ HEADERS += \
     redditmodel.h \
     roleitemmodel.h \
     platutil.h \
-    rcookiejar.h
-
-
+    rcookiejar.h \
+    lifecycle.h

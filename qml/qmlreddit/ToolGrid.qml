@@ -37,6 +37,11 @@ Item {
             label: "pics/preferences-other.svg"
             name: "prefs"
         }
+
+        ListElement {
+            label: "pics/view-fullscreen.svg"
+            name: "viewsize"
+        }
     }
 
 
@@ -66,7 +71,7 @@ Item {
         anchors.fill: parent
         cellWidth: 150
         cellHeight: 120
-
+        boundsBehavior: Flickable.StopAtBounds
 
     }
 
@@ -97,6 +102,10 @@ Item {
         }
         if (itemName == "prefs") {
             mainview.state = "SettingsState"
+        }
+
+        if (itemName == "viewsize") {
+            lifecycle.toggleState()
         }
 
         //console.log("Select item ", itemName)

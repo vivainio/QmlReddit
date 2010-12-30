@@ -5,6 +5,8 @@
 
 #include <QDeclarativeContext>
 
+#include "lifecycle.h"
+
 //#define THANK_YOU_NOKIA
 
 void setNokesProxy()
@@ -34,14 +36,14 @@ int main(int argc, char *argv[])
     RedditModel* m = new RedditModel;
     m->setup(ctxt);
 
+    LifeCycle* lc = new LifeCycle(&viewer);
+    lc->setView(&viewer);
+    ctxt->setContextProperty("lifecycle", lc);
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/main.qml"));
     viewer.show();
 #ifdef Q_WS_MAEMO_5
     viewer.showFullScreen();
 #endif
-
-
-
     return app.exec();
 }
