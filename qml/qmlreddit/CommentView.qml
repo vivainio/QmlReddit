@@ -29,6 +29,9 @@ Rectangle {
         priv.linkData = lnk
         progressInd.show()
         priv.lastVote = 1000
+
+        priv.lastVote = lnk.vote
+
         appState.checkLogin()
 
     }
@@ -71,7 +74,7 @@ Rectangle {
     }
 
     function populate(json) {
-        //console.log("comment_json ", json)
+        console.log("comment_json ", json)
         var obj = eval(json)
         //console.log("obj ",obj)
         var uh = obj[0]['data']['modhash']

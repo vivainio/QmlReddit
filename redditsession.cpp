@@ -87,7 +87,7 @@ void RedditSession::linksFetched()
     //qDebug() << "fetched";
 
     QByteArray ba = reply->readAll();
-    //qDebug() << "data " << ba;
+    qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
     QScriptValue items = sv.property("data").property("children");
     //qDebug() << "chi " << items.toString();
@@ -112,6 +112,17 @@ void RedditSession::linksFetched()
         e.score = score;
         e.comments = v.property("num_comments").toString();
         e.name = name;
+        QScriptValue likes = v.property("likes");
+        if (likes.isNull()) {
+            e.vote = 0;
+        } else {
+            if (likes.toBool()) {
+                e.vote = 1;
+            } else {
+                e.vote = -1;
+            }
+        }
+
         if (title.length())
             m_ents.append(e);
     }

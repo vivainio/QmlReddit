@@ -24,7 +24,8 @@ struct RedditEntry {
         CommentsRole,
         PermalaLinkRole,
         ThumbnailRole,
-        NameRole
+        NameRole,
+        VoteRole
     };
 
     QString url;
@@ -34,6 +35,7 @@ struct RedditEntry {
     int score;
     QString comments;
     QString name;
+    int vote; // 1,0,-1
 };
 
 typedef QVector<RedditEntry> REList;

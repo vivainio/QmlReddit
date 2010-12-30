@@ -35,6 +35,8 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::ThumbnailRole] = "thumbnail";
     roleNames[RedditEntry::CommentsRole] = "comments";
     roleNames[RedditEntry::NameRole] = "name";
+    roleNames[RedditEntry::VoteRole] = "vote";
+
 
 
     m_linksmodel = new RoleItemModel(roleNames);
@@ -93,6 +95,7 @@ void RedditModel::doPopulateLinks()
         it->setData(e.thumbnail, RedditEntry::ThumbnailRole);
         it->setData(e.comments, RedditEntry::CommentsRole);
         it->setData(e.name, RedditEntry::NameRole);
+        it->setData(e.vote, RedditEntry::VoteRole);
 
         m_linksmodel->appendRow(it);
 
