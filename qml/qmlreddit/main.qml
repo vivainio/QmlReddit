@@ -178,8 +178,9 @@ Rectangle {
             var eng = RE.eng()
             //console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
 
-
-            var lnk = mdlReddit.getLink(selIndex)
+            //var lnk = mdlReddit.getLink(selIndex)
+            var lnk = eng.getLink(selIndex)
+            console.log("have vote", lnk.vote)
             if (eng.shouldShowComments(lnk)) {
                 mainview.state = "CommentsState"                
 

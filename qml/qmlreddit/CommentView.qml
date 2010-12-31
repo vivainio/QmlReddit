@@ -3,6 +3,7 @@ import Qt 4.7
 import "redditengine.js" as RE
 
 
+
 Rectangle {
     x: width + 200
 
@@ -26,10 +27,8 @@ Rectangle {
 
 
     function setLink(lnk) {
-        priv.linkData = lnk
+        RE.priv(root).linkData = lnk
         progressInd.show()
-        priv.lastVote = 1000
-
         priv.lastVote = lnk.vote
 
         appState.checkLogin()
@@ -175,8 +174,9 @@ Rectangle {
                         buttonLabel: "+"
                         color: priv.lastVote != 1 ? "blue" : "yellow"
                         onClicked: {
-                            mdlRedditSession.vote(priv.linkData.name, 1)
+                            mdlRedditSession.vote(RE.priv(root).linkData.name, 1)
                             //infoBanner.show("Upvote!")
+                            RE.priv(root).linkData.vote = 1
                             priv.lastVote = 1
                         }
                         Behavior on color {
@@ -187,8 +187,9 @@ Rectangle {
                         buttonLabel: "0"
                         color: priv.lastVote != 0 ? "white" : "yellow"
                         onClicked: {
-                            mdlRedditSession.vote(priv.linkData.name, 0)
+                            mdlRedditSession.vote(RE.priv(root).linkData.name, 0)
                             //infoBanner.show("Neutral!")
+                            RE.priv(root).linkData.vote = 0
                             priv.lastVote = 0
                         }
                         Behavior on color {
@@ -201,8 +202,9 @@ Rectangle {
                         buttonLabel: "-"
                         color: priv.lastVote != -1 ? "red" : "yellow"
                         onClicked: {
-                            mdlRedditSession.vote(priv.linkData.name, -1)
+                            mdlRedditSession.vote(RE.priv(root).linkData.name, -1)
                             //infoBanner.show("Downvote!")
+                            RE.priv(root).linkData.vote = -1
                             priv.lastVote = -1
                         }
                         Behavior on color {

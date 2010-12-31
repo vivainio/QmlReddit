@@ -6,6 +6,30 @@ function RedditEngine() {
     this.linkSelected('dummy 1')
 }
 
+var _privs = {}
+// only works will with qml objects
+function priv(key) {
+    var s = ""
+    var h = key.toString()
+    //console.log("hash",h)
+    var o = _privs[key]
+    if (!o) {
+        o = {}
+        _privs[key] = o
+    }
+    return o
+}
+
+
+function clone(obj) {
+    var res = {}
+    for (var i in obj) {
+        res[i] = obj[i]
+
+    }
+    return res
+}
+
 RedditEngine.prototype = {
     setModels : function (mdlReddit, mdlSession) {
             this.mdlReddit = mdlReddit
@@ -21,7 +45,10 @@ RedditEngine.prototype = {
 
     _init : function() {
         this.lcount = 0
-        this.currentlink = {};
+        this.currentlink = {}
+        // just to keep objects alive, not to speed up
+        this.lcache = {}
+
     },
 
     currentLink : function() {
@@ -31,6 +58,7 @@ RedditEngine.prototype = {
     catSelected: function(cat) {
         this.currentCat = cat
         this.lcount = 0
+        this.lcache = {}
     },
 
     shouldShowComments : function(lnk) {
@@ -43,6 +71,19 @@ RedditEngine.prototype = {
         }
 
         return true;
+
+    },
+
+    getLink : function(index) {
+        var lnk = this.lcache[index]
+        if (!lnk) {
+            var l2 = this.mdlReddit.getLink(index)
+            lnk = clone(l2)
+            console.log("cache miss ",lnk)
+            this.lcache[index] = lnk
+        }
+
+        return lnk
 
     },
 
