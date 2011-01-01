@@ -168,7 +168,7 @@ Rectangle {
         Rectangle {
                 height: 80
                 Row {
-                    spacing: 30
+                    spacing: 20
                     anchors.fill: parent
                     RButton {
                         buttonLabel: "+"
