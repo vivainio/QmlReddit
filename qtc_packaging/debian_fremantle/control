@@ -13,6 +13,7 @@ Description: Reddit reader application
  Supports login, fetches your subscriptions, voting on links. Fast UI
  written in QML. Also available for Symbian.
 XSBC-Bugtracker: https://projects.forum.nokia.com/qmlreddit/query
+XSBC-Maemo-Display-Name: QmlReddit
 XB-Maemo-Icon-26:
  iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAOt0lEQVRogcWZ
  a3BVVZbHf/vcZ0hCJOGRRCAJECMJISFoA1L4SKsFFlMOaNKN3VJ26ShSWCg+
