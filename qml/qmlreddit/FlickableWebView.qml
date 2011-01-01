@@ -65,7 +65,7 @@ Flickable {
 
     onWidthChanged : {
         // Expand (but not above 1:1) if otherwise would be smaller that available width.
-        if (width > webView.width*webView.contentsScale && webView.contentsScale < 1.0)
+            if (width > webView.width*webView.contentsScale && webView.contentsScale < 1.0)
             webView.contentsScale = width / webView.width * webView.contentsScale;
     }
 
@@ -140,7 +140,10 @@ Flickable {
                         if (!heuristicZoom(clickX,clickY,2.5)) {
                             var zf = flickable.width / contentsSize.width
                             if (zf >= contentsScale)
-                                zf = 2.0/zoomFactor // zoom in (else zooming out)
+                                zf = 0.5 // zoom in (else zooming out)
+                                //zf = 2.0/zoomFactor // zoom in (else zooming out)
+                            console.log("dozoom")
+                            zf = 1.2
                             doZoom(zf,clickX*zf,clickY*zf)
                          }
                        }
