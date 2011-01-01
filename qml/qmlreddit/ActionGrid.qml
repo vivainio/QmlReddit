@@ -28,7 +28,7 @@ Rectangle {
     GridView {
         id : gv
         model:  testmodel1
-        cellWidth: 200
+        cellWidth: 180
         //y: 100
         //anchors.fill: parent
         width: parent.width

@@ -3,8 +3,8 @@ import Qt 4.7
 import "redditengine.js" as RE
 
 Rectangle {
-    width: 800
-    height: 440
+    width: 360
+    height: 640
     anchors.fill: parent
     id: mainview;
 
