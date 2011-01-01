@@ -193,7 +193,11 @@ void RedditModel::enableRestricted(bool val)
 
 QString RedditModel::lastName()
 {
-    return m_ses->getEntries().last().name;
+    const QVector<RedditEntry>& ents  = m_ses->getEntries();
+    if (ents.empty()) {
+        return "";
+    }
+    return ents.last().name;
 }
 
 

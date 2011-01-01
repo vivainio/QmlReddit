@@ -57,7 +57,7 @@ void RedditSession::start(const QString& cat, const QString& queryargs)
 
     QNetworkRequest req(url);
 
-    qDebug() << "req " << url;
+    //qDebug() << "req " << url;
     QNetworkReply* reply = m_net->get(req);
 
     connect(reply, SIGNAL(finished()), this, SLOT(linksFetched()));
@@ -87,7 +87,7 @@ void RedditSession::linksFetched()
     //qDebug() << "fetched";
 
     QByteArray ba = reply->readAll();
-    qDebug() << "data " << ba;
+    //qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
     QScriptValue items = sv.property("data").property("children");
     //qDebug() << "chi " << items.toString();
@@ -325,7 +325,7 @@ void RedditSession::login(const QString &user, const QString &passwd)
 
     QByteArray postcont = params.toEncoded();
     postcont.remove(0,1);
-    qDebug() << "posting " << postcont;
+    //qDebug() << "posting " << postcont;
     QNetworkReply* reply = m_net->post(req, postcont);
 
     connect(reply, SIGNAL(finished()), this, SLOT(loginFinished()));
@@ -345,7 +345,7 @@ void RedditSession::loginFinished()
     QByteArray resp = reply->readAll();
     QString s = resp;
     emit loginResponse(s);
-    qDebug() << "loginfinish " << s;
+    //qDebug() << "loginfinish " << s;
 
     saveCookies();
 
@@ -370,7 +370,7 @@ void RedditSession::getMyRedditsFinished()
         QScriptValue v = it.value().property("data");
         QString dname = v.property("display_name").toString();
         m_myreddits.append(dname);
-        qDebug() << "my " << dname;
+        //qDebug() << "my " << dname;
     }
     emit categoriesUpdated();
 
@@ -417,7 +417,7 @@ void RedditSession::vote(const QString &thing, int votedir)
 
     QByteArray postcont = params.toEncoded();
     postcont.remove(0,1);
-    qDebug() << "posting " << postcont;
+    //qDebug() << "posting " << postcont;
     QNetworkReply* reply = m_net->post(req, postcont);
     Q_UNUSED(reply);
 }

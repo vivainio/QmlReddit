@@ -69,6 +69,10 @@ Flickable {
             webView.contentsScale = width / webView.width * webView.contentsScale;
     }
 
+    Rectangle {
+        anchors.fill : parent
+    }
+
     WebView {
         id: webView
         transformOrigin: Item.TopLeft

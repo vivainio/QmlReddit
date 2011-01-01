@@ -79,7 +79,7 @@ RedditEngine.prototype = {
         if (!lnk) {
             var l2 = this.mdlReddit.getLink(index)
             lnk = clone(l2)
-            console.log("cache miss ",lnk)
+            //console.log("cache miss ",lnk)
             this.lcache[index] = lnk
         }
 
@@ -92,6 +92,7 @@ RedditEngine.prototype = {
     },
 
     fetchMore : function() {
+        this.lcache = {}
         this.lcount += 25
         this.mdlReddit.start(this.currentCat, "after=" + this.mdlReddit.lastName())
 

@@ -180,7 +180,7 @@ Rectangle {
 
             //var lnk = mdlReddit.getLink(selIndex)
             var lnk = eng.getLink(selIndex)
-            console.log("have vote", lnk.vote)
+            //console.log("have vote", lnk.vote)
             if (eng.shouldShowComments(lnk)) {
                 mainview.state = "CommentsState"                
 
@@ -217,7 +217,7 @@ Rectangle {
             mainview.state = "PreviewState"
             //console.log("prev ", lnk)
             webpreview.url = lnk.url
-            RE.dump(lnk)
+            //RE.dump(lnk)
         }
         onReqLinks: mainview.state = "LinkState"
     }

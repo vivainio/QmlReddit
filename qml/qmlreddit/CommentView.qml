@@ -73,7 +73,7 @@ Rectangle {
     }
 
     function populate(json) {
-        console.log("comment_json ", json)
+        //console.log("comment_json ", json)
         var obj = eval(json)
         //console.log("obj ",obj)
         var uh = obj[0]['data']['modhash']
@@ -82,7 +82,7 @@ Rectangle {
 
         }
 
-        console.log('user modhash ', uh)
+        //console.log('user modhash ', uh)
         var items = obj[1]['data']['children']
         var aggr = []
         for (var it in items) {
