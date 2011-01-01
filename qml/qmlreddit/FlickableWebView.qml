@@ -142,7 +142,7 @@ Flickable {
                             if (zf >= contentsScale)
                                 zf = 0.5 // zoom in (else zooming out)
                                 //zf = 2.0/zoomFactor // zoom in (else zooming out)
-                            console.log("dozoom")
+                            //console.log("dozoom")
                             zf = 1.2
                             doZoom(zf,clickX*zf,clickY*zf)
                          }

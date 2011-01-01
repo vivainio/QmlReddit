@@ -256,46 +256,10 @@ QStringList RedditSession::getCategories()
 
     cats << m_myreddits;
 
-    QString cf = PlatUtil::configFile();
-    //qDebug() << "Config " << cf;
-    QFileInfo fi(cf);
-
-
-    if (!fi.exists()) {
-        QFile f(cf);
-        f.open(QFile::WriteOnly);
-        QStringList defaults(QStringList() << "programming" << "pics" << "technology" << "funny"
-                             << "news" << "comics" << "python" << "wtf" << "gaming" <<
-                             "IAmA" << "maemo" << "meego" << "science" << "bestof" << "gadgets" <<
-                             "music" << "hardware" << "worldnews" << "linux" << "offbeat" << "sports"
-                             );
-        QString joined = defaults.join("\n") + "\n";
-        f.write(joined.toUtf8());
-        f.close();
-    }
-
-    QFile f(cf);
-    bool r = f.open(QFile::ReadOnly);
-    Q_ASSERT(r);
-
-    QTextStream ts(&f);
-    for (;;) {
-        if (ts.atEnd())
-            break;
-        QString line = ts.readLine().simplified();
-        if (line.startsWith('#'))
-            continue;
-        if (line.length())
-            cats.append(line);
-
-    }
-    f.close();
-    // "easy" way to reset - just delete all lines
-    if (cats.empty()) {
-        f.remove();
-        cats = getCategories();
-
-    }
+    cats << "programming" << "pics" << "technology" << "funny"
+         << "news" << "comics" << "python" << "wtf" << "gaming" <<
+         "IAmA" << "maemo" << "meego" << "science" << "bestof" << "gadgets" <<
+         "music" << "hardware" << "worldnews" << "linux" << "offbeat" << "sports";
 
     cats.removeDuplicates();
 
