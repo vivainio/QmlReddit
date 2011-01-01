@@ -34,7 +34,7 @@ Rectangle {
             TextInput {
 
                 id: inpUserName
-                text: "qmtest"
+                text: ""
                 width: 200
                 height: 50
                 //color: focus ? "blue" : "white"
@@ -70,7 +70,7 @@ Rectangle {
 
             TextInput {
                 id: inpPassword
-                text: "qmtest"
+                text: ""
                 width: 200
                 height: 50
                 //color: focus ? "blue" : "white"
