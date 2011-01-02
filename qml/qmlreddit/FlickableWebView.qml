@@ -71,10 +71,12 @@ Flickable {
 
     Rectangle {
         anchors.fill : parent
+        color: "white"
     }
 
     WebView {
         id: webView
+
         transformOrigin: Item.TopLeft
 
         settings {

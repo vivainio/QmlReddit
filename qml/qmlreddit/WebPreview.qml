@@ -20,7 +20,9 @@ Rectangle {
     Text {
         anchors.right: parent.right
         anchors.bottom:  parent.bottom
+        anchors.rightMargin: 50
 
+        color: "yellow"
         text: wv.progress < 1 ? Math.floor(wv.progress * 100) + "%" : ""
     }
 
