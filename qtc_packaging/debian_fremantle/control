@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Ville M. Vainio <vivainio@gmail.com>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
+Homepage: https://projects.forum.nokia.com/qmlreddit/
 
 Package: qmlreddit
 Architecture: any
