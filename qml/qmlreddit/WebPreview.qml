@@ -16,6 +16,14 @@ Rectangle {
         //pressGrabTime:
         anchors.fill: parent
     }
+
+    Text {
+        anchors.right: parent.right
+        anchors.bottom:  parent.bottom
+
+        text: wv.progress < 1 ? Math.floor(wv.progress * 100) + "%" : ""
+    }
+
     ImgButton {
         buttonImage: "pics/go-previous.svg"
         //buttonLabel: "Back"

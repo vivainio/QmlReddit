@@ -17,7 +17,6 @@ Rectangle {
 
     ListModel {
         id: testmodel2
-        ListElement { catName: '+' }
         ListElement { catName: 'Cancel' }
 
     }

@@ -51,7 +51,7 @@ Rectangle {
 
             Text {
                 textFormat: Text.RichText
-                text: "<h1>QmlReddit</h1><p>Development version, expect continuous improvements</p> "
+                text: "<h1>QmlReddit</h1><p>Development version</p> "
 
             }
 
