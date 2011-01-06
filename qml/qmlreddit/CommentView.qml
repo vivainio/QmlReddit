@@ -43,12 +43,14 @@ Rectangle {
         if (!d || !d.body)
             return
 
-        //RE.dump(d)
+        RE.dump(d)
         co = {
                 body : d.body_html,
                 author: d.author,
                 depth: depth,
-                score: d.ups - d.downs
+                score: d.ups - d.downs,
+                name: d.name,
+                vote: d.likes === null ? 0 : d.likes ? 1 : -1
         }
 
 
@@ -159,6 +161,15 @@ Rectangle {
 
             }
 
+            MouseArea {
+                anchors.fill: parent
+                onDoubleClicked: {
+                    console.log("Doubleclick")
+                    commentVote.visible = true
+                    commentVote.setComment(mdlComments.get(index))
+                }
+            }
+
         }
 
     }
@@ -263,5 +274,11 @@ Rectangle {
 
     }
 
+    CommentVote {
+        id: commentVote
+        anchors.fill: parent
+
+
+    }
 
 }
