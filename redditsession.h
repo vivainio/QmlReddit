@@ -68,6 +68,7 @@ public slots:
     void vote(const QString& thing, int votedir);
     void getMyReddits();
     void saveCookies();
+    void setLinkSelection(const QString& selection);
 
 signals:
     void linksAvailable();
@@ -84,6 +85,7 @@ private slots:
       void getMyRedditsFinished();
 
 
+
 public:
       QNetworkAccessManager* m_net;
 
@@ -96,6 +98,7 @@ private:
     QScriptEngine* m_eng;
     QStringList m_myreddits;
     QString m_modhash;
+    QString m_linkSelection;
 
 };
 

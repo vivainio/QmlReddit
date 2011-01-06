@@ -48,6 +48,7 @@ RedditEngine.prototype = {
         this.currentlink = {}
         // just to keep objects alive, not to speed up
         this.lcache = {}
+        this.linkSelection = "hot"
 
     },
 
@@ -95,6 +96,11 @@ RedditEngine.prototype = {
         this.lcache = {}
         this.lcount += 25
         this.mdlReddit.start(this.currentCat, "after=" + this.mdlReddit.lastName())
+
+    },
+
+    setLinkSelection : function(sel) {
+        this.linkSelection = sel
 
     }
 

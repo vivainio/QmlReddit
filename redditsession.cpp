@@ -48,11 +48,24 @@ RedditSession::RedditSession(QObject *parent) :
 void RedditSession::start(const QString& cat, const QString& queryargs)
 {
 
+    QString selector = "";
+    if (m_linkSelection ==  "New") {
+        selector = "new/";
+    } else if (m_linkSelection == "Top") {
+        selector = "top/";
+    } else if (m_linkSelection == "Contr") {
+        selector = "controversial/";
+    } else if (m_linkSelection == "Saved") {
+        selector = "saved;";
+    }
+
+
+
     QString url;
     if (cat.length() == 0) {
-        url = QString("http://www.reddit.com/.json?%1").arg(queryargs);
+        url = QString("http://www.reddit.com/%2.json?%1").arg(queryargs).arg(selector);
     } else {
-        url = QString("http://www.reddit.com/r/%1/.json?%2").arg(cat).arg(queryargs);
+        url = QString("http://www.reddit.com/r/%1/%3.json?%2").arg(cat).arg(queryargs).arg(selector);
     }
 
     QNetworkRequest req(url);
@@ -418,6 +431,11 @@ void RedditSession::saveCookies()
     QSettings setts;
     setts.setValue("Auth/Cookies", cookieJar()->store());
 
+}
+
+void RedditSession::setLinkSelection(const QString &selection)
+{
+    m_linkSelection = selection;
 }
 
 

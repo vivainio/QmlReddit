@@ -80,25 +80,39 @@ Item {
     }
 
 
+    Component {
+        id: cExcSelector
+        RButton {
+            property string sel : ""
+
+            buttonLabel: sel
+            selected: appState.linkSelection == sel
+            onClicked: {
+                appState.linkSelection = sel
+            }
+        }
+
+    }
+
+
     Grid {
         anchors.bottom: parent.bottom
         columns: 3
         spacing: 5
-        RButton {
-            buttonLabel: "Hot"
-        }
-        RButton {
-            buttonLabel: "New"
-        }
-        RButton {
-            buttonLabel: "Top"
-        }
+        Repeater {
+            model: ["Hot", "New", "Top", "Saved", "Contr"]
+            RButton {
+                buttonLabel: modelData
+                selected: appState.linkSelection == modelData
 
-        RButton {
-            buttonLabel: "Saved"
+                onClicked: {
+                    appState.linkSelection = modelData
+                    mdlRedditSession.setLinkSelection(modelData)
+                    RE.eng().fetchLinks()
+                }
+
+            }
         }
-
-
 
     }
 

@@ -5,13 +5,14 @@ Rectangle {
     id: root
 
     property alias buttonLabel : tf.text
+    property bool selected : false
     signal clicked;
 
     width: 80
     height: 60
     border.width: 1
     border.color: "blue"
-    color: "#ca6262"
+    color: selected ? "yellow" : "#ca6262"
     Text {
         id: tf
         anchors.centerIn: parent
