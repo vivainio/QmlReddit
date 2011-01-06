@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    app.setStyle("motif");
+    //app.setStyle("motif");
 
 #ifdef THANK_YOU_NOKIA
     setNokesProxy();
