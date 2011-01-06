@@ -21,39 +21,76 @@ Rectangle {
         }
     }
 
-    Column {
+    Grid {
         anchors.centerIn: parent
-        Row {
-            Text {
-                text: "Username"
+        columns: 2
+        rows: 2
+        spacing: 20
+        Text {
+            text: "Username"
 
-            }
+        }
+        TextInput {
 
-            Item { width: 20; height: 1 }
-
-            TextInput {
-
-                id: inpUserName
-                text: ""
-                width: 200
-                height: 50
-                //color: focus ? "blue" : "white"
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
-                Rectangle {
-                    border.width: 1
-                    z: parent.z - 1
-                    color: inpUserName.focus ? "lightblue" : "white"
-                    anchors {
-                        fill: parent
-                        topMargin: -1
-                        bottomMargin: -1
-                        leftMargin: -1
-                        rightMargin: -1
-                    }
-
+            id: inpUserName
+            text: ""
+            width: 200
+            height: 50
+            //color: focus ? "blue" : "white"
+            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+            Rectangle {
+                border.width: 1
+                z: parent.z - 1
+                color: inpUserName.focus ? "lightblue" : "white"
+                anchors {
+                    fill: parent
+                    topMargin: -1
+                    bottomMargin: -1
+                    leftMargin: -1
+                    rightMargin: -1
                 }
 
             }
+
+        }
+
+        Text {
+            text: "Password"
+        }
+
+        TextInput {
+            id: inpPassword
+            text: ""
+            width: 200
+            height: 50
+            //color: focus ? "blue" : "white"
+
+            echoMode: TextInput.PasswordEchoOnEdit
+            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+            Rectangle {
+                border.width: 1
+                z: parent.z - 1
+                color: inpPassword.focus ? "lightblue" : "white"
+                anchors {
+                    fill: parent
+                    topMargin: -1
+                    bottomMargin: -1
+                    leftMargin: -1
+                    rightMargin: -1
+                }
+
+            }
+        }
+
+
+    }
+
+    Column {
+        anchors.centerIn: parent
+        Row {
+
+            Item { width: 20; height: 1 }
+
 
         }
 
@@ -63,35 +100,6 @@ Rectangle {
         }
 
         Row {
-            Text {
-                text: "Password"
-            }
-            Item { width: 20; height: 1 }
-
-            TextInput {
-                id: inpPassword
-                text: ""
-                width: 200
-                height: 50
-                //color: focus ? "blue" : "white"
-
-                echoMode: TextInput.PasswordEchoOnEdit
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
-                Rectangle {
-                    border.width: 1
-                    z: parent.z - 1
-                    color: inpPassword.focus ? "lightblue" : "white"
-                    anchors {
-                        fill: parent
-                        topMargin: -1
-                        bottomMargin: -1
-                        leftMargin: -1
-                        rightMargin: -1
-                    }
-
-                }
-            }
-
         }
 
     }
