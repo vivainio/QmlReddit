@@ -80,6 +80,28 @@ Item {
     }
 
 
+    Grid {
+        anchors.bottom: parent.bottom
+        columns: 3
+        spacing: 5
+        RButton {
+            buttonLabel: "Hot"
+        }
+        RButton {
+            buttonLabel: "New"
+        }
+        RButton {
+            buttonLabel: "Top"
+        }
+
+        RButton {
+            buttonLabel: "Saved"
+        }
+
+
+
+    }
+
     function itemSelected(itemName) {
         state = ""
         if (itemName == "cat") {
