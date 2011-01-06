@@ -131,6 +131,10 @@ Rectangle {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 width: parent.width - x
                 color: score > 0 ? "black" : "gray"
+                onLinkActivated: {
+                    console.log("Activate")
+                    Qt.openUrlExternally(link)
+                }
             }
 
 
@@ -148,6 +152,21 @@ Rectangle {
                 color: score > 20 ? "red" : "black"
                 font.bold: score > 50 ? true : false
             }
+            MouseArea {
+
+                anchors {
+                    bottom: parent.bottom
+                    right: parent.right
+                    top: parent.top
+                }
+                width: 40
+
+                onClicked: {
+                    commentVote.visible = true
+                    commentVote.setComment(mdlComments.get(index))
+                }
+            }
+
 
             Text {
                 anchors {
@@ -161,14 +180,6 @@ Rectangle {
 
             }
 
-            MouseArea {
-                anchors.fill: parent
-                onDoubleClicked: {
-                    console.log("Doubleclick")
-                    commentVote.visible = true
-                    commentVote.setComment(mdlComments.get(index))
-                }
-            }
 
         }
 
