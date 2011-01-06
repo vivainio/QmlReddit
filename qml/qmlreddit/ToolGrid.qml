@@ -42,6 +42,10 @@ Item {
             label: "pics/view-fullscreen.svg"
             name: "viewsize"
         }
+        ListElement {
+            label : "pics/twitter_logo.svg"
+            name: "twitter"
+        }
     }
 
 
@@ -106,6 +110,14 @@ Item {
 
         if (itemName == "viewsize") {
             lifecycle.toggleState()
+        }
+
+        if (itemName == "twitter") {
+            var lnk = RE.eng().currentLink()
+            var msg = "Reading " + lnk.url
+            Qt.openUrlExternally("http://twitter.com/home?status=" + msg)
+            //mdlReddit.browser("http://twitter.com/home?status=" + msg)
+
         }
 
         //console.log("Select item ", itemName)
