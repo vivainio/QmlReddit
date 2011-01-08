@@ -54,6 +54,7 @@ Flickable {
     property alias forward: webView.forward
     property alias contentScale : webView.contentsScale
 
+    clip: true
     id: flickable
     width: parent.width
     contentWidth: Math.max(parent.width,webView.width)
