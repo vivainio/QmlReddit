@@ -378,7 +378,7 @@ Rectangle {
           */
           AnchorAnimation {
               targets: [toolbar]
-                duration: 600
+                duration: 300
           }
       } ]
 
