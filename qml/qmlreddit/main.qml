@@ -98,9 +98,10 @@ Rectangle {
 
     ImgButton {
         id: toolbar
-        anchors.right: linkview.right
-        anchors.bottom: linkview.bottom
+        anchors.right: mainview.right
+        anchors.bottom: mainview.bottom
 
+        visible: false
         z : toolgrid.z + 1
         buttonImage: toolgrid.state == "" ? "pics/document-properties.svg" : "pics/process-stop.svg"
         onClicked: {
@@ -180,6 +181,7 @@ Rectangle {
         id: linkview
         width: parent.width
         height: parent.height
+
         onLinkSelected: {
 
             var eng = RE.eng()
@@ -272,6 +274,11 @@ Rectangle {
 
             }
             */
+            PropertyChanges {
+                target:  toolbar
+                visible: true
+
+            }
             StateChangeScript {
 
                 script: {
@@ -281,11 +288,17 @@ Rectangle {
                 }
 
             }
+
         },
 
         State {
             name: "CommentsState"
 
+            PropertyChanges {
+                target: toolbar
+                visible: true
+
+            }
             StateChangeScript {
                 script: {
                     //viewSwitcher.switchView(commentview, true)
@@ -306,9 +319,9 @@ Rectangle {
             */
             AnchorChanges {
                 target: toolbar
-                anchors.top: commentview.top
+                anchors.top: mainview.top
                 anchors.bottom: undefined
-                anchors.right: commentview.right
+                anchors.right: mainview.right
 
             }
 
@@ -365,7 +378,7 @@ Rectangle {
           */
           AnchorAnimation {
               targets: [toolbar]
-                duration: 200
+                duration: 600
           }
       } ]
 
