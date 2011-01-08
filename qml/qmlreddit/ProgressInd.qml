@@ -37,14 +37,15 @@ Rectangle {
     ]
 
     transitions: [
+
         Transition {
             to: "shown"
             ParallelAnimation {
                 NumberAnimation {
 
                     properties: "x"
-                    duration: 2000
-                    easing.type: Easing.OutBounce
+                    duration: 400
+                    //easing.type: Easing.OutBounce
                 }
 
             }

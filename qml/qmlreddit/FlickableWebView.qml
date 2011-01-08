@@ -63,7 +63,7 @@ Flickable {
     //anchors.bottom: parent.top
     //anchors.left: parent.left
     //anchors.right: parent.right
-    pressDelay: 200
+    pressDelay: 500
 
     onWidthChanged : {
         // Expand (but not above 1:1) if otherwise would be smaller that available width.
@@ -85,6 +85,9 @@ Flickable {
             javascriptEnabled: false
             pluginsEnabled: false
             javaEnabled: false
+            developerExtrasEnabled: false
+            localStorageDatabaseEnabled: false
+
         }
 
 
@@ -104,7 +107,7 @@ Flickable {
         }
 
         //url: fixUrl(webBrowser.urlString)
-        smooth: false // We don't want smooth scaling, since we only scale during (fast) transitions
+        smooth: true // We don't want smooth scaling, since we only scale during (fast) transitions
         focus: true
 
         onAlert: console.log(message)
