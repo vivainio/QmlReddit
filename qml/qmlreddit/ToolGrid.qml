@@ -123,7 +123,7 @@ Item {
                 mdlRedditSession.getMyReddits()
                 priv.myRedditsFetched = true
             }
-
+            viewSwitcher.switchView(categoryselector, true)
             mainview.state = "SelectCategory"
 
         }
@@ -141,7 +141,9 @@ Item {
 
         }
         if (itemName == "prefs") {
+            viewSwitcher.switchView(settingsview, true)
             mainview.state = "SettingsState"
+
         }
 
         if (itemName == "viewsize") {

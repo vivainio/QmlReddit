@@ -17,6 +17,11 @@ Rectangle {
 
     }
 
+    function activationComplete() {
+        commentview.clear()
+
+    }
+
     Connections {
         target: mdlRedditSession
         onLinksAvailable: {

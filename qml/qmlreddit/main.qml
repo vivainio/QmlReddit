@@ -10,6 +10,11 @@ Rectangle {
 
     //property variant eng
 
+    ViewSwitcher {
+        id: viewSwitcher
+        root: mainview
+    }
+
     QtObject {
         id: priv
         property bool myRedditsFetched : false
@@ -38,6 +43,7 @@ Rectangle {
     function startup() {
         //infoBanner.show("Loading")
         linkview.start()
+        viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
 
     }
@@ -57,6 +63,7 @@ Rectangle {
                 mdlReddit.editConfig()
             }
 
+            viewSwitcher.switchView(linkview, false)
             mainview.state = "LinkState"
 
             if (itemName != '+' && itemName != 'Cancel') {
@@ -182,9 +189,12 @@ Rectangle {
             var lnk = eng.getLink(selIndex)
             //console.log("have vote", lnk.vote)
             if (eng.shouldShowComments(lnk)) {
+                viewSwitcher.switchView(commentview, false)
                 mainview.state = "CommentsState"                
 
+
             } else {
+               viewSwitcher.switchView(webpreview, false)
                mainview.state = "PreviewState"
             }
 
@@ -214,17 +224,22 @@ Rectangle {
         //onCommentSelected: mainview.state = "LinkState"
         onReqPreview: {
             var lnk = RE.eng().currentLink()
+            viewSwitcher.switchView(webpreview, false)
             mainview.state = "PreviewState"
             //console.log("prev ", lnk)
             webpreview.url = lnk.url
             //RE.dump(lnk)
         }
-        onReqLinks: mainview.state = "LinkState"
+        onReqLinks: {
+            viewSwitcher.switchView(linkview, true)
+            mainview.state = "LinkState"
+        }
     }
 
     WebPreview {
         id: webpreview
         onReqBack: {
+            viewSwitcher.switchView(commentview, true)
             mainview.state = "CommentsState"
 
         }
@@ -232,6 +247,7 @@ Rectangle {
     SettingsView {
         id: settingsview
         onDismiss: {
+            viewSwitcher.switchView(linkview, false)
             mainview.state = "LinkState"
         }
 
@@ -249,16 +265,19 @@ Rectangle {
 
             name: "LinkState"
 
+            /*
             PropertyChanges {
                 target: linkview
                 x: 0
 
             }
-
+            */
             StateChangeScript {
+
                 script: {
                     webpreview.url = "about:blank"
-                    commentview.clear()
+                    //commentview.clear()
+                    //viewSwitcher.switchView(linkview, true)
                 }
 
             }
@@ -266,6 +285,14 @@ Rectangle {
 
         State {
             name: "CommentsState"
+
+            StateChangeScript {
+                script: {
+                    //viewSwitcher.switchView(commentview, true)
+                }
+            }
+
+            /*
             PropertyChanges {
                 target: commentview
                 x: 0
@@ -276,7 +303,7 @@ Rectangle {
                 x : 1000
 
             }
-
+            */
             AnchorChanges {
                 target: toolbar
                 anchors.top: commentview.top
@@ -288,27 +315,36 @@ Rectangle {
         },
         State {
             name: "PreviewState"
+            /*
             PropertyChanges {
                 target: webpreview
                 x : 0
             }
-            //StateChangeScript {
-                //script: console.log("to preview")
-            //}
+            */
+            StateChangeScript {
+                script: {
+                    //viewSwitcher.switchView(webpreview, true)
+                    //console.log("to preview")
+                }
+            }
         },
         State {
             name: "SelectCategory"
+            /*
             PropertyChanges {
                 target: categoryselector
                 x : 0
             }
+            */
         },
         State {
             name: "SettingsState"
+            /*
             PropertyChanges {
                 target: settingsview
                 x : 0
             }
+            */
 
         }
 
@@ -316,6 +352,7 @@ Rectangle {
 
     transitions: [
       Transition {
+           /*
           from: "*"; to: "*"
           PropertyAnimation {
               target: commentview
@@ -325,6 +362,7 @@ Rectangle {
               target: linkview
               properties: "x"; duration: 200
           }
+          */
           AnchorAnimation {
               targets: [toolbar]
                 duration: 200
