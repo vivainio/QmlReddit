@@ -9,6 +9,7 @@
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QNetworkRequest;
 
 class QScriptEngine;
 class QScriptValue;
@@ -69,6 +70,7 @@ public slots:
     void getMyReddits();
     void saveCookies();
     void setLinkSelection(const QString& selection);
+    void setIncognito(bool val);
 
 signals:
     void linksAvailable();
@@ -94,11 +96,16 @@ public:
 private:
     QScriptValue parseJson(QString msg);
     RCookieJar* cookieJar();
+
+    void prepareRequest(QNetworkRequest& req);
+
+
     QVector<RedditEntry> m_ents;
     QScriptEngine* m_eng;
     QStringList m_myreddits;
     QString m_modhash;
     QString m_linkSelection;
+    bool m_incognito;
 
 };
 

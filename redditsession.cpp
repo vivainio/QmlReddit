@@ -42,6 +42,7 @@ RedditSession::RedditSession(QObject *parent) :
         cj->restore(v.toByteArray());
 
     m_net->setCookieJar(cj);
+    m_incognito = false;
 }
 
 
@@ -69,6 +70,7 @@ void RedditSession::start(const QString& cat, const QString& queryargs)
     }
 
     QNetworkRequest req(url);
+    prepareRequest(req);
 
     //qDebug() << "req " << url;
     QNetworkReply* reply = m_net->get(req);
@@ -155,6 +157,7 @@ void RedditSession::fetchComments(const QString &commentaddr)
     url.append(".json");
     //qDebug() << "fetch " << url;
     QNetworkRequest req(url);
+    prepareRequest(req);
     QNetworkReply* reply = m_net->get(req);
     connect(reply, SIGNAL(finished()), this, SLOT(commentsFetched()));
 
@@ -292,6 +295,7 @@ void RedditSession::login(const QString &user, const QString &passwd)
     QString url = "http://www.reddit.com/api/login";
 
     QNetworkRequest req(url);
+    prepareRequest(req);
 
     //req.setHeader(QNetworkRequest::CookieSaveControlAttribute, QVariant());
 
@@ -386,6 +390,7 @@ void RedditSession::vote(const QString &thing, int votedir)
     QString url = "http://www.reddit.com/api/vote";
 
     QNetworkRequest req(url);
+    prepareRequest(req);
 
     QUrl params;
     params.addQueryItem("id", thing);
@@ -403,6 +408,7 @@ void RedditSession::getMyReddits()
 {
 
     QNetworkRequest getMine(QUrl("http://www.reddit.com/reddits/mine/.json"));
+    prepareRequest(getMine);
     QNetworkReply* reply2 = m_net->get(getMine);
 
     connect(reply2, SIGNAL(finished()), this, SLOT(getMyRedditsFinished()));
@@ -436,6 +442,23 @@ void RedditSession::saveCookies()
 void RedditSession::setLinkSelection(const QString &selection)
 {
     m_linkSelection = selection;
+}
+
+void RedditSession::setIncognito(bool val)
+{
+    m_incognito = val;
+}
+
+void RedditSession::prepareRequest(QNetworkRequest &req)
+{
+
+    if (m_incognito) {
+        QList<QVariant> cookies;
+        req.setAttribute(QNetworkRequest::CookieLoadControlAttribute,
+                         QNetworkRequest::Manual);
+        //req.setHeader(QNetworkRequest::CookieHeader,
+        //              cookies);
+    }
 }
 
 

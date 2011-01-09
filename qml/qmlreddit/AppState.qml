@@ -7,6 +7,8 @@ QtObject {
 
     property bool topCommentsMode: false
 
+    property bool incognitoMode: false
+
     property string linkSelection: "Hot"
     function checkLogin() {
         var cook = mdlRedditSession.cookies()

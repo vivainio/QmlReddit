@@ -63,8 +63,13 @@ Rectangle {
             backsteppingExits: false
 
             Rectangle {
+                anchors.fill: parent
                 Grid {
+                    anchors.fill: parent
+                    spacing: 30
+                    columns: 2
                     RButton {
+                        width: 120
                         buttonLabel: "Top comments"
                         selected: appState.topCommentsMode
                         onClicked: {
@@ -74,17 +79,22 @@ Rectangle {
                     }
 
                     RButton {
+                        width: 120
                         buttonLabel: "Light mode"
                         selected:  appState.lightMode
                         onClicked: {
                             appState.lightMode = !appState.lightMode
                         }
                     }
-
-            }
-
-
-
+                    RButton {
+                        width: 120
+                        buttonLabel: "Incognito mode"
+                        selected:  appState.incognitoMode
+                        onClicked: {
+                            appState.incognitoMode = !appState.incognitoMode
+                        }
+                    }
+                }
             }
 
         }

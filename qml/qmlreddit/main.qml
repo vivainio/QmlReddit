@@ -231,6 +231,7 @@ Rectangle {
         id: commentview
         width: parent.width
         height: parent.height
+        focus: true
 
         //anchors.fill: parent
 

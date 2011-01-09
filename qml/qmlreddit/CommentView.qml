@@ -25,6 +25,9 @@ Rectangle {
         onLightModeChanged: {
             lstComments.delegate = appState.lightMode ? dlgCommentsLight : dlgComments
         }
+        onIncognitoModeChanged: {
+            mdlRedditSession.setIncognito(appState.incognitoMode)
+        }
     }
 
 
@@ -75,6 +78,13 @@ Rectangle {
             if (appState.lightMode)
                 infoBanner.show("Light mode")
 
+
+        }
+
+        if (event.key == Qt.Key_I) {
+            appState.incognitoMode = !appState.incognitoMode
+            if (appState.incognitoMode)
+                infoBanner.show("Incognito mode")
 
         }
 
