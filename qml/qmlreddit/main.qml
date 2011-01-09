@@ -45,6 +45,7 @@ Rectangle {
         linkview.start()
         viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
+        commentview.focus = true
 
     }
 
@@ -231,7 +232,7 @@ Rectangle {
         id: commentview
         width: parent.width
         height: parent.height
-        focus: true
+        //focus: true
 
         //anchors.fill: parent
 

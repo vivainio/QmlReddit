@@ -33,6 +33,7 @@ Rectangle {
 
     function pruneComments() {
         var aggr = RE.priv(root).commentList
+        if (!aggr) return
         aggr.sort(function (l,r) {
                       return r.score - l.score
                   }

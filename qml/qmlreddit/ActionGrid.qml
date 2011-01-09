@@ -23,7 +23,6 @@ Rectangle {
 
     signal itemSelected(string itemName)
 
-
     GridView {
         id : gv
         model:  testmodel1
@@ -51,15 +50,23 @@ Rectangle {
 
         footer: Component {
             RButton {
+                id: nsfwbutton
                 buttonLabel: "Enable NSFW channels";
                 color: "yellow"
                 width: 300
                 height: 80
                 onClicked: {
+                    infoBanner.show("Double click to confirm age >= 18")
+                }
+
+                onDoubleClicked: {
+                    infoBanner.show("Entering incognito mode")
+                    appState.incognitoMode = true
                     mdlReddit.enableRestricted(true);
                     mdlReddit.refreshCategories()
+                    nsfwbutton.visible = false
 
-                }
+                }               
 
             }
         }

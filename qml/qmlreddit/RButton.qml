@@ -7,6 +7,7 @@ Rectangle {
     property alias buttonLabel : tf.text
     property bool selected : false
     signal clicked;
+    signal doubleClicked;
 
     width: 80
     height: 60
@@ -21,6 +22,7 @@ Rectangle {
         id: ma
         anchors.fill: parent
         onClicked: parent.clicked()
+        onDoubleClicked: parent.doubleClicked()
 
     }
 
