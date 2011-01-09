@@ -20,6 +20,9 @@ void setNokesProxy()
 
 int main(int argc, char *argv[])
 {
+//#ifdef Q_OS_SYMBIAN
+//    QApplication::setGraphicsSystem("openvg");
+//#endif
     QApplication app(argc, argv);
 
     //app.setStyle("motif");

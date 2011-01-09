@@ -302,6 +302,7 @@ Rectangle {
             StateChangeScript {
                 script: {
                     //viewSwitcher.switchView(commentview, true)
+                    commentview.focus = true
                 }
             }
 

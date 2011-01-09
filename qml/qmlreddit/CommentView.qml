@@ -20,6 +20,41 @@ Rectangle {
         property int colorspeed : 400
     }
 
+
+    Keys.onPressed: {
+        console.log(event.key)
+
+        if (event.key == Qt.Key_Down) {
+            lstComments.incrementCurrentIndex()
+        }
+
+        if (event.key == Qt.Key_Up) {
+            lstComments.decrementCurrentIndex()
+
+        }
+
+        if (event.key == Qt.Key_T) {
+            var aggr = RE.priv(root).commentList
+            aggr.sort(function (l,r) {
+                          return r.score - l.score
+                      }
+
+            )
+
+            for (var i in aggr) {
+                aggr[i].depth = 0
+            }
+
+            RE.priv(root).commentList = aggr
+
+            publishCommentList()
+
+            console.log("prune")
+        }
+
+    }
+
+
     ListModel {        
         id: mdlComments
 
@@ -74,6 +109,17 @@ Rectangle {
         mdlComments.clear()
     }
 
+    function publishCommentList() {
+        clear()
+
+        var aggr = RE.priv(root).commentList
+
+        for (var i in aggr) {
+            var val = aggr[i]
+            mdlComments.append(val)
+        }
+    }
+
     function populate(json) {
         //console.log("comment_json ", json)
         var obj = eval(json)
@@ -93,14 +139,10 @@ Rectangle {
         }
 
         //var comments = obj[1]['data']['']
-        mdlComments.clear()
-        for (var i in aggr) {
-            var val = aggr[i]
-            mdlComments.append(val)
-            //console.log("body ", unescape(val.body))
 
-        }
+        RE.priv(root).commentList = aggr
 
+        publishCommentList()
 
     }
 
@@ -249,6 +291,7 @@ Rectangle {
     }
 
     ListView {
+        id: lstComments
         anchors.fill: parent
         model: mdlComments
         delegate: dlgComments

@@ -22,6 +22,7 @@ Rectangle {
 
     }
 
+
     Connections {
         target: mdlRedditSession
         onLinksAvailable: {
