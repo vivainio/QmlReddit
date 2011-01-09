@@ -5,6 +5,8 @@ QtObject {
 
     property bool lightMode : false
 
+    property bool topCommentsMode: false
+
     property string linkSelection: "Hot"
     function checkLogin() {
         var cook = mdlRedditSession.cookies()

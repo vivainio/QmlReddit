@@ -20,6 +20,13 @@ Rectangle {
         property int colorspeed : 400
     }
 
+    Connections {
+        target: appState
+        onLightModeChanged: {
+            lstComments.delegate = appState.lightMode ? dlgCommentsLight : dlgComments
+        }
+    }
+
 
     Keys.onPressed: {
         console.log(event.key)
@@ -58,8 +65,11 @@ Rectangle {
 
         if (event.key == Qt.Key_L) {
             lstComments.delegate = dlgCommentsLight
-            infoBanner.show("Light mode")
-            appState.lightMode = true
+
+            appState.lightMode = !appState.lightMode
+            if (appState.lightMode)
+                infoBanner.show("Light mode")
+
 
         }
 
@@ -323,7 +333,7 @@ Rectangle {
         id: lstComments
         anchors.fill: parent
         model: mdlComments
-        delegate: dlgComments
+        delegate: appState.lightMode ? dlgCommentsLight : dlgComments
         spacing: 5
 
 

@@ -54,6 +54,36 @@ Rectangle {
                 textFormat: Text.RichText                
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: "<h1>QmlReddit</h1><p>Version 0.9</p><p>Click on score to vote on comment. 't' to show top comments. 'l' for light mode"
+            }
+
+        }
+
+        ToolbarView {
+            toolbarItemTitle: "Settings"
+            backsteppingExits: false
+
+            Rectangle {
+                Grid {
+                    RButton {
+                        buttonLabel: "Top comments"
+                        selected: appState.topCommentsMode
+                        onClicked: {
+                            appState.topCommentsMode = !appState.topCommentsMode
+                        }
+
+                    }
+
+                    RButton {
+                        buttonLabel: "Light mode"
+                        selected:  appState.lightMode
+                        onClicked: {
+                            appState.lightMode = !appState.lightMode
+                        }
+                    }
+
+            }
+
+
 
             }
 
