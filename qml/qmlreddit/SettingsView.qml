@@ -30,6 +30,7 @@ Rectangle {
             top: headerView.bottom
             bottom: parent.bottom
         }
+        current: 2
 
 
         ToolbarView {
