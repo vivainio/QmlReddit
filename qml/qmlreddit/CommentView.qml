@@ -54,6 +54,7 @@ Rectangle {
     Keys.onPressed: {
         console.log(event.key)
 
+        /*
         if (event.key == Qt.Key_Down) {
             lstComments.incrementCurrentIndex()
         }
@@ -62,6 +63,7 @@ Rectangle {
             lstComments.decrementCurrentIndex()
 
         }
+        */
 
         if (event.key == Qt.Key_T) {
 
@@ -83,8 +85,13 @@ Rectangle {
 
         if (event.key == Qt.Key_I) {
             appState.incognitoMode = !appState.incognitoMode
-            if (appState.incognitoMode)
+            if (appState.incognitoMode) {
                 infoBanner.show("Incognito mode")
+            }
+            else {
+                infoBanner.show("Leaving incognito")
+
+            }
 
         }
 
@@ -343,9 +350,9 @@ Rectangle {
 
     Component {
         id: nullVoteRow
-        Item {
-            width: 1
-            height: 1
+        Rectangle {
+            height: 80
+            width: root.width
         }
     }
 
@@ -357,7 +364,7 @@ Rectangle {
         spacing: 5
 
 
-        header: appState.loggedIn ? voteRow : nullVoteRow
+        header: appState.loggedIn && !appState.incognitoMode ? voteRow : nullVoteRow
 
         footer: Rectangle {
             height: imgNext.height
