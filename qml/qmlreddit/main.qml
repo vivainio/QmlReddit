@@ -190,7 +190,9 @@ Rectangle {
             //var lnk = mdlReddit.getLink(selIndex)
             var lnk = eng.getLink(selIndex)
             //console.log("have vote", lnk.vote)
-            if (eng.shouldShowComments(lnk)) {
+
+            var directpreview = !eng.shouldShowComments(lnk)
+            if (!directpreview) {
                 viewSwitcher.switchView(commentview, false)
                 mainview.state = "CommentsState"                
 
@@ -209,9 +211,18 @@ Rectangle {
             var url = lnk["permalink"]
             //console.log("url ", url)
 
-            mdlReddit.fetchComments(url);
+            if (appState.lightMode && directpreview) {
+                console.log("light mode, don't load comments for direct preview")
+                webpreview.url = lnk.url
+
+            } else {
+                mdlReddit.fetchComments(url)
+            }
             commentview.setLink(lnk)
-            webpreview.url = lnk.url            
+            // in light mode, no preview loaded by default
+            if (!appState.lightMode) {
+                webpreview.url = lnk.url
+            }
         }
 
 
@@ -229,7 +240,10 @@ Rectangle {
             viewSwitcher.switchView(webpreview, false)
             mainview.state = "PreviewState"
             //console.log("prev ", lnk)
-            //webpreview.url = lnk.url
+
+            // in light mode, web page rendered at this time
+            if (appState.lightMode)
+                webpreview.url = lnk.url
             //RE.dump(lnk)
         }
         onReqLinks: {

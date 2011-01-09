@@ -3,6 +3,8 @@ import Qt 4.7
 QtObject {
     property bool loggedIn : false
 
+    property bool lightMode : false
+
     property string linkSelection: "Hot"
     function checkLogin() {
         var cook = mdlRedditSession.cookies()

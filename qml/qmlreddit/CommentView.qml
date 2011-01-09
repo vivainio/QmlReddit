@@ -34,6 +34,7 @@ Rectangle {
         }
 
         if (event.key == Qt.Key_T) {
+
             webpreview.url = "about:blank"
             var aggr = RE.priv(root).commentList
             aggr.sort(function (l,r) {
@@ -51,8 +52,15 @@ Rectangle {
             RE.priv(root).commentList = aggr
 
             publishCommentList()
+            infoBanner.show("Top comments")
 
-            console.log("prune")
+        }
+
+        if (event.key == Qt.Key_L) {
+            lstComments.delegate = dlgCommentsLight
+            infoBanner.show("Light mode")
+            appState.lightMode = true
+
         }
 
     }
@@ -146,6 +154,24 @@ Rectangle {
         RE.priv(root).commentList = aggr
 
         publishCommentList()
+
+    }
+
+    Component {
+        id : dlgCommentsLight
+
+        Rectangle {
+            height: txtComL.height + 5
+            width: ListView.view.width
+            Text {
+                width: parent.width
+                id: txtComL
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                textFormat: Text.RichText
+                text: body
+            }
+        }
+
 
     }
 
