@@ -229,7 +229,7 @@ Rectangle {
             viewSwitcher.switchView(webpreview, false)
             mainview.state = "PreviewState"
             //console.log("prev ", lnk)
-            webpreview.url = lnk.url
+            //webpreview.url = lnk.url
             //RE.dump(lnk)
         }
         onReqLinks: {

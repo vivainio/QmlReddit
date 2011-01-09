@@ -34,6 +34,7 @@ Rectangle {
         }
 
         if (event.key == Qt.Key_T) {
+            webpreview.url = "about:blank"
             var aggr = RE.priv(root).commentList
             aggr.sort(function (l,r) {
                           return r.score - l.score
