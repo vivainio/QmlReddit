@@ -65,12 +65,14 @@ Rectangle {
 
             Rectangle {
                 anchors.fill: parent
-                Grid {
+                Flow {
                     anchors.fill: parent
                     spacing: 30
-                    columns: 2
+                    width: parent.width
+
+
                     RButton {
-                        width: 120
+                        width: 200
                         buttonLabel: "Top comments"
                         selected: appState.topCommentsMode
                         onClicked: {
@@ -80,7 +82,7 @@ Rectangle {
                     }
 
                     RButton {
-                        width: 120
+                        width: 200
                         buttonLabel: "Light mode"
                         selected:  appState.lightMode
                         onClicked: {
@@ -88,7 +90,8 @@ Rectangle {
                         }
                     }
                     RButton {
-                        width: 120
+                        width: 200
+
                         buttonLabel: "Incognito mode"
                         selected:  appState.incognitoMode
                         onClicked: {
