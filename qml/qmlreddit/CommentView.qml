@@ -28,6 +28,26 @@ Rectangle {
     }
 
 
+    function pruneComments() {
+        var aggr = RE.priv(root).commentList
+        aggr.sort(function (l,r) {
+                      return r.score - l.score
+                  }
+
+        )
+
+        for (var i in aggr) {
+            aggr[i].depth = 0
+        }
+        aggr.splice(100, aggr.length - 100)
+
+
+        RE.priv(root).commentList = aggr
+
+        publishCommentList()
+
+    }
+
     Keys.onPressed: {
         console.log(event.key)
 
@@ -43,22 +63,7 @@ Rectangle {
         if (event.key == Qt.Key_T) {
 
             webpreview.url = "about:blank"
-            var aggr = RE.priv(root).commentList
-            aggr.sort(function (l,r) {
-                          return r.score - l.score
-                      }
-
-            )
-
-            for (var i in aggr) {
-                aggr[i].depth = 0
-            }
-            aggr.splice(100, aggr.length - 100)
-
-
-            RE.priv(root).commentList = aggr
-
-            publishCommentList()
+            pruneComments()
             infoBanner.show("Top comments")
 
         }
@@ -163,7 +168,12 @@ Rectangle {
 
         RE.priv(root).commentList = aggr
 
-        publishCommentList()
+        if (appState.topCommentsMode) {
+                pruneComments()
+        } else {
+
+            publishCommentList()
+        }
 
     }
 
