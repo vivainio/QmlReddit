@@ -58,7 +58,7 @@ Rectangle {
         anchors.bottom:  parent.bottom
         anchors.rightMargin: 10
 
-        color: "blue"
+        color: "lightblue"
         text: wv.progress < 1 ? Math.floor(wv.progress * 100) + "%" : ""
     }
 
