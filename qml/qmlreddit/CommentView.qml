@@ -44,6 +44,8 @@ Rectangle {
             for (var i in aggr) {
                 aggr[i].depth = 0
             }
+            aggr.splice(100, aggr.length - 100)
+
 
             RE.priv(root).commentList = aggr
 
