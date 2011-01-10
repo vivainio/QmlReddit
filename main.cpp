@@ -2,7 +2,7 @@
 #include "qmlapplicationviewer/qmlapplicationviewer.h"
 #include "redditmodel.h"
 #include <QNetworkProxy>
-
+#include <QDeclarativeEngine>
 #include <QDeclarativeContext>
 
 #include "lifecycle.h"
@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();
+    //ctxt->engine()->setOfflineStoragePath("/home/ville/offline");
+
 
     RedditModel* m = new RedditModel;
     m->setup(ctxt);

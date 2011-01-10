@@ -1,6 +1,6 @@
 import Qt 4.7
 
-QtObject {
+Storage {
     property bool loggedIn : false
 
     property bool lightMode : false
@@ -10,6 +10,8 @@ QtObject {
     property bool incognitoMode: false
 
     property string linkSelection: "Hot"
+
+    name: "qmreddit"
     function checkLogin() {
         var cook = mdlRedditSession.cookies()
         if (cook.reddit_session) {
