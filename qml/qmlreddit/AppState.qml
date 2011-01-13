@@ -2,12 +2,10 @@ import Qt 4.7
 
 Storage {
     property bool loggedIn : false
-
     property bool lightMode : false
-
     property bool topCommentsMode: false
-
     property bool incognitoMode: false
+    property bool lockOrientation : false
 
     property string linkSelection: "Hot"
 

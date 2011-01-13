@@ -6,7 +6,7 @@ LifeCycle::LifeCycle(QObject *parent) :
 {
 }
 
-void LifeCycle::setView(QDeclarativeView *w)
+void LifeCycle::setView(QmlApplicationViewer* w)
 {
     m_mainWindow = w;
 }
@@ -18,4 +18,14 @@ void LifeCycle::toggleState()
     } else {
         m_mainWindow->showMaximized();
     }
+}
+
+void LifeCycle::setOrientation(const QString &orient)
+{
+    if (orient == "auto") {
+        m_mainWindow->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+    } else if (orient == "landscape") {
+        m_mainWindow->setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
+    }
+
 }

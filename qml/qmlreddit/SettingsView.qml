@@ -98,6 +98,17 @@ Rectangle {
                             appState.incognitoMode = !appState.incognitoMode
                         }
                     }
+                    RButton {
+                        width: 200
+
+                        buttonLabel: "Lock landscape"
+                        selected:  appState.lockOrientation
+                        onClicked: {
+                            appState.lockOrientation = !appState.lockOrientation
+                        }
+                    }
+
+
                 }
             }
 

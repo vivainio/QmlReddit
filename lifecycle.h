@@ -4,7 +4,9 @@
 #include <QObject>
 
 class QWidget;
-class QDeclarativeView;
+
+
+#include "qmlapplicationviewer.h"
 
 class LifeCycle : public QObject
 {
@@ -12,16 +14,18 @@ class LifeCycle : public QObject
 public:
     explicit LifeCycle(QObject *parent = 0);
 
-    void setView(QDeclarativeView* w);
+    void setView(QmlApplicationViewer* w);
 
 signals:
 
 public slots:
 
+    // "auto" or "landscape"
+    void setOrientation(const QString& orient);
     void toggleState();
 
 private:
-    QDeclarativeView* m_mainWindow;
+    QmlApplicationViewer* m_mainWindow;
 };
 
 #endif // LIFECYCLE_H
