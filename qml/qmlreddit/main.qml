@@ -214,7 +214,7 @@ Rectangle {
 
             if (appState.lightMode && directpreview) {
                 console.log("light mode, don't load comments for direct preview")
-                webpreview.url = lnk.url
+                webpreview.setUrl(lnk.url)
 
             } else {
                 mdlReddit.fetchComments(url)
@@ -222,7 +222,7 @@ Rectangle {
             commentview.setLink(lnk)
             // in light mode, no preview loaded by default
             if (!appState.lightMode) {
-                webpreview.url = lnk.url
+                webpreview.setUrl(lnk.url)
             }
         }
 
@@ -245,7 +245,7 @@ Rectangle {
 
             // in light mode, web page rendered at this time
             if (appState.lightMode)
-                webpreview.url = lnk.url
+                webpreview.setUrl(lnk.url)
             //RE.dump(lnk)
         }
         onReqLinks: {
@@ -298,7 +298,7 @@ Rectangle {
             StateChangeScript {
 
                 script: {
-                    webpreview.url = "about:blank"
+                    webpreview.setUrl("about:blank")
                     //commentview.clear()
                     //viewSwitcher.switchView(linkview, true)
                 }

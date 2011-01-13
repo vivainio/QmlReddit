@@ -18,6 +18,12 @@ Rectangle {
     }
 
 
+    function setUrl(newurl) {
+        if (url != newurl) {
+            url = newurl
+        }
+    }
+
     ImgButton {
         buttonImage: "pics/go-previous.svg"
         //buttonLabel: "Back"
@@ -56,9 +62,9 @@ Rectangle {
     Text {
         anchors.right: parent.right
         anchors.bottom:  parent.bottom
-        anchors.rightMargin: 10
+        anchors.rightMargin: 5
 
-        color: "lightblue"
+        color: "green"
         text: wv.progress < 1 ? Math.floor(wv.progress * 100) + "%" : ""
     }
 

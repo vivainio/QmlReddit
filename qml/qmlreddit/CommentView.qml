@@ -76,7 +76,7 @@ Rectangle {
 
         if (event.key == Qt.Key_T) {
 
-            webpreview.url = "about:blank"
+            webpreview.setUrl("about:blank")
             pruneComments()
             infoBanner.show("Top comments")
 

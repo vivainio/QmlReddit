@@ -12,15 +12,37 @@ Rectangle {
 
     }
 
+    QtObject {
+        id: priv
+        property string lastAttempt: ""
+    }
+
     Connections {
         target: mdlRedditSession
         onLoginResponse: {
             //console.log("Resp is ", response)
             appState.checkLogin()
+            if (appState.loggedIn) {
+                appState.lastLogin = priv.lastAttempt
+
+            } else {
+                aLoginBounce.start()
+            }
 
         }
     }
 
+    Text {
+        anchors {
+            left : parent.left
+            top : parent.top
+        }
+
+        text: "User: " + appState.lastLogin
+        visible: appState.lastLogin.length > 0
+
+
+    }
     Grid {
         anchors.centerIn: parent
         columns: 2
@@ -121,9 +143,11 @@ Rectangle {
             mdlRedditSession.logout()
 
             if (!appState.loggedIn) {
+                priv.lastAttempt = inpUserName.text
                 mdlRedditSession.login( inpUserName.text, inpPassword.text)
             }
             appState.loggedIn = false
+            appState.lastLogin = ""
 
 
         }
