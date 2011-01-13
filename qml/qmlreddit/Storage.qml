@@ -1,3 +1,8 @@
+/*
+
+ Copyright (c) 2011 Jyrki Yli-Nokari 
+*/
+
 import Qt 4.7
 //import "log.js" as Log
 import "storage.js" as Js

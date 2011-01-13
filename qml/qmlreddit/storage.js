@@ -1,3 +1,7 @@
+/*
+
+ Copyright (c) 2011 Jyrki Yli-Nokari
+*/
 
 
 /*
