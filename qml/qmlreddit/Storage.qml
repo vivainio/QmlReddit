@@ -31,18 +31,15 @@ QtObject {
         var ret;
         var w = writeOnExit;    // These must not be read from db (bad design)
         var r = readOnStart;    // -"-
-        console.log("reading")
         ret = Js.read(store);
         writeOnExit = w;
         readOnStart = r;
         loaded(ret);
     }
     function write() {  // write to storage
-        console.log("writing")
         Js.write(store);
     }
     function clear() {  // clear local storage (does not touch variables)
-        console.log("clearing")
         Js.clear(store);
     }
     function add(name, ob) { // variables to add -- NOTE: to be used only in onInit: slot
@@ -54,15 +51,14 @@ QtObject {
     }
 
     Component.onCompleted: {
-        console.log("Storage completing going to write on exit:"+writeOnExit)
-        if (!name) throw ("Storage database name undefined");
+//        console.log("Storage completing going to write on exit:"+writeOnExit)
         init();    // emit signal onInit() for application to construct whatever they want to do on the Js side -- typically add(members)
         Js.init(name);  // open the database
         if (readOnStart) read(store);   // Read it in
 
     }
     Component.onDestruction: {
-        console.log("Storage finishing, will write: "+writeOnExit);
+//        console.log("Storage finishing, will write: "+writeOnExit);
         if (writeOnExit) write(store);
     }
 }

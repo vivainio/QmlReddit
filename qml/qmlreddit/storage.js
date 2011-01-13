@@ -66,8 +66,17 @@ var db;
 var maxDepth = 5;
 
 var init = function(name, size) {
-//    console.log("opening database");
-    db = openDatabaseSync(name, "1.0", "QtQuick Storage "+name, (size !== undefined && size > 0) ? size : 500000);
+    if (name === undefined || !name) {
+        console.log("Error: Storage property 'name' undefined");
+        throw("Storage { name: undefined }");
+    }
+
+    try {
+//        console.log("opening database '"+name+"', size: "+size);
+        db = openDatabaseSync(name, "1.0", "QtQuick Storage "+name, (size !== undefined && size > 0) ? size : 500000);
+    } catch (e) {
+        console.log("Database '"+v+"' open failed: "+e);
+    }
 }
 
 var jsStore = {} // For storing additional JS side vars to Storage (for persistence)
@@ -103,7 +112,6 @@ var writeObject = function (db, tableName, obj, member) {
                         var storeValue = function(o, tablename) {   // Small helper
                             return (typeof o == 'object') ? tablename : o;
                         }
-
 
                         /*
                          * Special case: if "memberName" is empty, the hostObject is not hostObject but the top level object
@@ -170,8 +178,8 @@ var writeObject = function (db, tableName, obj, member) {
                         // Do not write if this is toplevel as toplevel tablenames are implicit
                         if(!topLevel) {
                             x = executeSQL(tx, 'SELECT value FROM "'+fullName+'" WHERE member="'+memberName+'"');
-                            if (x.rows.length) { // member has been stored earlier
-                                x = executeSQL(tx, 'UPDATE "'+fullName+'" SET type="'+type+'", value="'+storeValue(o, myName)+'" WHERE member="'+member+'"');
+                            if (x.rows.length) { // member has been Valued earlier
+                                x = executeSQL(tx, 'UPDATE "'+fullName+'" SET type="'+type+'", value="'+storeValue(o, myName)+'" WHERE member="'+memberName+'"');
                             } else { // create new entry
                                 x = executeSQL(tx, 'INSERT INTO "'+fullName+'" VALUES("'+memberName+'", "'+type+'", "'+storeValue(o, myName)+'")');
                             }
@@ -207,6 +215,7 @@ var newListModel = function(parent) {
 var readObject = function(db, tableName, obj) {
     db.readTransaction(
                 function(tx) {
+                    var p;
                     var readTable = function readTable(tx, ob, fullName) {
                         var r, select, row;
                         var newOb;
@@ -225,6 +234,7 @@ var readObject = function(db, tableName, obj) {
                         select = executeSQL(tx, 'SELECT * FROM "'+fullName+'" ORDER BY member');
                         for (r = 0; r < select.rows.length; r++) {
                             row = select.rows.item(r);
+//                            for (p in row) console.log("row["+p+"]: '"+row[p]+"'");
                             if (isQtListModel(ob) || ob[row.member] === undefined) {  // Note: if (isQtListModel(ob)) then row.type === "object"
                                 newOb = (row.type === "array") ? [] : row.type === "listmodel" ? newListModel(ob) : {};    // Note: newListModel() is just a placeholder, it shouln't be called as th Litsmode shoud have been written nd the data mode shoud be static
                                 if (!isQtListModel(ob)) ob[row.member] = newOb; // Initialise the member in case it hapens to be an array or object
@@ -235,7 +245,7 @@ var readObject = function(db, tableName, obj) {
                             } else if (row.type == "string") {
                                 setMember(ob, row.member, row.value+"");
                             } else if (row.type == "boolean") {
-                                setMember(ob, row.member, row.value ? true : false);
+                                setMember(ob, row.member, row.value === 'true');
                             } else if (row.type == "object" || row.type == "array" || row.type == 'listmodel') {
                                 readTable(tx, isQtListModel(ob) ? newOb : ob[row.member], row.value);
                                 if (isQtListModel(ob)) { // then we have read the member to a fresh object and need to add it to the list
