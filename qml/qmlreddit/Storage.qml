@@ -1,6 +1,10 @@
 /*
 
- Copyright (c) 2011 Jyrki Yli-Nokari 
+Copyright (c) 2011 Jyrki Yli-Nokari
+
+This file may be used under the terms of the GNU Lesser
+General Public License version 2.1
+
 */
 
 import Qt 4.7
