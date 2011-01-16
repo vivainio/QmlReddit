@@ -83,12 +83,14 @@ Rectangle {
         x : width + 100
         y : 0
         z: 20
+        visible: false
         states: [
             State {
                 name: "exposed"
                 PropertyChanges {
                     target: toolgrid
-                    x :0
+                    x : 0
+                    visible: true
 
                 }
             }
@@ -116,67 +118,6 @@ Rectangle {
         }
 
     }
-
-    /*
-    FlatToolBar {
-        id: toolbar
-        anchors.right: linkview.right
-        anchors.bottom: linkview.bottom
-        orientation: mainview.height > mainview.width ? ListView.Vertical : ListView.Horizontal
-        z: 10
-        model: ListModel {
-            ListElement {
-                label: "Quit"
-                name: "quit"
-
-            }
-
-            ListElement {
-                label: "Cat"
-                name: "cat"
-            }
-            ListElement {
-
-                label: "Browser"
-                name: "browser"
-            }
-            ListElement {
-                label: "Prefs"
-                name: "prefs"
-            }
-        }
-        onItemSelected: {
-            if (itemName == "cat") {
-                if (!priv.myRedditsFetched) {
-                    mdlRedditSession.getMyReddits()
-                    priv.myRedditsFetched = true
-                }
-
-                mainview.state = "SelectCategory"
-
-            }
-            if (itemName == "quit") {
-                Qt.quit()
-            }
-            if (itemName == "browser") {
-                var lnk = RE.eng().currentLink()                
-                if (lnk.permalink) {
-                    mdlReddit.browser("http://www.reddit.com" + lnk.permalink)
-                } else {
-                    mdlReddit.browser("http://www.reddit.com")
-                }
-
-
-            }
-            if (itemName == "prefs") {
-                mainview.state = "SettingsState"
-            }
-
-            //console.log("Select item ", itemName)
-        }
-    }
-    */
-
 
     LinkView  {
         id: linkview
@@ -266,6 +207,7 @@ Rectangle {
     ViewLoader {
         id: settingsview
         viewSource: "SettingsView.qml"
+        keepLoaded: false
 
     }
 
