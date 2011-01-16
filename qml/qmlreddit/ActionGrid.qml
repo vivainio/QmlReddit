@@ -5,6 +5,7 @@ Rectangle {
     //width: 640
     //height: 480
 
+
     width: parent.width
     height: parent.height
     property alias model : gv.model

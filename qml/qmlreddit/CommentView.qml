@@ -5,7 +5,7 @@ import "redditengine.js" as RE
 
 
 Rectangle {
-    x: width + 200
+    //x: width + 200
 
     id: root
 

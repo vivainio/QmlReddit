@@ -28,7 +28,8 @@ Rectangle {
         target: mdlReddit
         onCommentsJsonAvailable: {
             //console.log('got json ', json)
-            commentview.populate(json)
+            commentview.loadView()
+            commentview.item.populate(json)
 
         }
     }
@@ -163,7 +164,7 @@ Rectangle {
             } else {
                 mdlReddit.fetchComments(url)
             }
-            commentview.setLink(lnk)
+            commentview.item.setLink(lnk)
             // in light mode, no preview loaded by default
             if (!appState.lightMode) {
                 webpreview.setUrl(lnk.url)
@@ -172,6 +173,34 @@ Rectangle {
 
 
     }
+
+    ViewLoader {
+        id: commentview
+        viewSource: "CommentView.qml"
+        function onReqPreview() {
+            var lnk = RE.eng().currentLink()
+            viewSwitcher.switchView(webpreview, false)
+            mainview.state = "PreviewState"
+            //console.log("prev ", lnk)
+
+            // in light mode, web page rendered at this time
+            if (appState.lightMode)
+                webpreview.setUrl(lnk.url)
+            //RE.dump(lnk)
+        }
+        function onReqLinks() {
+            viewSwitcher.switchView(linkview, true)
+            mainview.state = "LinkState"
+        }
+
+        onLoaded: {
+            item.reqPreview.connect(onReqPreview)
+            item.reqLinks.connect(onReqLinks)
+        }
+
+    }
+    /*
+
     CommentView {
         id: commentview
         width: parent.width
@@ -197,13 +226,24 @@ Rectangle {
             mainview.state = "LinkState"
         }
     }
+    */
 
-    WebPreview {
+    ViewLoader {
         id: webpreview
-        onReqBack: {
+        viewSource: "WebPreview.qml"
+        function setUrl(u) {
+            webpreview.loadView()
+            item.setUrl(u)
+        }
+
+        function goBack() {
             viewSwitcher.switchView(commentview, true)
             mainview.state = "CommentsState"
 
+        }
+
+        onLoaded: {
+            item.reqBack.connect(goBack)
         }
     }
 

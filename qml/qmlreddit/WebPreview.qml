@@ -3,10 +3,10 @@ import QtWebKit 1.0
 
 
 Rectangle {
-    width: parent.width
-    height: parent.height
+    //width: parent.width
+    //height: parent.height
 
-    x: width + 200
+    //x: width + 200
     property alias url: wv.url
     signal reqBack
 
