@@ -4,9 +4,6 @@ import "redditengine.js" as RE
 Rectangle {
     id: container
     //anchors.fill: parent
-    width: parent.width
-    height: parent.height
-    x: width + 200
 
     signal linkSelected(int selIndex);
 
@@ -24,14 +21,6 @@ Rectangle {
 
     }
 
-
-    Connections {
-        target: mdlRedditSession
-        onLinksAvailable: {
-            progressInd.hide()
-        }
-
-    }
 
 
     ListView {
@@ -61,8 +50,5 @@ Rectangle {
 
     }
 
-    ProgressInd {
-        id: progressInd
-    }
 
 }

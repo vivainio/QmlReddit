@@ -33,23 +33,38 @@ Rectangle {
 
         }
     }
+
+
     Connections {
         target: mdlRedditSession
         onLoggedOut: {
             mdlReddit.refreshCategories()
         }
+        onLinksAvailable: {
+            progressInd.hide()
+            viewSwitcher.switchView(linkview, true)
+
+        }
 
     }
 
     function startup() {
-        linkview.start()
-        viewSwitcher.switchView(linkview, true)
+        //linkview.start()
+        //viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
-        commentview.focus = true
+        //commentview.focus = true
+        progressInd.show()
+        viewSwitcher.switchView(splash, true)
 
     }
 
     Component.onCompleted: startup();
+
+    ViewLoader {
+        id: splash
+        viewSource: "SplashScreen.qml"
+        keepLoaded: false
+    }
 
     ViewLoader {
         id: categoryselector
@@ -62,7 +77,7 @@ Rectangle {
 
             if (itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
-                linkview.start()
+                linkview.item.start()
                 RE.eng().fetchLinks()
             }
         }
@@ -117,13 +132,11 @@ Rectangle {
 
     }
 
-    LinkView  {
+    ViewLoader {
+        viewSource: "LinkView.qml"
         id: linkview
-        width: parent.width
-        height: parent.height
 
-        onLinkSelected: {
-
+        function onLinkSelected(selIndex) {
             var eng = RE.eng()
             //console.log("sig ", selIndex, " m ", mdlReddit.fetchComments)
 
@@ -164,6 +177,10 @@ Rectangle {
                 webpreview.setUrl(lnk.url)
             }
         }
+        onLoaded: {
+            item.linkSelected.connect(onLinkSelected)
+        }
+
 
 
     }
@@ -190,6 +207,7 @@ Rectangle {
         onLoaded: {
             item.reqPreview.connect(onReqPreview)
             item.reqLinks.connect(onReqLinks)
+            item.focus = true
         }
 
     }
@@ -258,11 +276,16 @@ Rectangle {
     }
     */
 
+    ProgressInd {
+        id: progressInd
+    }
+
 
     InfoBanner {
         id: infoBanner
 
     }
+
 
     state: "LinkState"
     states: [
