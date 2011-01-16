@@ -42,7 +42,6 @@ Rectangle {
     }
 
     function startup() {
-        //infoBanner.show("Loading")
         linkview.start()
         viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
@@ -52,37 +51,32 @@ Rectangle {
 
     Component.onCompleted: startup();
 
-    ActionGrid {
+    ViewLoader {
         id: categoryselector
-        x : parent.width + 200
-        anchors.verticalCenter: parent.verticalCenter
 
-        model: mdlCategories
-        width: parent.width
-        height: parent.height
-        onItemSelected: {
-            if (itemName == '+') {
-                mdlReddit.editConfig()
-            }
+        viewSource: "ActionGrid.qml"
+        function onItemSelected(itemName) {
 
             viewSwitcher.switchView(linkview, false)
             mainview.state = "LinkState"
 
-            if (itemName != '+' && itemName != 'Cancel') {
+            if (itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
                 linkview.start()
                 RE.eng().fetchLinks()
-                //mdlReddit.start(itemName, 0)
             }
         }
+
+
+        onLoaded: {
+            item.model = mdlCategories
+            item.itemSelected.connect(onItemSelected)
+        }
+
     }
 
     ViewLoader {
         id: toolgrid
-        //width: parent.width
-        //height: parent.height
-        //x : width + 100
-        //y : 0
         z: 20
         viewSource: "ToolGrid.qml"
         visible: false

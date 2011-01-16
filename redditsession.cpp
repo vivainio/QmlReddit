@@ -342,7 +342,7 @@ void RedditSession::getMyRedditsFinished()
     //qDebug() << "data " << ba;
     QScriptValue sv = parseJson(ba);
     m_modhash = sv.property("data").property("modhash").toString();
-    qDebug() << "modhash " << m_modhash;
+    //qDebug() << "modhash " << m_modhash;
     QScriptValue items = sv.property("data").property("children");
     QScriptValueIterator it(items);
     m_myreddits.clear();

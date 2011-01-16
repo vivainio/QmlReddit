@@ -18,7 +18,9 @@ Rectangle {
     }
 
     function activationComplete() {
-        commentview.item.clear()
+        if (commentview.item) {
+            commentview.item.clear()
+        }
 
     }
 
