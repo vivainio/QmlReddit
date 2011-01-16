@@ -15,7 +15,6 @@ Item {
 
     }
 
-
     ListModel {
         id: toolsModel
         ListElement {

@@ -76,19 +76,21 @@ Rectangle {
         }
     }
 
-    ToolGrid {
+    ViewLoader {
         id: toolgrid
-        width: parent.width
-        height: parent.height
-        x : width + 100
-        y : 0
+        //width: parent.width
+        //height: parent.height
+        //x : width + 100
+        //y : 0
         z: 20
-        visible: false
+        viewSource: "ToolGrid.qml"
+        visible: true
         states: [
             State {
                 name: "exposed"
                 PropertyChanges {
                     target: toolgrid
+                    opacity: 1
                     x : 0
                     visible: true
 
@@ -109,6 +111,7 @@ Rectangle {
         buttonImage: toolgrid.state == "" ? "pics/document-properties.svg" : "pics/process-stop.svg"
         onClicked: {
             if (toolgrid.state == "") {
+                toolgrid.loadView()
                 toolgrid.state =  "exposed"
             }
             else {
