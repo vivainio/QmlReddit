@@ -48,13 +48,30 @@ Rectangle {
 
     }
 
+    Connections {
+        target: appState
+
+        onIncognitoModeChanged: {
+            mdlRedditSession.setIncognito(appState.incognitoMode)
+        }
+
+        onLockOrientationChanged: {
+            var or = appState.lockOrientation ? "landscape" : "auto"
+            lifecycle.setOrientation(or)
+
+        }
+
+    }
+
     function startup() {
         //linkview.start()
         //viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
         //commentview.focus = true
         progressInd.show()
-        viewSwitcher.switchView(splash, true)
+        viewSwitcher.duration = 0
+        viewSwitcher.switchView(splash, true, "instant")
+        viewSwitcher.duration = 700
 
     }
 
@@ -171,6 +188,7 @@ Rectangle {
             } else {
                 mdlReddit.fetchComments(url)
             }
+            commentview.loadView()
             commentview.item.setLink(lnk)
             // in light mode, no preview loaded by default
             if (!appState.lightMode) {

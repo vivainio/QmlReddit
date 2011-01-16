@@ -25,15 +25,6 @@ Rectangle {
         onLightModeChanged: {
             lstComments.delegate = appState.lightMode ? dlgCommentsLight : dlgComments
         }
-        onIncognitoModeChanged: {
-            mdlRedditSession.setIncognito(appState.incognitoMode)
-        }
-
-        onLockOrientationChanged: {
-            var or = appState.lockOrientation ? "landscape" : "auto"
-            lifecycle.setOrientation(or)
-
-        }
 
 
     }
