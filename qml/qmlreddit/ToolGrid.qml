@@ -57,7 +57,9 @@ Item {
             width: 100
             height: 100
             color: "yellow"
-            bgOpacity: 0.9
+            bgOpacity: 1
+            pressedColor: "green"
+
             onClicked: {
                 itemSelected(name)
 

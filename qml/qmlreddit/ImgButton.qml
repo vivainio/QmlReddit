@@ -7,6 +7,8 @@ Item {
     signal clicked;
     property alias color : bgRect.color
     property alias bgOpacity: bgRect.opacity
+
+    property string pressedColor: color
     width: 64
     height: 64
     Rectangle {
@@ -56,7 +58,7 @@ Item {
             PropertyChanges {
                 target: bgRect
                 opacity: 1.0
-
+                color: pressedColor
             }
         }
     ]
