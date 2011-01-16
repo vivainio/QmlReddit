@@ -116,7 +116,7 @@ Item {
     }
 
     function itemSelected(itemName) {
-        state = ""
+        toolgrid.state = ""
         if (itemName == "cat") {
             if (!priv.myRedditsFetched) {
                 mdlRedditSession.getMyReddits()

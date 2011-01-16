@@ -24,6 +24,7 @@ Rectangle {
             appState.checkLogin()
             if (appState.loggedIn) {
                 appState.lastLogin = priv.lastAttempt
+                inpPassword.text = ""
 
             } else {
                 aLoginBounce.start()

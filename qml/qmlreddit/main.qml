@@ -84,7 +84,7 @@ Rectangle {
         //y : 0
         z: 20
         viewSource: "ToolGrid.qml"
-        visible: true
+        visible: false
         states: [
             State {
                 name: "exposed"
