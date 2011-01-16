@@ -76,7 +76,6 @@ Rectangle {
         }
     }
 
-
     ToolGrid {
         id: toolgrid
         width: parent.width
@@ -96,6 +95,7 @@ Rectangle {
         ]
 
     }
+
 
     ImgButton {
         id: toolbar
@@ -262,14 +262,22 @@ Rectangle {
 
         }
     }
+
+    ViewLoader {
+        id: settingsview
+        viewSource: "SettingsView.qml"
+
+    }
+
+    /*
     SettingsView {
         id: settingsview
         onDismiss: {
             viewSwitcher.switchView(linkview, false)
             mainview.state = "LinkState"
         }
-
     }
+    */
 
 
     InfoBanner {

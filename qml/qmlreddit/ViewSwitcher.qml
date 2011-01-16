@@ -12,6 +12,9 @@ QtObject {
 
     function switchView(newView, leftToRight) {
         if (newView != currentView && !switchAnimation.running) {
+            // if the new view has a loadView() function, call it to make sure the view is loaded
+            if (newView.loadView != undefined)
+                newView.loadView();
             newView.x = leftToRight ? -root.width : root.width
             direction = leftToRight;
             previousView = currentView;

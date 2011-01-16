@@ -7,9 +7,10 @@ Rectangle {
 
     signal dismiss
 
-    width: parent.width
-    height: parent.height
-    x: width + 200
+    //anchors { top: parent.top; bottom : parent.bottom }
+    //width: parent.width
+    //height: parent.height
+    //x: width + 200
 
     HeaderView {
         id: headerView
@@ -20,7 +21,8 @@ Rectangle {
         applicationName: "Settings"
 
         onBackstep: {
-            dismiss()
+            viewSwitcher.switchView(linkview, false)
+            mainview.state = "LinkState"
         }
     }
 
