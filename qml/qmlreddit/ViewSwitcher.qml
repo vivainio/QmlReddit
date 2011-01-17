@@ -10,7 +10,7 @@ QtObject {
     property bool running: switchAnimation.running
     property bool direction
 
-    function switchView(newView, leftToRight) {
+    function switchView(newView, leftToRight, extra) {
         if (newView != currentView && !switchAnimation.running) {
             // if the new view has a loadView() function, call it to make sure the view is loaded
             if (newView.loadView != undefined)
@@ -19,8 +19,12 @@ QtObject {
             direction = leftToRight;
             previousView = currentView;
             currentView = newView;
-            newView.opacity = 1;
+            newView.opacity = 1;            
             switchAnimation.start();
+            if (extra == "instant") {
+                switchAnimation.complete()
+            }
+
         }
     }
 
