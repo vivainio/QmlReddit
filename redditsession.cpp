@@ -126,6 +126,10 @@ void RedditSession::linksFetched()
         e.score = score;
         e.comments = v.property("num_comments").toString();
         e.name = name;
+        e.author = v.property("author").toString();
+        e.time = v.property("created_utc").toInt32();
+        e.subreddit = v.property("subreddit").toString();
+
         QScriptValue likes = v.property("likes");
         if (likes.isNull()) {
             e.vote = 0;

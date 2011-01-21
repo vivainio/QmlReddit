@@ -26,7 +26,10 @@ struct RedditEntry {
         PermalaLinkRole,
         ThumbnailRole,
         NameRole,
-        VoteRole
+        VoteRole,
+        AuthorRole,
+        TimeRole,
+        SubredditRole
     };
 
     QString url;
@@ -36,6 +39,9 @@ struct RedditEntry {
     int score;
     QString comments;
     QString name;
+    QString author;
+    uint time;
+    QString subreddit;
     int vote; // 1,0,-1
 };
 

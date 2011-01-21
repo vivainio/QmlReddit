@@ -234,34 +234,6 @@ Rectangle {
         }
 
     }
-    /*
-
-    CommentView {
-        id: commentview
-        width: parent.width
-        height: parent.height
-        //focus: true
-
-        //anchors.fill: parent
-
-        //onCommentSelected: mainview.state = "LinkState"
-        onReqPreview: {
-            var lnk = RE.eng().currentLink()
-            viewSwitcher.switchView(webpreview, false)
-            mainview.state = "PreviewState"
-            //console.log("prev ", lnk)
-
-            // in light mode, web page rendered at this time
-            if (appState.lightMode)
-                webpreview.setUrl(lnk.url)
-            //RE.dump(lnk)
-        }
-        onReqLinks: {
-            viewSwitcher.switchView(linkview, true)
-            mainview.state = "LinkState"
-        }
-    }
-    */
 
     ViewLoader {
         id: webpreview

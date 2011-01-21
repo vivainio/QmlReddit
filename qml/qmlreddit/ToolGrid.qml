@@ -5,10 +5,6 @@ import "redditengine.js" as RE
 
 Item {
 
-    //width: parent.width
-    //height: parent.height
-    //color: "blue"
-
     Rectangle {
         anchors.fill: parent
         opacity: 0.8

@@ -36,16 +36,12 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::CommentsRole] = "comments";
     roleNames[RedditEntry::NameRole] = "name";
     roleNames[RedditEntry::VoteRole] = "vote";
-
-
+    roleNames[RedditEntry::AuthorRole] = "author";
+    roleNames[RedditEntry::TimeRole] = "time";
+    roleNames[RedditEntry::SubredditRole] = "subreddit";
 
     m_linksmodel = new RoleItemModel(roleNames);
 
-    roleNames.clear();
-    roleNames[Qt::UserRole] = "commentText";
-
-    //m_commentsmodel = new RoleItemModel(roleNames);
-    //m_linksmodel->setRoleNames(roleNames);
 
     roleNames.clear();
 
@@ -53,11 +49,7 @@ RedditModel::RedditModel(QObject *parent) :
 
     m_cats = new RoleItemModel(roleNames);
 
-
     refreshCategories();
-
-
-
 }
 
 
@@ -96,6 +88,9 @@ void RedditModel::doPopulateLinks()
         it->setData(e.comments, RedditEntry::CommentsRole);
         it->setData(e.name, RedditEntry::NameRole);
         it->setData(e.vote, RedditEntry::VoteRole);
+        it->setData(e.author, RedditEntry::AuthorRole);
+        it->setData(e.time, RedditEntry::TimeRole);
+        it->setData(e.subreddit, RedditEntry::SubredditRole);
 
         m_linksmodel->appendRow(it);
 

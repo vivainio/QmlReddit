@@ -74,13 +74,23 @@ Component {
 
             }
 
+            Text {
+                id: tAuthor
+                text: author + " on " + tTime
+                anchors {
+                    left: tCommentCount.right
+                    top: tCommentCount.top
 
-            /*
-            Rectangle {
-                border.width: 3
-                anchors.fill: tnail
+                }
+                font.pixelSize: 8
+                color: "gray"
             }
-            */
+
+            Text {
+                id: tTime
+
+            }
+
 
         }
 

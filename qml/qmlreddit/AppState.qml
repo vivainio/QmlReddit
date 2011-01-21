@@ -8,6 +8,7 @@ Storage {
     property bool lockOrientation : false
 
     property string linkSelection: "Hot"
+
     property string lastLogin: ""
 
     name: "qmreddit"
