@@ -61,6 +61,11 @@ Rectangle {
 
         }
 
+        onLinkSelectionChanged: {
+            mdlRedditSession.setLinkSelection(appState.linkSelection)
+
+        }
+
     }
 
     function startup() {

@@ -11,7 +11,6 @@
 #include <QStringList>
 #include <QXmlDefaultHandler>
 #include <QXmlSimpleReader>
-//#include "platutil.h"
 #include <QFileInfo>
 #include <QNetworkCookieJar>
 #include <QNetworkCookie>

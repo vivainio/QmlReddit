@@ -107,8 +107,7 @@ Item {
                 selected: appState.linkSelection == modelData
 
                 onClicked: {
-                    appState.linkSelection = modelData
-                    mdlRedditSession.setLinkSelection(modelData)
+                    appState.linkSelection = modelData                    
                     RE.eng().fetchLinks()
                 }
 
