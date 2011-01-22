@@ -76,20 +76,18 @@ Component {
 
             Text {
                 id: tAuthor
-                text: author + " on " + tTime
+                text: author + " to " + subreddit
+
                 anchors {
-                    left: tCommentCount.right
+                    left: tCommentCount.left
                     top: tCommentCount.top
+                    leftMargin: 40
 
                 }
-                font.pixelSize: 8
+                //font.pixelSize: 12
                 color: "gray"
             }
 
-            Text {
-                id: tTime
-
-            }
 
 
         }
