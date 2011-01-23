@@ -104,7 +104,7 @@ Item {
 
                 onClicked: {
                     appState.linkSelection = modelData                    
-                    RE.eng().fetchLinks()
+                    //RE.eng().fetchLinks()
                 }
 
             }

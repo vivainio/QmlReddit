@@ -62,7 +62,9 @@ Rectangle {
         }
 
         onLinkSelectionChanged: {
+            //console.log('lsel')
             mdlRedditSession.setLinkSelection(appState.linkSelection)
+            RE.eng().fetchLinks()
 
         }
 
@@ -77,6 +79,9 @@ Rectangle {
         viewSwitcher.duration = 0
         viewSwitcher.switchView(splash, true, "instant")
         viewSwitcher.duration = 700
+        if (appState.linkSelection == "Hot") {
+           RE.eng().fetchLinks()
+        }
 
     }
 

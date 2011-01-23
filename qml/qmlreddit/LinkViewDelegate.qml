@@ -76,12 +76,12 @@ Component {
 
             Text {
                 id: tAuthor
-                text: author + " to " + subreddit
+                text: author + " / " + subreddit
 
                 anchors {
-                    left: tCommentCount.left
+                    right: parent.right
                     top: tCommentCount.top
-                    leftMargin: 40
+                    rightMargin: 50
 
                 }
                 //font.pixelSize: 12

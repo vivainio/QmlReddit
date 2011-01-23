@@ -61,7 +61,7 @@ void RedditModel::setup(QDeclarativeContext *ctx)
     ctx->setContextProperty("mdlCategories", m_cats);
     ctx->setContextProperty("mdlRedditSession", m_ses);
 
-    start("", 0);
+    //start("", 0);
 
 }
 
@@ -156,6 +156,7 @@ void RedditModel::refreshCategories()
 void RedditModel::editConfig()
 {
     QString cf = PlatUtil::configFile();
+
 #ifdef Q_WS_MAEMO_5
 
     QString cmd = QString("/usr/bin/osso-xterm -e \"vi %1\"").arg(cf);
