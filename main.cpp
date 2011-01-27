@@ -47,6 +47,10 @@ int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/main.qml"));
     viewer.show();
+#ifdef Q_WS_SIMULATOR
+    viewer.showFullScreen();
+#endif
+
 #ifdef Q_WS_MAEMO_5
     viewer.showFullScreen();
 #endif
