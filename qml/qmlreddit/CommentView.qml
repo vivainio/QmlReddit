@@ -1,6 +1,7 @@
 import Qt 4.7
 
 import "redditengine.js" as RE
+import "Scrollable"
 
 
 
@@ -369,6 +370,11 @@ Rectangle {
         footer: Rectangle {
             height: imgNext.height
         }
+    }
+
+    ScrollBar {
+        flickable: lstComments
+        vertical: true
     }
 
     ImgButton {
