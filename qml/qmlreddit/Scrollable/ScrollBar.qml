@@ -22,7 +22,8 @@ Rectangle {
     // Calculate width/height and position based on the content size and position of
     // the Flickable
     width: vertical ? scrollbarWidth : flickable.visibleArea.widthRatio * parent.width
-    height: vertical ? flickable.visibleArea.heightRatio * parent.height : scrollbarWidth
+    //height: vertical ? flickable.visibleArea.heightRatio * parent.height : scrollbarWidth
+    height: 3
     x: vertical ? parent.width - width : flickable.visibleArea.xPosition * parent.width
     y: vertical ? flickable.visibleArea.yPosition * parent.height : parent.height - height
 
