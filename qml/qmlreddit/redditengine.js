@@ -59,7 +59,7 @@ RedditEngine.prototype = {
     catSelected: function(cat) {
         this.currentCat = cat
         this.lcount = 0
-        this.lcache = {}
+        //this.lcache = {}
     },
 
     shouldShowComments : function(lnk) {
@@ -90,6 +90,7 @@ RedditEngine.prototype = {
 
     fetchLinks : function() {
         this.mdlReddit.start(this.currentCat, "")
+        this.lcache = {}
     },
 
     fetchMore : function() {
