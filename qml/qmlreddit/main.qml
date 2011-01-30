@@ -111,13 +111,12 @@ Rectangle {
             if (itemName == "Other") {
                 prompter.loadView()
                 function doOtherSubreddit(sr) {
-                    console.log("other " + sr)
                     RE.eng().catSelected(sr)
                     linkview.item.start()
                     RE.eng().fetchLinks()
                 }
 
-                prompter.item.launch("Enter subreddit", linkview, doOtherSubreddit)
+                prompter.item.launch("Enter subreddit", categoryselector, doOtherSubreddit)
 
                 viewSwitcher.switchView(prompter, true)
 
@@ -219,7 +218,9 @@ Rectangle {
                 webpreview.setUrl(lnk.url)
 
             } else {
-                mdlReddit.fetchComments(url)
+                if (lnk.comments > 0 ) {
+                    mdlReddit.fetchComments(url)
+                }
             }
             commentview.loadView()
             commentview.item.setLink(lnk)

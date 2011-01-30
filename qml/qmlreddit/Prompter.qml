@@ -21,6 +21,12 @@ Rectangle {
 
     }
 
+    function _accept() {
+        var p = RE.priv(root)
+        var cb = p.callback
+        cb(text)
+    }
+
     Column {
         anchors {
             left: parent.left
@@ -41,6 +47,10 @@ Rectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             height: 50
+            Keys.onReturnPressed: _accept()
+
+            Keys.onEnterPressed: _accept()
+
             //color: focus ? "blue" : "white"
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
             Rectangle {

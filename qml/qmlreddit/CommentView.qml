@@ -107,7 +107,12 @@ Rectangle {
 
     function setLink(lnk) {
         RE.priv(root).linkData = lnk
-        progressInd.show()
+        if (lnk.comments > 0) {
+            progressInd.show()
+        } else {
+            clear()
+        }
+
         priv.lastVote = lnk.vote
 
         appState.checkLogin()
@@ -143,7 +148,7 @@ Rectangle {
 
             }
         }
-        progressInd.hide()
+        //progressInd.hide()
 
         //console.log('replies ', chi)
 
@@ -166,6 +171,7 @@ Rectangle {
 
     function populate(json) {
         //console.log("comment_json ", json)
+        progressInd.hide()
         var obj = eval(json)
         //console.log("obj ",obj)
         var uh = obj[0]['data']['modhash']
