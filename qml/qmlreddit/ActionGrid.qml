@@ -13,6 +13,7 @@ Rectangle {
     ListModel {
         id: testmodel2
         ListElement { catName: 'Cancel' }
+        ListElement { catName: 'Other' }
 
     }
 

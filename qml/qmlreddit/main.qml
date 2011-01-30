@@ -94,18 +94,41 @@ Rectangle {
     }
 
     ViewLoader {
+        id: prompter
+        viewSource: "Prompter.qml"
+
+    }
+
+    ViewLoader {
         id: categoryselector
 
         viewSource: "ActionGrid.qml"
         function onItemSelected(itemName) {
 
-            viewSwitcher.switchView(linkview, false)
+
             mainview.state = "LinkState"
 
-            if (itemName != 'Cancel') {
+            if (itemName == "Other") {
+                prompter.loadView()
+                function doOtherSubreddit(sr) {
+                    console.log("other " + sr)
+                    RE.eng().catSelected(sr)
+                    linkview.item.start()
+                    RE.eng().fetchLinks()
+                }
+
+                prompter.item.launch("Enter subreddit", linkview, doOtherSubreddit)
+
+                viewSwitcher.switchView(prompter, true)
+
+            }
+
+            else if (itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
                 linkview.item.start()
                 RE.eng().fetchLinks()
+            } else {
+                viewSwitcher.switchView(linkview, false)
             }
         }
 
