@@ -64,7 +64,7 @@ Rectangle {
             Rectangle {
                 border.width: 1
                 z: parent.z - 1
-                color: inpUserName.focus ? "lightblue" : "white"
+                color: inpUserName.activeFocus ? "lightblue" : "white"
                 anchors {
                     fill: parent
                     topMargin: -1
@@ -93,7 +93,7 @@ Rectangle {
             Rectangle {
                 border.width: 1
                 z: parent.z - 1
-                color: inpPassword.focus ? "lightblue" : "white"
+                color: inpPassword.activeFocus ? "lightblue" : "white"
                 anchors {
                     fill: parent
                     topMargin: -1
