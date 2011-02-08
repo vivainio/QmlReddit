@@ -56,8 +56,9 @@ Rectangle {
                 }
 
                 onDoubleClicked: {
-                    infoBanner.show("Entering incognito mode")
-                    appState.incognitoMode = true
+
+                    //infoBanner.show("Entering incognito mode")
+                    //appState.incognitoMode = true
                     mdlReddit.enableRestricted(true);
                     mdlReddit.refreshCategories()
                     nsfwbutton.visible = false
