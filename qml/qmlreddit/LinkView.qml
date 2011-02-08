@@ -31,6 +31,11 @@ Rectangle {
         model: mdlLinks
         //delegate: deLinks
         delegate: LinkViewDelegate {}
+        header: Item {
+            height: 80
+            width: 1
+        }
+
         footer: Item {
             height: 60
             width: container.width

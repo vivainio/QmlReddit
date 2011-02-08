@@ -303,10 +303,18 @@ Rectangle {
     Component {
         id: voteRow
         Rectangle {
-                height: 80
+                height: 160
+                width: parent.width
+
                 Row {
                     spacing: 20
-                    anchors.fill: parent
+                    anchors {
+                        right: parent.right
+                        top: parent.top
+                        topMargin: 80
+                        bottom: parent.bottom
+                    }
+
                     RButton {
                         buttonLabel: "+"
                         color: priv.lastVote != 1 ? "blue" : "yellow"

@@ -181,6 +181,28 @@ Rectangle {
 
     }
 
+    ImgButton {
+        id: switchOut
+        anchors {
+            top: mainview.top
+            left: mainview.left
+            //horizontalCenter: mainview.horizontalCenter
+
+
+        }
+
+        buttonImage: "pics/xfce4-workspaces.svg"
+        z : toolgrid.z + 1
+        bgOpacity: 0
+        onClicked: {
+            lifecycle.exitAppView()
+        }
+        visible: (mainview.state == "LinkState" || mainview.state == "CommentsState" || mainview.state == "PreviewState"
+
+                  ) && toolgrid.state == ""
+
+    }
+
     ViewLoader {
         viewSource: "LinkView.qml"
         id: linkview

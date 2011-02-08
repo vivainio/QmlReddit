@@ -17,6 +17,7 @@ Rectangle {
         prompt = promptText
         previousView = previous
         p.callback = callback
+        inpAnswer.focus = true
         //viewSwitcher.switchView(root, true)
 
     }
@@ -41,7 +42,7 @@ Rectangle {
 
         TextInput {
 
-            focus: true
+            //focus: true
             id: inpAnswer
             text: ""
             anchors.left: parent.left
@@ -56,7 +57,7 @@ Rectangle {
             Rectangle {
                 border.width: 1
                 z: parent.z - 1
-                color: inpAnswer.focus ? "lightblue" : "white"
+                color: inpAnswer.activeFocus ? "lightblue" : "white"
                 anchors {
                     fill: parent
                     topMargin: -1

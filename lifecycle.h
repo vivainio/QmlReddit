@@ -23,6 +23,7 @@ public slots:
     // "auto" or "landscape"
     void setOrientation(const QString& orient);
     void toggleState();
+    void exitAppView();
 
 private:
     QmlApplicationViewer* m_mainWindow;

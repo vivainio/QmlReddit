@@ -14,6 +14,10 @@ DEFINES += NETWORKACCESS
 
 symbian:TARGET.UID3 = 0xE7B91329
 
+maemo5 {
+    QT+=dbus
+}
+
 # Define QMLJSDEBUGGER to enable basic debugging (setting breakpoints etc)
 # Define QMLOBSERVER for advanced features (requires experimental QmlInspector plugin!)
 # DEFINES += QMLJSDEBUGGER
