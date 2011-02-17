@@ -84,7 +84,7 @@ Rectangle {
         delegate: Component {
             RButton {
                 buttonLabel: catName
-                width: 150
+                width: 100
                 height: 80
                 onClicked: {
                     itemSelected(catName)
