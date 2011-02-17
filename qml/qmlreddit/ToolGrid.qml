@@ -148,8 +148,15 @@ Item {
 
         if (itemName == "twitter") {
             var lnk = RE.eng().currentLink()
-            var msg = "Reading " + lnk.url
-            Qt.openUrlExternally("http://twitter.com/home?status=" + msg)
+            if (!lnk || !lnk.url) {
+                infoBanner.show("No link selected")
+                return
+            }
+
+
+            //var msg = "Reading " + lnk.url
+            var u = "http://twitter.com/share?url=" + lnk.url+"&text=" + lnk.desc + "&via=qmlreddit"
+            Qt.openUrlExternally(u)
             //mdlReddit.browser("http://twitter.com/home?status=" + msg)
 
         }
