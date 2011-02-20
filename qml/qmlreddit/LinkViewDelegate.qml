@@ -1,13 +1,11 @@
 import Qt 4.7
 
-import Qt 4.7
 
-// Delegate for the detail list
-Component {
+Component {    
     BorderImage {
         id: backgroundImage
         source: ma.pressed ? "pics/listitem_pressed.png" : "pics/listitem.png"
-        width: ListView.view.width
+        width: mainview.width
         border.bottom: 5
         border.top: 5
         border.left: 5
