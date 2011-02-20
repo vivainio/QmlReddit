@@ -70,7 +70,7 @@ Component {
                 anchors.leftMargin: 10
                 y: dscIt.height + 4
                 text: comments
-                color: "blue"
+                color: "lightblue"
 
             }
 

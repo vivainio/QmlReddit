@@ -207,7 +207,7 @@ Rectangle {
         Rectangle {
             color: mainview.theme.bg
             height: txtComL.height + 5
-            width: ListView.view.width
+            width: mainview.width
             Text {
                 width: parent.width
                 id: txtComL
@@ -231,7 +231,7 @@ Rectangle {
             id: backgroundImage
             source: "pics/listitem.png"
             //width: ListView.view.width
-            width: ListView.view.width
+            width: mainview.width
             border.bottom: 5
             border.top: 5
             border.left: 5
