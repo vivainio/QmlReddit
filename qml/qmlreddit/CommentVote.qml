@@ -16,7 +16,7 @@ Item {
     }
 
     Rectangle {
-        color: "white"
+        color: mainview.theme.bg
         anchors.fill: parent
         opacity: 0.95
         MouseArea {
@@ -35,9 +35,12 @@ Item {
     Text {
         text: "hed"
         id: heading
+        color: mainview.theme.fg
         height: 40
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         width: parent.width
+        anchors.top: parent.top
+        anchors.topMargin: 80
     }
 
 
