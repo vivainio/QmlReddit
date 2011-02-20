@@ -36,8 +36,7 @@ Rectangle {
         //anchors.verticalCenter: parent.verticalCenter
         delegate: Component {
             RButton {
-                buttonLabel: catName
-                color: "yellow"
+                buttonLabel: catName    
                 width: 150
                 height: 80
                 onClicked: {
@@ -49,8 +48,7 @@ Rectangle {
         footer: Component {
             RButton {
                 id: nsfwbutton
-                buttonLabel: "Enable NSFW channels";
-                color: "yellow"
+                buttonLabel: "Enable NSFW channels";                
                 width: 300
                 height: 80
                 onClicked: {
@@ -85,6 +83,8 @@ Rectangle {
         boundsBehavior: Flickable.StopAtBounds
         delegate: Component {
             RButton {
+                border.color: "yellow"
+                color: "green"
                 buttonLabel: catName
                 width: 100
                 height: 80

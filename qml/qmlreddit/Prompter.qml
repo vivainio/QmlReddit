@@ -10,6 +10,7 @@ Rectangle {
     property alias text: inpAnswer.text
     property alias prompt: tPrompt.text
 
+    color: mainview.theme.bg
     signal accepted(string text)
 
     function launch(promptText, previous, callback) {
@@ -40,6 +41,7 @@ Rectangle {
         Text {
             id: tPrompt
             text: "Prompt text"
+            color: mainview.theme.fg
         }
 
         TextInput {

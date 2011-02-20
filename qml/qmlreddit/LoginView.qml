@@ -6,6 +6,7 @@ Rectangle {
 
     //property bool loggedIn: false
 
+    color: mainview.theme.bg
     Component.onCompleted: {
 
         appState.checkLogin()
@@ -40,6 +41,7 @@ Rectangle {
         }
 
         text: "User: " + appState.lastLogin
+        color: mainview.theme.fg
         visible: appState.lastLogin.length > 0
 
 
@@ -50,6 +52,7 @@ Rectangle {
         rows: 2
         spacing: 20
         Text {
+            color: mainview.theme.fg
             text: "Username"
 
         }
@@ -79,6 +82,7 @@ Rectangle {
 
         Text {
             text: "Password"
+            color: mainview.theme.fg
         }
 
         TextInput {

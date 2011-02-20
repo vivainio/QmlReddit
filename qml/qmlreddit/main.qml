@@ -181,7 +181,6 @@ Rectangle {
                 toolgrid.state = ""
             }
         }
-
     }
 
     ImgButton {
@@ -194,7 +193,7 @@ Rectangle {
 
         }
 
-        buttonImage: "pics/xfce4-workspaces.svg"
+        buttonImage: "pics/switch.png"
         z : toolgrid.z + 1
         bgOpacity: 0
         onClicked: {

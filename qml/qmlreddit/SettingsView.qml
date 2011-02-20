@@ -55,6 +55,8 @@ Rectangle {
             Text {
                 anchors.fill: parent
 
+                color: mainview.theme.fg
+
                 textFormat: Text.RichText                
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: "<h1>QmlReddit</h1><p>Version 0.9</p><p>Click on score to vote on comment. 't' to show top comments. 'l' for light mode"
