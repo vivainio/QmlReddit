@@ -11,10 +11,13 @@ Rectangle {
 
     width: 80
     height: 60
-    border.width: 1
-    border.color: "blue"
-    color: selected ? "yellow" : "#ca6262"
+    border.width: 3
+    border.color: selected ? mainview.theme.bg : mainview.theme.fg
+    //color: selected ? "yellow" : "#ca6262"
+    //color: mainview.theme.bg
+    color: selected ? mainview.theme.fg : mainview.theme.bg
     Text {
+        color: root.border.color
         id: tf
         anchors.centerIn: parent
     }

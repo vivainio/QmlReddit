@@ -319,6 +319,7 @@ Rectangle {
                     RButton {
                         buttonLabel: "+"
                         color: priv.lastVote != 1 ? "blue" : "yellow"
+                        border.color: mainview.theme.bg
                         onClicked: {
                             mdlRedditSession.vote(RE.priv(root).linkData.name, 1)
                             //infoBanner.show("Upvote!")
@@ -332,6 +333,7 @@ Rectangle {
                     RButton {
                         buttonLabel: "0"
                         color: priv.lastVote != 0 ? "white" : "yellow"
+                        border.color: mainview.theme.bg
                         onClicked: {
                             mdlRedditSession.vote(RE.priv(root).linkData.name, 0)
                             //infoBanner.show("Neutral!")
@@ -347,6 +349,7 @@ Rectangle {
                     RButton {
                         buttonLabel: "-"
                         color: priv.lastVote != -1 ? "red" : "yellow"
+                        border.color: mainview.theme.bg
                         onClicked: {
                             mdlRedditSession.vote(RE.priv(root).linkData.name, -1)
                             //infoBanner.show("Downvote!")
