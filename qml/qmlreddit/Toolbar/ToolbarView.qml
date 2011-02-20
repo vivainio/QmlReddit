@@ -12,6 +12,7 @@ Rectangle {
 
     width: parent.width
     height: parent.height
+    color: mainview.theme.bg
 
     Behavior on opacity { NumberAnimation { duration: 200} }
 }

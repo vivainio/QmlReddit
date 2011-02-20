@@ -7,8 +7,11 @@ Rectangle {
     height: 640
     anchors.fill: parent
     id: mainview;
+    property QtObject theme: ThemeDark{}
 
+    color: theme.bg
     //property variant eng
+
 
     ViewSwitcher {
         id: viewSwitcher

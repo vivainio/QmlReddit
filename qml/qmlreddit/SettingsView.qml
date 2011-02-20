@@ -7,6 +7,7 @@ Rectangle {
 
     signal dismiss
 
+    color: mainview.theme.bg
     //anchors { top: parent.top; bottom : parent.bottom }
     //width: parent.width
     //height: parent.height
@@ -67,6 +68,7 @@ Rectangle {
 
             Rectangle {
                 anchors.fill: parent
+                color: mainview.theme.bg
                 Flow {
                     anchors.fill: parent
                     spacing: 30

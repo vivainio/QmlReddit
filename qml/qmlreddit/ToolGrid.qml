@@ -8,7 +8,7 @@ Item {
     Rectangle {
         anchors.fill: parent
         opacity: 0.8
-
+        color: mainview.theme.bg
     }
 
     ListModel {

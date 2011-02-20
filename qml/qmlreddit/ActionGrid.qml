@@ -4,6 +4,8 @@ Rectangle {
 
     property alias model : gv.model
 
+    color: mainview.theme.bg
+
     ListModel {
         id: testmodel1
         ListElement { catName : 'cat1'  }

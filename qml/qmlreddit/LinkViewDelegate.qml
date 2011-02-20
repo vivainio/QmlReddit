@@ -25,6 +25,7 @@ Component {
                 width: thumbnail.length > 0 ? 60 : 0
                 height: 60
 
+                color: mainview.theme.bg
                 border.width: thumbnail.length > 0 ? 1 : 0
 
                 Image {
@@ -42,6 +43,7 @@ Component {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
+                color: mainview.theme.fg
 
                 anchors {
                     right: parent.right
@@ -56,7 +58,7 @@ Component {
                 id: txtIt
                 text: score
                 y: 0
-                color: score > 100 ? "red" : "black"
+                color: score > 100 ? "red" : mainview.theme.fg
 
                 anchors.right: parent.right
                 anchors.rightMargin: 5

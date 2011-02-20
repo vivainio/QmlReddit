@@ -13,7 +13,7 @@ Rectangle {
     signal commentSelected
     signal reqPreview(string url)
     signal reqLinks
-
+    color: mainview.theme.bg
     QtObject {
         id: priv
         property int lastVote: 1000
@@ -205,6 +205,7 @@ Rectangle {
         id : dlgCommentsLight
 
         Rectangle {
+            color: mainview.theme.bg
             height: txtComL.height + 5
             width: ListView.view.width
             Text {
@@ -213,10 +214,9 @@ Rectangle {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 textFormat: Text.RichText
                 text: body
+                color: mainview.theme.fg
             }
         }
-
-
     }
 
     Component {
@@ -245,7 +245,7 @@ Rectangle {
                 textFormat: Text.RichText
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 width: parent.width - x
-                color: score > 0 ? "black" : "gray"
+                color: score > 0 ? mainview.theme.fg : mainview.theme.fg2
                 onLinkActivated: {
                     console.log("Activate")
                     Qt.openUrlExternally(link)
@@ -264,7 +264,7 @@ Rectangle {
                 }
 
                 text: score
-                color: score > 20 ? "red" : "black"
+                color: score > 20 ? "red" : mainview.theme.fg
                 font.bold: score > 50 ? true : false
             }
             MouseArea {
@@ -305,6 +305,7 @@ Rectangle {
         Rectangle {
                 height: 160
                 width: parent.width
+                color: mainview.theme.bg
 
                 Row {
                     spacing: 20
@@ -366,6 +367,7 @@ Rectangle {
     Component {
         id: nullVoteRow
         Rectangle {
+            color: mainview.theme.bg
             height: 80
             width: root.width
         }

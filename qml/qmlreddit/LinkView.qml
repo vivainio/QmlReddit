@@ -5,6 +5,7 @@ Rectangle {
     id: container
     //anchors.fill: parent
 
+    color: mainview.theme.bg
     signal linkSelected(int selIndex);
 
     // hidden by default
