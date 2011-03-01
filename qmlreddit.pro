@@ -10,7 +10,10 @@ QML_IMPORT_PATH =
 #DEFINES += ORIENTATIONLOCK
 
 # Needs to be defined for Symbian
-DEFINES += NETWORKACCESS
+
+symbian {
+    TARGET.CAPABILITY += NetworkServices
+}
 
 symbian:TARGET.UID3 = 0xE7B91329
 
