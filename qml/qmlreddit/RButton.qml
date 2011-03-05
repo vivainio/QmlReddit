@@ -6,6 +6,7 @@ Rectangle {
 
     property alias buttonLabel : tf.text
     property bool selected : false
+    property color pressedColor: "green"
     signal clicked;
     signal doubleClicked;
 
@@ -35,7 +36,7 @@ Rectangle {
             when: ma.pressed
             PropertyChanges {
                 target: root
-                color: "green"
+                color: pressedColor
 
             }
         }

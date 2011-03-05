@@ -52,7 +52,7 @@ Item {
             //buttonLabel: label
             width: 100
             height: 100
-            color: "yellow"
+            color: mainview.theme.bg
             bgOpacity: 1
             pressedColor: "green"
 

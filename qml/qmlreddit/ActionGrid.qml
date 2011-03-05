@@ -94,6 +94,7 @@ Rectangle {
                 RButton {
                     border.color: "yellow"
                     color: "green"
+                    pressedColor: "blue"
                     buttonLabel: catName
                     width: 100
                     height: 80
