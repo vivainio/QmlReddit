@@ -1,6 +1,6 @@
 import Qt 4.7
 import QtWebKit 1.0
-
+import "Scrollable"
 
 Rectangle {
     //width: parent.width
@@ -17,6 +17,11 @@ Rectangle {
         anchors.fill: parent
     }
 
+
+    ScrollBar {
+        flickable: wv
+        color: "red"
+    }
 
     function setUrl(newurl) {
         if (url != newurl) {
