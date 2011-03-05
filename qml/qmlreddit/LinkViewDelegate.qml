@@ -76,7 +76,7 @@ Component {
 
             Text {
                 id: tAuthor
-                text: author + " / " + subreddit
+                text: author.substr(0,13) + " / " + subreddit.substr(0,13)
 
                 anchors {
                     right: parent.right
@@ -87,8 +87,6 @@ Component {
                 //font.pixelSize: 12
                 color: "gray"
             }
-
-
 
         }
 
