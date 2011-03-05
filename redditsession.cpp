@@ -30,9 +30,6 @@ RedditSession::RedditSession(QObject *parent) :
 
 
     m_eng = new QScriptEngine;
-    QCoreApplication::setOrganizationName("VilleSoft");
-    QCoreApplication::setOrganizationDomain("unknown.domain");
-    QCoreApplication::setApplicationName("QmlReddit");
 
     RCookieJar* cj = new RCookieJar(this);
     QSettings s;
@@ -462,6 +459,18 @@ void RedditSession::prepareRequest(QNetworkRequest &req)
         //req.setHeader(QNetworkRequest::CookieHeader,
         //              cookies);
     }
+}
+
+void RedditSession::setSwRendering(bool val)
+{
+    QSettings s("VilleSoft", "QmlReddit" );
+    const char* k = "startup/graphicssystem";
+    if (val) {
+        s.setValue(k, "raster");
+    } else {
+        s.setValue(k, "");
+    }
+
 }
 
 

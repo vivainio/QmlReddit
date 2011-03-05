@@ -77,6 +77,7 @@ public slots:
     void saveCookies();
     void setLinkSelection(const QString& selection);
     void setIncognito(bool val);
+    void setSwRendering(bool val);
 
 signals:
     void linksAvailable();

@@ -113,6 +113,16 @@ Rectangle {
                             appState.lockOrientation = !appState.lockOrientation
                         }
                     }
+                    RButton {
+                        width: 200
+
+                        buttonLabel: "Force sw rendering"
+                        selected:  appState.swRender
+                        onClicked: {
+                            appState.swRender = !appState.swRender
+                        }
+                    }
+
 
                 }
             }

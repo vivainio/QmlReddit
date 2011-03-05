@@ -4,7 +4,7 @@
 #include <QNetworkProxy>
 #include <QDeclarativeEngine>
 #include <QDeclarativeContext>
-
+#include <QSettings>
 #include "lifecycle.h"
 
 //#define THANK_YOU_NOKIA
@@ -23,7 +23,23 @@ int main(int argc, char *argv[])
 //#ifdef Q_OS_SYMBIAN
 //    QApplication::setGraphicsSystem("openvg");
 //#endif
+
+
+    //QApplication::setGraphicsSystem("raster");
+
+    QSettings s("VilleSoft", "QmlReddit" );
+    QString gs = s.value("startup/graphicssystem", "").toString();
+    if (gs == "raster") {
+        QApplication::setGraphicsSystem("raster");
+        qDebug() << "Using 'raster' graphics system as requested";
+    }
+
     QApplication app(argc, argv);
+
+    QCoreApplication::setOrganizationName("VilleSoft");
+    QCoreApplication::setOrganizationDomain("unknown.domain");
+    QCoreApplication::setApplicationName("QmlReddit");
+
 
     app.setProperty("NoMStyle", true);
 

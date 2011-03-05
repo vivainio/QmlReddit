@@ -6,6 +6,7 @@ Storage {
     property bool topCommentsMode: false
     property bool incognitoMode: false
     property bool lockOrientation : false
+    property bool swRender: false
 
     property string linkSelection: "Hot"
 

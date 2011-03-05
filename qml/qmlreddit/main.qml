@@ -70,6 +70,9 @@ Rectangle {
             RE.eng().fetchLinks()
 
         }
+        onSwRenderChanged: {
+            mdlRedditSession.setSwRendering(appState.swRender)
+        }
 
     }
 
