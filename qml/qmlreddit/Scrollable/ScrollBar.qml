@@ -23,7 +23,7 @@ Rectangle {
     // the Flickable
     width: vertical ? scrollbarWidth : flickable.visibleArea.widthRatio * parent.width
     //height: vertical ? flickable.visibleArea.heightRatio * parent.height : scrollbarWidth
-    height: 3
+    height: 6
     x: vertical ? parent.width - width : flickable.visibleArea.xPosition * parent.width
     y: vertical ? flickable.visibleArea.yPosition * parent.height : parent.height - height
 
