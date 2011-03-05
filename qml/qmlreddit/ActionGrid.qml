@@ -29,7 +29,7 @@ Rectangle {
         //anchors.fill: parent
         width: parent.width
         //height: parent.height
-        anchors { bottom: lv.top; top: parent.top }
+        anchors { bottom: parent.bottom; top: parent.top }
 
         boundsBehavior: Flickable.StopAtBounds
 
@@ -68,10 +68,9 @@ Rectangle {
             }
         }
     }
-    ListView {
+    Grid {
+
         id: lv
-        model: testmodel2
-        orientation: "Horizontal"
 
         spacing: 20
         anchors.bottom: parent.bottom
@@ -80,16 +79,20 @@ Rectangle {
         anchors.left: parent.left
         height: 90
 
-        boundsBehavior: Flickable.StopAtBounds
-        delegate: Component {
-            RButton {
-                border.color: "yellow"
-                color: "green"
-                buttonLabel: catName
-                width: 100
-                height: 80
-                onClicked: {
-                    itemSelected(catName)
+        Repeater {
+            //boundsBehavior: Flickable.StopAtBounds
+            model: testmodel2
+
+            delegate: Component {
+                RButton {
+                    border.color: "yellow"
+                    color: "green"
+                    buttonLabel: catName
+                    width: 100
+                    height: 80
+                    onClicked: {
+                        itemSelected(catName)
+                    }
                 }
             }
         }

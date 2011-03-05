@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 //#endif
     QApplication app(argc, argv);
 
+    app.setProperty("NoMStyle", true);
+
     //app.setStyle("motif");
 
 #ifdef THANK_YOU_NOKIA
