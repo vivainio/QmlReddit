@@ -46,25 +46,32 @@ Rectangle {
         }
 
         footer: Component {
-            RButton {
-                id: nsfwbutton
-                buttonLabel: "Enable NSFW channels";                
-                width: 300
-                height: 80
-                onClicked: {
-                    infoBanner.show("Double click to confirm age >= 18")
+            Column {
+                RButton {
+                    id: nsfwbutton
+                    buttonLabel: "Enable NSFW channels";
+                    width: 300
+                    height: 80
+                    onClicked: {
+                        infoBanner.show("Double click to confirm age >= 18")
+                    }
+
+                    onDoubleClicked: {
+
+                        //infoBanner.show("Entering incognito mode")
+                        //appState.incognitoMode = true
+                        mdlReddit.enableRestricted(true);
+                        mdlReddit.refreshCategories()
+                        nsfwbutton.visible = false
+
+                    }
+
                 }
 
-                onDoubleClicked: {
-
-                    //infoBanner.show("Entering incognito mode")
-                    //appState.incognitoMode = true
-                    mdlReddit.enableRestricted(true);
-                    mdlReddit.refreshCategories()
-                    nsfwbutton.visible = false
-
-                }               
-
+                Item {
+                    width: 1
+                    height: 120
+                }
             }
         }
     }
