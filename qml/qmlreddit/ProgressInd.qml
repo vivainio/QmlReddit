@@ -18,13 +18,13 @@ Rectangle {
         id: tInd
         text: "Loading"
         anchors.centerIn: parent
-        color: "yellow"
+        color: "white"
 
     }
 
     width: tInd.width + 20
     height: tInd.height + 20
-    color: "red"
+    color: "gray"
     states: [
         State {
             name: "shown"

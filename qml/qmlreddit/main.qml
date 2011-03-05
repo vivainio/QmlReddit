@@ -193,6 +193,7 @@ Rectangle {
 
         }
 
+        opacity: 0.4
         buttonImage: "pics/switch.png"
         z : toolgrid.z + 1
         bgOpacity: 0

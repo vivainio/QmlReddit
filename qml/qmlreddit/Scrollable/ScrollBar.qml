@@ -13,7 +13,7 @@ Rectangle {
     // Thickness of the scrollbar, in pixels
     property int scrollbarWidth: 7
 
-    color: "black"
+    color: "white"
     radius: vertical ? width/2 : height/2
 
     // Scrollbar appears automatically when content is bigger than the Flickable
