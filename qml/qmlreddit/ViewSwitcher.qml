@@ -29,7 +29,7 @@ QtObject {
     }
 
     property variant switchAnimation : 
-        ParallelAnimation {
+        SequentialAnimation {
             NumberAnimation { target: previousView; property: "x"; easing.type: Easing.InOutSine
                               to: direction ? root.width : -root.width;  }
             NumberAnimation { target: currentView; property: "x"; easing.type: Easing.InOutSine; to: 0 }
