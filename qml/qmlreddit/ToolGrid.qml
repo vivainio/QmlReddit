@@ -55,6 +55,7 @@ Item {
             color: mainview.theme.bg
             bgOpacity: 1
             pressedColor: "green"
+            borderColor: "yellow"
 
             onClicked: {
                 itemSelected(name)

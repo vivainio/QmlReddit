@@ -27,6 +27,13 @@ maemo5 {
 # DEFINES += QMLOBSERVER
 
 QT += xml network script
+
+
+#!symbian {
+#  QT += opengl
+#  DEFINES += HAVE_GLWIDGET
+#}
+
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     redditsession.cpp \

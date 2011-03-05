@@ -7,6 +7,10 @@
 #include <QSettings>
 #include "lifecycle.h"
 
+#ifdef HAVE_GLWIDGET
+#include <QGLWidget>
+#endif
+
 //#define THANK_YOU_NOKIA
 
 void setNokesProxy()
@@ -29,9 +33,13 @@ int main(int argc, char *argv[])
 
     QSettings s("VilleSoft", "QmlReddit" );
     QString gs = s.value("startup/graphicssystem", "").toString();
+#ifdef Q_WS_X11
+    gs = "raster";
+#endif
+
     if (gs == "raster") {
         QApplication::setGraphicsSystem("raster");
-        qDebug() << "Using 'raster' graphics system as requested";
+        //qDebug() << "Using 'raster' graphics system as requested";
     }
 
     QApplication app(argc, argv);
@@ -49,7 +57,17 @@ int main(int argc, char *argv[])
     setNokesProxy();
 #endif
 
-    QmlApplicationViewer viewer;
+    QmlApplicationViewer viewer;    
+
+
+
+#ifdef HAVE_GLWIDGET
+    if (gs != "raster") {
+
+        QGLWidget *glWidget = new QGLWidget(&viewer);
+        viewer.setViewport(glWidget);
+    }
+#endif
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();

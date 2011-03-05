@@ -8,13 +8,14 @@ Item {
     property alias color : bgRect.color
     property alias bgOpacity: bgRect.opacity
 
+    property color borderColor: "blue"
     property string pressedColor: color
     width: 64
     height: 64
     Rectangle {
         id: bgRect
         border.width: 1
-        border.color: "blue"
+        border.color: root.borderColor
 
         anchors.fill: parent
         color: "#ca6262"
