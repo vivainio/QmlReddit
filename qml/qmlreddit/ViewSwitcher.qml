@@ -1,12 +1,12 @@
 import Qt 4.7
 
 QtObject {
+    id: vs
     property Item currentView
     property Item previousView
 
     property Item root
 
-    property int duration: 700
     property bool running: switchAnimation.running
     property bool direction
 
@@ -29,10 +29,11 @@ QtObject {
     }
 
     property variant switchAnimation : 
-        SequentialAnimation {
+        ParallelAnimation {
             NumberAnimation { target: previousView; property: "x"; easing.type: Easing.InOutSine
-                              to: direction ? root.width : -root.width;  }
-            NumberAnimation { target: currentView; property: "x"; easing.type: Easing.InOutSine; to: 0 }
+                              to: direction ? root.width : -root.width }
+            NumberAnimation { target: currentView; property: "x"; easing.type: Easing.InOutSine; to: 0;
+            }
 
 
         onRunningChanged:  {
