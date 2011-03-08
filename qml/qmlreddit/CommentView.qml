@@ -373,6 +373,11 @@ Rectangle {
             color: mainview.theme.bg
             height: 80
             width: root.width
+            Text {
+                color: mainview.theme.fg
+                anchors.centerIn: parent
+                text: appState.incognitoMode ? "Incognito" : (!appState.loggedIn ? "Not logged in" : "")
+            }
         }
     }
 
