@@ -11,13 +11,8 @@ Description: Reddit Browser
 
 PkgConfigBR:
     - QtCore >= 4.7.0
-    - QtOpenGL
     - QtGui
 Configure: none
-Builder: none
+Builder: qmake 
 Files:
-    - "%{_bindir}/qmlreddit"
-    - "%{_datadir}/applications/*.desktop"
-    - "%{_datadir}/icons/*.png"
     - "%{_datadir}"
-

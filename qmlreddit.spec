@@ -14,12 +14,8 @@ License:    MIT
 URL:        http://qt.nokia.com
 Source0:    %{name}-%{version}.tar.gz
 Source100:  qmlreddit.yaml
-Requires(post): /bin/touch
-Requires(post): gtk2
 BuildRequires:  pkgconfig(QtCore) >= 4.7.0
-BuildRequires:  pkgconfig(QtOpenGL)
 BuildRequires:  pkgconfig(QtGui)
-BuildRequires:  desktop-file-utils
 
 
 %description
@@ -35,44 +31,30 @@ Reddit Browser
 
 %build
 # >> build pre
+# << build pre
 
-export PATH=/usr/lib/qt4/bin:$PATH
-qmake PREFIX=%{_prefix}
+%qmake 
 
+make %{?jobs:-j%jobs}
 
 # >> build post
-make INSTALL_ROOT=%{buildroot}/usr install
-
 # << build post
 %install
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
+%qmake_install
 
 # >> install post
 # << install post
-desktop-file-install --delete-original       \
-  --dir %{buildroot}%{_datadir}/applications             \
-   %{buildroot}%{_datadir}/applications/*.desktop
 
 
 
-%post
-/bin/touch --no-create %{_datadir}/icons/hicolor || :
-%{_bindir}/gtk-update-icon-cache \
-  --quiet %{_datadir}/icons/hicolor 2> /dev/null|| :
 
-%postun
-/bin/touch --no-create %{_datadir}/icons/hicolor || :
-%{_bindir}/gtk-update-icon-cache \
-  --quiet %{_datadir}/icons/hicolor 2> /dev/null|| :
 
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/qmlreddit
-%{_datadir}/applications/*.desktop
-%{_datadir}/icons/*.png
 %{_datadir}
 # >> files
 # << files
