@@ -81,10 +81,8 @@ Rectangle {
         //viewSwitcher.switchView(linkview, true)
         RE.eng().setModels(mdlReddit, mdlRedditSession)
         //commentview.focus = true
-        progressInd.show()
-        viewSwitcher.duration = 0
-        viewSwitcher.switchView(splash, true, "instant")
-        viewSwitcher.duration = 700
+        progressInd.show()        
+        viewSwitcher.switchView(splash, true, "instant")        
         if (appState.linkSelection == "Hot") {
            RE.eng().fetchLinks()
         }
