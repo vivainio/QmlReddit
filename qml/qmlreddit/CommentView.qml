@@ -374,10 +374,12 @@ Rectangle {
             height: 80
             width: root.width
             Text {
-                color: mainview.theme.fg
+                color: mainview.theme.fg2
                 anchors.centerIn: parent
-                text: appState.incognitoMode ? "Incognito" : (!appState.loggedIn ? "Not logged in" : "")
+                text: appState.incognitoMode ? "Incognito" : (!appState.loggedIn ? "Login to vote" : "")
+
             }
+
         }
     }
 
