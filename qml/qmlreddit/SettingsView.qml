@@ -113,6 +113,7 @@ Rectangle {
                             appState.lockOrientation = !appState.lockOrientation
                         }
                     }
+                    /*
                     RButton {
                         width: 200
 
@@ -122,6 +123,7 @@ Rectangle {
                             appState.swRender = !appState.swRender
                         }
                     }
+                    */
 
 
                 }
