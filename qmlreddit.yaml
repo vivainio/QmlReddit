@@ -15,4 +15,5 @@ PkgConfigBR:
 Configure: none
 Builder: qmake 
 Files:
-    - "%{_datadir}"
+    - "/usr/local"
+    - "/usr/share"

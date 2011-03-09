@@ -55,7 +55,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_datadir}
+/usr/local
+/usr/share
 # >> files
 # << files
 
