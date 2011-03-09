@@ -29,7 +29,9 @@ Rectangle {
 
             } else {
                 aLoginBounce.start()
+
             }
+            btnLogin.opacity = 1
 
         }
     }
@@ -148,6 +150,7 @@ Rectangle {
             mdlRedditSession.logout()
 
             if (!appState.loggedIn) {
+                btnLogin.opacity = 0.2
                 priv.lastAttempt = inpUserName.text
                 mdlRedditSession.login( inpUserName.text, inpPassword.text)
             }

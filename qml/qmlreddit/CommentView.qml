@@ -277,6 +277,11 @@ Rectangle {
                 width: 40
 
                 onClicked: {
+                    if (!appState.loggedIn || appState.incognitoMode) {
+                        infoBanner.show("Login required to vote")
+                        return
+                    }
+
                     commentVote.visible = true
                     commentVote.setComment(mdlComments.get(index))
                 }
