@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     lc->setView(&viewer);
     ctxt->setContextProperty("lifecycle", lc);
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/main.qml"));
+    viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainRawQml.qml"));
     viewer.show();
 #ifdef Q_WS_SIMULATOR
     viewer.showFullScreen();
