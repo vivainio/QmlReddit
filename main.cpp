@@ -59,8 +59,6 @@ int main(int argc, char *argv[])
 
     QmlApplicationViewer viewer;    
 
-
-
 #ifdef HAVE_GLWIDGET
     if (gs != "raster") {
 

@@ -52,7 +52,7 @@ Rectangle {
             toolbarItemTitle: "About"
             backsteppingExits: false
 
-            Text {
+            TText {
                 anchors.fill: parent
 
                 color: mainview.theme.fg

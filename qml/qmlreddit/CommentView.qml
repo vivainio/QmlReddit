@@ -208,7 +208,7 @@ Rectangle {
             color: mainview.theme.bg
             height: txtComL.height + 5
             width: mainview.width
-            Text {
+	    TText {
                 width: parent.width
                 id: txtComL
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -237,7 +237,7 @@ Rectangle {
             border.left: 5
             border.right: 30
 
-            Text {
+	    TText {
                 x: depth * 5
                 y: 10
                 id: txtCom
@@ -253,7 +253,7 @@ Rectangle {
             }
 
 
-            Text {
+	    TText {
                 id: tScore
                 anchors {
                     bottom: parent.bottom
@@ -288,7 +288,7 @@ Rectangle {
             }
 
 
-            Text {
+	    TText {
                 anchors {
                     right: tScore.left
                     top: tScore.top
@@ -378,7 +378,7 @@ Rectangle {
             color: mainview.theme.bg
             height: 80
             width: root.width
-            Text {
+	    TText {
                 color: mainview.theme.fg2
                 anchors.centerIn: parent
                 text: appState.incognitoMode ? "Incognito" : (!appState.loggedIn ? "Login to vote" : "")

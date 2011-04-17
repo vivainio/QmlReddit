@@ -1,4 +1,5 @@
 import Qt 4.7
+
 Rectangle {
     //id: progressInd
     x:  -200
@@ -14,7 +15,7 @@ Rectangle {
         progressInd.state = ""
     }
 
-    Text {
+    TText {
         id: tInd
         text: "Loading"
         anchors.centerIn: parent

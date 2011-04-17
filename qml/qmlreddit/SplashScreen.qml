@@ -2,7 +2,7 @@ import Qt 4.7
 
 Rectangle {
     color: mainview.theme.bg
-    Text {
+    TText {
         anchors.horizontalCenter:  parent.horizontalCenter
         font.pixelSize: 40
         id: name

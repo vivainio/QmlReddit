@@ -12,7 +12,7 @@ Rectangle {
 
     property alias title : btitle.text
 
-    Text {
+    TText {
         id: btitle
         anchors.centerIn: parent
         color: "yellow"

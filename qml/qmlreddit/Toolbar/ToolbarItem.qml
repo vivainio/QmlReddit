@@ -1,4 +1,5 @@
 import Qt 4.7
+import ".."
 
 Rectangle {
     property int margin: 20
@@ -42,7 +43,7 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Text {
+        TText {
             id: toolbarItemText
 
             anchors.horizontalCenter: parent.horizontalCenter

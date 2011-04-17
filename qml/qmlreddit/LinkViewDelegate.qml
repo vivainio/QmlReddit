@@ -37,7 +37,7 @@ Component {
 
             }
 
-            Text {
+	    TText {
                 wrapMode: "WrapAtWordBoundaryOrAnywhere"
                 id: dscIt
                 text: desc
@@ -52,7 +52,7 @@ Component {
                 }
             }
 
-            Text {
+	    TText {
                 id: txtIt
                 text: score
                 y: 0
@@ -63,7 +63,7 @@ Component {
 
             }
 
-            Text {
+	    TText {
                 id: tCommentCount
                 //scale: 0.7
                 anchors.left: thumbarea.right
@@ -74,7 +74,7 @@ Component {
 
             }
 
-            Text {
+	    TText {
                 id: tAuthor
                 text: author.substr(0,13) + " / " + subreddit.substr(0,13)
 

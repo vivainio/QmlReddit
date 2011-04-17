@@ -32,7 +32,7 @@ Item {
     }
 
 
-    Text {
+    TText {
         text: "hed"
         id: heading
         color: mainview.theme.fg

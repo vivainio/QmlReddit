@@ -64,7 +64,7 @@ Rectangle {
         }
 
     }
-    Text {
+    TText {
         anchors.right: parent.right
         anchors.bottom:  parent.bottom
         anchors.rightMargin: 5
