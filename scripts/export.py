@@ -8,7 +8,7 @@ import sloppycode.shortcuts as sc
 #g.cd = sc.chdir
 #@+<< meat >>
 #@+node:ville.20101127205006.2027: ** << meat >>
-sc.ns.VER = "1.0.1"
+sc.ns.VER = "1.0"
 sc.ns.PACKAGE = 'com.vivainio.qmlreddit'
 
 sh = sc.shrun
