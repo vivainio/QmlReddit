@@ -7,7 +7,7 @@ License: MIT
 URL: http://qt.nokia.com
 Sources:
     - "%{name}-%{version}.tar.gz"
-Description: Reddit Browser 
+Description:  
  Browse Reddit (popular link sharing/discussion website) in technicolor.
  Supports login, fetching of subscriptions, voting on links and
  comments. Fast UI written in QML. 
