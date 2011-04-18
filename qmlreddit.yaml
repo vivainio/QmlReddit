@@ -1,8 +1,8 @@
-Name: qmlreddit 
+Name: com.villesoft.qmlreddit 
 Summary: Reddit reader application  
-Version: 0.0.1
+Version: 1.0 
 Release: 1
-Group: Development/Tools
+Group: Applications/Internet
 License: MIT 
 URL: http://qt.nokia.com
 Sources:
