@@ -45,15 +45,17 @@ SOURCES += main.cpp \
     rcookiejar.cpp \
     lifecycle.cpp
 
-# Please do not modify the following two lines. Required for deployment.
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
-qtcAddDeployment()
+DEFINES += meegotablet
 
 contains(DEFINES, meegotablet) {
     PACKAGENAME = com.vivainio.qmlreddit
 } else {
     PACKAGENAME = ${TARGET}
 }
+
+# Please do not modify the following two lines. Required for deployment.
+include(qmlapplicationviewer/qmlapplicationviewer.pri)
+qtcAddDeployment()
 
 
 
