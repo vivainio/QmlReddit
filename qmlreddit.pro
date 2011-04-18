@@ -45,9 +45,9 @@ SOURCES += main.cpp \
     rcookiejar.cpp \
     lifecycle.cpp
 
-DEFINES += meegotablet
+DEFINES += IS_MEEGO_TABLET
 
-contains(DEFINES, meegotablet) {
+contains(DEFINES, IS_MEEGO_TABLET) {
     PACKAGENAME = com.vivainio.qmlreddit
 } else {
     PACKAGENAME = ${TARGET}

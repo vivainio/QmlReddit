@@ -35,6 +35,8 @@ void LifeCycle::setOrientation(const QString &orient)
 
 }
 
+
+
 void LifeCycle::exitAppView()
 {
 #ifdef Q_WS_MAEMO_5
@@ -45,3 +47,13 @@ void LifeCycle::exitAppView()
 #endif
 
 }
+
+bool LifeCycle::getHaveExitButton() const
+{
+#ifdef Q_WS_MAEMO_5
+    return true;
+#else
+    return false;
+#endif
+}
+

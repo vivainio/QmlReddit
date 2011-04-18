@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 
     QSettings s("VilleSoft", "QmlReddit" );
     QString gs = s.value("startup/graphicssystem", "").toString();
+
 #ifdef Q_WS_X11
     gs = "raster";
 #endif
@@ -60,11 +61,8 @@ int main(int argc, char *argv[])
     QmlApplicationViewer viewer;    
 
 #ifdef HAVE_GLWIDGET
-    if (gs != "raster") {
-
-        QGLWidget *glWidget = new QGLWidget(&viewer);
-        viewer.setViewport(glWidget);
-    }
+    QGLWidget *glWidget = new QGLWidget(&viewer);
+    viewer.setViewport(glWidget);
 #endif
 
     RedditModel mdl;
@@ -92,6 +90,11 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_SYMBIAN
     viewer.showFullScreen();
 #endif
+
+#ifdef IS_MEEGO_TABLET
+    viewer.showFullScreen();
+#endif
+
 
     return app.exec();
 }
