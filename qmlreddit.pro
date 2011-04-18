@@ -53,7 +53,7 @@ SOURCES += main.cpp \
 
 # /opt/PACKAGENAME should do no harm on maemo either...
 
-PACKAGENAME = com.vivainio.qmlreddit
+PACKAGENAME = info.vivainio.qmlreddit
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

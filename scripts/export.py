@@ -9,7 +9,7 @@ import sloppycode.shortcuts as sc
 #@+<< meat >>
 #@+node:ville.20101127205006.2027: ** << meat >>
 sc.ns.VER = "1.0"
-sc.ns.PACKAGE = 'com.vivainio.qmlreddit'
+sc.ns.PACKAGE = 'info.vivainio.qmlreddit'
 
 sh = sc.shrun
 sc.verbose = 1
