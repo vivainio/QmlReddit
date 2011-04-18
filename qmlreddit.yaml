@@ -1,5 +1,5 @@
 Name: qmlreddit 
-Summary: Reddit Browser 
+Summary: Reddit reader application  
 Version: 0.0.1
 Release: 1
 Group: Development/Tools
@@ -8,6 +8,9 @@ URL: http://qt.nokia.com
 Sources:
     - "%{name}-%{version}.tar.gz"
 Description: Reddit Browser 
+ Browse Reddit (popular link sharing/discussion website) in technicolor.
+ Supports login, fetching of subscriptions, voting on links and
+ comments. Fast UI written in QML. 
 
 PkgConfigBR:
     - QtCore >= 4.7.0
@@ -15,5 +18,4 @@ PkgConfigBR:
 Configure: none
 Builder: qmake 
 Files:
-    - "/usr/local"
-    - "/usr/share"
+    - "/usr"
