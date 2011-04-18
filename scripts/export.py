@@ -9,15 +9,14 @@ import sloppycode.shortcuts as sc
 #@+<< meat >>
 #@+node:ville.20101127205006.2027: ** << meat >>
 sc.ns.VER = "0.0.1"
+sc.ns.PACKAGE = 'com.vivainio.qmlreddit'
 
 sh = sc.shrun
 sc.verbose = 1
 with sc.chdir('..'):
-    sh("git archive -o qmlreddit-${VER}.tar --prefix qmlreddit-$VER/ HEAD" )
+    sh("git archive -o ${PACKAGE} ${PACKAGE}-${VER}.tar --prefix ${PACKAGE}-$VER/ HEAD" )
     sh("gzip qmlreddit-${VER}.tar")
-    sh('tar tf qmlreddit-${VER}.tar.gz')
-    sh('specify qmlreddit.yaml')
-
-
+    sh('tar tf ${PACKAGE}-${VER}.tar.gz')
+    sh('specify ${PACKAGE}.yaml')
 #@-<< meat >>
 #@-leo
