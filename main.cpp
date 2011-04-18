@@ -34,9 +34,11 @@ int main(int argc, char *argv[])
     QSettings s("VilleSoft", "QmlReddit" );
     QString gs = s.value("startup/graphicssystem", "").toString();
 
-#ifdef Q_WS_X11
-    gs = "raster";
-#endif
+    // not really relevant anymore... use default (raster), or gl on tablets
+
+    //#ifdef Q_WS_X11
+    //    gs = "raster";
+    //#endif
 
     if (gs == "raster") {
         QApplication::setGraphicsSystem("raster");

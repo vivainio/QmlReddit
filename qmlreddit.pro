@@ -1,3 +1,9 @@
+# TODO - remove hardcoded config specific defines from here asap
+
+# should use for harmattan as well...
+
+DEFINES += IS_MEEGO_TABLET
+
 # Add more folders to ship with the application, here
 folder_01.source = qml/qmlreddit
 folder_01.target = qml
@@ -21,8 +27,6 @@ maemo5 {
     QT+=dbus
 }
 
-
-
 # Define QMLJSDEBUGGER to enable basic debugging (setting breakpoints etc)
 # Define QMLOBSERVER for advanced features (requires experimental QmlInspector plugin!)
 # DEFINES += QMLJSDEBUGGER
@@ -30,11 +34,10 @@ maemo5 {
 
 QT += xml network script
 
-
-#!symbian {
-#  QT += opengl
-#  DEFINES += HAVE_GLWIDGET
-#}
+contains(DEFINES, IS_MEEGO_TABLET) {
+  QT += opengl
+  DEFINES += HAVE_GLWIDGET
+}
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
@@ -45,8 +48,7 @@ SOURCES += main.cpp \
     rcookiejar.cpp \
     lifecycle.cpp
 
-# TODO determine what will be special for this define
-DEFINES += IS_MEEGO_TABLET
+
 
 
 # /opt/PACKAGENAME should do no harm on maemo either...
