@@ -93,7 +93,7 @@ symbian {
             QMAKE_EXTRA_TARGETS += first copydeploymentfolders
         }
     }
-    installPrefix = /opt/$${TARGET}
+    installPrefix = /opt/$${PACKAGENAME}
     for(deploymentfolder, DEPLOYMENTFOLDERS) {
         item = item$${deploymentfolder}
         itemfiles = $${item}.files

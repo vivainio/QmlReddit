@@ -21,6 +21,8 @@ maemo5 {
     QT+=dbus
 }
 
+
+
 # Define QMLJSDEBUGGER to enable basic debugging (setting breakpoints etc)
 # Define QMLOBSERVER for advanced features (requires experimental QmlInspector plugin!)
 # DEFINES += QMLJSDEBUGGER
@@ -46,6 +48,14 @@ SOURCES += main.cpp \
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
+
+contains(DEFINES, meegotablet) {
+    PACKAGENAME = com.vivainio.qmlreddit
+} else {
+    PACKAGENAME = ${TARGET}
+}
+
+
 
 OTHER_FILES += \
     debian/compat \
