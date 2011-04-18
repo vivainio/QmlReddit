@@ -15,7 +15,9 @@ Description:
 PkgConfigBR:
     - QtCore >= 4.7.0
     - QtGui
+    - QtWebKit
 Configure: none
 Builder: qmake 
 Files:
-    - "/usr"
+    - "/usr/share"
+    - "/opt"
