@@ -36,7 +36,7 @@ Rectangle {
         }
     }
 
-    Text {
+    TText {
         anchors {
             left : parent.left
             top : parent.top
@@ -53,7 +53,7 @@ Rectangle {
         columns: 2
         rows: 2
         spacing: 20
-        Text {
+        TText {
             color: mainview.theme.fg
             text: "Username"
 
@@ -82,7 +82,7 @@ Rectangle {
 
         }
 
-        Text {
+        TText {
             text: "Password"
             color: mainview.theme.fg
         }

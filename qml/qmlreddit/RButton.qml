@@ -17,7 +17,7 @@ Rectangle {
     //color: selected ? "yellow" : "#ca6262"
     //color: mainview.theme.bg
     color: selected ? mainview.theme.fg : mainview.theme.bg
-    Text {
+    TText {
         color: root.border.color
         id: tf
         anchors.centerIn: parent

@@ -184,27 +184,48 @@ Rectangle {
         }
     }
 
-    ImgButton {
-        id: switchOut
-        anchors {
-            top: mainview.top
-            left: mainview.left
-            //horizontalCenter: mainview.horizontalCenter
+    Loader {
+	id: switchOut
+	anchors {
+	    top: mainview.top
+	    left: mainview.left
+	    //horizontalCenter: mainview.horizontalCenter
 
 
-        }
+	}
 
-        opacity: 0.4
-        buttonImage: "pics/switch.png"
-        z : toolgrid.z + 1
-        bgOpacity: 0
-        onClicked: {
-            lifecycle.exitAppView()
-        }
-        visible: (mainview.state == "LinkState" || mainview.state == "CommentsState" || mainview.state == "PreviewState"
+	z : toolgrid.z + 1
 
-                  ) && toolgrid.state == ""
+	Component.onCompleted: {
+	    if (lifecycle.haveExitButton) {
+		//console.log("show switchout")
+		switchOut.sourceComponent = switchOutComponent
 
+	    }
+	}
+
+
+
+
+    }
+
+    Component {
+	id: switchOutComponent
+
+	ImgButton {
+	    id: switchOutComponent
+
+	    opacity: 0.4
+	    buttonImage: "pics/switch.png"
+	    bgOpacity: 0
+	    onClicked: {
+		lifecycle.exitAppView()
+	    }
+	    visible: (mainview.state == "LinkState" || mainview.state == "CommentsState" || mainview.state == "PreviewState"
+
+		      ) && toolgrid.state == ""
+
+	}
     }
 
     ViewLoader {

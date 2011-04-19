@@ -8,6 +8,7 @@ class QWidget;
 
 #include "qmlapplicationviewer.h"
 
+// xxx bad class name, rename
 class LifeCycle : public QObject
 {
     Q_OBJECT
@@ -15,6 +16,11 @@ public:
     explicit LifeCycle(QObject *parent = 0);
 
     void setView(QmlApplicationViewer* w);
+
+    Q_PROPERTY (bool haveExitButton READ getHaveExitButton)
+
+
+    bool getHaveExitButton() const;
 
 signals:
 

@@ -1,0 +1,23 @@
+Name: com.vivainio.qmlreddit 
+Summary: Reddit reader application  
+Version: 1.0 
+Release: 1
+Group: Applications/Internet
+License: GPL 
+URL: http://sites.google.com/site/qmlreddit/ 
+Sources:
+    - "%{name}-%{version}.tar.gz"
+Description:  
+ Browse Reddit (popular link sharing/discussion website) in technicolor.
+ Supports login, fetching of subscriptions, voting on links and
+ comments. Fast UI written in QML. 
+
+PkgConfigBR:
+    - QtCore >= 4.7.0
+    - QtGui
+    - QtWebKit
+Configure: none
+Builder: qmake 
+Files:
+    - "/usr/share"
+    - "/opt"

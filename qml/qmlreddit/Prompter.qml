@@ -38,7 +38,7 @@ Rectangle {
         }
 
 
-        Text {
+        TText {
             id: tPrompt
             text: "Prompt text"
             color: mainview.theme.fg

@@ -1,5 +1,7 @@
 import Qt 4.7
 
+import "../"
+
 Rectangle {
     id: headerView
     property string applicationName: ""
@@ -34,7 +36,7 @@ Rectangle {
         source: "pics/toolbaritem.png"
     }
 
-    Text {
+    TText {
         anchors.centerIn: parent
         font.pointSize: Math.round(headerView.height / 2.5)
         color: "lightgray"

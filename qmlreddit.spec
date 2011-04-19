@@ -6,7 +6,7 @@
 # << macros
 
 Name:       qmlreddit
-Summary:    Reddit Browser
+Summary:    Reddit reader application
 Version:    0.0.1
 Release:    1
 Group:      Development/Tools
@@ -19,7 +19,7 @@ BuildRequires:  pkgconfig(QtGui)
 
 
 %description
-Reddit Browser
+Browse Reddit (popular link sharing/discussion website) in technicolor. Supports login, fetching of subscriptions, voting on links and comments. Fast UI written in QML.
 
 
 
@@ -55,8 +55,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/local
-/usr/share
+/usr
 # >> files
 # << files
 
