@@ -30,6 +30,8 @@ public slots:
     void setOrientation(const QString& orient);
     void toggleState();
     void exitAppView();
+    void launchAltBrowser(const QString& url);
+
 
 private:
     QmlApplicationViewer* m_mainWindow;

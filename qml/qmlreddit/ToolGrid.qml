@@ -155,9 +155,22 @@ Item {
             }
 
 
+            var cookedurl = "";
+            var cookeddesc = ""
+            if (lifecycle.hostOs == "maemo5") {
+                cookedurl = lnk.url
+                cookeddesc = lnk.desc
+
+            } else {
+                cookedurl = escape(lnk.url)
+                cookeddesc = escape(lnk.desc)
+            }
+
+
             //var msg = "Reading " + lnk.url
-            var u = "http://twitter.com/share?url=" + lnk.url+"&text=" + lnk.desc + "&via=qmlreddit"
-            Qt.openUrlExternally(u)
+            var u = "http://twitter.com/share?url=" + cookedurl+"&text=" + cookeddesc + "&via=qmlreddit"
+            mainview.openUrl(u)
+
             //mdlReddit.browser("http://twitter.com/home?status=" + msg)
 
         }

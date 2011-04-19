@@ -7,6 +7,7 @@ Storage {
     property bool incognitoMode: false
     property bool lockOrientation : false
     property bool swRender: false
+    property bool altBrowser: false
 
     property string linkSelection: "Hot"
 
