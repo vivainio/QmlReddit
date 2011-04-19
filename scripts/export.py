@@ -2,21 +2,25 @@
 #@+node:ville.20101127205006.2026: * @thin export.py
 
 import sloppycode.shortcuts as sc
-#g.sh = sc.shrun
-#g.cap = sc.shcap
-#g.ns = sc.ns
-#g.cd = sc.chdir
+import os
+
 #@+<< meat >>
 #@+node:ville.20101127205006.2027: ** << meat >>
 sc.ns.VER = "1.0"
 sc.ns.PACKAGE = 'info.vivainio.qmlreddit'
+sc.ns.OBSPRJ = sc.fpath('~/obs/home:vivainio/qmlreddit')
+sc.ns.TARB = sc.fpath("${OBSPRJ}/${PACKAGE}-${VER}.tar")
+
 
 sh = sc.shrun
 sc.verbose = 1
 with sc.chdir('..'):
-    sh("git archive -o ${PACKAGE}-${VER}.tar --prefix ${PACKAGE}-$VER/ HEAD" )
-    sh("gzip ${PACKAGE}-${VER}.tar")
-    sh('tar tf ${PACKAGE}-${VER}.tar.gz')
-    sh('specify ${PACKAGE}.yaml')
+    sh("git archive -o ${TARB} --prefix ${PACKAGE}-$VER/ HEAD" )
+    sh("gzip ${TARB}")
+    sh('tar tf ${TARB}.gz')
+    sh('cp ${PACKAGE}.yaml ${PACKAGE}.spec ${OBSPRJ}')
+    with sc.chdir('${OBSPRJ}'):
+        sh('specify ${PACKAGE}.yaml')
+
 #@-<< meat >>
 #@-leo
