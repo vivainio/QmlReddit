@@ -89,6 +89,17 @@ Rectangle {
 
     }
 
+    function openUrl(url) {
+        if (appState.altBrowser) {
+            console.log("alt browser " + url)
+            lifecycle.launchAltBrowser(url)
+
+        } else {
+
+            Qt.openUrlExternally(url)
+        }
+    }
+
     Component.onCompleted: startup();
 
     ViewLoader {

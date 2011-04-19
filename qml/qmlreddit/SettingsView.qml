@@ -113,6 +113,15 @@ Rectangle {
                             appState.lockOrientation = !appState.lockOrientation
                         }
                     }
+                    RButton {
+                        width: 200
+                        buttonLabel: "Alt browser"
+                        selected: appState.altBrowser
+                        onClicked:  {
+                            appState.altBrowser = !appState.altBrowser
+                        }
+                    }
+
                     /*
                     RButton {
                         width: 200

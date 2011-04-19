@@ -6,6 +6,8 @@
 #include <QDBusMessage>
 #endif
 
+#include <QDesktopServices>
+#include <QProcess>
 LifeCycle::LifeCycle(QObject *parent) :
     QObject(parent)
 {
@@ -55,5 +57,19 @@ bool LifeCycle::getHaveExitButton() const
 #else
     return false;
 #endif
+}
+
+void LifeCycle::launchAltBrowser(const QString &url)
+{
+#ifdef IS_MEEGO_TABLET
+    QByteArray cmd = "operamobile " + url.toLocal8Bit();
+    QProcess* p = new QProcess(this);
+    p->start(cmd);
+
+
+#else
+    QDesktopServices::openUrl(url);
+#endif
+
 }
 

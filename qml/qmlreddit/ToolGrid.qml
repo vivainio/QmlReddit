@@ -169,7 +169,8 @@ Item {
 
             //var msg = "Reading " + lnk.url
             var u = "http://twitter.com/share?url=" + cookedurl+"&text=" + cookeddesc + "&via=qmlreddit"
-            Qt.openUrlExternally(u)
+            mainview.openUrl(u)
+
             //mdlReddit.browser("http://twitter.com/home?status=" + msg)
 
         }

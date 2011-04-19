@@ -247,8 +247,8 @@ Rectangle {
                 width: parent.width - x
                 color: score > 0 ? mainview.theme.fg : mainview.theme.fg2
                 onLinkActivated: {
-                    console.log("Activate")
-                    Qt.openUrlExternally(link)
+                    //console.log("Activate")
+                    mainview.openUrl(link)
                 }
             }
 
