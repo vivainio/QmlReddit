@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     QSettings s("VilleSoft", "QmlReddit" );
     QString gs = s.value("startup/graphicssystem", "").toString();
 #ifdef Q_WS_X11
-    gs = "raster";
+    //gs = "raster";
 #endif
 
     if (gs == "raster") {
@@ -60,10 +60,11 @@ int main(int argc, char *argv[])
     QmlApplicationViewer viewer;    
 
 
-
+    qDebug() << "gs " << gs;
 #ifdef HAVE_GLWIDGET
     if (gs != "raster") {
 
+        qDebug() << "use glwidget";
         QGLWidget *glWidget = new QGLWidget(&viewer);
         viewer.setViewport(glWidget);
     }
@@ -71,8 +72,6 @@ int main(int argc, char *argv[])
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();
-    //ctxt->engine()->setOfflineStoragePath("/home/ville/offline");
-
 
     RedditModel* m = new RedditModel;
     m->setup(ctxt);
@@ -80,8 +79,28 @@ int main(int argc, char *argv[])
     LifeCycle* lc = new LifeCycle(&viewer);
     lc->setView(&viewer);
     ctxt->setContextProperty("lifecycle", lc);
+    QString os = "unknown";
+#ifdef Q_WS_MAEMO_5
+    os = "maemo5"
+#endif
+
+#ifdef Q_OS_SYMBIAN
+    os = "symbian"
+#endif
+
+#ifdef IS_HARMATTAN
+    os = "harmattan"
+#endif
+
+    ctxt->setContextProperty("hostOs", os);
+
+    if (os == "harmattan") {
+        viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainHarmattan.qml"));
+    } else {
+        viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainRawQml.qml"));
+    }
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainRawQml.qml"));
+
     viewer.show();
 #ifdef Q_WS_SIMULATOR
     viewer.showFullScreen();
