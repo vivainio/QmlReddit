@@ -74,16 +74,22 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("lifecycle", lc);
     QString os = "unknown";
 #ifdef Q_WS_MAEMO_5
-    os = "maemo5"
+    os = "maemo5";
 #endif
 
 #ifdef Q_OS_SYMBIAN
-    os = "symbian"
+    os = "symbian";
 #endif
 
-#ifdef IS_HARMATTAN
-    os = "harmattan"
+#ifdef IS_MEEGO_TABLET
+    os = "meegotablet";
 #endif
+
+
+#ifdef IS_HARMATTAN
+    os = "harmattan";
+#endif
+
 
     ctxt->setContextProperty("hostOs", os);
 
