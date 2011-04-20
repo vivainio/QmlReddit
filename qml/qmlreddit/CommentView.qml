@@ -248,6 +248,7 @@ Rectangle {
                 color: score > 0 ? mainview.theme.fg : mainview.theme.fg2
                 onLinkActivated: {
                     //console.log("Activate")
+                    infoBanner.show("Opening: " + link)
                     mainview.openUrl(link)
                 }
             }

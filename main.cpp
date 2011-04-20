@@ -58,20 +58,6 @@ int main(int argc, char *argv[])
 
 
     qDebug() << "gs " << gs;
-#ifdef HAVE_GLWIDGET
-    QGLWidget *glWidget = new QGLWidget(&viewer);
-    viewer.setViewport(glWidget);
-#endif
-
-    RedditModel mdl;
-    QDeclarativeContext *ctxt = viewer.rootContext();
-
-    RedditModel* m = new RedditModel;
-    m->setup(ctxt);
-
-    LifeCycle* lc = new LifeCycle(&viewer);
-    lc->setView(&viewer);
-    ctxt->setContextProperty("lifecycle", lc);
     QString os = "unknown";
 #ifdef Q_WS_MAEMO_5
     os = "maemo5";
@@ -88,7 +74,23 @@ int main(int argc, char *argv[])
 
 #ifdef IS_HARMATTAN
     os = "harmattan";
+
 #endif
+
+#ifdef HAVE_GLWIDGET
+    QGLWidget *glWidget = new QGLWidget(&viewer);
+    viewer.setViewport(glWidget);
+#endif
+
+    RedditModel mdl;
+    QDeclarativeContext *ctxt = viewer.rootContext();
+
+    RedditModel* m = new RedditModel;
+    m->setup(ctxt);
+
+    LifeCycle* lc = new LifeCycle(&viewer);
+    lc->setView(&viewer);
+    ctxt->setContextProperty("lifecycle", lc);
 
 
     ctxt->setContextProperty("hostOs", os);

@@ -19,6 +19,8 @@ QML_IMPORT_PATH =
 
 symbian {
     TARGET.CAPABILITY += NetworkServices
+    # just in case..
+    DEFINES -= IS_MEEGO_TABLET
 }
 
 symbian:TARGET.UID3 = 0xE7B91329
