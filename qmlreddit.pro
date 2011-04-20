@@ -58,6 +58,7 @@ SOURCES += main.cpp \
 PACKAGENAME = info.vivainio.qmlreddit
 
 # Please do not modify the following two lines. Required for deployment.
+QMLJSDEBUGGER_PATH=
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
