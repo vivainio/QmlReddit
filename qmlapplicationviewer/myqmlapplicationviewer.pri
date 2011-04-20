@@ -106,7 +106,7 @@ symbian {
     }
 
     !isEmpty(FORCE_SVG_ICON) {
-        icon.files = FORCE_SVG_ICON
+        icon.files = $${FORCE_SVG_ICON}
         icon.path = /usr/share/icons/hicolor/scalable/apps
     } else {
         icon.files = $${TARGET}.png
