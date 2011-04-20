@@ -56,8 +56,6 @@ int main(int argc, char *argv[])
 
     QmlApplicationViewer viewer;    
 
-
-    qDebug() << "gs " << gs;
     QString os = "unknown";
 #ifdef Q_WS_MAEMO_5
     os = "maemo5";
