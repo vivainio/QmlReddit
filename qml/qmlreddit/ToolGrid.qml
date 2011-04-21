@@ -130,12 +130,11 @@ Item {
         if (itemName == "browser") {
             var lnk = RE.eng().currentLink()
             if (lnk.permalink) {
-                mdlReddit.browser("http://www.reddit.com" + lnk.permalink)
+                mainview.openUrl("http://www.reddit.com" + lnk.permalink)
+
             } else {
-                mdlReddit.browser("http://www.reddit.com")
+                mainview.openUrl("http://www.reddit.com")
             }
-
-
         }
         if (itemName == "prefs") {
             viewSwitcher.switchView(settingsview, true)

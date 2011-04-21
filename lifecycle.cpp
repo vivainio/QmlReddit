@@ -66,7 +66,6 @@ void LifeCycle::launchAltBrowser(const QString &url)
     QProcess* p = new QProcess(this);
     p->start(cmd);
 
-
 #else
     QDesktopServices::openUrl(url);
 #endif

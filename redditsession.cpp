@@ -272,10 +272,12 @@ QStringList RedditSession::getCategories()
 
     cats << m_myreddits;
 
-    cats << "programming" << "pics" << "technology" << "funny"
-         << "news" << "comics" << "Python" << "WTF" << "gaming" <<
+    cats << "programming" << "pics" << "comics" <<
+            "fffffffuuuuuuuuuuuu" <<
+            "technology" << "funny" <<  "linux"
+         << "news"  << "Python" << "WTF" << "gaming" <<
          "IAmA" << "maemo" << "meego" << "science" << "bestof" << "gadgets" <<
-         "music" << "hardware" << "worldnews" << "linux" << "offbeat" << "sports";
+         "music" << "hardware" << "worldnews"<< "offbeat" << "sports";
 
     cats.removeDuplicates();
 

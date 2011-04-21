@@ -64,6 +64,37 @@ Rectangle {
         }
 
     }
+    RButton {
+        opacity: 0.5
+        id: navforward
+        width: 50
+        buttonLabel: ">"
+        anchors.right: zout.left
+        anchors.rightMargin: 20
+        anchors.bottom: parent.bottom
+        onClicked: {
+            wv.forward.trigger()
+        }
+
+
+    }
+    RButton {
+        opacity: 0.5
+        id: navback
+        width: 50
+        buttonLabel: "<"
+        anchors.right: navforward.left
+        anchors.rightMargin: 20
+        anchors.bottom: parent.bottom
+        onClicked: {
+            wv.back.trigger()
+        }
+
+
+    }
+
+
+
     TText {
         anchors.right: parent.right
         anchors.bottom:  parent.bottom

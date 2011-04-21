@@ -19,6 +19,8 @@ QML_IMPORT_PATH =
 
 symbian {
     TARGET.CAPABILITY += NetworkServices
+    # just in case..
+    DEFINES -= IS_MEEGO_TABLET
 }
 
 symbian:TARGET.UID3 = 0xE7B91329
@@ -56,6 +58,7 @@ SOURCES += main.cpp \
 PACKAGENAME = info.vivainio.qmlreddit
 
 # Please do not modify the following two lines. Required for deployment.
+QMLJSDEBUGGER_PATH=
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
