@@ -27,6 +27,7 @@ symbian:TARGET.UID3 = 0xE7B91329
 
 maemo5 {
     QT+=dbus
+    DEFINES -= IS_MEEGO_TABLET
 }
 
 # Define QMLJSDEBUGGER to enable basic debugging (setting breakpoints etc)
@@ -59,7 +60,13 @@ PACKAGENAME = info.vivainio.qmlreddit
 
 # Please do not modify the following two lines. Required for deployment.
 QMLJSDEBUGGER_PATH=
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
+
+contains(DEFINES, IS_MEEGO_TABLET) {
+    FORCE_SVG_ICON = qmlreddit.svg
+}
+
+# note that I use a forked version 
+include(qmlapplicationviewer/myqmlapplicationviewer.pri)
 qtcAddDeployment()
 
 
