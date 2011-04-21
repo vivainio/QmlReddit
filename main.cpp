@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;    
+    viewer.setAttribute(Qt::WA_NoSystemBackground);
 
     QString os = "unknown";
 #ifdef Q_WS_MAEMO_5
