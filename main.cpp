@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
 #endif
 
     QmlApplicationViewer viewer;    
-    viewer.setAttribute(Qt::WA_NoSystemBackground);
 
     QString os = "unknown";
 #ifdef Q_WS_MAEMO_5
@@ -80,6 +79,11 @@ int main(int argc, char *argv[])
     QGLWidget *glWidget = new QGLWidget(&viewer);
     viewer.setViewport(glWidget);
 #endif
+
+    viewer.setAttribute(Qt::WA_NoSystemBackground);
+    viewer.setAttribute(Qt::WA_OpaquePaintEvent);
+    viewer.viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
+    viewer.viewport()->setAttribute(Qt::WA_NoSystemBackground);
 
     RedditModel mdl;
     QDeclarativeContext *ctxt = viewer.rootContext();
