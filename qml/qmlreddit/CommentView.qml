@@ -427,10 +427,12 @@ Rectangle {
         //buttonLabel: "Links"
         onClicked: reqLinks()        
     }
+    /*
     ProgressInd {
         id: progressInd
 
     }
+    */
 
     CommentVote {
         id: commentVote

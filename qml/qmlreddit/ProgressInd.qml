@@ -2,10 +2,9 @@ import Qt 4.7
 
 Rectangle {
     //id: progressInd
-    x:  -200
     id: root
-    anchors.verticalCenter: parent.verticalCenter
 
+    opacity: 0
     function show() {
         progressInd.state = "shown"
 
@@ -13,6 +12,7 @@ Rectangle {
 
     function hide() {
         progressInd.state = ""
+
     }
 
     TText {
@@ -31,7 +31,8 @@ Rectangle {
             name: "shown"
             PropertyChanges {
                 target: progressInd
-                x: root.parent.width / 2 - width/2
+                opacity: 1
+
 
             }
         }
@@ -44,8 +45,8 @@ Rectangle {
             ParallelAnimation {
                 NumberAnimation {
 
-                    properties: "x"
-                    duration: 400
+                    properties: "opacity"
+                    duration: 800
                     //easing.type: Easing.OutBounce
                 }
 
@@ -55,9 +56,10 @@ Rectangle {
             from: "shown"
             NumberAnimation {
 
-                properties: "x"
+                properties: "opacity"
                 duration: 200
             }
+
         }
 
     ]
