@@ -11,6 +11,8 @@ Component {
         border.left: 5
         border.right: 30
         height:  visuals.height +5 //dscIt.height + 70
+
+        property bool hasThumbnail: !appState.lightMode && thumbnail.length > 0
         Item {
             id: visuals
             height: childrenRect.height
@@ -20,20 +22,20 @@ Component {
                 x:2
                 y:4
                 id: thumbarea
-                width: thumbnail.length > 0 ? 60 : 0
+                width: hasThumbnail ? 60 : 0
                 height: 60
-
+                visible: hasThumbnail
                 color: mainview.theme.bg
-                border.width: thumbnail.length > 0 ? 1 : 0
+                //border.width: hasThumbnail ? 1 : 0
 
                 Image {
                     anchors.fill: parent
                     id: tnail
                     height: 60
                     width: 60
-                    source: thumbnail
-                }
+                    source: hasThumbnail ? thumbnail : ""
 
+                }
 
             }
 

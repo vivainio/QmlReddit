@@ -122,6 +122,16 @@ Rectangle {
                         }
                     }
 
+                    RButton {
+                        width: 200
+                        buttonLabel: "No web preview"
+                        selected: appState.noWebPreview
+                        onClicked: {
+                            appState.noWebPreview = !appState.noWebPreview
+                        }
+                    }
+
+
                     /*
                     RButton {
                         width: 200
