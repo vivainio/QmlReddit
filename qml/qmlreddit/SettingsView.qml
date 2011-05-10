@@ -59,7 +59,7 @@ Rectangle {
 
                 textFormat: Text.RichText                
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: "<h1>QmlReddit</h1><p>Version 0.9</p><p>Click on score to vote on comment. 't' to show top comments. 'l' for light mode"
+                text: "<h1>QmlReddit</h1><p>Version 1.0</p><p>Click on score to vote on comment. 't' to show top comments. 'l' for light mode"
             }
 
         }
@@ -121,16 +121,6 @@ Rectangle {
                             appState.altBrowser = !appState.altBrowser
                         }
                     }
-
-                    RButton {
-                        width: 200
-                        buttonLabel: "No web preview"
-                        selected: appState.noWebPreview
-                        onClicked: {
-                            appState.noWebPreview = !appState.noWebPreview
-                        }
-                    }
-
 
                     /*
                     RButton {
