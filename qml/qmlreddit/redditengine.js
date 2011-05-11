@@ -63,9 +63,10 @@ RedditEngine.prototype = {
     },
 
     shouldShowComments : function(lnk) {
-        if (this.currentCat == "comics" || this.currentCat == "pics") {
+        var direct= ["comics", "pics", "fffffffuuuuuuuuuuuu"]
+        var i = direct.indexOf(this.currentCat)
+        if (i != -1)
             return false;
-        }
 
         if (lnk.comments < 10 ) {
             return false;
