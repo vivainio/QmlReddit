@@ -278,6 +278,7 @@ Rectangle {
             } else {
                 if (lnk.comments > 0 ) {
                     mdlReddit.fetchComments(url)
+                    progressInd.show()
                 }
             }
             commentview.loadView()

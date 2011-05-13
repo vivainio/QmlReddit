@@ -107,11 +107,12 @@ Rectangle {
 
     function setLink(lnk) {
         RE.priv(root).linkData = lnk
-        if (lnk.comments > 0) {
-            progressInd.show()
-        } else {
-            clear()
-        }
+        //if (lnk.)
+        //if (lnk.comments > 0) {
+        //    progressInd.show()
+        //} else {
+        //    clear()
+        //}
 
         priv.lastVote = lnk.vote
 
