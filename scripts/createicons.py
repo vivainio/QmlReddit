@@ -16,7 +16,7 @@ for ic in svgic:
     bn = os.path.basename(ic)
     name = os.path.splitext(bn)[0]
     
-    sizes = [16, 24, 32, 48, 64]
+    sizes = [16, 32, 64, 128]
     for sz in sizes:
         tgt = os.path.abspath("../data/%dx%d" % (sz, sz))
         if not os.path.isdir(tgt):
