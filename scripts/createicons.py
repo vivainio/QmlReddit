@@ -16,7 +16,7 @@ for ic in svgic:
     bn = os.path.basename(ic)
     name = os.path.splitext(bn)[0]
     
-    sizes = [16, 24, 32, 64]
+    sizes = [16, 24, 32, 48, 64]
     for sz in sizes:
         tgt = os.path.abspath("../data/%dx%d" % (sz, sz))
         if not os.path.isdir(tgt):
@@ -34,4 +34,5 @@ for ic in svgic:
         print cmd
         os.system(cmd)
 
+pri.append("")
 open ("../installicons.pri", "w").write("\n".join(pri))    
