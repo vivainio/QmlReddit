@@ -64,7 +64,7 @@ RedditEngine.prototype = {
 
     shouldShowComments : function(lnk) {
         var direct= ["comics", "pics", "fffffffuuuuuuuuuuuu"]
-        var i = direct.indexOf(this.currentCat)
+        var i = direct.indexOf(lnk.subreddit)
         if (i != -1)
             return false;
 

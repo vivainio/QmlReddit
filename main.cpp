@@ -119,9 +119,8 @@ int main(int argc, char *argv[])
 #endif
 
 #ifdef IS_MEEGO_TABLET
-    viewer.showMaximized();
+    viewer.showFullScreen();
 #endif
-
 
     return app.exec();
 }
