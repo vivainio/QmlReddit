@@ -69,7 +69,7 @@ contains(DEFINES, IS_MEEGO_TABLET) {
 include(qmlapplicationviewer/myqmlapplicationviewer.pri)
 qtcAddDeployment()
 
-
+include (installicons.pri)
 
 OTHER_FILES += \
     debian/compat \

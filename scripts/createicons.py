@@ -21,8 +21,9 @@ for ic in svgic:
             
         )
         
-        pri.append("ICON%d.files = data/%dx%d" % (sz, sz, sz))
-        pri.append("INSTALLS += ICON%d" % sz)
+        pri.append("icon%d.files = data/%dx%d/%s.png" % (sz, sz, sz, name))
+        pri.append("icon%d.path = /usr/share/icons/hicolor/%dx%d/apps" % (sz, sz, sz))
+        pri.append("INSTALLS += icon%d" % sz)
         
         print cmd
         os.system(cmd)
