@@ -2,6 +2,10 @@ import glob,os, sys
 
 svgic = glob.glob("../*.svg")
 
+pri = ["# autogenerateb by createicons.py"]
+
+
+
 for ic in svgic:
     bn = os.path.basename(ic)
     name = os.path.splitext(bn)[0]
@@ -17,6 +21,10 @@ for ic in svgic:
             
         )
         
+        pri.append("ICON%d.files = data/%dx%d" % (sz, sz, sz))
+        pri.append("INSTALLS += ICON%d" % sz)
+        
         print cmd
         os.system(cmd)
-    
+
+open ("../installicons.pri", "w").write("\n".join(pri))    
