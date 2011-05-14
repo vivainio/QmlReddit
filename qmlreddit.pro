@@ -61,9 +61,9 @@ PACKAGENAME = info.vivainio.qmlreddit
 # Please do not modify the following two lines. Required for deployment.
 QMLJSDEBUGGER_PATH=
 
-contains(DEFINES, IS_MEEGO_TABLET) {
-    FORCE_SVG_ICON = qmlreddit.svg
-}
+#contains(DEFINES, IS_MEEGO_TABLET) {
+#    FORCE_SVG_ICON = qmlreddit.svg
+#}
 
 # note that I use a forked version 
 include(qmlapplicationviewer/myqmlapplicationviewer.pri)

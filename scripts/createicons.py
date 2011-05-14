@@ -8,7 +8,7 @@ import glob,os, sys
 
 svgic = glob.glob("../*.svg")
 
-pri = ["# autogenerateb by createicons.py"]
+pri = ["# autogenerateb by createicons.py", "unix:!symbian {" ]
 
 
 
@@ -27,12 +27,12 @@ for ic in svgic:
             
         )
         
-        pri.append("icon%d.files = data/%dx%d/%s.png" % (sz, sz, sz, name))
-        pri.append("icon%d.path = /usr/share/icons/hicolor/%dx%d/apps" % (sz, sz, sz))
-        pri.append("INSTALLS += icon%d" % sz)
+        pri.append("    icon%d.files = data/%dx%d/%s.png" % (sz, sz, sz, name))
+        pri.append("    icon%d.path = /usr/share/icons/hicolor/%dx%d/apps" % (sz, sz, sz))
+        pri.append("    INSTALLS += icon%d" % sz)
         
         print cmd
         os.system(cmd)
 
-pri.append("")
+pri.append("}\n")
 open ("../installicons.pri", "w").write("\n".join(pri))    
