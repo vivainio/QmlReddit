@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+
+""" For all svg icons in parent dir, create .png versions at different sizes and installicons.pri
+
+"""
+
 import glob,os, sys
 
 svgic = glob.glob("../*.svg")
