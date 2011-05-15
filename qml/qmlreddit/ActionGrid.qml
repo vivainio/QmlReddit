@@ -54,6 +54,11 @@ Rectangle {
                     width: 300
                     height: 80
                     onClicked: {                    
+			if (!appState.loggedIn) {
+			    infoBanner.show("Login required to see NSFW content!")
+			    return
+			}
+
                         infoBanner.show("Double click to confirm age >= 18")
                     }
 
