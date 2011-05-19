@@ -76,7 +76,8 @@ OTHER_FILES += \
     debian/control \
     debian/copyright \
     debian/README \
-    debian/rules
+    debian/rules \
+    info.vivainio.qmlreddit.yaml
 
 HEADERS += \
     redditsession.h \

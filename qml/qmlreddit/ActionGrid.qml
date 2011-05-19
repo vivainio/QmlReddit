@@ -48,15 +48,25 @@ Rectangle {
         footer: Component {
             Column {
                 RButton {
+		    //visible: appState.loggedIn
                     id: nsfwbutton
                     buttonLabel: "Enable NSFW channels";
                     width: 300
                     height: 80
-                    onClicked: {
+                    onClicked: {                    
+			if (!appState.loggedIn) {
+			    infoBanner.show("Login required to see NSFW content!")
+			    return
+			}
+
                         infoBanner.show("Double click to confirm age >= 18")
                     }
 
                     onDoubleClicked: {
+			if (!appState.loggedIn) {
+			    infoBanner.show("Login required to see NSFW content!")
+			    return
+			}
 
                         //infoBanner.show("Entering incognito mode")
                         //appState.incognitoMode = true

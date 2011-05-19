@@ -18,6 +18,8 @@ PkgConfigBR:
     - QtWebKit
     - QtOpenGL
 Configure: none
+Requires:
+    - libqtwebkit-qmlwebkitplugin
 Builder: qmake 
 Files:
     - "/usr/share"
