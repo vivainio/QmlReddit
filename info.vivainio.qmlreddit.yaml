@@ -24,3 +24,4 @@ Builder: qmake
 Files:
     - "/usr/share/applications/%{name}.desktop"
     - "/opt/%{name}"
+    - "/usr/share/icons/hicolor/*/apps/%{name}.png"
