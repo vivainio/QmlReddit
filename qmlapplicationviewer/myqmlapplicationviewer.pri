@@ -105,7 +105,7 @@ symbian {
         INSTALLS += $$item
     }
 
-    desktopfile.files = $${TARGET}.desktop
+    desktopfile.files = $${PACKAGENAME}.desktop
     target.path = $${installPrefix}/bin
     export(desktopfile.files)
     export(desktopfile.path)
