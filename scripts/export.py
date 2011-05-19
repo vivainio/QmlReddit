@@ -1,11 +1,16 @@
 #@+leo-ver=5-thin
 #@+node:ville.20101127205006.2026: * @thin export.py
-
 import sloppycode.shortcuts as sc
 import os
 
-#@+<< meat >>
-#@+node:ville.20101127205006.2027: ** << meat >>
+#@+others
+#@+node:ville.20110516195430.2600: ** Doc
+""" Script to generate necessary files for OBS
+
+To get "sloppycode", do "bzr branch lp:sloppycode", and do "setup.py install".
+
+"""
+#@+node:ville.20101127205006.2027: ** meat
 sc.ns.VER = "1.0"
 sc.ns.PACKAGE = 'info.vivainio.qmlreddit'
 sc.ns.OBSPRJ = sc.fpath('~/obs/home:vivainio/qmlreddit')
@@ -22,5 +27,5 @@ with sc.chdir('..'):
     with sc.chdir('${OBSPRJ}'):
         sh('specify ${PACKAGE}.yaml')
 
-#@-<< meat >>
+#@-others
 #@-leo
