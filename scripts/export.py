@@ -23,7 +23,7 @@ with sc.chdir('..'):
     sh("git archive -o ${TARB} --prefix ${PACKAGE}-$VER/ HEAD" )
     sh("gzip ${TARB}")
     sh('tar tf ${TARB}.gz')
-    sh('cp ${PACKAGE}.yaml ${PACKAGE}.spec ${OBSPRJ}')
+    sh('cp ${PACKAGE}.yaml ${PACKAGE}.spec ${PACKAGE}.changes ${OBSPRJ}')
     with sc.chdir('${OBSPRJ}'):
         sh('specify ${PACKAGE}.yaml')
 
