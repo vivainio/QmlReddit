@@ -105,25 +105,14 @@ symbian {
         INSTALLS += $$item
     }
 
-    !isEmpty(FORCE_SVG_ICON) {
-        icon.files = $${FORCE_SVG_ICON}
-        icon.path = /usr/share/icons/hicolor/scalable/apps
-    } else {
-        icon.files = $${TARGET}.png
-        icon.path = /usr/share/icons/hicolor/64x64/apps
-    }
-
     desktopfile.files = $${TARGET}.desktop
     target.path = $${installPrefix}/bin
-    export(icon.files)
-    export(icon.path)
     export(desktopfile.files)
     export(desktopfile.path)
     export(target.path)
-    INSTALLS += desktopfile icon target
+    INSTALLS += desktopfile target
 }
 
-export (ICON)
 export (INSTALLS)
 export (DEPLOYMENT)
 export (TARGET.EPOCHEAPSIZE)
