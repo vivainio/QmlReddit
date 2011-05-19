@@ -113,7 +113,7 @@ symbian {
         icon.path = /usr/share/icons/hicolor/64x64/apps
     }
 
-    desktopfile.files = $${TARGET}.desktop
+    desktopfile.files = $${PACKAGENAME}.desktop
     target.path = $${installPrefix}/bin
     export(icon.files)
     export(icon.path)
