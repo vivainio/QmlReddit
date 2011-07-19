@@ -4,6 +4,6 @@ QtObject {
     property string bg: "black"
     property string fg: "white"
     property string fg2: "gray"
-    property int defaultTextSize: 22
+    property int defaultTextSize: 8
 
 }
