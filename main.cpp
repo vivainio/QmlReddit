@@ -61,9 +61,6 @@ int main(int argc, char *argv[])
     os = "maemo5";
 #endif
 
-#ifdef Q_OS_SYMBIAN
-    os = "symbian";
-#endif
 
 #ifdef IS_MEEGO_TABLET
     os = "meegotablet";
@@ -74,6 +71,11 @@ int main(int argc, char *argv[])
     os = "harmattan";
 
 #endif
+
+#ifdef Q_OS_SYMBIAN
+    os = "symbian";
+#endif
+
 
 #ifdef HAVE_GLWIDGET
     QGLWidget *glWidget = new QGLWidget(&viewer);

@@ -156,18 +156,26 @@ Item {
 
             var cookedurl = "";
             var cookeddesc = ""
-            if (lifecycle.hostOs == "maemo5") {
+            if (hostOs == "maemo5") {
                 cookedurl = lnk.url
                 cookeddesc = lnk.desc
 
             } else {
                 cookedurl = escape(lnk.url)
+                //cookedurl = lnk.url
                 cookeddesc = escape(lnk.desc)
             }
 
 
-            //var msg = "Reading " + lnk.url
-            var u = "http://twitter.com/share?url=" + cookedurl+"&text=" + cookeddesc + "&via=qmlreddit"
+            var u;
+
+            if (hostOs == "symbian") {
+                u = "http://twitter.com/share?via=qmlreddit&url=" + cookedurl
+            } else {
+              var u = "http://twitter.com/share?url=" + cookedurl+"&text=" + cookeddesc + "&via=qmlreddit"
+            }
+
+            //console.log("Launch " + u)
             mainview.openUrl(u)
 
             //mdlReddit.browser("http://twitter.com/home?status=" + msg)
