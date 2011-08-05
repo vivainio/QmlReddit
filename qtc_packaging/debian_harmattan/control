@@ -8,7 +8,7 @@ Homepage: https://projects.forum.nokia.com/qmlreddit/
 
 Package: qmlreddit
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, mcsp
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Reddit reader application
  Browse Reddit (popular link sharing/discussion website) in technicolor.
  Supports login, fetching of subscriptions, voting on links and 
