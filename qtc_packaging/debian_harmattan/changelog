@@ -1,4 +1,10 @@
-qmlreddit (0.0.1) unstable; urgency=low
+qmlreddit (1.0.0-1) unstable; urgency=low
+
+  * Starting official Harmattan releasing
+
+ -- Ville M. Vainio <vivainio@gmail.com>  Fri, 05 Aug 2011 16:04:57 +0300
+
+qmlreddit (1.0.0) unstable; urgency=low
 
   * Initial Release.
 
