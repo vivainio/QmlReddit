@@ -1,4 +1,6 @@
 #include <QtGui/QApplication>
+
+
 #include "qmlapplicationviewer/qmlapplicationviewer.h"
 #include "redditmodel.h"
 #include <QNetworkProxy>
