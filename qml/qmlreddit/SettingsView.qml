@@ -59,7 +59,7 @@ Rectangle {
 
                 textFormat: Text.RichText                
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: "<h1>QmlReddit</h1><p>Version 1.0</p><p>Click on score to vote on comment. 't' to show top comments. 'l' for light mode"
+                text: "<h1>QmlReddit</h1><p>Copyright (c) 2011 by Ville M. Vainio</p><p>Click on score to vote on comment. Shortcuts: 'T' for top comments, 'L' for light mode.</p>"
             }
 
         }

@@ -24,7 +24,11 @@ symbian {
     ICON=qmlreddit.svg
 }
 
-symbian:TARGET.UID3 = 0xE7B91329
+symbian {
+    TARGET.UID3 = 0x200476ED
+
+    vendorinfo = "%{\"Ville Vainio\"}" ":\"Ville Vainio\""
+}
 
 maemo5 {
     QT+=dbus
