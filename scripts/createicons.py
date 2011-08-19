@@ -13,8 +13,16 @@ pri = ["# autogenerateb by createicons.py", "unix:!symbian {" ]
 
 
 for ic in svgic:
+    
+    
     bn = os.path.basename(ic)
     name = os.path.splitext(bn)[0]
+    
+    pri.append("    iconsvg_%s.files = %s" % (name, bn)
+    pri.append("    iconsvg_%s.path = /usr/share/themes/base/meegotouch/icons" % (name,))
+    pri.append("    INSTALLS += iconsvg_%s" % name)
+    
+    
     
     sizes = [16, 32, 64, 128]
     for sz in sizes:
@@ -33,6 +41,10 @@ for ic in svgic:
         
         print cmd
         os.system(cmd)
+
+
+        
+        
 
 pri.append("}\n")
 open ("../installicons.pri", "w").write("\n".join(pri))    
