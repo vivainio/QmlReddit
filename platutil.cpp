@@ -5,6 +5,7 @@
 
 PlatUtil::PlatUtil()
 {
+
 }
 
 #if 0

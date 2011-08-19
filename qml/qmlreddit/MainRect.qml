@@ -60,6 +60,11 @@ Rectangle {
 
         onLockOrientationChanged: {
             var or = appState.lockOrientation ? "landscape" : "auto"
+	    if (hostOs == "harmattan") {
+		mainpage.setOrientation(or)
+
+	    }
+
             lifecycle.setOrientation(or)
 
         }

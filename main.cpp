@@ -103,6 +103,8 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("hostOs", os);
 
     if (os == "harmattan") {
+	qDebug() << "Using harmattan Qt Components";
+
         viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainHarmattan.qml"));
     } else {
         viewer.setMainQmlFile(QLatin1String("qml/qmlreddit/MainRawQml.qml"));
