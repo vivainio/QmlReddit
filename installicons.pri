@@ -5,7 +5,7 @@ unix:!symbian {
     INSTALLS += iconsvg_qmlreddit
     icon16.files = data/16x16/qmlreddit.png
     icon16.path = /usr/share/icons/hicolor/16x16/apps
-   # INSTALLS += icon16
+    #INSTALLS += icon16
     icon32.files = data/32x32/qmlreddit.png
     icon32.path = /usr/share/icons/hicolor/32x32/apps
     #INSTALLS += icon32
