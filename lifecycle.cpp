@@ -11,6 +11,7 @@
 LifeCycle::LifeCycle(QObject *parent) :
     QObject(parent)
 {
+
 }
 
 void LifeCycle::setView(QmlApplicationViewer* w)

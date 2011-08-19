@@ -18,8 +18,8 @@ for ic in svgic:
     bn = os.path.basename(ic)
     name = os.path.splitext(bn)[0]
     
-    pri.append("    iconsvg_%s.files = %s" % (name, bn)
-    pri.append("    iconsvg_%s.path = /usr/share/themes/base/meegotouch/icons" % (name,))
+    pri.append("    iconsvg_%s.files = %s" % (name, bn))
+    pri.append("    iconsvg_%s.path = /usr/share/icons/hicolor/scalable/apps" % (name,))
     pri.append("    INSTALLS += iconsvg_%s" % name)
     
     
@@ -37,7 +37,7 @@ for ic in svgic:
         
         pri.append("    icon%d.files = data/%dx%d/%s.png" % (sz, sz, sz, name))
         pri.append("    icon%d.path = /usr/share/icons/hicolor/%dx%d/apps" % (sz, sz, sz))
-        pri.append("    INSTALLS += icon%d" % sz)
+        pri.append("    #INSTALLS += icon%d" % sz)
         
         print cmd
         os.system(cmd)

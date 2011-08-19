@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
     os = "maemo5";
 #endif
 
-
 #ifdef IS_MEEGO_TABLET
     os = "meegotablet";
 #endif
@@ -77,6 +76,8 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_SYMBIAN
     os = "symbian";
 #endif
+
+
 
 
 #ifdef HAVE_GLWIDGET
