@@ -64,6 +64,7 @@ Rectangle {
             text: ""
             width: 200
             height: 50
+	    font.pointSize: mainview.theme.defaultTextSize
             //color: focus ? "blue" : "white"
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
             Rectangle {
@@ -94,6 +95,7 @@ Rectangle {
             height: 50
             //color: focus ? "blue" : "white"
 
+	    font.pointSize: mainview.theme.defaultTextSize
             echoMode: TextInput.PasswordEchoOnEdit
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
             Rectangle {

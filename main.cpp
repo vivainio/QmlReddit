@@ -78,8 +78,6 @@ int main(int argc, char *argv[])
 #endif
 
 
-
-
 #ifdef HAVE_GLWIDGET
     QGLWidget *glWidget = new QGLWidget(&viewer);
     viewer.setViewport(glWidget);

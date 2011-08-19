@@ -61,6 +61,26 @@ Rectangle {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: "<h1>QmlReddit</h1><p>Copyright (c) 2011 by Ville M. Vainio</p><p>Click on score to vote on comment. Shortcuts: 'T' for top comments, 'L' for light mode.</p>"
             }
+	    Image {
+		id: flattrpic
+		source: "pics/flattr-badge-large.png"
+
+		anchors {
+		    right:  parent.right
+		    rightMargin: 50
+		    bottom: parent.bottom
+		    bottomMargin: 50
+		}
+		MouseArea {
+		    anchors.fill: parent
+		    onClicked: {
+			infoBanner.show("Opening Flattr in browser")
+			Qt.openUrlExternally("http://flattr.com/thing/147608/QmlReddit")
+		    }
+		}
+	    }
+
+
 
         }
 
