@@ -311,7 +311,7 @@ Rectangle {
         id: voteRow
         Rectangle {
                 height: 160
-                width: parent.width
+                width: mainview.width
                 color: mainview.theme.bg
 
                 Row {

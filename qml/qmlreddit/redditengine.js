@@ -57,6 +57,10 @@ RedditEngine.prototype = {
     },
 
     catSelected: function(cat) {
+         if (cat == "-Frontpage") {
+             cat = ""
+         }
+
         this.currentCat = cat
         this.lcount = 0
         //this.lcache = {}

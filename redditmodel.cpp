@@ -201,6 +201,7 @@ QString RedditModel::lastName()
 QVariantList RedditModel::categories()
 {
     QStringList cats = m_ses->getCategories();
+    cats.sort();
     if (m_enableRestricted) {
         // adult content (to ensure commercial success for the app ;-)
         cats << "nsfw" << "gonewild" << "adult" << "sex" << "PrettyGirls" <<
@@ -210,6 +211,12 @@ QVariantList RedditModel::categories()
     cats.removeDuplicates();
     QVariantList r;
     foreach (QString s, cats) {
+        if (s.length() == 0) {
+            r.append("-Frontpage");
+            continue;
+
+
+        }
         r.append(s);
     }
 

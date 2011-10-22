@@ -183,7 +183,7 @@ Rectangle {
 
             }
 
-            else if (itemName != 'Cancel') {
+            else if (itemName != 'Cancel') {                
                 RE.eng().catSelected(itemName)
                 linkview.item.start()
                 RE.eng().fetchLinks()
@@ -365,6 +365,7 @@ Rectangle {
         onLoaded: {
             item.reqPreview.connect(onReqPreview)
             item.reqLinks.connect(onReqLinks)
+            appState.checkLogin()
             item.focus = true
         }
 

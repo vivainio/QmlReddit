@@ -89,7 +89,10 @@ Rectangle {
                         //infoBanner.show("Entering incognito mode")
                         //appState.incognitoMode = true
                         mdlReddit.enableRestricted(true);
-                        mdlReddit.refreshCategories()
+                        mainview.refreshCategories()
+
+
+                        //mdlReddit.refreshCategories()
                         nsfwbutton.visible = false
 
                     }
