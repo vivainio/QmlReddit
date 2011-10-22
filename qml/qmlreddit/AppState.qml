@@ -8,6 +8,7 @@ Storage {
     property bool lockOrientation : false
     property bool swRender: false
     property bool altBrowser: false
+    property bool childMode : false
 
     property string linkSelection: "Hot"
 
