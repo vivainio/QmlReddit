@@ -15,7 +15,7 @@ QML_IMPORT_PATH =
 # Avoid auto screen rotation
 #DEFINES += ORIENTATIONLOCK
 
-DEFINES += IS_HARMATTAN
+#DEFINES += IS_HARMATTAN
 
 # Needs to be defined for Symbian
 

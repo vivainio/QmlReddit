@@ -26,6 +26,7 @@ RedditModel::RedditModel(QObject *parent) :
             SIGNAL(commentsJsonAvailable(QString)));
 
     connect(m_ses, SIGNAL(categoriesUpdated()), this, SLOT(refreshCategories()));
+    connect(m_ses, SIGNAL(categoriesUpdated()), this, SIGNAL(categoriesAvailable()));
 
     QHash<int, QByteArray> roleNames;
     roleNames[RedditEntry::UrlRole] =  "url";
@@ -195,6 +196,26 @@ QString RedditModel::lastName()
         return "";
     }
     return ents.last().name;
+}
+
+QVariantList RedditModel::categories()
+{
+    QStringList cats = m_ses->getCategories();
+    if (m_enableRestricted) {
+        // adult content (to ensure commercial success for the app ;-)
+        cats << "nsfw" << "gonewild" << "adult" << "sex" << "PrettyGirls" <<
+                "gonewildstories";
+    }
+
+    cats.removeDuplicates();
+    QVariantList r;
+    foreach (QString s, cats) {
+        r.append(s);
+    }
+
+    return r;
+
+
 }
 
 

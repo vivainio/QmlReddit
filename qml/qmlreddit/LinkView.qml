@@ -42,7 +42,9 @@ Rectangle {
             width: container.width
 
             ImgButton {
+                id: b
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -50
                 //buttonLabel: "More"
                 buttonImage: "pics/list-add.svg"
                 color: "blue"
@@ -50,6 +52,16 @@ Rectangle {
                     progressInd.show()
                     RE.eng().fetchMore()
                 }
+            }
+            TText {
+                anchors {
+                    left: b.right
+                    leftMargin: 12
+                    verticalCenter: b.verticalCenter
+
+                }
+                color: mainview.theme.fg2
+                text: "Show more..."
             }
 
         }

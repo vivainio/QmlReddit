@@ -41,12 +41,14 @@ public Q_SLOTS:
 signals:
 
     void commentsJsonAvailable(const QString& json);
+    void categoriesAvailable();
 
 public slots:
 
     QVariantMap getLink(int index);
     void refreshCategories();
     void enableRestricted(bool val);
+    QVariantList categories();
 private slots:
     void doPopulateLinks();
 

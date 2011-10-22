@@ -25,6 +25,23 @@ Rectangle {
 
     AppState {
         id: appState
+        onChildModeChanged: {
+            console.log("Chim " + appState.childMode)
+        }
+        onLoaded: startup()
+    }
+
+    function refreshCategories() {
+        var cats = mdlReddit.categories()
+        console.log("Refresh with " + cats)
+        var mdl = categoryselector.item.model
+        mdl.clear()
+        for (var i in cats) {
+            var k = cats[i]
+
+            mdl.append( { modelData: k, thumbnail: "" })
+        }
+
     }
 
     Connections {
@@ -34,6 +51,10 @@ Rectangle {
             commentview.loadView()
             commentview.item.populate(json)
 
+        }
+        onCategoriesAvailable: {
+            console.log("Got categories available")
+            refreshCategories()
         }
     }
 
@@ -84,10 +105,17 @@ Rectangle {
     function startup() {
         //linkview.start()
         //viewSwitcher.switchView(linkview, true)
+        console.log("startup")
+        //appState.read()
         RE.eng().setModels(mdlReddit, mdlRedditSession)
         //commentview.focus = true
         progressInd.show()        
         viewSwitcher.switchView(splash, true, "instant")        
+        if ( appState.childMode ) {
+            RE.eng().catSelected("programming")
+            infoBanner.show("App locked to child mode")
+        }
+
         if (appState.linkSelection == "Hot") {
            RE.eng().fetchLinks()
         }
@@ -105,7 +133,7 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: startup();
+    //Component.onCompleted: startup();
 
     ViewLoader {
         id: splash
@@ -119,26 +147,39 @@ Rectangle {
 
     }
 
+    function promptCustomSubreddit() {
+
+        //appState.childMode = true
+
+        prompter.loadView()
+        function doOtherSubreddit(sr) {
+            if (sr == "idkfa") {
+                appState.childMode = false
+                infoBanner.show("Disabling child mode")
+            }
+
+            RE.eng().catSelected(sr)
+            linkview.item.start()
+            RE.eng().fetchLinks()
+        }
+
+        prompter.item.launch("Enter subreddit", linkview, doOtherSubreddit)
+
+        viewSwitcher.switchView(prompter, true)
+
+
+    }
+
     ViewLoader {
         id: categoryselector
 
         viewSource: "ActionGrid.qml"
+
         function onItemSelected(itemName) {
-
-
             mainview.state = "LinkState"
 
             if (itemName == "Other") {
-                prompter.loadView()
-                function doOtherSubreddit(sr) {
-                    RE.eng().catSelected(sr)
-                    linkview.item.start()
-                    RE.eng().fetchLinks()
-                }
-
-                prompter.item.launch("Enter subreddit", categoryselector, doOtherSubreddit)
-
-                viewSwitcher.switchView(prompter, true)
+                promptCustomSubreddit()
 
             }
 
@@ -153,8 +194,9 @@ Rectangle {
 
 
         onLoaded: {
-            item.model = mdlCategories
+            //item.model = mdlCategories
             item.itemSelected.connect(onItemSelected)
+            item.heading = "subreddit"
         }
 
     }

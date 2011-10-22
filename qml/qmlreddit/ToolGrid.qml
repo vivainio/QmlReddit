@@ -14,32 +14,33 @@ Item {
     ListModel {
         id: toolsModel
         ListElement {
-            label: "pics/system-shutdown.svg"
+            thumbnail: "pics/system-shutdown.svg"
             name: "quit"
+            modelData: "Quit"
 
         }
 
         ListElement {
-            label: "pics/accessories-dictionary.svg"
+            thumbnail: "pics/accessories-dictionary.svg"
             name: "cat"
+            modelData: "Category"
         }
         ListElement {
 
-            label: "pics/applications-internet.svg"
+            thumbnail: "pics/applications-internet.svg"
             name: "browser"
+            modelData: "Show in browser"
         }
         ListElement {
-            label: "pics/preferences-other.svg"
+            thumbnail: "pics/preferences-other.svg"
             name: "prefs"
+            modelData: "Preferences"
         }
 
         ListElement {
-            label: "pics/view-fullscreen.svg"
-            name: "viewsize"
-        }
-        ListElement {
-            label : "pics/twitter_logo.svg"
+            thumbnail : "pics/twitter_logo.svg"
             name: "twitter"
+            modelData: "Tweet"
         }
     }
 
@@ -66,15 +67,13 @@ Item {
         }
     }
 
-    GridView {
+    ListView {
+        id: tglv
         model: toolsModel
-        delegate: dlgbutton
+        delegate: ActionListDelegate {}
         anchors.centerIn: parent
         anchors.fill: parent
-        cellWidth: 150
-        cellHeight: 120
-        boundsBehavior: Flickable.StopAtBounds
-
+        boundsBehavior: Flickable.StopAtBounds        
     }
 
 
@@ -115,7 +114,17 @@ Item {
 
     function itemSelected(itemName) {
         toolgrid.state = ""
-        if (itemName == "cat") {
+
+        console.log("Toolgrid is " + itemName)
+        //appState.childMode = true
+
+        if (itemName == "Category") {
+            if (appState.childMode) {
+                infoBanner.show("Not available in child mode")
+                promptCustomSubreddit()
+                return
+            }
+
             if (!priv.myRedditsFetched) {
                 mdlRedditSession.getMyReddits()
                 priv.myRedditsFetched = true
@@ -124,10 +133,10 @@ Item {
             mainview.state = "SelectCategory"
 
         }
-        if (itemName == "quit") {
+        if (itemName == "Quit") {
             Qt.quit()
         }
-        if (itemName == "browser") {
+        if (itemName == "Show in browser") {
             var lnk = RE.eng().currentLink()
             if (lnk.permalink) {
                 mainview.openUrl("http://www.reddit.com" + lnk.permalink)
@@ -136,7 +145,7 @@ Item {
                 mainview.openUrl("http://www.reddit.com")
             }
         }
-        if (itemName == "prefs") {
+        if (itemName == "Preferences") {
             viewSwitcher.switchView(settingsview, true)
             mainview.state = "SettingsState"
 
@@ -146,7 +155,7 @@ Item {
             lifecycle.toggleState()
         }
 
-        if (itemName == "twitter") {
+        if (itemName == "Tweet") {
             var lnk = RE.eng().currentLink()
             if (!lnk || !lnk.url) {
                 infoBanner.show("No link selected")

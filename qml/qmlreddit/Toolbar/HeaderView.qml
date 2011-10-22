@@ -38,7 +38,7 @@ Rectangle {
 
     TText {
         anchors.centerIn: parent
-        font.pointSize: Math.round(headerView.height / 2.5)
+        font.pixelSize: Math.round(headerView.height / 2.5)
         color: "lightgray"
         text: applicationName
     }

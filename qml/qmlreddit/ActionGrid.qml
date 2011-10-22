@@ -6,10 +6,12 @@ Rectangle {
 
     color: mainview.theme.bg
 
+    property string heading : "heading"
+
     ListModel {
         id: testmodel1
-        ListElement { catName : 'cat1'  }
-        ListElement { catName : 'cat2' }
+//        ListElement { modelData : 'cat1'; thumbnail: ""   }
+//        ListElement { modelData : 'cat2'; thumbnail: ""}
     }
 
     ListModel {
@@ -21,10 +23,10 @@ Rectangle {
 
     signal itemSelected(string itemName)
 
-    GridView {
+    ListView {
         id : gv
         model:  testmodel1
-        cellWidth: 180
+        //cellWidth: 180
         //y: 100
         //anchors.fill: parent
         width: parent.width
@@ -34,19 +36,35 @@ Rectangle {
         boundsBehavior: Flickable.StopAtBounds
 
         //anchors.verticalCenter: parent.verticalCenter
-        delegate: Component {
-            RButton {
-                buttonLabel: catName    
-                width: 150
-                height: 80
-                onClicked: {
-                    itemSelected(catName)
+        delegate: ActionListDelegate {
+        }
+
+
+
+        header: Component {
+            Item {
+                //color: "red"
+
+                height: 50
+                width: gv.width
+                TText {
+                    anchors.fill: parent
+                    text: heading
+                    font.pixelSize: 40
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+
                 }
             }
         }
 
         footer: Component {
             Column {
+                Item {
+                    width: 1
+                    height: 40
+                }
+
                 RButton {
 		    //visible: appState.loggedIn
                     id: nsfwbutton

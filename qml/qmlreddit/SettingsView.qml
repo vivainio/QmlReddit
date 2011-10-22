@@ -93,6 +93,7 @@ Rectangle {
                 color: mainview.theme.bg
                 Flow {
                     anchors.fill: parent
+                    anchors.margins: 20
                     spacing: 30
                     width: parent.width
 
