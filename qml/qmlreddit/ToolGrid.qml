@@ -94,6 +94,9 @@ Item {
 
     Grid {
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        anchors.left: parent.left
+        anchors.leftMargin: 4
         columns: 3
         spacing: 5
         Repeater {
