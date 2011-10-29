@@ -272,7 +272,7 @@ QStringList RedditSession::getCategories()
 
     cats << m_myreddits;
 
-    cats << "programming" << "pics" << "comics" <<
+    cats << "-Frontpage" << "programming" << "pics" << "comics" <<
             "fffffffuuuuuuuuuuuu" <<
             "technology" << "funny" <<  "linux"
          << "news"  << "Python" << "WTF" << "gaming" <<

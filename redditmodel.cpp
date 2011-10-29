@@ -219,7 +219,6 @@ QVariantList RedditModel::categories()
     QVariantList r;
     foreach (QString s, cats) {
         if (s.length() == 0) {
-            r.append("-Frontpage");
             continue;
 
 
