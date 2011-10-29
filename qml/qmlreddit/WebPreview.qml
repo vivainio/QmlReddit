@@ -10,6 +10,7 @@ Rectangle {
     property alias url: wv.url
     signal reqBack
 
+    property real zoomfact: 0
 
     FlickableWebView {
         id: wv
@@ -47,9 +48,14 @@ Rectangle {
         buttonLabel: "Z+"
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+
         onClicked: {
             wv.contentScale += 0.1
         }
+        onRepeated: {
+            wv.contentScale += 0.1
+        }
+
     }
     RButton {
         opacity: 0.5
@@ -60,6 +66,9 @@ Rectangle {
         anchors.rightMargin: 20
         anchors.bottom: parent.bottom
         onClicked: {
+            wv.contentScale -= 0.1
+        }
+        onRepeated: {
             wv.contentScale -= 0.1
         }
 

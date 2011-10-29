@@ -27,6 +27,7 @@ Rectangle {
         var p = RE.priv(root)
         var cb = p.callback
         cb(text)
+        //inpAnswer.closeSoftwareInputPanel()
     }
 
     Column {
@@ -56,6 +57,7 @@ Rectangle {
 
             Keys.onEnterPressed: _accept()
 
+            font.pixelSize: mainview.theme.defaultTextSize
             //color: focus ? "blue" : "white"
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
             Rectangle {
@@ -80,12 +82,11 @@ Rectangle {
         anchors.bottom: parent.bottom
         buttonImage: "pics/go-next.svg"
         onClicked: {
-            var p = RE.priv(root)
-            var cb = p.callback
-            cb(text)
+            _accept()
         }
 
     }
+
 
     ImgButton {
         id: imgCancel
@@ -95,7 +96,12 @@ Rectangle {
         }
         buttonImage: "pics/process-stop.svg"
         //buttonLabel: "Preview"
-        onClicked: viewSwitcher.switchView(previousView, true)
+        onClicked: {
+            //parent.forceActiveFocus()
+            //parent.focus = true
+            viewSwitcher.switchView(previousView, true, "instant")
+            inpAnswer.closeSoftwareInputPanel()
+        }
     }
 
 }

@@ -202,7 +202,12 @@ QVariantList RedditModel::categories()
 {
     QStringList cats = m_ses->getCategories();
 
-    cats.sort();
+    QMap<QString, QString> strMap;
+    foreach ( QString str, cats ) {
+      strMap.insert( str.toLower(), str );
+    }
+    cats = strMap.values();
+
     if (m_enableRestricted) {
         // adult content (to ensure commercial success for the app ;-)
         cats << "nsfw" << "gonewild" << "adult" << "sex" << "PrettyGirls" <<
@@ -211,11 +216,6 @@ QVariantList RedditModel::categories()
 
     cats.removeDuplicates();
 
-    QMap<QString, QString> strMap;
-    foreach ( QString str, cats ) {
-      strMap.insert( str.toLower(), str );
-    }
-    cats = strMap.values();
     QVariantList r;
     foreach (QString s, cats) {
         if (s.length() == 0) {

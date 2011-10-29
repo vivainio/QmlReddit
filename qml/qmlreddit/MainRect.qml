@@ -156,6 +156,13 @@ Rectangle {
             if (sr == "idkfa") {
                 appState.childMode = false
                 infoBanner.show("Disabling child mode")
+                return;
+            }
+            if (sr == "childmode") {
+                appState.childMode = true
+                infoBanner.show("Enabling child mode")
+                return
+
             }
 
             RE.eng().catSelected(sr)

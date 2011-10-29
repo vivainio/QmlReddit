@@ -9,6 +9,9 @@ Rectangle {
     property color pressedColor: "green"
     signal clicked;
     signal doubleClicked;
+    signal repeated;
+
+
 
     width: 80
     height: 60
@@ -17,6 +20,18 @@ Rectangle {
     //color: selected ? "yellow" : "#ca6262"
     //color: mainview.theme.bg
     color: selected ? mainview.theme.fg : mainview.theme.bg
+    Timer {
+        id: tRepeat
+        repeat: true
+        onTriggered: {
+            console.log("repeat!")
+
+            repeated()
+        }
+        interval: 500
+
+    }
+
     TText {
         color: root.border.color
         id: tf
@@ -27,6 +42,9 @@ Rectangle {
         anchors.fill: parent
         onClicked: parent.clicked()
         onDoubleClicked: parent.doubleClicked()
+        onPressed: tRepeat.start()
+        onReleased: tRepeat.stop()
+
 
     }
 
