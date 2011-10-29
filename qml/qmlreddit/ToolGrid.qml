@@ -118,7 +118,7 @@ Item {
     function itemSelected(itemName) {
         toolgrid.state = ""
 
-        console.log("Toolgrid is " + itemName)
+        //console.log("Toolgrid is " + itemName)
         //appState.childMode = true
 
         if (itemName == "Category") {

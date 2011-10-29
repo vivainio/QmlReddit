@@ -98,6 +98,20 @@ Rectangle {
                     }
 
                 }
+                Item {
+                    width: 1
+                    height: 40
+                }
+
+                RButton {
+                    id: customCatBotton
+                    buttonLabel: "Enter custom subreddit"
+                    width: 300
+                    height: 80
+
+                    onClicked: itemSelected("Other")
+
+                }
 
                 Item {
                     width: 1
@@ -106,6 +120,19 @@ Rectangle {
             }
         }
     }
+
+    RButton {
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        buttonLabel: "Cancel"
+        onClicked: itemSelected("Cancel")
+        border.color: "yellow"
+        color: "green"
+        pressedColor: "blue"
+
+    }
+
+    /*
     Grid {
 
         id: lv
@@ -137,5 +164,6 @@ Rectangle {
         }
 
     }
+    */
 
 }

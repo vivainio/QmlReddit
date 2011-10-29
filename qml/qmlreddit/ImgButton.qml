@@ -10,8 +10,8 @@ Item {
 
     property color borderColor: "blue"
     property string pressedColor: color
-    width: 64
-    height: 64
+    width: 80
+    height: 80
     Rectangle {
         id: bgRect
         border.width: 1

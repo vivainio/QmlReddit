@@ -204,6 +204,7 @@ Rectangle {
             //item.model = mdlCategories
             item.itemSelected.connect(onItemSelected)
             item.heading = "subreddit"
+            refreshCategories()
         }
 
     }
