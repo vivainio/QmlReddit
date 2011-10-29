@@ -184,6 +184,7 @@ Rectangle {
 
         function onItemSelected(itemName) {
             mainview.state = "LinkState"
+            viewSwitcher.switchView(linkview, false)
 
             if (itemName == "Other") {
                 promptCustomSubreddit()
