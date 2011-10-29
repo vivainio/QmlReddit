@@ -74,6 +74,7 @@ Item {
         anchors.centerIn: parent
         anchors.fill: parent
         boundsBehavior: Flickable.StopAtBounds        
+        footer: lnkselcomponent
     }
 
 
@@ -92,28 +93,38 @@ Item {
     }
 
 
-    Grid {
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 4
-        anchors.left: parent.left
-        anchors.leftMargin: 4
-        columns: 3
-        spacing: 5
-        Repeater {
-            model: ["Hot", "New", "Top", "Saved", "Contr"]
-            RButton {
-                buttonLabel: modelData
-                selected: appState.linkSelection == modelData
+    Component {
+        id: lnkselcomponent
 
-                onClicked: {
-                    appState.linkSelection = modelData                    
-                    //RE.eng().fetchLinks()
+        Column {
+            Item {
+                width: 1
+                height: 100
+            }
+
+            Grid {
+                anchors.horizontalCenter: parent.horizontalCenter
+                columns: 5
+                spacing: 15
+                Repeater {
+                    model: ["Hot", "New", "Top", "Saved", "Contr"]
+                    RButton {
+                        buttonLabel: modelData
+                        selected: appState.linkSelection == modelData
+
+                        onClicked: {
+                            appState.linkSelection = modelData
+                            //RE.eng().fetchLinks()
+                        }
+
+                    }
                 }
 
             }
         }
 
     }
+
 
     function itemSelected(itemName) {
         toolgrid.state = ""
