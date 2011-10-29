@@ -12,6 +12,7 @@ Rectangle {
 
     property real zoomfact: 0
 
+    property int navbtnsize: 80
     FlickableWebView {
         id: wv
         //pressGrabTime:
@@ -43,11 +44,13 @@ Rectangle {
 
     RButton {
         opacity: 0.5
-        width: 50
+        width: navbtnsize
+        height: navbtnsize
         id: zin
         buttonLabel: "Z+"
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.rightMargin: 5
 
         onClicked: {
             wv.contentScale += 0.1
@@ -60,7 +63,8 @@ Rectangle {
     RButton {
         opacity: 0.5
         id: zout
-        width: 50
+        width: navbtnsize
+        height: navbtnsize
         buttonLabel: "Z-"
         anchors.right: zin.left
         anchors.rightMargin: 20
@@ -76,7 +80,7 @@ Rectangle {
     RButton {
         opacity: 0.5
         id: navforward
-        width: 50
+        width: navbtnsize
         buttonLabel: ">"
         anchors.right: zout.left
         anchors.rightMargin: 20
@@ -90,7 +94,8 @@ Rectangle {
     RButton {
         opacity: 0.5
         id: navback
-        width: 50
+        width: navbtnsize
+
         buttonLabel: "<"
         anchors.right: navforward.left
         anchors.rightMargin: 20
