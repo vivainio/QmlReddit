@@ -122,8 +122,12 @@ Rectangle {
     }
 
     RButton {
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            rightMargin: 5
+            bottomMargin: 5
+        }
         buttonLabel: "Cancel"
         onClicked: itemSelected("Cancel")
         border.color: "yellow"
