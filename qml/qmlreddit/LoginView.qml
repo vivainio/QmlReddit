@@ -13,6 +13,12 @@ Rectangle {
 
     }
 
+    function dismissVkb() {
+        inpPassword.closeSoftwareInputPanel()
+        inpUserName.closeSoftwareInputPanel()
+
+    }
+
     QtObject {
         id: priv
         property string lastAttempt: ""
@@ -149,6 +155,7 @@ Rectangle {
         color: appState.loggedIn ? "blue" : "red"
 
         onClicked: {
+            dismissVkb()
             mdlRedditSession.logout()
 
             if (!appState.loggedIn) {
