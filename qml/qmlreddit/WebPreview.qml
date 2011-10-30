@@ -98,28 +98,36 @@ Rectangle {
 
         buttonLabel: "<"
         anchors.right: navforward.left
-        anchors.rightMargin: 20
+        anchors.rightMargin: 30
         anchors.bottom: parent.bottom
         onClicked: {
             wv.back.trigger()
         }
 
-
     }
 
-
-
-    TText {
+    Rectangle {
+        visible: wv.progress < 1
+        color: "blue"
         anchors.right: parent.right
-        anchors.bottom:  parent.bottom
-        anchors.rightMargin: 5
+        anchors.bottom:  zin.top
+        anchors.bottomMargin: 5
+        anchors.left: zout.left
+        height: 40
 
-        color: "green"
-        text: wv.progress < 1 ? Math.floor(wv.progress * 100) + "%" : ""
+
+        TText {            
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 5
+
+            color: "yellow"
+            text: wv.progress < 1 ? "Loading " + Math.floor(wv.progress * 100) + "%" : ""
+        }
     }
 
 
-    /*
+    /*r
     RButton {
         id: back
         buttonLabel: "Back"
