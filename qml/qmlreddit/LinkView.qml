@@ -38,7 +38,7 @@ Rectangle {
         }
 
         footer: Item {
-            height: 60
+            height: 100
             width: container.width
 
             ImgButton {
