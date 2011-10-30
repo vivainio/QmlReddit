@@ -27,7 +27,8 @@ Rectangle {
         var p = RE.priv(root)
         var cb = p.callback
         cb(text)
-        //inpAnswer.closeSoftwareInputPanel()
+        viewSwitcher.switchView(previousView, true, "instant")
+        inpAnswer.closeSoftwareInputPanel()
     }
 
     Column {
