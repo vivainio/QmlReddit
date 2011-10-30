@@ -59,7 +59,7 @@ Rectangle {
 
                 textFormat: Text.RichText                
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: "<h1>QmlReddit</h1><p>Copyright (c) 2011 by Ville M. Vainio</p><p>Click on score to vote on comment. Shortcuts: 'T' for top comments, 'L' for light mode.</p>"
+                text: "<h1>QmlReddit</h1><p>Copyright (c) 2011 by Ville M. Vainio</p>"
             }
 	    Image {
 		id: flattrpic
