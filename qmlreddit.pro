@@ -15,7 +15,7 @@ QML_IMPORT_PATH =
 # Avoid auto screen rotation
 #DEFINES += ORIENTATIONLOCK
 
-#DEFINES += IS_HARMATTAN
+DEFINES += IS_HARMATTAN
 
 # Needs to be defined for Symbian
 
@@ -84,7 +84,8 @@ OTHER_FILES += \
     debian/copyright \
     debian/README \
     debian/rules \
-    info.vivainio.qmlreddit.yaml
+    info.vivainio.qmlreddit.yaml \
+    debian/changelog
 
 HEADERS += \
     redditsession.h \
@@ -93,3 +94,4 @@ HEADERS += \
     platutil.h \
     rcookiejar.h \
     lifecycle.h
+
