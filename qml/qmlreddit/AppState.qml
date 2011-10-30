@@ -8,6 +8,9 @@ Storage {
     property bool lockOrientation : false
     property bool swRender: false
     property bool altBrowser: false
+
+    // set to true when publishing at Ovi store
+
     property bool childMode : false
 
     property string linkSelection: "Hot"
