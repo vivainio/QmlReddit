@@ -30,7 +30,7 @@ Rectangle {
 
     function refreshCategories() {
         var cats = mdlReddit.categories()
-        console.log("Refresh with " + cats)
+        //console.log("Refresh with " + cats)
         var mdl = categoryselector.item.model
         mdl.clear()
         for (var i in cats) {
