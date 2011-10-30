@@ -4,20 +4,27 @@ Rectangle {
     //id: progressInd
     id: root
 
+    property string waitText : "Loading"
     opacity: 0
-    function show() {
+    function show(t) {
         progressInd.state = "shown"
+        if (t) {
+            waitText = t
+        } else {
+            waitText = "Loading"
+        }
 
     }
 
     function hide() {
         progressInd.state = ""
+        waitText = "Loading"
 
     }
 
     TText {
         id: tInd
-        text: "Loading"
+        text: waitText
         anchors.centerIn: parent
         color: "white"
 
