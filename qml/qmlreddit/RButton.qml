@@ -11,6 +11,7 @@ Rectangle {
     signal doubleClicked;
     signal repeated;
 
+    radius: 10
 
 
     width: 80
@@ -24,7 +25,7 @@ Rectangle {
         id: tRepeat
         repeat: true
         onTriggered: {
-            console.log("repeat!")
+            //console.log("repeat!")
 
             repeated()
         }
