@@ -25,9 +25,6 @@ Rectangle {
 
     AppState {
         id: appState
-        onChildModeChanged: {
-            console.log("Chim " + appState.childMode)
-        }
         onLoaded: startup()
     }
 
@@ -109,7 +106,7 @@ Rectangle {
         //appState.read()
         RE.eng().setModels(mdlReddit, mdlRedditSession)
         //commentview.focus = true
-        progressInd.show()        
+        progressInd.show()
         viewSwitcher.switchView(splash, true, "instant")        
         if ( appState.childMode ) {
             RE.eng().catSelected("programming")
