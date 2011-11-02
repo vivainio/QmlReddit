@@ -41,7 +41,7 @@
 
 //import QtQuick 1.0
 import QtWebKit 1.0
-import Qt 4.7
+import QtQuick 1.1
 
 Flickable {
     property alias title: webView.title
@@ -75,6 +75,7 @@ Flickable {
         anchors.fill : parent
         color: "white"
     }
+
 
     WebView {
         id: webView
@@ -155,6 +156,7 @@ Flickable {
                          }
                        }
 
+
         SequentialAnimation {
             id: quickZoom
 
@@ -214,4 +216,12 @@ Flickable {
         }
         onZoomTo: doZoom(zoom,centerX,centerY)
     }
+    PinchArea {
+        anchors.fill: parent
+        pinch.target: webView
+        pinch.minimumScale: 1.0
+        pinch.maximumScale: 5.0
+        pinch.dragAxis: Pinch.XandYAxis
+    }
+
 }
