@@ -74,7 +74,7 @@ Item {
         anchors.centerIn: parent
         anchors.fill: parent
         boundsBehavior: Flickable.StopAtBounds        
-        footer: lnkselcomponent
+        //footer: lnkselcomponent
     }
 
 
@@ -93,6 +93,7 @@ Item {
     }
 
 
+    /*
     Component {
         id: lnkselcomponent
 
@@ -124,6 +125,7 @@ Item {
         }
 
     }
+    */
 
 
     function itemSelected(itemName) {

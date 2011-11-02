@@ -1,6 +1,7 @@
 import Qt 4.7
 import QtWebKit 1.0
 import "Scrollable"
+import QtQuick 1.1
 
 Rectangle {
     //width: parent.width
@@ -13,6 +14,8 @@ Rectangle {
     property real zoomfact: 0
 
     property int navbtnsize: 80
+
+
     FlickableWebView {
         id: wv
         //pressGrabTime:

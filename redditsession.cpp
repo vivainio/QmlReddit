@@ -50,7 +50,7 @@ void RedditSession::start(const QString& cat, const QString& queryargs)
         selector = "new/";
     } else if (m_linkSelection == "Top") {
         selector = "top/";
-    } else if (m_linkSelection == "Contr") {
+    } else if (m_linkSelection == "Controversial") {
         selector = "controversial/";
     } else if (m_linkSelection == "Saved") {
         selector = "saved;";

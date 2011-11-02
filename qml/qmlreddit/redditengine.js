@@ -32,8 +32,15 @@ function clone(obj) {
 
 RedditEngine.prototype = {
     setModels : function (mdlReddit, mdlSession) {
+            console.log("setmodels")
             this.mdlReddit = mdlReddit
             this.mdlRedditSession = mdlSession
+
+    },
+
+    isStarted  :function() {
+        return this.mdlReddit !== null
+
 
     },
 
@@ -48,7 +55,8 @@ RedditEngine.prototype = {
         this.currentlink = {}
         // just to keep objects alive, not to speed up
         this.lcache = {}
-        this.linkSelection = "hot"
+        this.linkSelection = "hot"        
+        this.mdlReddit = null
 
     },
 
@@ -65,6 +73,11 @@ RedditEngine.prototype = {
         this.lcount = 0
         //this.lcache = {}
     },
+
+    currentCategory : function() {
+        return this.currentCat
+
+     },
 
     shouldShowComments : function(lnk) {
         var direct= ["comics", "pics", "fffffffuuuuuuuuuuuu"]
@@ -107,6 +120,7 @@ RedditEngine.prototype = {
 
     setLinkSelection : function(sel) {
         this.linkSelection = sel
+        this.mdlRedditSession.setLinkSelection(sel)
 
     }
 

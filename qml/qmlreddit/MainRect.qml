@@ -89,8 +89,10 @@ Rectangle {
 
         onLinkSelectionChanged: {
             //console.log('lsel')
-            mdlRedditSession.setLinkSelection(appState.linkSelection)
-            RE.eng().fetchLinks()
+            if (RE.eng().isStarted()) {
+                mdlRedditSession.setLinkSelection(appState.linkSelection)
+                RE.eng().fetchLinks()
+            }
 
         }
         onSwRenderChanged: {
@@ -103,8 +105,10 @@ Rectangle {
         //linkview.start()
         //viewSwitcher.switchView(linkview, true)
         console.log("startup")
+        var eng = RE.eng()
         //appState.read()
-        RE.eng().setModels(mdlReddit, mdlRedditSession)
+        eng.setModels(mdlReddit, mdlRedditSession)
+        eng.setLinkSelection(appState.linkSelection)
         //commentview.focus = true
         progressInd.show()
         viewSwitcher.switchView(splash, true, "instant")        
@@ -113,9 +117,13 @@ Rectangle {
             infoBanner.show("App locked to child mode")
         }
 
+
+        RE.eng().fetchLinks()
+        /*
         if (appState.linkSelection == "Hot") {
-           RE.eng().fetchLinks()
+
         }
+        */
 
     }
 
@@ -187,7 +195,7 @@ Rectangle {
                 promptCustomSubreddit()
 
             } else if (itemName != 'Cancel') {
-                RE.eng().catSelected(itemName)
+                RE.eng().catSelected(itemName)                
                 linkview.item.start()
                 RE.eng().fetchLinks()
                 viewSwitcher.switchView(linkview, false)
