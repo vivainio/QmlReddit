@@ -5,6 +5,7 @@ Rectangle {
     id: container
     //anchors.fill: parent
 
+    property string currentCategory : ""
     color: mainview.theme.bg
     signal linkSelected(int selIndex);
 
@@ -12,6 +13,7 @@ Rectangle {
 
     function start() {
         progressInd.show()
+        currentCategory = RE.eng().currentCategory()
 
     }
 
@@ -32,9 +34,52 @@ Rectangle {
         model: mdlLinks
         //delegate: deLinks
         delegate: LinkViewDelegate {}
+
+
         header: Item {
+            id: lvheader
             height: 80
-            width: 1
+            //width: parent.width
+
+            Row {
+                height: 80
+                spacing: 30
+                id: lsrow
+                Repeater {
+                   model: ["Hot", "New", "Top", "Saved", "Controversial"]
+                   Item {
+                       width: telem.width
+                       height: 40
+
+                       TText {
+                           id: telem
+                           height: 40
+                           //width: 50
+                           text: modelData
+                           color: modelData == appState.linkSelection ? "White" : "gray"
+                       }
+                       MouseArea {
+                           anchors.fill: parent
+                           onClicked: {
+                               appState.linkSelection = modelData
+
+                           }
+                       }
+                   }
+                }
+            }
+
+            TText {
+                id: tsubreddit
+                y: 30
+                height: 40
+                x: 0
+                width: 100
+
+                color: "blue"
+                text: currentCategory + "/"
+            }
+
         }
 
         footer: Item {
