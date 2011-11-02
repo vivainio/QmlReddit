@@ -181,18 +181,18 @@ Rectangle {
 
         function onItemSelected(itemName) {
             mainview.state = "LinkState"
-            viewSwitcher.switchView(linkview, false)
+
 
             if (itemName == "Other") {
                 promptCustomSubreddit()
 
-            }
-
-            else if (itemName != 'Cancel') {                
+            } else if (itemName != 'Cancel') {
                 RE.eng().catSelected(itemName)
                 linkview.item.start()
                 RE.eng().fetchLinks()
+                viewSwitcher.switchView(linkview, false)
             } else {
+                // Cancel
                 viewSwitcher.switchView(linkview, false)
             }
         }
