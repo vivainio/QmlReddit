@@ -33,7 +33,7 @@ Rectangle {
 
         model: mdlLinks
         //delegate: deLinks
-        delegate: LinkViewDelegate {}
+        delegate: LinkViewDelegate2 {}
 
 
         header: Item {
