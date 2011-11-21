@@ -32,6 +32,7 @@ Rectangle {
         if (url != newurl) {
             url = newurl
         }
+        wv.scale = 1.0
     }
 
     ImgButton {
