@@ -65,11 +65,13 @@ Flickable {
     //anchors.right: parent.right
     pressDelay: 500
 
+    /*
     onWidthChanged : {
         // Expand (but not above 1:1) if otherwise would be smaller that available width.
             if (width > webView.width*webView.contentsScale && webView.contentsScale < 1.0)
             webView.contentsScale = width / webView.width * webView.contentsScale;
     }
+    */
 
     Rectangle {
         anchors.fill : parent
@@ -91,6 +93,15 @@ Flickable {
 
         }
 
+
+        onScaleChanged: {
+            //flickable.contentWidth = width * scale
+            //flickable.contentHeight = height * scale
+            //wv.contentScale = scale
+            //scale = 1.0
+        }
+
+        //onWidthChanged: flickable.contentWidth = webView.width
 
         function fixUrl(url)
         {
@@ -134,10 +145,12 @@ Flickable {
         preferredWidth: flickable.width
         preferredHeight: flickable.height
         contentsScale: 1
+        /*
         onContentsSizeChanged: {
             // zoom out
             contentsScale = Math.min(1,flickable.width / contentsSize.width)
         }
+        */
         onUrlChanged: {
             // got to topleft
             flickable.contentX = 0
@@ -216,12 +229,18 @@ Flickable {
         }
         onZoomTo: doZoom(zoom,centerX,centerY)
     }
+    /*
     PinchArea {
         anchors.fill: parent
         pinch.target: webView
-        pinch.minimumScale: 1.0
-        pinch.maximumScale: 5.0
+        pinch.minimumScale: 0.5
+        pinch.maximumScale: 10.0
         pinch.dragAxis: Pinch.XandYAxis
+        onPinchFinished: {
+            webView.contentsScale = webView.scale
+            //webView.scale = 1.0
+        }
     }
+    */
 
 }

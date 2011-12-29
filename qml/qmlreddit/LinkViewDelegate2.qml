@@ -35,9 +35,10 @@ Component {
 
 
             Rectangle {
+                id: thumbarea
+
                 anchors.top: tAuthor.bottom
                 x:2
-                id: thumbarea
                 width: hasThumbnail ? 60 : 0
                 height: 60
                 visible: hasThumbnail
@@ -47,6 +48,8 @@ Component {
                 Image {
                     anchors.fill: parent
                     id: tnail
+                    sourceSize.height: 60
+                    sourceSize.width: 60
                     height: 60
                     width: 60
                     source: hasThumbnail ? thumbnail : ""
@@ -76,7 +79,7 @@ Component {
 
                 color: "green" // score > 100 ? "red" : mainview.theme.fg
                 anchors.top: dscIt.bottom
-                anchors.topMargin: 10
+                anchors.topMargin: hasThumbnail && dscIt.height < 60 ? 40 : 10
 
             }
 
