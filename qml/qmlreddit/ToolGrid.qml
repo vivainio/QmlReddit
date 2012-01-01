@@ -186,8 +186,8 @@ Item {
                 cookeddesc = lnk.desc
 
             } else {
-                cookedurl = escape(lnk.url)
-                //cookedurl = lnk.url
+                //cookedurl = escape(lnk.url)
+                cookedurl = lnk.url
                 cookeddesc = escape(lnk.desc)
             }
 
