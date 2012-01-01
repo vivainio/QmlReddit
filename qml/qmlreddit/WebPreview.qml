@@ -9,11 +9,14 @@ Rectangle {
 
     //x: width + 200
     property alias url: wv.url
-    signal reqBack
+    signal reqBack    
 
     property real zoomfact: 0
 
-    property int navbtnsize: 80
+    property string homeUrl: ""
+    //property int navbtnsize: 80
+
+    property int navbtnsize: 60
 
 
     FlickableWebView {
@@ -29,10 +32,14 @@ Rectangle {
     }
 
     function setUrl(newurl) {
+
         if (url != newurl) {
             url = newurl
         }
+        homeUrl = url
         wv.scale = 1.0
+        wv.contentScale = 1.0
+
     }
 
     ImgButton {
@@ -81,10 +88,11 @@ Rectangle {
         }
 
     }
+    /*
     RButton {
         opacity: 0.5
         id: navforward
-        width: navbtnsize
+        width: navbtnsize * 0.8
         buttonLabel: ">"
         anchors.right: zout.left
         anchors.rightMargin: 20
@@ -95,17 +103,20 @@ Rectangle {
 
 
     }
+    */
     RButton {
         opacity: 0.5
         id: navback
-        width: navbtnsize
+        width: navbtnsize * 0.8
 
         buttonLabel: "<"
-        anchors.right: navforward.left
-        anchors.rightMargin: 30
+        anchors.right: zout.left
+        anchors.rightMargin: 40
         anchors.bottom: parent.bottom
+        visible: homeUrl != url //wv.back.enabled
         onClicked: {
-            wv.back.trigger()
+            setUrl(homeUrl)
+            //wv.back.trigger()
         }
 
     }
