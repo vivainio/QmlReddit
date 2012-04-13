@@ -25,7 +25,7 @@ RedditModel::RedditModel(QObject *parent) :
     connect(m_ses, SIGNAL(commentsJsonAvailable(QString)), this,
             SIGNAL(commentsJsonAvailable(QString)));
 
-    connect(m_ses, SIGNAL(categoriesUpdated()), this, SLOT(refreshCategories()));
+    //connect(m_ses, SIGNAL(categoriesUpdated()), this, SLOT(refreshCategories()));
     connect(m_ses, SIGNAL(categoriesUpdated()), this, SIGNAL(categoriesAvailable()));
 
     QHash<int, QByteArray> roleNames;
