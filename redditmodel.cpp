@@ -7,11 +7,11 @@
 #include <QDebug>
 #include <QDesktopServices>
 
-#include "roleitemmodel.h"
 #include "platutil.h"
 #include <QProcess>
 
 #include <QDesktopServices>
+#include "quickmodel.h"
 
 RedditModel::RedditModel(QObject *parent) :
     QObject(parent)
@@ -29,6 +29,7 @@ RedditModel::RedditModel(QObject *parent) :
     connect(m_ses, SIGNAL(categoriesUpdated()), this, SIGNAL(categoriesAvailable()));
 
     QHash<int, QByteArray> roleNames;
+    /*
     roleNames[RedditEntry::UrlRole] =  "url";
     roleNames[RedditEntry::DescRole] = "desc";
     roleNames[RedditEntry::ScoreRole] = "score";
@@ -40,17 +41,22 @@ RedditModel::RedditModel(QObject *parent) :
     roleNames[RedditEntry::AuthorRole] = "author";
     roleNames[RedditEntry::TimeRole] = "time";
     roleNames[RedditEntry::SubredditRole] = "subreddit";
+    */
+    m_linksmodel = new QuickModel(); //RoleItemModel(roleNames);
+    QStringList fields;
+    fields << "url" << "desc" << "score" << "permalink" << "thumbnail" << "comments" << "name" << "vote"  << "author" << "time" << "subreddit";
 
-    m_linksmodel = new RoleItemModel(roleNames);
+    m_linksmodel->setFields(fields);
 
 
-    roleNames.clear();
+    //roleNames[Qt::UserRole] = "catName";
 
-    roleNames[Qt::UserRole] = "catName";
+    //m_cats = new QuickModel;
+    //m_cats->setFields(QStringList() << "catName");
 
-    m_cats = new RoleItemModel(roleNames);
+    //RoleItemModel(roleNames);
 
-    refreshCategories();
+    //refreshCategories();
 }
 
 
@@ -59,7 +65,7 @@ void RedditModel::setup(QDeclarativeContext *ctx)
     ctx->setContextProperty("mdlReddit", this);
     ctx->setContextProperty("mdlLinks", m_linksmodel);
     //ctx->setContextProperty("mdlComments", m_commentsmodel);
-    ctx->setContextProperty("mdlCategories", m_cats);
+    //ctx->setContextProperty("mdlCategories", m_cats);
     ctx->setContextProperty("mdlRedditSession", m_ses);
 
     //start("", 0);
@@ -80,6 +86,23 @@ void RedditModel::doPopulateLinks()
             continue;
             // todo debug properly
         }
+        QVariantMap m;
+        m["desc"] = e.desc;
+        m["score"] = e.score;
+        m["permalink"] = e.permalink;
+        m["url"] = e.url;
+        m["thumbnail"] = e.thumbnail;
+        m["comments"] = e.comments;
+        m["name"]  = e.name;
+        m["vote"] = e.vote;
+        m["author"] = e.author;
+        m["time"] = e.time;
+        m["subreddit"] = e.subreddit;
+
+        m_linksmodel->append(m);
+
+        //fields << "url" << "desc" << "score" << "permalink" << "thumbnail" << "comments" << "name" << "vote"  << "author" << "time" << "subreddit";
+        /*
         QStandardItem* it = new QStandardItem();
         it->setData(e.desc, RedditEntry::DescRole);
         it->setData(e.score, RedditEntry::ScoreRole);
@@ -94,6 +117,8 @@ void RedditModel::doPopulateLinks()
         it->setData(e.subreddit, RedditEntry::SubredditRole);
 
         m_linksmodel->appendRow(it);
+        */
+
 
     }
 
@@ -120,22 +145,17 @@ void RedditModel::fetchComments(const QString &permalink)
 
 }
 
-#if 0
-QVariantMap RedditModel::getComment(int index)
-{
-    QVariantMap res = RoleItemModel::getModelData(m_commentsmodel, index);
-    //qDebug() << "getc" << res;
-    return res;
-}
-#endif
 
 QVariantMap RedditModel::getLink(int index)
 {
-    QVariantMap res = RoleItemModel::getModelData(m_linksmodel, index);
-    //qDebug() << "getlink" << res;
+    QVariantMap res = m_linksmodel->get(index);
+            //RoleItemModel::getModelData(m_linksmodel, index);
+    qDebug() << "getlink" << res;
     return res;
 }
 
+
+/*
 void RedditModel::refreshCategories()
 {
     QStringList cats = m_ses->getCategories();
@@ -147,13 +167,17 @@ void RedditModel::refreshCategories()
 
     cats.removeDuplicates();
 
-    m_cats->clear();
+    //m_cats->clear();
     foreach (QString c, cats) {
-        QStandardItem* it = new QStandardItem();
-        it->setData(c, Qt::UserRole);
-        m_cats->appendRow(it);
+        QVariantMap m;
+        m["catName"] = c;
+        //QStandardItem* it = new QStandardItem();
+        //it->setData(c, Qt::UserRole);
+        //m_cats->append(m);
+        //m_cats->appendRow(it);
     }
 }
+*/
 
 void RedditModel::editConfig()
 {

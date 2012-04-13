@@ -10,6 +10,7 @@ class QStandardItemModel;
 
 class RoleItemModel;
 
+class QuickModel;
 
 
 
@@ -46,7 +47,7 @@ signals:
 public slots:
 
     QVariantMap getLink(int index);
-    void refreshCategories();
+    //void refreshCategories();
     void enableRestricted(bool val);
     QVariantList categories();
 private slots:
@@ -56,9 +57,12 @@ private slots:
     void doPopulateComments();
 private:
     RedditSession* m_ses;
-    RoleItemModel* m_linksmodel;
+    QuickModel* m_linksmodel;
+    //RoleItemModel* m_linksmodel;
     //RoleItemModel* m_commentsmodel;
-    RoleItemModel* m_cats;
+    //QuickModel* m_cats;
+
+    //RoleItemModel* m_cats;
 
     bool m_enableRestricted;
 };

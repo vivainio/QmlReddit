@@ -1,9 +1,3 @@
-qmlreddit (1.1.0-1) unstable; urgency=low
-
-  * UI facelift
-
- -- Ville M. Vainio <vivainio@gmail.com>  Fri, 30 Oct 2011 21:30:00 +0300
-
 qmlreddit (1.0.0-1) unstable; urgency=low
 
   * Starting official Harmattan releasing

@@ -277,7 +277,7 @@ QStringList RedditSession::getCategories()
             "technology" << "funny" <<  "linux"
          << "news"  << "Python" << "WTF" << "gaming" <<
          "IAmA" << "maemo" << "meego" << "science" << "bestof" << "gadgets" <<
-         "music" << "hardware" << "worldnews"<< "offbeat" << "sports";
+            "music" << "hardware" << "worldnews"<< "offbeat" << "sports" << "AdviceAnimals" << "skyrim";
 
     cats.removeDuplicates();
 

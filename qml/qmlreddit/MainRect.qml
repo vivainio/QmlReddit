@@ -202,6 +202,7 @@ Rectangle {
             } else {
                 // Cancel
                 viewSwitcher.switchView(linkview, false)
+
             }
         }
 
@@ -310,7 +311,7 @@ Rectangle {
 
             //var lnk = mdlReddit.getLink(selIndex)
             var lnk = eng.getLink(selIndex)
-            //console.log("have vote", lnk.vote)
+            console.log("have vote", lnk.vote)
 
             var directpreview = !eng.shouldShowComments(lnk)
             if (!directpreview) {
